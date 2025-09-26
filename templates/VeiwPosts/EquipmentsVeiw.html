@@ -6,18 +6,5 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateEquipmentForm">
-    <input type="text" name="EquipmentName" id="EquipmentName" placeholder="Название снаряжения" required />
-    <input type="text" list="EquipmentTypeList" name="EquipmentType" id="EquipmentType" placeholder="Тип снаряжения"/>
-    <datalist id="EquipmentTypeList">
-        {% for equipmenttype in equipmenttypes %}
-        <option value="{{ equipmenttype.EquipmentTypeName }}">
-        </option>>
-          {% endfor %}
-    </datalist>
-    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
-    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
-    <button type="submit">Создать</button>
-</Form>
 
 {% endblock %}

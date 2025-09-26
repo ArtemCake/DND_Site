@@ -1159,10 +1159,10 @@ def AdminPanel():
     return render_template("AdminPanel.html")
 
 
-@app.route("/Posts", methods=['GET', 'POST'])
+@app.route("/VeiwMaterial", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
-def Posts():
-    return render_template("Posts.html")
+def VeiwMaterial():
+    return render_template("VeiwMaterial.html")
 
 
 @app.route('/CreateUsers', methods=['GET', 'POST'])

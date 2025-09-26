@@ -6,42 +6,5 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateSpellForm">
-    <input type="text" name="SpellName" id="SpellName" placeholder="Название заклинания"/>
-    <textarea name="Discription" id="Discription" placeholder="Описание" >
-    </textarea>
-    <input type="number" name="LevelSpell" id="LevelSpell" placeholder="Уровень заклинания"/>
-    <input type="text" name="ClassPerson" id="ClassPerson" placeholder="Доступные классы"/>
-    <select class="ClassPersonPrint add-to-tags" name="ClassPersonPrint" id="ClassPersonPrint" multiple>
-        {% for ClassPerson in ClassPersonDND %}
-        <option value="{{ ClassPerson.ClassPersonName }}">
-            {{ ClassPerson.ClassPersonName }}
-        </option>>
-        {% endfor %}
-    </select>
-    <input type="text" name="Subclasses" id="Subclasses" placeholder="Доступные подклассы"/>
-    <select class="SubclassesPrint add-to-tags" name="SubclassesPrint" id="SubclassesPrint" multiple>
-        {% for Archetype in Archetypes %}
-        <option value="{{ Archetype.ArchetypeName }}">
-            {{ Archetype.ArchetypeName }}
-        </option>>
-        {% endfor %}
-    </select>
-    <input type="text" name="Damage" id="Damage" placeholder="Атака заклинания"/>
-    <input type="text" List="DamageTypeList" name="TypeDamage" id="TypeDamage" placeholder="Тип урона"/>
-    <datalist id="DamageTypeList">
-        {% for DamageType in DamageTypes %}
-        <option value="{{ DamageType.DamageTypeName }}">
-        </option>>
-          {% endfor %}
-    </datalist>
-    <input type="text" name="Effects" id="Effects" placeholder="Эффект заклинания"/>
-    <input type="text" name="ApplicationTime" id="ApplicationTime" placeholder="Время накладывания"/>
-    <input type="text" name="Distance" id="Distance" placeholder="Дистанция"/>
-    <input type="text" name="Components" id="Components" placeholder="Компоненты"/>
-    <input type="text" name="Duration" id="Duration" placeholder="Продолжительность"/>
-    <input type="checkbox" name="Ritual" id="Ritual"/>Ритуал
-    <button type="submit">Создать</button>
-</Form>
 
 {% endblock %}

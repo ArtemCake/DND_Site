@@ -4,14 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/pythonProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ArmorTypesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/ArmorTypesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ArmorsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/ArmorsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/AttributesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/AttributesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/BackgroundsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/BackgroundsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/CharacteristicesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/CharacteristicesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ClassesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/ClassesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/DamageTypesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/DamageTypesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentTypesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentTypesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/LanguagesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/LanguagesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/MagicalItemsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/MagicalItemsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/RacesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/RacesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/SkillsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/SkillsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/SpellsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/SpellsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ToolTypesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/ToolTypesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ToolsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/ToolsVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonTypesVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonTypesVeiw.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonsVeiw.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonsVeiw.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +57,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
-    "Python.app.executor": "Debug",
+    "Python.app.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -65,6 +81,7 @@
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonProject" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -108,28 +125,22 @@
       <updated>1758627818001</updated>
       <workItem from="1758886527097" duration="8000" />
     </task>
+    <task id="LOCAL-00001" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1758886601698</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758886601698</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Save dates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Save dates" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>681</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>679</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>678</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="Languages[0]" />

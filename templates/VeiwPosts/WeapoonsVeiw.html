@@ -6,26 +6,5 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateWeaponForm">
-    <input type="text" name="WeapoonName" id="WeapoonName" placeholder="Название оружия" required/>
-    <input type="text" list="WeapoonTypeList" name="WeapoonClass" id="WeapoonClass" placeholder="Тип оружия" required/>
-    <datalist id="WeapoonTypeList">
-        {% for WeapoonType in Weapoontypes %}
-        <option value="{{ WeapoonType.WeapoonTypeName }}">
-        </option>>
-          {% endfor %}
-    </datalist>
-    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
-    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
-    <input type="text" name="Damage" id="Damage" placeholder="Урон"/>
-    <input type="text" list="DamageTypeList" name="DamageType" id="DamageType" placeholder="Тип урона"/>
-        <datalist id="DamageTypeList">
-        {% for DamageType in DamageTypes %}
-        <option value="{{ DamageType.DamageTypeName }}">
-        </option>>
-          {% endfor %}
-    </datalist>
-    <button type="submit">Создать</button>
-</Form>
 
 {% endblock %}

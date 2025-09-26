@@ -7,7 +7,7 @@
                      </li>
                      {% if current_user.is_authenticated %}
                      <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('Posts') }}" class="nav-link px-2 text-secondary">Данные по днд</a>
+                        <a href="{{ url_for('VeiwMaterial') }}" class="nav-link px-2 text-secondary">Данные по днд</a>
                      </li>
                      {% for role in current_user.roles %}
                      {% if (role.name == 'Admin') or (role.name == 'Master') %}
@@ -70,7 +70,7 @@
                   </li>
                   {% if current_user.is_authenticated %}
                   <li>
-                     <a href="{{ url_for('Posts') }}" class="nav-link text-white">
+                     <a href="{{ url_for('VeiwMaterial') }}" class="nav-link text-white">
                         Все статьи
                      </a>
                   </li>
