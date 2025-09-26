@@ -1,0 +1,116 @@
+﻿ <div class="headmenu">
+            <div class="container">
+               <div class="d-flex flex-wrap align-items-right justify-content-right justify-content">
+                  <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('Index') }}" class="nav-link px-2 text-secondary">Главная</a>
+                     </li>
+                     {% if current_user.is_authenticated %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('Posts') }}" class="nav-link px-2 text-secondary">Данные по днд</a>
+                     </li>
+                     {% for role in current_user.roles %}
+                     {% if (role.name == 'Admin') or (role.name == 'Master') %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('CreateMaterial') }}" class="nav-link px-2 text-secondary">Добавить данные по днд</a>
+                     </li>
+                     {% endif %}
+                      {% if (role.name == 'Admin') %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('AdminPanel') }}" class="nav-link px-2 text-secondary">Админ панель</a>
+                     </li>
+                     {% endif %}
+                     {% endfor %}
+                     {% endif %}
+                     <li  Class ="login">
+                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li class="nav-link px-2 text-secondary">
+                           {% if current_user.is_authenticated %}
+                           <a href="#" class="nav-link px-2 text-secondary">
+                           <b>Логин</b>: {{current_user.login}}
+                           </a>
+                        </li>
+                        <li class="nav-link px-2 text-secondary">
+                           {% for role in current_user.roles %}
+                           <a href="#" class="nav-link px-2 text-secondary">
+                           <b>Роль:</b> {{ role.NameUser }}
+                           </a>
+                           {% endfor %}
+                        </li>
+                     </ul>
+                     <button type="button" class="btn btn-outline-light me-2">
+                     <a href="/Logout" class="nav-link px-2 text-secondary">
+                     Выйти
+                     </a>
+                     </button>
+                     {% else %}
+                     <button type="button" class="btn btn-outline-light me-2">
+                     <a href="{{ url_for('LoginUsers') }}" class="nav-link px-2 text-secondary">
+                     Войти
+                     </a>
+                     </button>
+                     <button type="button" class="btn btn-warning">
+                     <a href="{{ url_for('CreateUsers') }}" class="nav-link px-2 text-secondary">
+                     Зарегистрироваться
+                     </a>
+                     </button>
+                     {% endif %}
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="mobilemenu">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+               <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                     <a href="{{ url_for('Index') }}" class="nav-link active" aria-current="page">
+                        Главная
+                     </a>
+                  </li>
+                  {% if current_user.is_authenticated %}
+                  <li>
+                     <a href="{{ url_for('Posts') }}" class="nav-link text-white">
+                        Все статьи
+                     </a>
+                  </li>
+                  {% for role in current_user.roles %}
+                  {% if (role.name == 'Admin') or (role.name == 'Master') %}
+                  <li>
+                     <a href="{{ url_for('CreateMaterial') }}" class="nav-link text-white">
+                        Добавить статьи
+                     </a>
+                  </li>
+                  {% endif %}
+                   {% if (role.name == 'Admin') %}
+                  <li class="nav-link text-white">
+                     <a href="{{ url_for('AdminPanel') }}" class="nav-link text-white">Админ панель</a>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                     <ul class="nav nav-pills flex-column mb-auto login topmenu">
+                              {% if current_user.is_authenticated %}
+                              <li>
+                                 <b>Логин</b>: {{current_user.login}}
+                                 {% for role in current_user.roles %}
+                              </li>
+                              <li>
+                                 <b>Роль:</b> {{ role.name }}
+                                 {% endfor %}
+                              </li>
+                              <li>
+                                 <a href="/Logout">Выйти</a>
+                              </li>
+                              {% else %}
+                              <li>
+                                 <a href="{{ url_for('LoginUsers') }}">Войти</a>
+                              </li>
+                              <li>
+                                 <a href="{{ url_for('CreateUsers') }}">Зарегистрироваться</a>
+                              </li>
+                              {% endif %}
+                     </ul>
+               </ul>
+            </div>
+         </div>

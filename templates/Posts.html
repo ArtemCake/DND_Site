@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}
+Данные по ДНД
+{% endblock %}
+{% block content %}
+<h1>Данные по ДНД</h1>
+
+{% extends "base.html" %}
+
+{% block title %}
+Добавление данных по ДНД
+{% endblock %}
+
+{% block content %}
+
+<ul>
+    <li>
+        <a href="{{ url_for('ArchetypesVeiw') }}">Архетипы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('ArmorsVeiw') }}">Доспехи</a>
+    </li>
+    <li>
+        <a href="{{ url_for('ArmorTypesVeiw') }}">Типы доспех</a>
+    </li>
+    <li>
+        <a href="{{ url_for('AttributesVeiw') }}">Черты</a>
+    </li>
+    <li>
+        <a href="{{ url_for('BackgroundsVeiw') }}">Предыстории</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CharacteristicesVeiw') }}">Характеристики</a>
+    </li>
+    <li>
+        <a href="{{ url_for('ClassesVeiw') }}">Классы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('DamageTypesVeiw') }}">Типы урона</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EquipmentsVeiw') }}">Снаряжение</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EquipmentTypesVeiw') }}">Типы снаряжения</a>
+    </li>
+    <li>
+        <a href="{{ url_for('LanguagesVeiw') }}">Языки</a>
+    </li>
+    <li>
+        <a href="{{ url_for('MagicalItemsVeiw') }}">Магичечские предметы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('RacesVeiw') }}">Расы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('SkillsVeiw') }}">Навыки</a>
+    </li>
+    <li>
+        <a href="{{ url_for('SpellsVeiw') }}">Заклинания</a>
+    </li>
+    <li>
+        <a href="{{ url_for('ToolsVeiw') }}">Инструменты</a>
+    </li>
+    <li>
+        <a href="{{ url_for('ToolTypesVeiw') }}">Типы инструментов</a>
+    </li>
+    <li>
+        <a href="{{ url_for('WeaponsVeiw') }}">Оружие</a>
+    </li>
+    <li>
+        <a href="{{ url_for('WeapoonTypesVeiw') }}">Типы оружия</a>
+    </li>
+</ul>
+
+{% endblock %}
+
+{% endblock %}

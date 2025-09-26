@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+Создание типа снаряжения
+{% endblock %}
+
+{% block content %}
+
+<Form method="POST"  id="CreateEquipmentTypesForm">
+    <input type="text" name="EquipmentTypeName" id="EquipmentTypeName" placeholder="Название типа снаряжения" required />
+    <button type="submit">Создать</button>
+</Form>
+
+{% endblock %}

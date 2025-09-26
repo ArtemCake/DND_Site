@@ -1,0 +1,45 @@
+{% extends "LoginPage.html" %}
+
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block content %}
+<h1>Авторизация</h1>
+
+{% if current_user.is_authenticated %}
+   Вы уже вошли в систему.
+{% else %}
+{{ msg }}<br>
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" method="POST" id="signup-form">
+      <div class="login">
+        <input type="text" name="login" id="login-input-2" placeholder="Введите логин" required />
+      </div>
+        <div class="password">
+	      <input type="password" id="password-input-3" placeholder="Введите пароль" name="password"  required/>
+	      <a href="#" class="password-control-3"></a>
+        </div>
+       <button type="submit">Зарегистрироваться</button>
+      <p class="message">У вас уже есть аккаунт? <a href="{{ url_for('LoginUsers') }}">Войти</a></p>
+    </form>
+    <form class="login-form" method="POST" id="signin-form">
+       <div class="login">
+        <input type="text" name="login" id="login-input-3" placeholder="Введите логин" required />
+      </div>
+        <div class="password">
+	      <input type="password" id="password-input-4" placeholder="Введите пароль" name="password"  required/>
+	      <a href="#" class="password-control-4"></a>
+        </div>
+      <button type="submit">Войти</button>
+      <p class="message">У вас нет учетной записи? <a href="{{ url_for('CreateUsers') }}">Зарегистрироваться</a></p>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+

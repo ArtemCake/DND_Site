@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Создание инструмента
+{% endblock %}
+
+{% block content %}
+
+<Form method="POST"  id="CreateArmorForm">
+    <input type="text" name="ToolName" id="ToolName" placeholder="Название инструмента" required />
+    <input type="text" list="ToolTypeList" name="ToolType" id="ToolType" placeholder="Тип инструмента"/>
+    <datalist id="ToolTypeList">
+        {% for ToolType in ToolTypes %}
+        <option value="{{ ToolType.ToolTypeName }}">
+        </option>>
+          {% endfor %}
+    </datalist>
+    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
+    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
+    <button type="submit">Создать</button>
+</Form>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+Добавление данных по ДНД
+{% endblock %}
+
+{% block content %}
+
+<ul>
+    <li>
+        <a href="{{ url_for('CreateArchetype') }}">Добавить архетип</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateArmor') }}">Добавить доспех</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateArmorTypes') }}">Добавить тип доспеха</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateAttribute') }}">Добавить черту</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateBackground') }}">Добавить предысторию</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateCharacteristices') }}">Добавить характеристику</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateClass') }}">Добавить класс</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateDamageType') }}">Добавить тип урона</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateEquipments') }}">Добавить снаряжение</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateEquipmentTypes') }}">Добавить тип снаряжения</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateLanguage') }}">Добавить язык</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateMagicalItems') }}">Добавить магичечский предмет</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateRace') }}">Добавить расу</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateSkills') }}">Добавить навык</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateSpells') }}">Добавить заклинание</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateTools') }}">Добавить инструмент</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateToolTypes') }}">Добавить тип инструмента</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateWeapon') }}">Добавить оружие</a>
+    </li>
+    <li>
+        <a href="{{ url_for('CreateWeapoonTypes') }}">Добавить тип оружия</a>
+    </li>
+</ul>
+
+{% endblock %}
