@@ -6,15 +6,17 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateEquipmentForm">
+<Form method="POST"  id="CreateEquipmentsForm" action="CreateEquipments">
     <input type="text" name="EquipmentName" id="EquipmentName" placeholder="Название снаряжения" required />
-    <input type="text" list="EquipmentTypeList" name="EquipmentType" id="EquipmentType" placeholder="Тип снаряжения"/>
-    <datalist id="EquipmentTypeList">
-        {% for equipmenttype in equipmenttypes %}
-        <option value="{{ equipmenttype.EquipmentTypeName }}">
-        </option>>
-          {% endfor %}
-    </datalist>
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <input type="text" name="EquipmentTypes" id="EquipmentTypes" placeholder="Тип снаряжения"/>
+    <select class="EquipmentTypesPrint add-to-tags" name="EquipmentTypesPrint" id="EquipmentTypesPrint" multiple>
+        {% for EquipmentType in EquipmentTypes %}
+        <option value="{{ EquipmentType.id }}">
+            {{ EquipmentType.id }}
+        </option>
+        {% endfor %}
+    </select>
     <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
     <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
     <button type="submit">Создать</button>

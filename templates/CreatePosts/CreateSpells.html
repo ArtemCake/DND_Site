@@ -6,36 +6,66 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateSpellForm">
+<Form method="POST"  id="CreateSpellsForm" action="CreateSpells">
     <input type="text" name="SpellName" id="SpellName" placeholder="Название заклинания"/>
-    <textarea name="Discription" id="Discription" placeholder="Описание" >
-    </textarea>
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
     <input type="number" name="LevelSpell" id="LevelSpell" placeholder="Уровень заклинания"/>
-    <input type="text" name="ClassPerson" id="ClassPerson" placeholder="Доступные классы"/>
-    <select class="ClassPersonPrint add-to-tags" name="ClassPersonPrint" id="ClassPersonPrint" multiple>
-        {% for ClassPerson in ClassPersonDND %}
-        <option value="{{ ClassPerson.ClassPersonName }}">
-            {{ ClassPerson.ClassPersonName }}
+    <input type="text" name="Classes" id="Classes" placeholder="Доступные классы"/>
+    <select class="ClassesPrint add-to-tags" name="ClassesPrint" id="ClassesPrint" multiple>
+        {% for Class in Classes %}
+        <option value="{{ Class.id }}">
+            {{ Class.id }}
         </option>>
         {% endfor %}
     </select>
-    <input type="text" name="Subclasses" id="Subclasses" placeholder="Доступные подклассы"/>
-    <select class="SubclassesPrint add-to-tags" name="SubclassesPrint" id="SubclassesPrint" multiple>
+    <input type="text" name="Archetypes" id="Archetypes" placeholder="Доступные подклассы"/>
+    <select class="ArchetypesPrint add-to-tags" name="ArchetypesPrint" id="ArchetypesPrint" multiple>
         {% for Archetype in Archetypes %}
-        <option value="{{ Archetype.ArchetypeName }}">
-            {{ Archetype.ArchetypeName }}
+        <option value="{{ Archetype.id }}">
+            {{ Archetype.di }}
         </option>>
         {% endfor %}
     </select>
     <input type="text" name="Damage" id="Damage" placeholder="Атака заклинания"/>
-    <input type="text" List="DamageTypeList" name="TypeDamage" id="TypeDamage" placeholder="Тип урона"/>
-    <datalist id="DamageTypeList">
+    <input type="text" List="DamageTypesList" name="DamageTypes" id="DamageTypes" placeholder="Тип урона"/>
+    <datalist id="DamageTypesList">
         {% for DamageType in DamageTypes %}
-        <option value="{{ DamageType.DamageTypeName }}">
+        <option value="{{ DamageType.id }}">
         </option>>
           {% endfor %}
     </datalist>
-    <input type="text" name="Effects" id="Effects" placeholder="Эффект заклинания"/>
+    <input type="text" name="Languages" id="Languages" placeholder="Владение языками"/>
+    <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
+        {% for Language in Languages %}
+        <option value="{{ Language.id }}">
+            {{ Language.id }}
+        </option>
+        {% endfor %}
+    </select>
+    <input type="text" name="Abilities" id="Abilities" placeholder="Особые способности"/>
+    <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
+        {% for Abilitie in Abilities %}
+        <option value="{{ Abilitie.id }}">
+            {{ Abilitie.id }}
+        </option>
+        {% endfor %}
+    </select>
+    <input type="text" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость эфектов"/>
+    <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
+        {% for Effect in Effects %}
+        <option value="{{ Effect.id }}">
+            {{ Effect.id }}
+        </option>
+        {% endfor %}
+    </select>
+    <input type="text" name="Effects" id="Effects" placeholder="Эфекты"/>
+    <select class="EffectsPrint add-to-tags" name="EffectsPrint" id="EffectsPrint" multiple>
+        {% for Effect in Effects %}
+        <option value="{{ Effect.id }}">
+            {{ Effect.id }}
+        </option>
+        {% endfor %}
+    </select>
     <input type="text" name="ApplicationTime" id="ApplicationTime" placeholder="Время накладывания"/>
     <input type="text" name="Distance" id="Distance" placeholder="Дистанция"/>
     <input type="text" name="Components" id="Components" placeholder="Компоненты"/>

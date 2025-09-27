@@ -6,12 +6,13 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateArmorForm">
+<Form method="POST"  id="CreateToolsForm" action="CreateTools">
     <input type="text" name="ToolName" id="ToolName" placeholder="Название инструмента" required />
-    <input type="text" list="ToolTypeList" name="ToolType" id="ToolType" placeholder="Тип инструмента"/>
-    <datalist id="ToolTypeList">
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <input type="text" list="ToolTypesList" name="ToolTypes" id="ToolTypes" placeholder="Тип инструмента"/>
+    <datalist id="ToolTypesList">
         {% for ToolType in ToolTypes %}
-        <option value="{{ ToolType.ToolTypeName }}">
+        <option value="{{ ToolType.id }}">
         </option>>
           {% endfor %}
     </datalist>

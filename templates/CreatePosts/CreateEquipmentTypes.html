@@ -6,8 +6,9 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateEquipmentTypesForm">
+<Form method="POST"  id="CreateEquipmentTypesForm" action="CreateEquipmentTypes">
     <input type="text" name="EquipmentTypeName" id="EquipmentTypeName" placeholder="Название типа снаряжения" required />
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
     <button type="submit">Создать</button>
 </Form>
 

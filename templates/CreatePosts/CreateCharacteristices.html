@@ -6,8 +6,17 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateCharacteristicForm">
+<Form method="POST"  id="CreateCharacteristicesForm" action="CreateCharacteristices">
     <input type="text" name="CharacteristicName" id="CharacteristicName" placeholder="Название характеристики" required />
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <input type="text" name="Skills" id="Skills" placeholder="Даваемые навыками"/>
+    <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
+        {% for Skill in Skills %}
+        <option value="{{ Skill.id }}">
+            {{ Skill.id }}
+        </option>
+        {% endfor %}
+    </select>
     <button type="submit">Создать</button>
 </Form>
 

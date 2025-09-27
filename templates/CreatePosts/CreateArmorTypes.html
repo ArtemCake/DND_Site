@@ -6,8 +6,9 @@
 
 {% block content %}
 
-<Form method="POST"  id="CreateArmorTypesForm">
+<Form method="POST"  id="CreateArmorTypesForm" action="CreateArmorTypes">
     <input type="text" name="ArmorTypeName" id="ArmorTypeName" placeholder="Название типа доспеха" required />
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
     <button type="submit">Создать</button>
 </Form>
 
