@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Способности
+{% endblock %}
+
+{% block content %}
+
+<h1>Способности</h1>
+
+ {% for Archetype in Archetypes %}
+
+<div>
+    <a href="{{ url_for('VeiwPost') }}">{{ Archetype.ArchetypeName }}</a>
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Создание способности
+{% endblock %}
+
+{% block content %}
+
+<Form method="POST"  id="CreateAbilitiesForm" action="CreateAbilities">
+    <input type="text" name="AbilitieName" id="AbilitieName" placeholder="Название способности" required />
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <button type="submit">Создать</button>
+</Form>
+
+{% endblock %}

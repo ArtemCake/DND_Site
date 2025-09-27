@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+Способности
+{% endblock %}
+
+{% block content %}
+
+<h1>Способности</h1>
+
+ {% for ArmorType in ArmorTypes %}
+
+<div>
+    <a href="{{ url_for('VeiwPost') }}">{{ ArmorType.ArmorTypeName }}</a>
+</div>
+
+{% endfor %}
+
+{% endblock %}

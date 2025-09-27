@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+Создание языка
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" id="CreateLanguagesForm" action="CreateLanguages">
+    <input type="text" name="LanguageName" id="LanguageName" placeholder="Язык" required />
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <input type="text" name="TypicalRepresentative" id="TypicalRepresentative" placeholder="Типичный представитель" required />
+    <input type="text" name="Writing" id="Writing" placeholder="Письменность" required />
+     <button type="submit">Создать</button>
+</form>
+
+{% endblock %}

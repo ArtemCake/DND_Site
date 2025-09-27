@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Создание оружия
+{% endblock %}
+
+{% block content %}
+
+<Form method="POST"  id="CreateWeaponsForm" action="CreateWeapons">
+    <input type="text" name="WeapoonName" id="WeapoonName" placeholder="Название оружия" required/>
+    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+    <input type="text" list="WeapoonTypesList" name="WeapoonTypes" id="WeapoonTypes" placeholder="Тип оружия" required/>
+    <datalist id="WeapoonTypesList">
+        {% for WeapoonType in WeapoonTypes %}
+        <option value="{{ WeapoonType.id }}">
+        </option>>
+          {% endfor %}
+    </datalist>
+    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
+    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
+    <input type="text" name="Damage" id="Damage" placeholder="Урон"/>
+    <input type="text" list="DamageTypesList" name="DamageTypes" id="DamageTypes" placeholder="Тип урона"/>
+        <datalist id="DamageTypesList">
+        {% for DamageType in DamageTypes %}
+        <option value="{{ DamageType.DamageTypeName }}">
+        </option>>
+          {% endfor %}
+    </datalist>
+    <button type="submit">Создать</button>
+</Form>
+
+{% endblock %}
