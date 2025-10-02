@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ DateName }}
+{% endblock %}
+
+{% block content %}
+
+<div id="{{ tableName }}Form" class="{{ tableName }}Form">
+{% for PostDate in PostDates %}
+    {% if PostDate[0] == '' and PostDate[1] is string  %}
+    <h1>{{ PostDate[1] }}</h1>
+    {% else %}
+        {% if PostDate[1] == False or PostDate[1] == True %}
+            {{ PostDate[0] }}: <input type="checkbox" name="{{ PostDate[1] }}" id="{{ PostDate[1] }}" placeholder="{{ PostDate[0] }}"
+                                      {% if PostDate[1]  %} checked {% endif%}  disabled>
+        {% else %}
+
+            {% if PostDate[0] != '' %}
+                {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
+
+                    {% if PostDate[1]|length > 1 %}
+                        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+                        <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"/>
+                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" multiple>
+                            {% for Parametr in PostDate[3] %}
+                            {% if Parametr in PostDate[1] %}
+                                <option value="{{ Parametr.id }}" selected="selected">
+                            {% else %}
+                                 <option value="{{ Parametr.id }}">
+                            {% endif %}
+                                {{ Parametr.Name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" >
+                            {% for Parametr in PostDate[1] %}
+                            <option value="{{ Parametr.id }}" selected="selected">
+                                {{ Parametr.Name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                {% else %}
+                <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+                {% if PostDate[2] == "Discription" %}
+                <textarea name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[2] }}"> {{ PostDate[1] }}  </textarea>
+                {% else %}
+                 <input type="text" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[1] }}" />
+                {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+    {% endif %}
+{% endfor %}
+        </div>
+
+{% endblock %}

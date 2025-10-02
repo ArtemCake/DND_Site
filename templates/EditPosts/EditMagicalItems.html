@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить магические предметы
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменить магические предметы</h1>
+
+ {% for MagicalItem in MagicalItems %}
+
+<form method="POST"  id="EditMagicalItemsForm{{ MagicalItem.id }}" action="EditMagicalItems">
+    <input type="text" name="Date_id" id="Date_id" value="{{ MagicalItem.id }}">
+    <button>{{ MagicalItem.Name }}</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить Данные по ДНД
+{% endblock %}
+
+{% block content %}
+<h1>Изменить данные по ДНД</h1>
+
+<ul>
+    <li>
+        <a href="{{ url_for('EditAbilities') }}">Изменить способности</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditArchetypes') }}">Изменить архетипы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditArmors') }}">Изменить доспехи</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditArmorTypes') }}">Изменить типы доспеха</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditAtributes') }}">Изменить черты</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditBackgrounds') }}">Изменить предыстории</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditCharacteristices') }}">Изменить характеристики</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditClasses') }}">Изменить классы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditDamageTypes') }}">Изменить типы урона</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditEffects') }}">Изменить эффекты</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditEquipments') }}">Изменить снаряжения</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditEquipmentTypes') }}">Изменить типы снаряжения</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditFeatures') }}">Изменить свойства оружия</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditLanguages') }}">Изменить языки</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditMagicalItems') }}">Изменить магичечские предметы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditMagicalItemTypes') }}">Изменить типы магических предметов</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditRaces') }}">Изменить расы</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditSkills') }}">Изменить навыки</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditSpells') }}">Изменить заклинания</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditTools') }}">Изменить инструменты</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditToolTypes') }}">Изменить типы инструмента</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditWeapoons') }}">Изменить оружия</a>
+    </li>
+    <li>
+        <a href="{{ url_for('EditWeapoonTypes') }}">Изменить типы оружия</a>
+    </li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить расы
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменить расы</h1>
+
+ {% for Race in Races %}
+
+<form method="POST"  id="EditRacesForm{{ Race.id }}" action="EditRaces">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Race.id }}">
+    <button>{{ Race.Name }}</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}

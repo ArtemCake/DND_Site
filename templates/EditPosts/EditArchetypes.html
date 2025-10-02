@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить подклассы (Архетипы)
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменить подклассы (Архетипы)</h1>
+
+ {% for Archetype in Archetypes %}
+
+<form method="POST"  id="EditArchetypesForm{{ Archetype.id }}" action="EditArchetypes">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Archetype.id }}">
+    <button>{{ Archetype.Name }}</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}

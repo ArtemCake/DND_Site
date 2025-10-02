@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить снаряжения
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменить снаряжения</h1>
+
+ {% for Equipment in Equipments %}
+
+<form method="POST"  id="EditEquipmentsForm{{ Equipment.id }}" action="EditEquipments">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Equipment.id }}">
+    <button>{{ Equipment.Name }}</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}

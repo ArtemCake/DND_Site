@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Изменить типы доспех
+{% endblock %}
+
+{% block content %}
+
+<h1>Изменить типы доспех</h1>
+
+ {% for ArmorType in ArmorTypes %}
+
+<form method="POST"  id="VeiwArmorTypesForm{{ ArmorType.id }}" action="VeiwArmorTypes">
+    <input type="text" name="Date_id" id="Date_id" value="{{ ArmorType.id }}">
+    <button>{{ ArmorType.Name }}</button>
+</form>
+
+{% endfor %}
+
+{% endblock %}
