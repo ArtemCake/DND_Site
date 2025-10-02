@@ -15,7 +15,7 @@
     <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
         {% for Characteristic in Characteristices %}
         <option value="{{ Characteristic.id }}">
-            {{ Characteristic.id }}
+            {{ Characteristic.Name }}
         </option>
         {% endfor %}
     </select>
@@ -23,7 +23,7 @@
     <select class="DamageResistancePrint add-to-tags" name="DamageResistancePrint" id="DamageResistancePrint" multiple>
         {% for DamageType in DamageTypes %}
         <option value="{{ DamageType.id }}">
-            {{ DamageType.id }}
+            {{ DamageType.Name }}
         </option>
         {% endfor %}
     </select>
@@ -31,7 +31,7 @@
     <select class="DamageImmunityPrint add-to-tags" name="DamageImmunityPrint" id="DamageImmunityPrint" multiple>
         {% for DamageType in DamageTypes %}
         <option value="{{ DamageType.id }}">
-            {{ DamageType.id }}
+            {{ DamageType.Name }}
         </option>
         {% endfor %}
     </select>
@@ -39,7 +39,7 @@
     <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
         {% for Effect in Effects %}
         <option value="{{ Effect.id }}">
-            {{ Effect.id }}
+            {{ Effect.Name }}
         </option>
         {% endfor %}
     </select>
@@ -47,7 +47,7 @@
     <select class="EffectsPrint add-to-tags" name="EffectsPrint" id="EffectsPrint" multiple>
         {% for Effect in Effects %}
         <option value="{{ Effect.id }}">
-            {{ Effect.id }}
+            {{ Effect.Name }}
         </option>
         {% endfor %}
     </select>
@@ -55,7 +55,7 @@
     <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
         {% for Spell in Spells %}
         <option value="{{ Spell.id }}">
-            {{ Spell.id }}
+            {{ Spell.Name }}
         </option>
         {% endfor %}
     </select>
@@ -63,7 +63,7 @@
     <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
         {% for Skill in Skills %}
         <option value="{{ Skill.id }}">
-            {{ Skill.id }}
+            {{ Skill.Name }}
         </option>
         {% endfor %}
     </select>
@@ -71,7 +71,7 @@
     <select class="PossessionArmorPrint add-to-tags" name="PossessionArmorPrint" id="PossessionArmorPrint" multiple>
         {% for ArmorType in ArmorTypes %}
         <option value="{{ ArmorType.id }}">
-            {{ ArmorType.id }}
+            {{ ArmorType.Name }}
         </option>
         {% endfor %}
     </select>
@@ -79,7 +79,7 @@
     <select class="GunOwnershipPrint add-to-tags" name="GunOwnershipPrint" id="GunOwnershipPrint" multiple>
         {% for Weapoon in Weapoons %}
         <option value="{{ Weapoon.id }}">
-            {{ Weapoon.id }}
+            {{ Weapoon.Name }}
         </option>
         {% endfor %}
     </select>
@@ -87,7 +87,7 @@
     <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
         {% for Tool in Tools %}
         <option value="{{ Tool.id }}">
-            {{ Tool.id }}
+            {{ Tool.Name }}
         </option>
         {% endfor %}
     </select>
@@ -95,7 +95,7 @@
     <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
         {% for Language in Languages %}
         <option value="{{ Language.id }}">
-            {{ Language.id }}
+            {{ Language.Name }}
         </option>
         {% endfor %}
     </select>
@@ -103,33 +103,34 @@
     <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
         {% for Abilitie in Abilities %}
         <option value="{{ Abilitie.id }}">
-            {{ Abilitie.id }}
+            {{ Abilitie.Name }}
         </option>
         {% endfor %}
     </select>
-    <input type="text" name="ArmorTypes" id="ArmorTypes" placeholder="Доспех основа магического предмета"/>
-    <select class="ArmorTypesPrint add-to-tags" name="ArmorTypesPrint" id="ArmorTypesPrint" multiple>
+    <label for="ArmorTypes">Доспех основа магического предмета:</label>
+    <select class="ArmorTypes add-to-tags" name="ArmorTypes" id="ArmorTypes">
         {% for Armor in Armors %}
         <option value="{{ Armor.id }}">
-            {{ Armor.id }}
+            {{ Armor.Name }}
         </option>
         {% endfor %}
     </select>
-    <input type="text" name="WeapoonTypes" id="WeapoonTypes" placeholder="Оружие основа магического предмета"/>
-    <select class="WeapoonTypesPrint add-to-tags" name="WeapoonTypesPrint" id="WeapoonTypesPrint" multiple>
+    <label for="WeapoonTypes">Оружие основа магического предмета:</label>
+    <select class="WeapoonTypes add-to-tags" name="WeapoonTypes" id="WeapoonTypes">
         {% for Weapoon in Weapoons %}
         <option value="{{ Weapoon.id }}">
-            {{ Weapoon.id }}
+            {{ Weapoon.Name }}
         </option>
         {% endfor %}
     </select>
-    <input type="text" list="MagicalItemTypes" name="MagicalItemTypeName" id="MagicalItemTypeName" placeholder="Тип магического предмета" required />
-    <datalist id="MagicalItemTypes">
+        <label for="MagicalItemTypes">Тип магического предмета:</label>
+    <select class="MagicalItemTypes add-to-tags" name="MagicalItemTypes" id="MagicalItemTypes">
         {% for MagicalItemType in MagicalItemTypes %}
         <option value="{{ MagicalItemType.id }}">
+            {{ MagicalItemType.Name }}
         </option>
-          {% endfor %}
-    </datalist>
+        {% endfor %}
+    </select>
     <button type="submit">Создать</button>
 </Form>
 

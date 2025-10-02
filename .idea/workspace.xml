@@ -8,48 +8,46 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/JoinString.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/JoinString.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreateMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetype.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmor.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmorTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArmorTypes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateAttribute.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateBackground.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateClass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateDamageType.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipmentTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipmentTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateLanguage.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateRace.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateSkills.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateSkills.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateToolTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateToolTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoon.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ArchetypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ArmorTypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ArmorsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/AttributesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/BackgroundsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/CharacteristicesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ClassesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/DamageTypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentTypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/EquipmentsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/LanguagesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/MagicalItemsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/RacesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/SkillsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/SpellsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ToolTypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/ToolsVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonTypesVeiw.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/WeapoonsVeiw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAbilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAbilities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmorTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmorTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAtributes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAtributes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwBackgrounds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwBackgrounds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwCharacteristices.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwCharacteristices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwClasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwClasses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwDamageTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwDamageTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEffects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEffects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipmentTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipmentTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwLanguages.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwLanguages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItems.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItemsTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItemsTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwRaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwRaces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwSkills.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwSkills.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwSpells.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwSpells.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwToolTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwToolTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwTools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwTools.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwWeapoonTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwWeapoonTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwWeapoons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwWeapoons.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,24 +74,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/pythonProject/templates/CreatePosts&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.app.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/templates",
+    "settings.editor.selected.configurable": "debugger.dataViews.python.type.renderers",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\CreatePosts" />
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\VeiwPosts" />
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
+      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\VeiwPosts" />
+      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\CreatePosts" />
+      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
@@ -172,7 +171,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758887124207</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759008281454</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759008281456</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759008288367</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759008288367</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,16 +199,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/functions.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
+        <watch expression="type(PostDates[1][1][0])" language="Python" />
         <watch expression="Languages[0]" />
         <watch expression="Languages[2]" />
         <watch expression="Languages[0]" />
@@ -202,6 +218,8 @@
         <watch expression="weapoon.WeapoonType.0.WeapoonsWeapoonTypes.0" />
         <watch expression="weapoon" />
         <watch expression="damagetype" />
+        <watch expression="PostDate()" language="Python" />
+        <watch expression="PostDates[1][1].0" />
       </configuration>
     </watches-manager>
   </component>

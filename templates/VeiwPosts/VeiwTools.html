@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Способности
+Инструменты
 {% endblock %}
 
 {% block content %}
 
-<h1>Способности</h1>
+<h1>Доспехи</h1>
 
  {% for Tool in Tools %}
 
-<div>
-    <a href="{{ url_for('VeiwPost') }}">{{ Tool.ToolName }}</a>
-</div>
+<form method="POST"  id="VeiwToolsForm{{ Tool.id }}" action="VeiwTools">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Tool.id }}">
+    <button>{{ Tool.Name }}</button>
+</form>
 
 {% endfor %}
 

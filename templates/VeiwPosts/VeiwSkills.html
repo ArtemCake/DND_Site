@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Способности
+Навыки
 {% endblock %}
 
 {% block content %}
 
-<h1>Способности</h1>
+<h1>Навыки</h1>
 
  {% for Skill in Skills %}
 
-<div>
-    <a href="{{ url_for('VeiwPost') }}">{{ Skill.SkillName }}</a>
-</div>
+<form method="POST"  id="VeiwSkillsForm{{ Skill.id }}" action="VeiwSkills">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Skill.id }}">
+    <button>{{ Skill.Name }}</button>
+</form>
 
 {% endfor %}
 

@@ -278,3 +278,12 @@ margin: 0;
 }
 
 /* /CreatePost  */
+
+
+/* /EditPost */
+input#TableName, input#Date_id, input#Date_id
+, input#Characteristices, input#DamageResistance, input#DamageImmunity
+, input#EffectsResistance, input#Spells, input#Skills, input#PossessionArmor, input#GunOwnership
+, input#ToolOwnership, input#Languages, input#Date_id, input#Abilities, input#ArmorClass{
+
+}

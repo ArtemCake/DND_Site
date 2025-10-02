@@ -8,11 +8,12 @@
 
 <h1>Способности</h1>
 
- {% for Ability in Abilities %}
+ {% for Abilitie in Abilities %}
 
-<div>
-    <a href="{{ url_for('VeiwPost') }}">{{ Ability.AbilitieName }}</a>
-</div>
+<form method="POST"  id="VeiwAbilitiesForm{{ Abilitie.id }}" action="VeiwAbilities">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Abilitie.id }}">
+    <button>{{ Abilitie.Name }}</button>
+</form>
 
 {% endfor %}
 

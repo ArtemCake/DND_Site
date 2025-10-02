@@ -9,11 +9,11 @@
 <Form method="POST"  id="CreateEquipmentsForm" action="CreateEquipments">
     <input type="text" name="EquipmentName" id="EquipmentName" placeholder="Название снаряжения" required />
     <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <input type="text" name="EquipmentTypes" id="EquipmentTypes" placeholder="Тип снаряжения"/>
-    <select class="EquipmentTypesPrint add-to-tags" name="EquipmentTypesPrint" id="EquipmentTypesPrint" multiple>
+    <label for="EquipmentTypes">Тип снаряжения:</label>
+    <select class="EquipmentTypes add-to-tags" name="EquipmentTypes" id="EquipmentTypes">
         {% for EquipmentType in EquipmentTypes %}
         <option value="{{ EquipmentType.id }}">
-            {{ EquipmentType.id }}
+            {{ EquipmentType.Name }}
         </option>
         {% endfor %}
     </select>

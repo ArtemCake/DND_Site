@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Способности
+Черты
 {% endblock %}
 
 {% block content %}
 
-<h1>Способности</h1>
+<h1>Черты</h1>
 
  {% for Atribute in Atributes %}
 
-<div>
-    <a href="{{ url_for('VeiwPost') }}">{{ Atribute.AtributeName }}</a>
-</div>
+<form method="POST"  id="VeiwAtributesForm{{ Atribute.id }}" action="VeiwAtributes">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Atribute.id }}">
+    <button>{{ Atribute.Name }}</button>
+</form>
 
 {% endfor %}
 

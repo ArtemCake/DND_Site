@@ -14,7 +14,7 @@
     <select class="ClassesPrint add-to-tags" name="ClassesPrint" id="ClassesPrint" multiple>
         {% for Class in Classes %}
         <option value="{{ Class.id }}">
-            {{ Class.id }}
+            {{ Class.Name }}
         </option>>
         {% endfor %}
     </select>
@@ -22,23 +22,24 @@
     <select class="ArchetypesPrint add-to-tags" name="ArchetypesPrint" id="ArchetypesPrint" multiple>
         {% for Archetype in Archetypes %}
         <option value="{{ Archetype.id }}">
-            {{ Archetype.di }}
+            {{ Archetype.Name }}
         </option>>
         {% endfor %}
     </select>
     <input type="text" name="Damage" id="Damage" placeholder="Атака заклинания"/>
-    <input type="text" List="DamageTypesList" name="DamageTypes" id="DamageTypes" placeholder="Тип урона"/>
-    <datalist id="DamageTypesList">
+        <label for="DamageTypes">Тип урона:</label>
+    <select class="DamageTypes add-to-tags" name="DamageTypes" id="DamageTypes">
         {% for DamageType in DamageTypes %}
         <option value="{{ DamageType.id }}">
+            {{ DamageType.Name }}
         </option>>
           {% endfor %}
-    </datalist>
+    </select>
     <input type="text" name="Languages" id="Languages" placeholder="Владение языками"/>
     <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
         {% for Language in Languages %}
         <option value="{{ Language.id }}">
-            {{ Language.id }}
+            {{ Language.Name }}
         </option>
         {% endfor %}
     </select>
@@ -46,7 +47,7 @@
     <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
         {% for Abilitie in Abilities %}
         <option value="{{ Abilitie.id }}">
-            {{ Abilitie.id }}
+            {{ Abilitie.Name }}
         </option>
         {% endfor %}
     </select>
@@ -54,7 +55,7 @@
     <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
         {% for Effect in Effects %}
         <option value="{{ Effect.id }}">
-            {{ Effect.id }}
+            {{ Effect.Name }}
         </option>
         {% endfor %}
     </select>
@@ -62,7 +63,7 @@
     <select class="EffectsPrint add-to-tags" name="EffectsPrint" id="EffectsPrint" multiple>
         {% for Effect in Effects %}
         <option value="{{ Effect.id }}">
-            {{ Effect.id }}
+            {{ Effect.Name }}
         </option>
         {% endfor %}
     </select>

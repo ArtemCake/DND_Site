@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Способности
+Предыстории
 {% endblock %}
 
 {% block content %}
 
-<h1>Способности</h1>
+<h1>Предыстории</h1>
 
  {% for Background in Backgrounds %}
 
-<div>
-    <a href="{{ url_for('VeiwPost') }}">{{ Background.BackgroundName }}</a>
-</div>
+<form method="POST"  id="VeiwBackgroundsForm{{ Background.id }}" action="VeiwBackgrounds">
+    <input type="text" name="Date_id" id="Date_id" value="{{ Background.id }}">
+    <button>{{ Background.Name }}</button>
+</form>
 
 {% endfor %}
 

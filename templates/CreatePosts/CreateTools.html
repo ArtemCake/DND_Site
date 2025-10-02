@@ -9,13 +9,14 @@
 <Form method="POST"  id="CreateToolsForm" action="CreateTools">
     <input type="text" name="ToolName" id="ToolName" placeholder="Название инструмента" required />
     <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <input type="text" list="ToolTypesList" name="ToolTypes" id="ToolTypes" placeholder="Тип инструмента"/>
-    <datalist id="ToolTypesList">
+        <label for="ToolTypes">Тип инструмента:</label>
+    <select class="ToolTypes add-to-tags" name="ToolTypes" id="ToolTypes">
         {% for ToolType in ToolTypes %}
         <option value="{{ ToolType.id }}">
+            {{ ToolType.Name }}
         </option>>
           {% endfor %}
-    </datalist>
+    </select>
     <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
     <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
     <button type="submit">Создать</button>

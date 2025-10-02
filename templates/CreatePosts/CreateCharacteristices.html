@@ -13,7 +13,7 @@
     <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
         {% for Skill in Skills %}
         <option value="{{ Skill.id }}">
-            {{ Skill.id }}
+            {{ Skill.Name }}
         </option>
         {% endfor %}
     </select>

@@ -12,6 +12,9 @@
                      {% for role in current_user.roles %}
                      {% if (role.name == 'Admin') or (role.name == 'Master') %}
                      <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('EditMaterial') }}" class="nav-link px-2 text-secondary">Изменить данные по днд</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
                         <a href="{{ url_for('CreateMaterial') }}" class="nav-link px-2 text-secondary">Добавить данные по днд</a>
                      </li>
                      {% endif %}
