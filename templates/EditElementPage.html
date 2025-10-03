@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}
+{{ TitlePage }}
+{% endblock %}
+{% block content %}
+<h1>{{ TitlePage }}</h1>
+{% for Date in Dates %}
+<form method="POST"  id="Edit{{ TableName }}Form{{ Date.id }}" action="{{ TableName }}">
+	<input type="hidden" name="Date_id" id="Date_id"  placeholder='{{ Date.Name }}' value="{{ Date.id }}">
+	<button>{{ Date.Name }}</button>
+</form>
+{% endfor %}
+{% endblock %}
