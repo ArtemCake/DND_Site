@@ -18,26 +18,19 @@
 
             {% if PostDate[0] != '' %}
                 {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
-
-                    {% if PostDate[1]|length > 1 %}
+                    <div class="input-item">
                         <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" multiple disabled>
-                            {% for Parametr in PostDate[1] %}
-                            <option value="{{ Parametr.id }}">
-                                {{ Parametr.Name }}
-                            </option>
+                        <input type="hidden" name="Skills">
+                        <ul>
+                             {% for Parametr in PostDate[1] %}
+                            <li>
+                                <input type="checkbox" name="{{ PostDate[2] }}Print" class ='{{ PostDate[2] }}Print'
+                                       id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="Даваемые навыками"
+                                       value="{{ Parametr.id }}" checked disabled/> {{ Parametr.Name }}
+                            </li>
                             {% endfor %}
-                        </select>
-                    {% else %}
-                        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" disabled>
-                            {% for Parametr in PostDate[1] %}
-                            <option value="{{ Parametr.id }}">
-                                {{ Parametr.Name }}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    {% endif %}
+                        </ul>
+                    </div>
                 {% else %}
                 <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
                 {% if PostDate[2] == "Discription" %}

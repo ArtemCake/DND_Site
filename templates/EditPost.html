@@ -12,7 +12,8 @@
 {% for PostDate in PostDates %}
     {% if PostDate[0] == '' and PostDate[1] is string  %}
     <h1>{{ PostDate[1] }}</h1>
-    <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[1] }}"/>
+    <label for="{{ PostDate[2] }}Print">Название:</label>
+    <input type="text" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[1] }}"/>
     {% else %}
         {% if PostDate[1] == False or PostDate[1] == True %}
             {{ PostDate[0] }}: <input type="checkbox" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
@@ -21,31 +22,43 @@
 
             {% if PostDate[0] != '' %}
                 {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
-
-                    {% if PostDate[1]|length > 1 %}
+                        <div class="input-item">
                         <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[4] }}"/>
-                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" multiple>
-                            {% for Parametr in PostDate[3] %}
-                            {% if Parametr in PostDate[1] %}
-                                <option value="{{ Parametr.id }}" selected="selected">
-                            {% else %}
-                                 <option value="{{ Parametr.id }}">
-                            {% endif %}
-                                {{ Parametr.Name }}
-                            </option>
+                        <input type="hidden" class="hiddenUpdate" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[4] }}">
+                        {% if PostDate[5]==True %}
+                            <ul>
+                             {% for Parametr in PostDate[3] %}
+                            <li>
+                                {% if Parametr in PostDate[1] %}
+                                    <input type="radio" name="{{ PostDate[2] }}Print" class ='checkboxUpdate'
+                                           id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="{{ PostDate[0] }}"
+                                           value="{{ Parametr.id }}" checked/> {{ Parametr.Name }}
+                                {% else %}
+                                    <input type="radio" name="{{ PostDate[2] }}Print" class ='checkboxUpdate'
+                                           id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="{{ PostDate[0] }}"
+                                           value="{{ Parametr.id }}"/> {{ Parametr.Name }}
+                                {% endif %}
+                            </li>
                             {% endfor %}
-                        </select>
-                    {% else %}
-                        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" >
-                            {% for Parametr in PostDate[1] %}
-                            <option value="{{ Parametr.id }}" selected="selected">
-                                {{ Parametr.Name }}
-                            </option>
+                        </ul>
+                        {% else %}
+                            <ul>
+                             {% for Parametr in PostDate[3] %}
+                            <li>
+                                {% if Parametr in PostDate[1] %}
+                                    <input type="checkbox" name="{{ PostDate[2] }}Print" class ='checkboxUpdate'
+                                           id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="{{ PostDate[0] }}"
+                                           value="{{ Parametr.id }}" checked/> {{ Parametr.Name }}
+                                {% else %}
+                                    <input type="checkbox" name="{{ PostDate[2] }}Print" class ='checkboxUpdate'
+                                           id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="{{ PostDate[0] }}"
+                                           value="{{ Parametr.id }}"/> {{ Parametr.Name }}
+                                {% endif %}
+                            </li>
                             {% endfor %}
-                        </select>
-                    {% endif %}
+                        </ul>
+                         {% endif %}
+                    </div>
                 {% else %}
                 <label for="{{ PostDate[2] }}">{{ PostDate[0] }}:</label>
                 {% if PostDate[2] == "Discription" %}

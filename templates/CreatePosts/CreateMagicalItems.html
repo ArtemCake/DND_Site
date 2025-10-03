@@ -8,126 +8,171 @@
    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
    <input type="text" name="PowerBonus" id="PowerBonus" placeholder="Бонус атаки" required />
    <input type="text" name="ArmorBonus" id="ArmorBonus" placeholder="Бонус защиты" required />
-   <input type="hidden" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками"/>
-   <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
-      {% for Characteristic in Characteristices %}
-      <option value="{{ Characteristic.id }}">
-         {{ Characteristic.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="DamageResistance" id="DamageResistance" placeholder="Сопративление к урону"/>
-   <select class="DamageResistancePrint add-to-tags" name="DamageResistancePrint" id="DamageResistancePrint" multiple>
-      {% for DamageType in DamageTypes %}
-      <option value="{{ DamageType.id }}">
-         {{ DamageType.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="DamageImmunity" id="DamageImmunity" placeholder="Имунитет к урону"/>
-   <select class="DamageImmunityPrint add-to-tags" name="DamageImmunityPrint" id="DamageImmunityPrint" multiple>
-      {% for DamageType in DamageTypes %}
-      <option value="{{ DamageType.id }}">
-         {{ DamageType.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость эфектов"/>
-   <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
-      {% for Effect in Effects %}
-      <option value="{{ Effect.id }}">
-         {{ Effect.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Effects" id="Effects" placeholder="Эфекты"/>
-   <select class="EffectsPrint add-to-tags" name="EffectsPrint" id="EffectsPrint" multiple>
-      {% for Effect in Effects %}
-      <option value="{{ Effect.id }}">
-         {{ Effect.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Spells" id="Spells" placeholder="Дополнительные заклинания"/>
-   <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
-      {% for Spell in Spells %}
-      <option value="{{ Spell.id }}">
-         {{ Spell.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Skills" id="Skills" placeholder="Владение навыками"/>
-   <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
-      {% for Skill in Skills %}
-      <option value="{{ Skill.id }}">
-         {{ Skill.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="PossessionArmor" id="PossessionArmor" placeholder="Владение доспехами"/>
-   <select class="PossessionArmorPrint add-to-tags" name="PossessionArmorPrint" id="PossessionArmorPrint" multiple>
-      {% for ArmorType in ArmorTypes %}
-      <option value="{{ ArmorType.id }}">
-         {{ ArmorType.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="GunOwnership" id="GunOwnership" placeholder="Владение оружием"/>
-   <select class="GunOwnershipPrint add-to-tags" name="GunOwnershipPrint" id="GunOwnershipPrint" multiple>
-      {% for Weapoon in Weapoons %}
-      <option value="{{ Weapoon.id }}">
-         {{ Weapoon.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами"/>
-   <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
-      {% for Tool in Tools %}
-      <option value="{{ Tool.id }}">
-         {{ Tool.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Languages" id="Languages" placeholder="Владение языками"/>
-   <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
-      {% for Language in Languages %}
-      <option value="{{ Language.id }}">
-         {{ Language.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Abilities" id="Abilities" placeholder="Особые способности"/>
-   <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
-      {% for Abilitie in Abilities %}
-      <option value="{{ Abilitie.id }}">
-         {{ Abilitie.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <label for="ArmorTypes">Доспех основа магического предмета:</label>
-   <select class="ArmorTypes add-to-tags" name="ArmorTypes" id="ArmorTypes">
-      {% for Armor in Armors %}
-      <option value="{{ Armor.id }}">
-         {{ Armor.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <label for="WeapoonTypes">Оружие основа магического предмета:</label>
-   <select class="WeapoonTypes add-to-tags" name="WeapoonTypes" id="WeapoonTypes">
-      {% for Weapoon in Weapoons %}
-      <option value="{{ Weapoon.id }}">
-         {{ Weapoon.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <label for="MagicalItemTypes">Тип магического предмета:</label>
-   <select class="MagicalItemTypes add-to-tags" name="MagicalItemTypes" id="MagicalItemTypes">
-      {% for MagicalItemType in MagicalItemTypes %}
-      <option value="{{ MagicalItemType.id }}">
-         {{ MagicalItemType.Name }}
-      </option>
-      {% endfor %}
-   </select>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками">
+		<ul>
+			{% for Characteristic in Characteristices %}
+			<li>
+				<input type="checkbox" name="CharacteristicesPrint" class ='checkboxUpdate'
+					id="CharacteristicesPrint {{ Characteristic.id }}"  value="{{ Characteristic.id }}"/> {{ Characteristic.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="DamageResistance" id="DamageResistance" placeholder="Сопративление к урону">
+		<ul>
+			{% for DamageType in DamageTypes %}
+			<li>
+				<input type="checkbox" name="DamageResistancePrint" class ='checkboxUpdate'
+					id="DamageResistancePrint {{ DamageType.id }}"  value="{{ DamageType.id }}"/> {{ DamageType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="DamageImmunity" id="DamageImmunity" placeholder="Имунитет к урону">
+		<ul>
+			{% for DamageType in DamageTypes %}
+			<li>
+				<input type="checkbox" name="DamageImmunityPrint" class ='checkboxUpdate'
+					id="DamageImmunityPrint {{ DamageType.id }}"  value="{{ DamageType.id }}"/> {{ DamageType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость к эффектам">
+		<ul>
+			{% for Effect in Effects %}
+			<li>
+				<input type="checkbox" name="EffectsResistancePrint" class ='checkboxUpdate'
+					id="EffectsResistancePrint {{ Effect.id }}"  value="{{ Effect.id }}"/> {{ Effect.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Effects" id="Effects" placeholder="Эфекты">
+		<ul>
+			{% for Effect in Effects %}
+			<li>
+				<input type="checkbox" name="EffectsPrint" class ='checkboxUpdate'
+					id="EffectsPrint {{ Effect.id }}"  value="{{ Effect.id }}"/> {{ Effect.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Spells" id="Spells" placeholder="Дополнительные заклинания">
+		<ul>
+			{% for Spell in Spells %}
+			<li>
+				<input type="checkbox" name="SpellsPrint" class ='checkboxUpdate'
+					id="SpellsPrint {{ Spell.id }}"  value="{{ Spell.id }}"/> {{ Spell.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Skills" id="Skills" placeholder="Владение навыками">
+		<ul>
+			{% for Skill in Skills %}
+			<li>
+				<input type="checkbox" name="SkillsPrint" class ='checkboxUpdate'
+					id="SkillsPrint {{ Skill.id }}"  value="{{ Skill.id }}"/> {{ Skill.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="PossessionArmor" id="PossessionArmor" placeholder="Владение доспехами">
+		<ul>
+			{% for ArmorType in ArmorTypes %}
+			<li>
+				<input type="checkbox" name="PossessionArmorPrint" class ='checkboxUpdate'
+					id="PossessionArmorPrint {{ ArmorType.id }}"  value="{{ ArmorType.id }}"/> {{ ArmorType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="GunOwnership" id="GunOwnership" placeholder="Владение оружием">
+		<ul>
+			{% for Weapoon in Weapoons %}
+			<li>
+				<input type="checkbox" name="GunOwnershipPrint" class ='checkboxUpdate'
+					id="GunOwnershipPrint {{ Weapoon.id }}"  value="{{ Weapoon.id }}"/> {{ Weapoon.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами">
+		<ul>
+			{% for Tool in Tools %}
+			<li>
+				<input type="checkbox" name="ToolOwnershipPrint" class ='checkboxUpdate'
+					id="ToolOwnershipPrint {{ Tool.id }}"  value="{{ Tool.id }}"/> {{ Tool.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Languages" id="Languages" placeholder="Владение языками">
+		<ul>
+			{% for Language in Languages %}
+			<li>
+				<input type="checkbox" name="LanguagesPrint" class ='checkboxUpdate'
+					id="LanguagesPrint {{ Language.id }}"  value="{{ Language.id }}"/> {{ Language.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Abilities" id="Abilities" placeholder="Особые способности">
+		<ul>
+			{% for Abilitie in Abilities %}
+			<li>
+				<input type="checkbox" name="AbilitiesPrint" class ='checkboxUpdate'
+					id="AbilitiesPrint {{ Abilitie.id }}"  value="{{ Abilitie.id }}"/> {{ Abilitie.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+    <div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="ArmorTypes" id="ArmorTypes" placeholder="Доспех основа магического предмета">
+		<ul>
+			{% for Armor in Armors %}
+			<li>
+				<input type="radio" name="ArmorTypesPrint" class ='checkboxUpdate'
+					id="ArmorTypesPrint {{ Armor.id }}"  value="{{ Armor.id }}"/> {{ Armor.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+    <div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="WeapoonTypes" id="WeapoonTypes" placeholder="Оружие основа магического предмета">
+		<ul>
+			{% for Weapoon in Weapoons %}
+			<li>
+				<input type="radio" name="WeapoonTypesPrint" class ='checkboxUpdate'
+					id="WeapoonTypesPrint {{ Weapoon.id }}"  value="{{ Weapoon.id }}"/> {{ Weapoon.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+    <div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="MagicalItemTypes" id="MagicalItemTypes" placeholder="Тип магического предмета">
+		<ul>
+			{% for MagicalItemType in MagicalItemTypes %}
+			<li>
+				<input type="radio" name="MagicalItemTypesPrint" class ='checkboxUpdate'
+					id="MagicalItemTypesPrint {{ MagicalItemType.id }}"  value="{{ MagicalItemType.id }}"/> {{ Weapoon.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
    <button type="submit">Создать</button>
 </Form>
 {% endblock %}

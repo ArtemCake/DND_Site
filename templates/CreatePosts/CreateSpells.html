@@ -7,66 +7,84 @@
    <input type="text" name="SpellName" id="SpellName" placeholder="Название заклинания"/>
    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
    <input type="number" name="LevelSpell" id="LevelSpell" placeholder="Уровень заклинания"/>
-   <input type="hidden" name="Classes" id="Classes" placeholder="Доступные классы"/>
-   <select class="ClassesPrint add-to-tags" name="ClassesPrint" id="ClassesPrint" multiple>
-      {% for Class in Classes %}
-      <option value="{{ Class.id }}">
-         {{ Class.Name }}
-      </option>
-      >
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Archetypes" id="Archetypes" placeholder="Доступные подклассы"/>
-   <select class="ArchetypesPrint add-to-tags" name="ArchetypesPrint" id="ArchetypesPrint" multiple>
-      {% for Archetype in Archetypes %}
-      <option value="{{ Archetype.id }}">
-         {{ Archetype.Name }}
-      </option>
-      >
-      {% endfor %}
-   </select>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Classes" id="Classes" placeholder="Доступно для классов">
+		<ul>
+			{% for Class in Classes %}
+			<li>
+				<input type="checkbox" name="ClassesPrint" class ='checkboxUpdate'
+					id="ClassesPrint {{ Class.id }}"  value="{{ Class.id }}"/> {{ Class.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Archetypes" id="Archetypes" placeholder="Доступно для подклассов">
+		<ul>
+			{% for Archetype in Archetypes %}
+			<li>
+				<input type="checkbox" name="ArchetypesPrint" class ='checkboxUpdate'
+					id="ArchetypesPrint {{ Archetype.id }}"  value="{{ Archetype.id }}"/> {{ Archetype.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
    <input type="text" name="Damage" id="Damage" placeholder="Атака заклинания"/>
-   <label for="DamageTypes">Тип урона:</label>
-   <select class="DamageTypes add-to-tags" name="DamageTypes" id="DamageTypes">
-      {% for DamageType in DamageTypes %}
-      <option value="{{ DamageType.id }}">
-         {{ DamageType.Name }}
-      </option>
-      >
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Languages" id="Languages" placeholder="Владение языками"/>
-   <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
-      {% for Language in Languages %}
-      <option value="{{ Language.id }}">
-         {{ Language.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Abilities" id="Abilities" placeholder="Особые способности"/>
-   <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
-      {% for Abilitie in Abilities %}
-      <option value="{{ Abilitie.id }}">
-         {{ Abilitie.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость эфектов"/>
-   <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
-      {% for Effect in Effects %}
-      <option value="{{ Effect.id }}">
-         {{ Effect.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <input type="hidden" name="Effects" id="Effects" placeholder="Эфекты"/>
-   <select class="EffectsPrint add-to-tags" name="EffectsPrint" id="EffectsPrint" multiple>
-      {% for Effect in Effects %}
-      <option value="{{ Effect.id }}">
-         {{ Effect.Name }}
-      </option>
-      {% endfor %}
-   </select>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="DamageTypes" id="DamageTypes" placeholder="Тип урона">
+		<ul>
+			{% for DamageType in DamageTypes %}
+			<li>
+				<input type="radio" name="DamageTypesPrint" class ='checkboxUpdate'
+					id="DamageTypesPrint {{ DamageType.id }}"  value="{{ DamageType.id }}"/> {{ DamageType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость к эффектам">
+		<ul>
+			{% for Effect in Effects %}
+			<li>
+				<input type="checkbox" name="EffectsResistancePrint" class ='checkboxUpdate'
+					id="EffectsResistancePrint {{ Effect.id }}"  value="{{ Effect.id }}"/> {{ Effect.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+   	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Effects" id="Effects" placeholder="Эфекты">
+		<ul>
+			{% for Effect in Effects %}
+			<li>
+				<input type="checkbox" name="EffectsPrint" class ='checkboxUpdate'
+					id="EffectsPrint {{ Effect.id }}"  value="{{ Effect.id }}"/> {{ Effect.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Languages" id="Languages" placeholder="Владение языками">
+		<ul>
+			{% for Language in Languages %}
+			<li>
+				<input type="checkbox" name="LanguagesPrint" class ='checkboxUpdate'
+					id="LanguagesPrint {{ Language.id }}"  value="{{ Language.id }}"/> {{ Language.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Abilities" id="Abilities" placeholder="Особые способности">
+		<ul>
+			{% for Abilitie in Abilities %}
+			<li>
+				<input type="checkbox" name="AbilitiesPrint" class ='checkboxUpdate'
+					id="AbilitiesPrint {{ Abilitie.id }}"  value="{{ Abilitie.id }}"/> {{ Abilitie.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
    <input type="text" name="ApplicationTime" id="ApplicationTime" placeholder="Время накладывания"/>
    <input type="text" name="Distance" id="Distance" placeholder="Дистанция"/>
    <input type="text" name="Components" id="Components" placeholder="Компоненты"/>

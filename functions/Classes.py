@@ -427,7 +427,7 @@ class Archetypes(db.Model):
     EffectsResistance   = db.relationship('Effects'         , secondary=Archetypes_EffectsResistance
                                             , backref=db.backref("ArchetypesEffectsResistance"       , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete',  single_parent=True)
-    R_Class             = db.relationship('Classes'         , secondary=Archetypes_Classes
+    Class               = db.relationship('Classes'         , secondary=Archetypes_Classes
                                             , backref=db.backref("ArchetypesClasses"                 , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
     Spell               = db.relationship('Spells'          , secondary=Archetypes_Spells

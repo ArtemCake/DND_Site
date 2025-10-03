@@ -87,8 +87,8 @@ def RepresentationList():
 
 
 def OpenVeiwPost(Parametrs):
-    tableName   = Parametrs[0]
-    Date_id     = Parametrs[1]
+    tableName           = Parametrs[0]
+    Date_id             = Parametrs[1]
     ClassDate           = get_class(tableName)
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
@@ -109,14 +109,16 @@ def OpenVeiwPost(Parametrs):
 
 
 def OpenEditPost(Parametrs):
-    tableName   = Parametrs[0]
-    Date_id     = Parametrs[1]
+    tableName           = Parametrs[0]
+    Date_id             = Parametrs[1]
+    OnlyvalueTablesName = Parametrs[2]
     ClassDate           = get_class(tableName)
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
     PostDates           = [['', DateName, 'Name']]
     variablesClassDate  = []
     inputvalue          = ''
+    TableOnly           = False
     for variables in dir(PostDate):
         parametr = getattr(PostDate, variables)
         if not callable(parametr) and not variables.startswith("__"):
@@ -127,6 +129,8 @@ def OpenEditPost(Parametrs):
                             inputvalue = inputvalue+str(param.id)+','
                         if inputvalue != '':
                             inputvalue = inputvalue[:-1]
+                        if variables in OnlyvalueTablesName:
+                            TableOnly = True
                         variablesClassDate = type(parametr[0]).query.all()
                     if isinstance(parametr, (int, str, list)):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
@@ -134,7 +138,7 @@ def OpenEditPost(Parametrs):
                             representationValue = RepresentationValueArray[1]
                         else:
                             representationValue = ''
-                        PostDates.append([representationValue, parametr, variables, variablesClassDate, inputvalue])
+                        PostDates.append([representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
     return render_template("EditPost.html",Date_id=Date_id, tableName=tableName, DateName=DateName, PostDates=PostDates)
 
 

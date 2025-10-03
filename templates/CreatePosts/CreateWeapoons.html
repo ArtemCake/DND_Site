@@ -4,29 +4,44 @@
 {% endblock %}
 {% block content %}
 <Form method="POST"  id="CreateWeaponsForm" action="CreateWeapons">
-   <input type="text" name="WeapoonName" id="WeapoonName" placeholder="Название оружия" required/>
-   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-   <label for="WeapoonTypes">Тип оружия:</label>
-   <select class="WeapoonTypes add-to-tags" name="WeapoonTypes" id="WeapoonTypes">
-      {% for WeapoonType in WeapoonTypes %}
-      <option value="{{ WeapoonType.id }}">
-         {{ WeapoonType.Name }}
-      </option>
-      >
-      {% endfor %}
-   </select>
-   <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
-   <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
-   <input type="text" name="Damage" id="Damage" placeholder="Урон"/>
-   <label for="DamageTypes">Тип урона:</label>
-   <select class="DamageTypes add-to-tags" name="DamageTypes" id="DamageTypes">
-      {% for DamageType in DamageTypes %}
-      <option value="{{ DamageType.id }}">
-         {{ DamageType.Name }}
-      </option>
-      >
-      {% endfor %}
-   </select>
-   <button type="submit">Создать</button>
+	<input type="text" name="WeapoonName" id="WeapoonName" placeholder="Название оружия" required/>
+	<textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="WeapoonTypes" id="WeapoonTypes" placeholder="Тип оружия">
+		<ul>
+			{% for WeapoonType in WeapoonTypes %}
+			<li>
+				<input type="radio" name="WeapoonTypesPrint" class ='checkboxUpdate'
+					id="WeapoonTypesPrint {{ WeapoonType.id }}"  value="{{ WeapoonType.id }}"/> {{ WeapoonType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<input type="text" name="Weight" id="Weight" placeholder="Вес"/>
+	<input type="text" name="Cost" id="Cost" placeholder="Цена"/>
+	<input type="text" name="Damage" id="Damage" placeholder="Урон"/>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="DamageTypes" id="DamageTypes" placeholder="Тип урона">
+		<ul>
+			{% for DamageType in DamageTypes %}
+			<li>
+				<input type="radio" name="DamageTypesPrint" class ='checkboxUpdate'
+					id="DamageTypesPrint {{ DamageType.id }}"  value="{{ DamageType.id }}"/> {{ DamageType.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Features" id="Features" placeholder="свойство оружия">
+		<ul>
+			{% for Feature in Features %}
+			<li>
+				<input type="radio" name="FeaturesPrint" class ='checkboxUpdate'
+					id="FeaturesPrint {{ Feature.id }}"  value="{{ Feature.id }}"/> {{ Feature.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<button type="submit">Создать</button>
 </Form>
 {% endblock %}

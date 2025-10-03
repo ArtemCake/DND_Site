@@ -4,16 +4,19 @@
 {% endblock %}
 {% block content %}
 <Form method="POST"  id="CreateCharacteristicesForm" action="CreateCharacteristices">
-   <input type="text" name="CharacteristicName" id="CharacteristicName" placeholder="Название характеристики" required />
-   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-   <input type="hidden" name="Skills" id="Skills" placeholder="Даваемые навыками"/>
-   <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
-      {% for Skill in Skills %}
-      <option value="{{ Skill.id }}">
-         {{ Skill.Name }}
-      </option>
-      {% endfor %}
-   </select>
-   <button type="submit">Создать</button>
+	<input type="text" name="CharacteristicName" id="CharacteristicName" placeholder="Название характеристики" required />
+	<textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+	<div class="input-item">
+		<input type="hidden" class="hiddenUpdate" name="Skills" id="Skills" placeholder="Владение навыками">
+		<ul>
+			{% for Skill in Skills %}
+			<li>
+				<input type="checkbox" name="SkillPrint" class ='checkboxUpdate'
+					id="SkillPrint {{ Skill.id }}" value="{{ Skill.id }}"/> {{ Skill.Name }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<button type="submit">Создать</button>
 </Form>
 {% endblock %}

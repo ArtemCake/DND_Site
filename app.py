@@ -1047,7 +1047,7 @@ def EditAbilities():
     abilities = Abilities.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Abilities', Date_id])
+        return OpenEditPost(['Abilities', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=abilities
                            , TableName='EditAbilities', TitlePage='Изменить способности')
 
@@ -1058,7 +1058,7 @@ def EditArchetypes():
     archetypes = Archetypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Archetypes', Date_id])
+        return OpenEditPost(['Archetypes', Date_id, ['Class']])
     return render_template("EditElementPage.html", Dates=archetypes
                            , TableName='EditArchetypes', TitlePage='Изменить подклассы (Архетипы)')
 
@@ -1069,7 +1069,7 @@ def EditArmors():
     armors = Armors.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Armors', Date_id])
+        return OpenEditPost(['Armors', Date_id, ['ArmorType']])
     return render_template("EditElementPage.html", Dates=armors
                            , TableName='EditArmors', TitlePage='Изменить доспехи')
 
@@ -1080,7 +1080,7 @@ def EditArmorTypes():
     armorTypes = ArmorTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['ArmorTypes', Date_id])
+        return OpenEditPost(['ArmorTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=armorTypes
                            , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов')
 
@@ -1091,7 +1091,7 @@ def EditAtributes():
     atributes = Atributes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Atributes', Date_id])
+        return OpenEditPost(['Atributes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=atributes
                            , TableName='EditAtributes', TitlePage='Изменить черты')
 
@@ -1102,7 +1102,7 @@ def EditBackgrounds():
     backgrounds = Backgrounds.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Backgrounds', Date_id])
+        return OpenEditPost(['Backgrounds', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=backgrounds
                            , TableName='EditBackgrounds', TitlePage='Изменить предыстории')
 
@@ -1113,7 +1113,7 @@ def EditCharacteristices():
     characteristices = Characteristices.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Characteristices', Date_id])
+        return OpenEditPost(['Characteristices', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=characteristices
                            , TableName='EditCharacteristices', TitlePage='Изменить характеристики')
 
@@ -1124,7 +1124,7 @@ def EditClasses():
     classes = Classes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Classes', Date_id])
+        return OpenEditPost(['Classes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=classes
                            , TableName='EditClasses', TitlePage='Изменить классы')
 
@@ -1135,7 +1135,7 @@ def EditDamageTypes():
     damageTypes = DamageTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['DamageTypes', Date_id])
+        return OpenEditPost(['DamageTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=damageTypes
                            , TableName='EditDamageTypes', TitlePage='Изменить типы урона')
 
@@ -1146,7 +1146,7 @@ def EditEffects():
     effects = Effects.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Effects', Date_id])
+        return OpenEditPost(['Effects', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=effects
                            , TableName='EditEffects', TitlePage='Изменить эффекты')
 
@@ -1157,7 +1157,7 @@ def EditEquipments():
     equipments = Equipments.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Equipments', Date_id])
+        return OpenEditPost(['Equipments', Date_id, ['EquipmentType']])
     return render_template("EditElementPage.html", Dates=equipments
                            , TableName='EditEquipments', TitlePage='Изменить снаряжения')
 
@@ -1168,7 +1168,7 @@ def EditEquipmentTypes():
     equipmentTypes = EquipmentTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['EquipmentTypes', Date_id])
+        return OpenEditPost(['EquipmentTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=equipmentTypes
             , TableName='EditEquipmentTypes', TitlePage='Изменить типы снаряжений')
 
@@ -1179,7 +1179,7 @@ def EditFeatures():
     features = Features.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['EquipmentTypes', Date_id])
+        return OpenEditPost(['EquipmentTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=features
         , TableName='EditFeatures', TitlePage='Изменить особенности')
 
@@ -1190,7 +1190,7 @@ def EditLanguages():
     languages = Languages.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Languages', Date_id])
+        return OpenEditPost(['Languages', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=languages
         , TableName='EditLanguages', TitlePage='Изменить языки')
 
@@ -1201,7 +1201,7 @@ def EditMagicalItems():
     magicalItems = MagicalItems.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['MagicalItems', Date_id])
+        return OpenEditPost(['MagicalItems', Date_id, ['ArmorTypeItem','WeapoonTypeItem','MagicalItemType']])
     return render_template("EditElementPage.html", Dates=magicalItems
         , TableName='EditMagicalItems', TitlePage='Изменить магические предметы')
 
@@ -1212,7 +1212,7 @@ def EditMagicalItemTypes():
     magicalItemsTypes = MagicalItemsTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['MagicalItemsTypes', Date_id])
+        return OpenEditPost(['MagicalItemsTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=magicalItemsTypes
         , TableName='EditMagicalItemTypes', TitlePage='Изменить типы магических предметов')
 
@@ -1223,7 +1223,7 @@ def EditRaces():
     races = Races.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Races', Date_id])
+        return OpenEditPost(['Races', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=races
         , TableName='EditRaces', TitlePage='Изменить расы')
 
@@ -1234,7 +1234,7 @@ def EditSkills():
     skills = Skills.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Skills', Date_id])
+        return OpenEditPost(['Skills', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=skills
         , TableName='EditSkills', TitlePage='Изменить навыки')
 
@@ -1245,7 +1245,7 @@ def EditSpells():
     spells = Spells.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Spells', Date_id])
+        return OpenEditPost(['Spells', Date_id, ['DamageType']])
     return render_template("EditElementPage.html", Dates=spells
         , TableName='EditSpells', TitlePage='Изменить заклинания')
 
@@ -1256,7 +1256,7 @@ def EditTools():
     tools = Tools.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Tools', Date_id])
+        return OpenEditPost(['Tools', Date_id, ['ToolType']])
     return render_template("EditElementPage.html", Dates=tools
         , TableName='EditTools', TitlePage='Изменить инструменты')
 
@@ -1267,7 +1267,7 @@ def EditToolTypes():
     toolTypes = ToolTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['ToolTypes', Date_id])
+        return OpenEditPost(['ToolTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=toolTypes
         , TableName='EditToolTypes', TitlePage='Изменить типы инструментов')
 
@@ -1278,7 +1278,7 @@ def EditWeapoons():
     weapoons = Weapoons.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['Weapoons', Date_id])
+        return OpenEditPost(['Weapoons', Date_id, ['Features','DamageType','WeapoonType']])
     return render_template("EditElementPage.html", Dates=weapoons
                            , TableName='EditWeapoons', TitlePage='Изменить оружия')
 
@@ -1289,7 +1289,7 @@ def EditWeapoonTypes():
     weapoonTypes = WeapoonTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['WeapoonTypes', Date_id])
+        return OpenEditPost(['WeapoonTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=weapoonTypes
                            , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия')
 
