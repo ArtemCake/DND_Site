@@ -1,7 +1,7 @@
 from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager
-from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore, UserMixin, RoleMixin)
-from functions.functions import appenddatas, parametrsoutput, OpenVeiwPost, OpenEditPost
+from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
+from functions.functions import appenddatas, parametrsoutput, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable
 import logging
 from functions.Classes import *
 
@@ -22,26 +22,7 @@ login_manager.init_app(app)
 logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 
-Roles_Users = db.Table('Roles_Users',
-        db.Column('user_id', db.Integer(), db.ForeignKey('User.id')),
-        db.Column('role_id', db.Integer(), db.ForeignKey('Role.id')))
 
-
-class User(db.Model, UserMixin):
-    __tablename__ = 'User'
-    id          = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    login       = db.Column(db.String, unique=True)
-    password    = db.Column(db.String(255), nullable=False, server_default='')
-    active      = db.Column(db.Boolean())
-    roles       = db.relationship('Role', secondary=Roles_Users, backref='roled')
-
-
-class Role(db.Model, RoleMixin):
-    __tablename__ = 'Role'
-    id       = db.Column(db.Integer(), primary_key=True)
-    RoleName = db.Column(db.String(80), unique=True)
-    name     = db.Column(db.String(80), unique=True)
-    NameUser = db.Column(db.String(80), unique=True)
 
 
 user_datastore  = SQLAlchemySessionUserDatastore(db.session, User, Role)
@@ -53,9 +34,9 @@ def create_tables():
     db.create_all()
     roles = Role.query.all()
     if len(roles) == 0:
-        role1 = Role(RoleName='Gamer', name='Gamer', NameUser='Игрок')
-        role2 = Role(RoleName='Master', name='Master', NameUser='Мастер')
-        role3 = Role(RoleName='Admin', name='Admin', NameUser='Администратор')
+        role1 = Role(RoleName='Gamer'   , name='Gamer'  , NameUser='Игрок')
+        role2 = Role(RoleName='Master'  , name='Master' , NameUser='Мастер')
+        role3 = Role(RoleName='Admin'   , name='Admin'  , NameUser='Администратор')
         db.session.add(role1)
         db.session.add(role2)
         db.session.add(role3)
@@ -834,207 +815,230 @@ def CreateWeapoonTypes():
 def VeiwAbilities():
     abilities = Abilities.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Abilities', Date_id)
-    return render_template("VeiwPosts/VeiwAbilities.html", Abilities=abilities)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Abilities', Date_id])
+    return render_template("VeiwElementPage.html", Dates=abilities
+                           , TableName='VeiwAbilities', TitlePage='Способности')
 
 
 @app.route("/VeiwArchetypes", methods=['GET', 'POST'])
 def VeiwArchetypes():
     archetypes = Archetypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Archetypes', Date_id)
-    return render_template("VeiwPosts/VeiwArchetypes.html", Archetypes=archetypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Archetypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=archetypes
+                           , TableName='VeiwArchetypes', TitlePage='Подклассы (Архетипы)')
 
 
 @app.route("/VeiwArmors", methods=['GET', 'POST'])
 def VeiwArmors():
     armors = Armors.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Armors', Date_id)
-    return render_template("VeiwPosts/VeiwArmors.html", Armors=armors)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Armors', Date_id])
+    return render_template("VeiwElementPage.html", Dates=armors
+                           , TableName='VeiwArmors', TitlePage='Доспехи')
 
 
 @app.route("/VeiwArmorTypes", methods=['GET', 'POST'])
 def VeiwArmorTypes():
     armorTypes = ArmorTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('ArmorTypes', Date_id)
-    return render_template("VeiwPosts/VeiwArmorTypes.html", ArmorTypes=armorTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['ArmorTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=armorTypes
+                           , TableName='VeiwArmorTypes', TitlePage='Типы доспехов')
 
 
 @app.route("/VeiwAtributes", methods=['GET', 'POST'])
 def VeiwAtributes():
     atributes = Atributes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Atributes', Date_id)
-    return render_template("VeiwPosts/VeiwAtributes.html", Atributes=atributes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Atributes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=atributes
+                           , VeiwAtributes='VeiwAtributes', TitlePage='Черты')
 
 
 @app.route("/VeiwBackgrounds", methods=['GET', 'POST'])
 def VeiwBackgrounds():
     backgrounds = Backgrounds.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Backgrounds', Date_id)
-    return render_template("VeiwPosts/VeiwBackgrounds.html", Backgrounds=backgrounds)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Backgrounds', Date_id])
+    return render_template("VeiwElementPage.html", Dates=backgrounds
+                           , VeiwAtributes='VeiwBackgrounds', TitlePage='Предыстории')
 
 
 @app.route("/VeiwCharacteristices", methods=['GET', 'POST'])
 def VeiwCharacteristices():
     characteristices = Characteristices.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Characteristices', Date_id)
-    return render_template("VeiwPosts/VeiwCharacteristices.html", Characteristices=characteristices)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Characteristices', Date_id])
+    return render_template("VeiwElementPage.html", Dates=characteristices
+                           , VeiwAtributes='VeiwCharacteristices', TitlePage='Характеристики')
 
 
 @app.route("/VeiwClasses", methods=['GET', 'POST'])
 def VeiwClasses():
     classes = Classes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Classes', Date_id)
-    return render_template("VeiwPosts/VeiwClasses.html", Classes=classes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Classes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=classes
+                           , VeiwAtributes='VeiwClasses', TitlePage='Классы')
 
 
 @app.route("/VeiwDamageTypes", methods=['GET', 'POST'])
 def VeiwDamageTypes():
     damageTypes = DamageTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('DamageTypes', Date_id)
-    return render_template("VeiwPosts/VeiwDamageTypes.html", DamageTypes=damageTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['DamageTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=damageTypes
+                           , VeiwAtributes='VeiwDamageTypes', TitlePage='Типы урона')
 
 
 @app.route("/VeiwEffects", methods=['GET', 'POST'])
 def VeiwEffects():
     effects = Effects.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Effects', Date_id)
-    return render_template("VeiwPosts/VeiwEffects.html", Effects=effects)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Effects', Date_id])
+    return render_template("VeiwElementPage.html", Dates=effects
+                           , VeiwAtributes='VeiwEffects', TitlePage='Эффекты')
 
 
 @app.route("/VeiwEquipments", methods=['GET', 'POST'])
 def VeiwEquipments():
     equipments = Equipments.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Equipments', Date_id)
-    return render_template("VeiwPosts/VeiwEquipments.html", Equipments=equipments)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Equipments', Date_id])
+    return render_template("VeiwElementPage.html", Dates=equipments
+                           , VeiwAtributes='VeiwEquipments', TitlePage='Снаряжения')
 
 
 @app.route("/VeiwEquipmentTypes", methods=['GET', 'POST'])
 def VeiwEquipmentTypes():
     equipmentTypes = EquipmentTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('EquipmentTypes', Date_id)
-    return render_template("VeiwPosts/VeiwEquipmentTypes.html", EquipmentTypes=equipmentTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['EquipmentTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=equipmentTypes
+                           , VeiwAtributes='VeiwEquipmentTypes', TitlePage='Типы снаряжения')
 
 
 @app.route("/VeiwFeatures", methods=['GET', 'POST'])
 def VeiwFeatures():
     features = Features.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Features', Date_id)
-    return render_template("VeiwPosts/VeiwFeatures.html", Features=features)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Features', Date_id])
+    return render_template("VeiwElementPage.html", Dates=features
+                           , VeiwAtributes='VeiwFeatures', TitlePage='Особенности')
 
 
 @app.route("/VeiwLanguages", methods=['GET', 'POST'])
 def VeiwLanguages():
     languages = Languages.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Languages', Date_id)
-    return render_template("VeiwPosts/VeiwLanguages.html", Languages=languages)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Languages', Date_id])
+    return render_template("VeiwElementPage.html", Dates=languages
+                           , VeiwAtributes='VeiwLanguages', TitlePage='Языки')
 
 
 @app.route("/VeiwMagicalItems", methods=['GET', 'POST'])
 def VeiwMagicalItems():
     magicalItems = MagicalItems.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('MagicalItems', Date_id)
-    return render_template("VeiwPosts/VeiwMagicalItems.html", MagicalItems=magicalItems)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['MagicalItems', Date_id])
+    return render_template("VeiwElementPage.html", Dates=magicalItems
+                           , VeiwAtributes='VeiwMagicalItems', TitlePage='Магические предметы')
 
 
 @app.route("/VeiwMagicalItemTypes", methods=['GET', 'POST'])
 def VeiwMagicalItemTypes():
     magicalItemsTypes = MagicalItemsTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('MagicalItemsTypes', Date_id)
-    return render_template("VeiwPosts/VeiwMagicalItemTypes.html", MagicalItemsTypes=magicalItemsTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['MagicalItemsTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=magicalItemsTypes
+                           , VeiwAtributes='VeiwMagicalItemTypes', TitlePage='Типы магических предметов')
 
 
 @app.route("/VeiwRaces", methods=['GET', 'POST'])
 def VeiwRaces():
     races = Races.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Races', Date_id)
-    return render_template("VeiwPosts/VeiwRaces.html", Races=races)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Races', Date_id])
+    return render_template("VeiwElementPage.html", Dates=races
+                           , VeiwAtributes='VeiwRaces', TitlePage='Расы')
 
 
 @app.route("/VeiwSkills", methods=['GET', 'POST'])
 def VeiwSkills():
     skills = Skills.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Skills', Date_id)
-    return render_template("VeiwPosts/VeiwSkills.html", Skills=skills)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Skills', Date_id])
+    return render_template("VeiwElementPage.html", Dates=skills
+                           , VeiwAtributes='VeiwSkills', TitlePage='Навыки')
 
 
 @app.route("/VeiwSpells", methods=['GET', 'POST'])
 def VeiwSpells():
     spells = Spells.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Spells', Date_id)
-    return render_template("VeiwPosts/VeiwSpells.html", Spells=spells)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Spells', Date_id])
+    return render_template("VeiwElementPage.html", Dates=spells
+                           , VeiwAtributes='VeiwSpells', TitlePage='Заклинания')
 
 
 @app.route("/VeiwTools", methods=['GET', 'POST'])
 def VeiwTools():
     tools = Tools.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Tools', Date_id)
-    return render_template("VeiwPosts/VeiwTools.html", Tools=tools)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Tools', Date_id])
+    return render_template("VeiwElementPage.html", Dates=tools
+                           , VeiwAtributes='VeiwTools', TitlePage='Инструменты')
 
 
 @app.route("/VeiwToolTypes", methods=['GET', 'POST'])
 def VeiwToolTypes():
     toolTypes = ToolTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('ToolTypes', Date_id)
-    return render_template("VeiwPosts/VeiwToolTypes.html", ToolTypes=toolTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['ToolTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=toolTypes
+                           , VeiwAtributes='VeiwToolTypes', TitlePage='Типы инструментов')
 
 
 @app.route("/VeiwWeapoons", methods=['GET', 'POST'])
 def VeiwWeapoons():
     weapoons = Weapoons.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('Weapoons', Date_id)
-    return render_template("VeiwPosts/VeiwWeapoons.html", Weapoons=weapoons)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['Weapoons', Date_id])
+    return render_template("VeiwElementPage.html", Dates=weapoons
+                           , VeiwAtributes='VeiwWeapoons', TitlePage='Оружия')
 
 
 @app.route("/VeiwWeapoonTypes", methods=['GET', 'POST'])
 def VeiwWeapoonTypes():
     weapoonTypes = WeapoonTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenVeiwPost('WeapoonTypes', Date_id)
-    return render_template("VeiwPosts/VeiwWeapoonTypes.html", WeapoonTypes=weapoonTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenVeiwPost(['WeapoonTypes', Date_id])
+    return render_template("VeiwElementPage.html", Dates=weapoonTypes
+                           , VeiwAtributes='VeiwWeapoonTypes', TitlePage='Типы оружия')
 
 
 @app.route("/EditAbilities", methods=['GET', 'POST'])
@@ -1042,9 +1046,10 @@ def VeiwWeapoonTypes():
 def EditAbilities():
     abilities = Abilities.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Abilities', Date_id)
-    return render_template("EditPosts/EditAbilities.html", Abilities=abilities)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Abilities', Date_id])
+    return render_template("EditElementPage.html", Dates=abilities
+                           , TableName='EditAbilities', TitlePage='Изменить способности')
 
 
 @app.route("/EditArchetypes", methods=['GET', 'POST'])
@@ -1052,9 +1057,10 @@ def EditAbilities():
 def EditArchetypes():
     archetypes = Archetypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Archetypes', Date_id)
-    return render_template("EditPosts/EditArchetypes.html", Archetypes=archetypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Archetypes', Date_id])
+    return render_template("EditElementPage.html", Dates=archetypes
+                           , TableName='EditArchetypes', TitlePage='Изменить подклассы (Архетипы)')
 
 
 @app.route("/EditArmors", methods=['GET', 'POST'])
@@ -1062,9 +1068,10 @@ def EditArchetypes():
 def EditArmors():
     armors = Armors.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Armors', Date_id)
-    return render_template("EditPosts/EditArmors.html", Armors=armors)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Armors', Date_id])
+    return render_template("EditElementPage.html", Dates=armors
+                           , TableName='EditArmors', TitlePage='Изменить доспехи')
 
 
 @app.route("/EditArmorTypes", methods=['GET', 'POST'])
@@ -1072,9 +1079,10 @@ def EditArmors():
 def EditArmorTypes():
     armorTypes = ArmorTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('ArmorTypes', Date_id)
-    return render_template("EditPosts/EditArmorTypes.html", ArmorTypes=armorTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['ArmorTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=armorTypes
+                           , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов')
 
 
 @app.route("/EditAtributes", methods=['GET', 'POST'])
@@ -1082,9 +1090,10 @@ def EditArmorTypes():
 def EditAtributes():
     atributes = Atributes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Atributes', Date_id)
-    return render_template("EditPosts/EditAtributes.html", Atributes=atributes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Atributes', Date_id])
+    return render_template("EditElementPage.html", Dates=atributes
+                           , TableName='EditAtributes', TitlePage='Изменить черты')
 
 
 @app.route("/EditBackgrounds", methods=['GET', 'POST'])
@@ -1092,9 +1101,10 @@ def EditAtributes():
 def EditBackgrounds():
     backgrounds = Backgrounds.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Backgrounds', Date_id)
-    return render_template("EditPosts/EditBackgrounds.html", Backgrounds=backgrounds)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Backgrounds', Date_id])
+    return render_template("EditElementPage.html", Dates=backgrounds
+                           , TableName='EditBackgrounds', TitlePage='Изменить предыстории')
 
 
 @app.route("/EditCharacteristices", methods=['GET', 'POST'])
@@ -1102,9 +1112,10 @@ def EditBackgrounds():
 def EditCharacteristices():
     characteristices = Characteristices.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Characteristices', Date_id)
-    return render_template("EditPosts/EditCharacteristices.html", Characteristices=characteristices)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Characteristices', Date_id])
+    return render_template("EditElementPage.html", Dates=characteristices
+                           , TableName='EditCharacteristices', TitlePage='Изменить характеристики')
 
 
 @app.route("/EditClasses", methods=['GET', 'POST'])
@@ -1112,9 +1123,10 @@ def EditCharacteristices():
 def EditClasses():
     classes = Classes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Classes', Date_id)
-    return render_template("EditPosts/EditClasses.html", Classes=classes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Classes', Date_id])
+    return render_template("EditElementPage.html", Dates=classes
+                           , TableName='EditClasses', TitlePage='Изменить классы')
 
 
 @app.route("/EditDamageTypes", methods=['GET', 'POST'])
@@ -1122,9 +1134,10 @@ def EditClasses():
 def EditDamageTypes():
     damageTypes = DamageTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('DamageTypes', Date_id)
-    return render_template("EditPosts/EditDamageTypes.html", DamageTypes=damageTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['DamageTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=damageTypes
+                           , TableName='EditDamageTypes', TitlePage='Изменить типы урона')
 
 
 @app.route("/EditEffects", methods=['GET', 'POST'])
@@ -1132,9 +1145,10 @@ def EditDamageTypes():
 def EditEffects():
     effects = Effects.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Effects', Date_id)
-    return render_template("EditPosts/EditEffects.html", Effects=effects)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Effects', Date_id])
+    return render_template("EditElementPage.html", Dates=effects
+                           , TableName='EditEffects', TitlePage='Изменить эффекты')
 
 
 @app.route("/EditEquipments", methods=['GET', 'POST'])
@@ -1142,9 +1156,10 @@ def EditEffects():
 def EditEquipments():
     equipments = Equipments.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Equipments', Date_id)
-    return render_template("EditPosts/EditEquipments.html", Equipments=equipments)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Equipments', Date_id])
+    return render_template("EditElementPage.html", Dates=equipments
+                           , TableName='EditEquipments', TitlePage='Изменить снаряжения')
 
 
 @app.route("/EditEquipmentTypes", methods=['GET', 'POST'])
@@ -1152,9 +1167,10 @@ def EditEquipments():
 def EditEquipmentTypes():
     equipmentTypes = EquipmentTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('EquipmentTypes', Date_id)
-    return render_template("EditPosts/EditEquipmentTypes.html", EquipmentTypes=equipmentTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['EquipmentTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=equipmentTypes
+            , TableName='EditEquipmentTypes', TitlePage='Изменить типы снаряжений')
 
 
 @app.route("/EditFeatures", methods=['GET', 'POST'])
@@ -1162,9 +1178,10 @@ def EditEquipmentTypes():
 def EditFeatures():
     features = Features.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Features', Date_id)
-    return render_template("EditPosts/EditFeatures.html", Features=features)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['EquipmentTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=features
+        , TableName='EditFeatures', TitlePage='Изменить особенности')
 
 
 @app.route("/EditLanguages", methods=['GET', 'POST'])
@@ -1172,9 +1189,10 @@ def EditFeatures():
 def EditLanguages():
     languages = Languages.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Languages', Date_id)
-    return render_template("EditPosts/EditLanguages.html", Languages=languages)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Languages', Date_id])
+    return render_template("EditElementPage.html", Dates=languages
+        , TableName='EditLanguages', TitlePage='Изменить языки')
 
 
 @app.route("/EditMagicalItems", methods=['GET', 'POST'])
@@ -1182,9 +1200,10 @@ def EditLanguages():
 def EditMagicalItems():
     magicalItems = MagicalItems.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('MagicalItems', Date_id)
-    return render_template("EditPosts/EditMagicalItems.html", MagicalItems=magicalItems)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['MagicalItems', Date_id])
+    return render_template("EditElementPage.html", Dates=magicalItems
+        , TableName='EditMagicalItems', TitlePage='Изменить магические предметы')
 
 
 @app.route("/EditMagicalItemTypes", methods=['GET', 'POST'])
@@ -1192,9 +1211,10 @@ def EditMagicalItems():
 def EditMagicalItemTypes():
     magicalItemsTypes = MagicalItemsTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('MagicalItemsTypes', Date_id)
-    return render_template("EditPosts/EditMagicalItemTypes.html", MagicalItemsTypes=magicalItemsTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['MagicalItemsTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=magicalItemsTypes
+        , TableName='EditMagicalItemTypes', TitlePage='Изменить типы магических предметов')
 
 
 @app.route("/EditRaces", methods=['GET', 'POST'])
@@ -1202,9 +1222,10 @@ def EditMagicalItemTypes():
 def EditRaces():
     races = Races.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Races', Date_id)
-    return render_template("EditPosts/EditRaces.html", Races=races)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Races', Date_id])
+    return render_template("EditElementPage.html", Dates=races
+        , TableName='EditRaces', TitlePage='Изменить расы')
 
 
 @app.route("/EditSkills", methods=['GET', 'POST'])
@@ -1212,9 +1233,10 @@ def EditRaces():
 def EditSkills():
     skills = Skills.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Skills', Date_id)
-    return render_template("EditPosts/EditSkills.html", Skills=skills)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Skills', Date_id])
+    return render_template("EditElementPage.html", Dates=skills
+        , TableName='EditSkills', TitlePage='Изменить навыки')
 
 
 @app.route("/EditSpells", methods=['GET', 'POST'])
@@ -1222,9 +1244,10 @@ def EditSkills():
 def EditSpells():
     spells = Spells.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Spells', Date_id)
-    return render_template("EditPosts/EditSpells.html", Spells=spells)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Spells', Date_id])
+    return render_template("EditElementPage.html", Dates=spells
+        , TableName='EditSpells', TitlePage='Изменить заклинания')
 
 
 @app.route("/EditTools", methods=['GET', 'POST'])
@@ -1232,9 +1255,10 @@ def EditSpells():
 def EditTools():
     tools = Tools.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Tools', Date_id)
-    return render_template("EditPosts/EditTools.html", Tools=tools)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Tools', Date_id])
+    return render_template("EditElementPage.html", Dates=tools
+        , TableName='EditTools', TitlePage='Изменить инструменты')
 
 
 @app.route("/EditToolTypes", methods=['GET', 'POST'])
@@ -1242,9 +1266,10 @@ def EditTools():
 def EditToolTypes():
     toolTypes = ToolTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('ToolTypes', Date_id)
-    return render_template("EditPosts/EditToolTypes.html", ToolTypes=toolTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['ToolTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=toolTypes
+        , TableName='EditToolTypes', TitlePage='Изменить типы инструментов')
 
 
 @app.route("/EditWeapoons", methods=['GET', 'POST'])
@@ -1252,9 +1277,10 @@ def EditToolTypes():
 def EditWeapoons():
     weapoons = Weapoons.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('Weapoons', Date_id)
-    return render_template("EditPosts/EditWeapoons.html", Weapoons=weapoons)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['Weapoons', Date_id])
+    return render_template("EditElementPage.html", Dates=weapoons
+                           , TableName='EditWeapoons', TitlePage='Изменить оружия')
 
 
 @app.route("/EditWeapoonTypes", methods=['GET', 'POST'])
@@ -1262,9 +1288,33 @@ def EditWeapoons():
 def EditWeapoonTypes():
     weapoonTypes = WeapoonTypes.query.all()
     if request.method == 'POST':
-        Date_id = request.form['Date_id']
-        return OpenEditPost('WeapoonTypes', Date_id)
-    return render_template("EditPosts/EditWeapoonTypes.html", WeapoonTypes=weapoonTypes)
+        Date_id = request.form.get('Date_id')
+        return OpenEditPost(['WeapoonTypes', Date_id])
+    return render_template("EditElementPage.html", Dates=weapoonTypes
+                           , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия')
+
+
+@app.route("/EditPost", methods=['GET', 'POST'])
+@roles_accepted('Admin', 'Master')
+def EditPost():
+    if request.method == 'POST':
+        Parametrs = request.form
+        if request.form['two_buttons'] == "update":
+            updateTrue = UpdateTable(Parametrs)
+            if type(updateTrue) != bool:
+                db.session.add(updateTrue)
+                db.session.commit()
+            else:
+                db.session.rollback()
+            return render_template("EditMaterial.html")
+        elif request.form['two_buttons'] == "remove":
+            removeTrue = RemoveTable(Parametrs)
+            if removeTrue:
+                db.session.commit()
+            else:
+                db.session.rollback()
+        return render_template("EditMaterial.html")
+    return render_template("EditMaterial.html")
 
 
 @app.route("/Index")
@@ -1346,7 +1396,6 @@ def LoginUsers():
 def logout():
     logout_user()
     return render_template("Index.html")
-
 
 
 if __name__ == "__main__":

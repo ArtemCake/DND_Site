@@ -1,15 +1,11 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание типа инструмента
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateToolTypesForm" action="CreateToolTypes">
-    <input type="text" name="ToolTypeName" id="ToolTypeName" placeholder="Название типа инструмента" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <button type="submit">Создать</button>
+   <input type="text" name="ToolTypeName" id="ToolTypeName" placeholder="Название типа инструмента" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

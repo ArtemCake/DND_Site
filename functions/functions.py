@@ -86,7 +86,9 @@ def RepresentationList():
     return RepresentationList
 
 
-def OpenVeiwPost(tableName, Date_id):
+def OpenVeiwPost(Parametrs):
+    tableName   = Parametrs[0]
+    Date_id     = Parametrs[1]
     ClassDate           = get_class(tableName)
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
@@ -106,18 +108,25 @@ def OpenVeiwPost(tableName, Date_id):
     return render_template("VeiwPost.html", tableName=tableName, DateName=DateName, PostDates=PostDates)
 
 
-def OpenEditPost(tableName, Date_id):
+def OpenEditPost(Parametrs):
+    tableName   = Parametrs[0]
+    Date_id     = Parametrs[1]
     ClassDate           = get_class(tableName)
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
     PostDates           = [['', DateName, 'Name']]
     variablesClassDate  = []
+    inputvalue          = ''
     for variables in dir(PostDate):
         parametr = getattr(PostDate, variables)
         if not callable(parametr) and not variables.startswith("__"):
             if variables != 'id' and variables != 'Name':
                 if not (isinstance(parametr, list) and len(parametr) == 0):
                     if isinstance(parametr, list):
+                        for param in parametr:
+                            inputvalue = inputvalue+str(param.id)+','
+                        if inputvalue != '':
+                            inputvalue = inputvalue[:-1]
                         variablesClassDate = type(parametr[0]).query.all()
                     if isinstance(parametr, (int, str, list)):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
@@ -125,8 +134,49 @@ def OpenEditPost(tableName, Date_id):
                             representationValue = RepresentationValueArray[1]
                         else:
                             representationValue = ''
-                        PostDates.append([representationValue, parametr, variables, variablesClassDate])
-    return render_template("EditPost.html", tableName=tableName, DateName=DateName, PostDates=PostDates)
+                        PostDates.append([representationValue, parametr, variables, variablesClassDate, inputvalue])
+    return render_template("EditPost.html",Date_id=Date_id, tableName=tableName, DateName=DateName, PostDates=PostDates)
+
+
+def UpdateTable(Parametrs):
+    ClassDate = get_class(Parametrs['tableName'])
+    PostDate = ClassDate.query.filter_by(id=Parametrs['Date_id']).first()
+    try:
+        for variables in dir(PostDate):
+            parametr = getattr(PostDate, variables)
+            if not callable(parametr) and (not variables.startswith("__") or variables.startswith("_sa_") ):
+                if variables != 'id':
+                    if not (isinstance(parametr, list) and len(parametr) == 0):
+                        if isinstance(parametr, list):
+                            classparam = type(parametr[0])
+                            if parametr is not None:
+                                parametr.clear()
+                                for date_id in Parametrs[variables].split(sep=','):
+                                    parametr.append(classparam.query.filter_by(id=date_id).first())
+                        else:
+                            if Parametrs.get(variables) is not None:
+                                setattr(PostDate, variables, Parametrs[variables])
+        return PostDate
+    except:
+        return False
+
+
+def RemoveTable(Parametrs):
+    ClassDate = get_class(Parametrs['tableName'])
+    try:
+        PostDate = ClassDate.query.filter_by(id=Parametrs['Date_id']).first()
+        for variables in dir(PostDate):
+            parametr = getattr(PostDate, variables)
+            if not callable(parametr) and (not variables.startswith("__") or variables.startswith("_sa_")):
+                if variables != 'id':
+                    if not (isinstance(parametr, list) and len(parametr) == 0):
+                        if isinstance(parametr, list):
+                            if parametr is not None:
+                                parametr.clear()
+        ClassDate.query.filter_by(id=Parametrs['Date_id']).delete()
+        return True
+    except:
+        return False
 
 
 def get_class(className):

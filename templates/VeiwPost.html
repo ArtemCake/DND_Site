@@ -6,8 +6,8 @@
 
 {% block content %}
 
-{% for PostDate in PostDates %}
 <div id="{{ tableName }}Form" class="{{ tableName }}Form">
+{% for PostDate in PostDates %}
     {% if PostDate[0] == '' and PostDate[1] is string  %}
     <h1>{{ PostDate[1] }}</h1>
     {% else %}
@@ -49,8 +49,6 @@
             {% endif %}
         {% endif %}
     {% endif %}
-
-</div>
 {% endfor %}
-
+</div>
 {% endblock %}

@@ -1,55 +1,51 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание предыстории
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateBackgroundsForm" action="CreateBackgrounds">
-    <input type="text" name="BackgroundName" id="BackgroundName" placeholder="Название предыстрории" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <input type="text" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками"/>
-     <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
-        {% for Characteristic in Characteristices %}
-        <option value="{{ Characteristic.id }}">
-            {{ Characteristic.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Spells" id="Spells" placeholder="Дополнительные заклинания"/>
-    <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
-        {% for Spell in Spells %}
-        <option value="{{ Spell.id }}">
-            {{ Spell.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Skills" id="Skills" placeholder="Владение навыками"/>
-    <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
-        {% for Skill in Skills %}
-        <option value="{{ Skill.id }}">
-            {{ Skill.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами"/>
-    <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
-        {% for Tool in Tools %}
-        <option value="{{ Tool.id }}">
-            {{ Tool.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Languages" id="Languages" placeholder="Владение языками"/>
-    <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
-        {% for Language in Languages %}
-        <option value="{{ Language.id }}">
-            {{ Language.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <button type="submit">Создать</button>
+   <input type="text" name="BackgroundName" id="BackgroundName" placeholder="Название предыстрории" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <input type="hidden" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками"/>
+   <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
+      {% for Characteristic in Characteristices %}
+      <option value="{{ Characteristic.id }}">
+         {{ Characteristic.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Spells" id="Spells" placeholder="Дополнительные заклинания"/>
+   <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
+      {% for Spell in Spells %}
+      <option value="{{ Spell.id }}">
+         {{ Spell.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Skills" id="Skills" placeholder="Владение навыками"/>
+   <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
+      {% for Skill in Skills %}
+      <option value="{{ Skill.id }}">
+         {{ Skill.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами"/>
+   <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
+      {% for Tool in Tools %}
+      <option value="{{ Tool.id }}">
+         {{ Tool.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Languages" id="Languages" placeholder="Владение языками"/>
+   <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
+      {% for Language in Languages %}
+      <option value="{{ Language.id }}">
+         {{ Language.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

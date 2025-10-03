@@ -1,109 +1,105 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание расы
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateRacesForm" action="CreateRaces">
-    <input type="text" name="RaceName" id="RaceName" placeholder="Название расы" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <input type="number" name="Speed" id="Speed" placeholder="Скоррость движения"/>
-    <input type="number" name="Fly" id="Fly" placeholder="Скоррость полета"/>
-    <input type="number" name="Climb" id="Climb" placeholder="Скоррость лазания"/>
-    <input type="number" name="Swim" id="Swim" placeholder="Скоррость плавания"/>
-    <input type="text" name="Fight" id="Fight" placeholder="Безоружная атака"/>
-    <input type="text" name="Armor" id="Armor" placeholder="Бонус к классу брони"/>
-    <input type="text" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками"/>
-    <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
-        {% for Characteristic in Characteristices %}
-        <option value="{{ Characteristic.id }}">
-            {{ Characteristic.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="DamageResistance" id="DamageResistance" placeholder="Сопративление к урону"/>
-    <select class="DamageResistancePrint add-to-tags" name="DamageResistancePrint" id="DamageResistancePrint" multiple>
-        {% for DamageType in DamageTypes %}
-        <option value="{{ DamageType.id }}">
-            {{ DamageType.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="DamageImmunity" id="DamageImmunity" placeholder="Имунитет к урону"/>
-    <select class="DamageImmunityPrint add-to-tags" name="DamageImmunityPrint" id="DamageImmunityPrint" multiple>
-        {% for DamageType in DamageTypes %}
-        <option value="{{ DamageType.id }}">
-            {{ DamageType.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость эфектов"/>
-    <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
-        {% for Effect in Effects %}
-        <option value="{{ Effect.id }}">
-            {{ Effect.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Spells" id="Spells" placeholder="Дополнительные заклинания"/>
-    <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
-        {% for Spell in Spells %}
-        <option value="{{ Spell.id }}">
-            {{ Spell.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Skills" id="Skills" placeholder="Владение навыками"/>
-    <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
-        {% for Skill in Skills %}
-        <option value="{{ Skill.id }}">
-            {{ Skill.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="PossessionArmor" id="PossessionArmor" placeholder="Владение доспехами"/>
-    <select class="PossessionArmorPrint add-to-tags" name="PossessionArmorPrint" id="PossessionArmorPrint" multiple>
-        {% for ArmorType in ArmorTypes %}
-        <option value="{{ ArmorType.id }}">
-            {{ ArmorType.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="GunOwnership" id="GunOwnership" placeholder="Владение оружием"/>
-    <select class="GunOwnershipPrint add-to-tags" name="GunOwnershipPrint" id="GunOwnershipPrint" multiple>
-        {% for Weapoon in Weapoons %}
-        <option value="{{ Weapoon.id }}">
-            {{ Weapoon.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами"/>
-    <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
-        {% for Tool in Tools %}
-        <option value="{{ Tool.id }}">
-            {{ Tool.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Languages" id="Languages" placeholder="Владение языками"/>
-    <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
-        {% for Language in Languages %}
-        <option value="{{ Language.id }}">
-            {{ Language.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Abilities" id="Abilities" placeholder="Особые способности"/>
-    <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
-        {% for Abilitie in Abilities %}
-        <option value="{{ Abilitie.id }}">
-            {{ Abilitie.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <button type="submit">Создать</button>
+   <input type="text" name="RaceName" id="RaceName" placeholder="Название расы" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <input type="number" name="Speed" id="Speed" placeholder="Скоррость движения"/>
+   <input type="number" name="Fly" id="Fly" placeholder="Скоррость полета"/>
+   <input type="number" name="Climb" id="Climb" placeholder="Скоррость лазания"/>
+   <input type="number" name="Swim" id="Swim" placeholder="Скоррость плавания"/>
+   <input type="text" name="Fight" id="Fight" placeholder="Безоружная атака"/>
+   <input type="text" name="Armor" id="Armor" placeholder="Бонус к классу брони"/>
+   <input type="hidden" name="Characteristices" id="Characteristices" placeholder="Владение характеристиками"/>
+   <select class="CharacteristicesPrint add-to-tags" name="CharacteristicesPrint" id="CharacteristicesPrint" multiple>
+      {% for Characteristic in Characteristices %}
+      <option value="{{ Characteristic.id }}">
+         {{ Characteristic.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="DamageResistance" id="DamageResistance" placeholder="Сопративление к урону"/>
+   <select class="DamageResistancePrint add-to-tags" name="DamageResistancePrint" id="DamageResistancePrint" multiple>
+      {% for DamageType in DamageTypes %}
+      <option value="{{ DamageType.id }}">
+         {{ DamageType.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="DamageImmunity" id="DamageImmunity" placeholder="Имунитет к урону"/>
+   <select class="DamageImmunityPrint add-to-tags" name="DamageImmunityPrint" id="DamageImmunityPrint" multiple>
+      {% for DamageType in DamageTypes %}
+      <option value="{{ DamageType.id }}">
+         {{ DamageType.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="EffectsResistance" id="EffectsResistance" placeholder="Невосприимчивость эфектов"/>
+   <select class="EffectsResistancePrint add-to-tags" name="EffectsResistancePrint" id="EffectsResistancePrint" multiple>
+      {% for Effect in Effects %}
+      <option value="{{ Effect.id }}">
+         {{ Effect.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Spells" id="Spells" placeholder="Дополнительные заклинания"/>
+   <select class="SpellsPrint add-to-tags" name="SpellsPrint" id="SpellsPrint" multiple>
+      {% for Spell in Spells %}
+      <option value="{{ Spell.id }}">
+         {{ Spell.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Skills" id="Skills" placeholder="Владение навыками"/>
+   <select class="SkillsPrint add-to-tags" name="SkillsPrint" id="SkillsPrint" multiple>
+      {% for Skill in Skills %}
+      <option value="{{ Skill.id }}">
+         {{ Skill.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="PossessionArmor" id="PossessionArmor" placeholder="Владение доспехами"/>
+   <select class="PossessionArmorPrint add-to-tags" name="PossessionArmorPrint" id="PossessionArmorPrint" multiple>
+      {% for ArmorType in ArmorTypes %}
+      <option value="{{ ArmorType.id }}">
+         {{ ArmorType.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="GunOwnership" id="GunOwnership" placeholder="Владение оружием"/>
+   <select class="GunOwnershipPrint add-to-tags" name="GunOwnershipPrint" id="GunOwnershipPrint" multiple>
+      {% for Weapoon in Weapoons %}
+      <option value="{{ Weapoon.id }}">
+         {{ Weapoon.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="ToolOwnership" id="ToolOwnership" placeholder="Владение инструментами"/>
+   <select class="ToolOwnershipPrint add-to-tags" name="ToolOwnershipPrint" id="ToolOwnershipPrint" multiple>
+      {% for Tool in Tools %}
+      <option value="{{ Tool.id }}">
+         {{ Tool.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Languages" id="Languages" placeholder="Владение языками"/>
+   <select class="LanguagesPrint add-to-tags" name="LanguagesPrint" id="LanguagesPrint" multiple>
+      {% for Language in Languages %}
+      <option value="{{ Language.id }}">
+         {{ Language.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="hidden" name="Abilities" id="Abilities" placeholder="Особые способности"/>
+   <select class="AbilitiesPrint add-to-tags" name="AbilitiesPrint" id="AbilitiesPrint" multiple>
+      {% for Abilitie in Abilities %}
+      <option value="{{ Abilitie.id }}">
+         {{ Abilitie.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

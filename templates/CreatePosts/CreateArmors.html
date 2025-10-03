@@ -1,28 +1,25 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание доспеха
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateArmorsForm" action="CreateArmors">
-    <input type="text" name="ArmorName" id="ArmorName" placeholder="Название доспеха" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <label for="ArmorTypes">Тип доспеха:</label>
-    <select class="ArmorTypes add-to-tags" name="ArmorTypes" id="ArmorTypes">
-        {% for ArmorType in ArmorTypes %}
-        <option value="{{ ArmorType.id }}">
-            {{ ArmorType.Name }}
-        </option>>
-          {% endfor %}
-    </select>
-    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
-    <input type="text" name="Power" id="Power" placeholder="Сила"/>
-    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
-    <input type="checkbox" name="Hindrance" id="Hindrance" placeholder="Помеха">Помеха
-    <input type="text" name="ArmorClass" id="ArmorClass" placeholder="Классс доспеха"/>
-    <button type="submit">Создать</button>
+   <input type="text" name="ArmorName" id="ArmorName" placeholder="Название доспеха" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <label for="ArmorTypes">Тип доспеха:</label>
+   <select class="ArmorTypes add-to-tags" name="ArmorTypes" id="ArmorTypes">
+      {% for ArmorType in ArmorTypes %}
+      <option value="{{ ArmorType.id }}">
+         {{ ArmorType.Name }}
+      </option>
+      >
+      {% endfor %}
+   </select>
+   <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
+   <input type="text" name="Power" id="Power" placeholder="Сила"/>
+   <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
+   <input type="checkbox" name="Hindrance" id="Hindrance" placeholder="Помеха">Помеха
+   <input type="text" name="ArmorClass" id="ArmorClass" placeholder="Классс доспеха"/>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

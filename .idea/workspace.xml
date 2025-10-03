@@ -7,25 +7,57 @@
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/JoinString.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/JoinString.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreateMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateAbilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateAbilities.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmorTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArmorTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateDamageTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateDamageTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEffects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEffects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipmentTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipmentTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateFeatures.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateFeatures.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateLanguages.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateLanguages.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItemsTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItemsTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateSkills.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateSkills.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateToolTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateToolTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditAbilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditAbilities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditArchetypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditArmorTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditArmorTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditArmors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditArmors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditAtributes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditAtributes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditBackgrounds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditBackgrounds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditCharacteristices.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditCharacteristices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditClasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditClasses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditDamageTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditDamageTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditEffects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditEffects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditEquipmentTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditEquipmentTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditEquipments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditFeatures.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditFeatures.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditLanguages.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditLanguages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditMagicalItems.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditMagicalItemsTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditMagicalItemsTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditRaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditRaces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditSkills.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditSkills.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditSpells.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditSpells.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditToolTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditToolTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditTools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditTools.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditWeapoonTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditWeapoonTypes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPosts/EditWeapoons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPosts/EditWeapoons.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAbilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwAbilities.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArchetypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmorTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwArmorTypes.html" afterDir="false" />
@@ -38,6 +70,7 @@
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEffects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEffects.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipmentTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipmentTypes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwEquipments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwFeatures.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwFeatures.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwLanguages.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwLanguages.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItems.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItemsTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPosts/VeiwMagicalItemsTypes.html" afterDir="false" />
@@ -57,8 +90,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -187,7 +220,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759008288367</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759407333360</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759407333360</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759407340399</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759407340399</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -6,13 +6,16 @@
 
 {% block content %}
 
-<div id="{{ tableName }}Form" class="{{ tableName }}Form">
+<Form method="POST" id="{{ tableName }}Form" class="{{ tableName }}Form" action="EditPost">
+    <input type="hidden" class="tableName" name="tableName" id="tableName" placeholder="tableName" value="{{ tableName }}"/>
+    <input type="hidden" class="Date_id" name="Date_id" id="Date_id" placeholder="Date_id" value="{{ Date_id }}"/>
 {% for PostDate in PostDates %}
     {% if PostDate[0] == '' and PostDate[1] is string  %}
     <h1>{{ PostDate[1] }}</h1>
+    <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[1] }}"/>
     {% else %}
         {% if PostDate[1] == False or PostDate[1] == True %}
-            {{ PostDate[0] }}: <input type="checkbox" name="{{ PostDate[1] }}" id="{{ PostDate[1] }}" placeholder="{{ PostDate[0] }}"
+            {{ PostDate[0] }}: <input type="checkbox" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
                                       {% if PostDate[1]  %} checked {% endif%}  disabled>
         {% else %}
 
@@ -21,7 +24,7 @@
 
                     {% if PostDate[1]|length > 1 %}
                         <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"/>
+                        <input type="hidden" class="{{ PostDate[2] }}" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[4] }}"/>
                         <select class="{{ PostDate[2] }}Print add-to-tags" name="{{ PostDate[2] }}Print" id="{{ PostDate[2] }}Print" multiple>
                             {% for Parametr in PostDate[3] %}
                             {% if Parametr in PostDate[1] %}
@@ -44,7 +47,7 @@
                         </select>
                     {% endif %}
                 {% else %}
-                <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+                <label for="{{ PostDate[2] }}">{{ PostDate[0] }}:</label>
                 {% if PostDate[2] == "Discription" %}
                 <textarea name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[2] }}"> {{ PostDate[1] }}  </textarea>
                 {% else %}
@@ -56,6 +59,9 @@
 
     {% endif %}
 {% endfor %}
-        </div>
+
+    <button type="submit" name="two_buttons" value="update" id="update">Изменить</button>
+    <button type="submit" name="two_buttons" value="remove" id="remove">Удалить</button>
+</Form>
 
 {% endblock %}

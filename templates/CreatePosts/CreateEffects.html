@@ -1,15 +1,11 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание эфекта
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateEffectsForm" action="CreateEffects">
-    <input type="text" name="EffectName" id="EffectName" placeholder="Название эфекта" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <button type="submit">Создать</button>
+   <input type="text" name="EffectName" id="EffectName" placeholder="Название эфекта" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

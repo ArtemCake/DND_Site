@@ -1,25 +1,21 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание снаряжения
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateEquipmentsForm" action="CreateEquipments">
-    <input type="text" name="EquipmentName" id="EquipmentName" placeholder="Название снаряжения" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <label for="EquipmentTypes">Тип снаряжения:</label>
-    <select class="EquipmentTypes add-to-tags" name="EquipmentTypes" id="EquipmentTypes">
-        {% for EquipmentType in EquipmentTypes %}
-        <option value="{{ EquipmentType.id }}">
-            {{ EquipmentType.Name }}
-        </option>
-        {% endfor %}
-    </select>
-    <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
-    <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
-    <button type="submit">Создать</button>
+   <input type="text" name="EquipmentName" id="EquipmentName" placeholder="Название снаряжения" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <label for="EquipmentTypes">Тип снаряжения:</label>
+   <select class="EquipmentTypes add-to-tags" name="EquipmentTypes" id="EquipmentTypes">
+      {% for EquipmentType in EquipmentTypes %}
+      <option value="{{ EquipmentType.id }}">
+         {{ EquipmentType.Name }}
+      </option>
+      {% endfor %}
+   </select>
+   <input type="text" name="Weight" id="Weight" placeholder="Вес"/>
+   <input type="text" name="Cost" id="Cost" placeholder="Цена"/>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}

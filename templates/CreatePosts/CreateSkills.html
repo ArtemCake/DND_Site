@@ -1,15 +1,11 @@
 {% extends "base.html" %}
-
 {% block title %}
 Создание навыка
 {% endblock %}
-
 {% block content %}
-
 <Form method="POST"  id="CreateSkillsForm" action="CreateSkills">
-    <input type="text" name="SkillName" id="SkillName" placeholder="Название навыка" required />
-    <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
-    <button type="submit">Создать</button>
+   <input type="text" name="SkillName" id="SkillName" placeholder="Название навыка" required />
+   <textarea name="Discription" id="Discription" placeholder="Описание"></textarea>
+   <button type="submit">Создать</button>
 </Form>
-
 {% endblock %}
