@@ -6,28 +6,26 @@
 <Form method="POST"  id="{{ TableName }}Form" action="Create{{ TableName }}">
 	{% for Date in DateTabels %}
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
-			{% if Date[0][0]|length > 1 %}
-				{% for Table in Date[0][0] %}
-					<div class="input-item">
-						<label for="{{ Date[1] }}">{{ Date[2] }}:</label>
-						<input type="hidden" class="hiddenUpdate" name="{{ Date[1] }}" id="{{ Date[1] }}" placeholder="{{ Date[2] }}">
+			{% if Date[0]|length > 1 %}
+				<div class="input-item">
+					<label for="{{ Date[1] }}">{{ Date[2] }}:</label>
+					<input type="hidden" class="hiddenUpdate" name="{{ Date[1] }}" id="{{ Date[1] }}" placeholder="{{ Date[2] }}">
+					{% for Table in Date[0] %}
 						<ul>
-							{% for TableDate in Table[0] %}
-								{% if Table[3] %}
-									<li>
-										<input type="radio" name="{{ Date[1] }}Print" class ='checkboxUpdate'
-											id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
-									</li>
-								{% else %}
-									<li>
-										<input type="checkbox" name="{{ Date[1] }}Print" class ='checkboxUpdate'
-											id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
-									</li>
-								{% endif %}
-							{% endfor %}
+							{% if Date[3] %}
+								<li>
+									<input type="radio" name="{{ Date[1] }}Print" class ='checkboxUpdate'
+										   id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
+								</li>
+							{% else %}
+								<li>
+									<input type="checkbox" name="{{ Date[1] }}Print" class ='checkboxUpdate'
+										   id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
+								</li>
+							{% endif %}
 						</ul>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
 			{% endif %}
 		{% else %}
 			{% if Date == 'Discription' %}

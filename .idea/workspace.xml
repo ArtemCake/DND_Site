@@ -7,10 +7,7 @@
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +187,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759531897119</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587282120</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587282120</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587287958</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587287958</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

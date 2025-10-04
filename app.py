@@ -80,13 +80,13 @@ def CreateArchetypes():
     abilities        = Abilities.query.all()
     classes          = Classes.query.all()
     DateTabels = [['ArchetypeName', 'Название подкласса', False], ['Discription', 'Описание', False], ['NotArmorSafe', 'Защита без доспехов', True]
-        , ['ArmorClass', 'Класс брони без доспехов', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
-        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[spells, 'Spells', 'Дополнительные заклинания', False]]
-        , [[skills, 'Skills', 'Владение навыками', False]], [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]]
-        , [[GunOwnership, 'GunOwnership', 'Владение оружием', False]], [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]]
-        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]
-        , [[classes, 'Classes', 'Класс', True]]]
+        , ['ArmorClass', 'Класс брони без доспехов', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+        , [damageTypes, 'DamageResistance', 'Сопративление к урону', False], [damageTypes, 'DamageImmunity', 'Имунитет к урону', False]
+        , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [spells, 'Spells', 'Дополнительные заклинания', False]
+        , [skills, 'Skills', 'Владение навыками', False], [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]
+        , [GunOwnership, 'GunOwnership', 'Владение оружием', False], [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]
+        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]
+        , [classes, 'Classes', 'Класс', True]]
     if request.method == 'POST':
         ArchetypeName   = request.form['ArchetypeName']
         Discription     = request.form['Discription']
@@ -156,7 +156,7 @@ def CreateArmors():
     armorTypes = ArmorTypes.query.all()
     DateTabels = [['ArmorName', 'Название доспеха', False], ['Discription', 'Описание', False],['Hindrance', 'Помеха', True]
                 , ['Weight', 'Вес', False], ['Power', 'Сила', False], ['Cost', 'Цена', False], ['ArmorClass', 'Классс доспеха', False]
-                , ['ArmorClass', 'Класс брони без доспехов', False], [[armorTypes, 'ArmorTypes', 'Тип доспеха', True]]]
+                , ['ArmorClass', 'Класс брони без доспехов', False], [armorTypes, 'ArmorTypes', 'Тип доспеха', True]]
     if request.method == 'POST':
         ArmorName   = request.form['ArmorName']
         Discription = request.form['Discription']
@@ -220,13 +220,13 @@ def CreateAtributes():
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
     abilities        = Abilities.query.all()
-    DateTabels = [['AttributeName', 'Название черты', False], ['Discription', 'Описание', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
-        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]]
-        , [[spells, 'Spells', 'Дополнительные заклинания', False]]           , [[skills, 'Skills', 'Владение навыками', False]]
-        , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
-        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]
-        , [[abilities, 'Abilities', 'Особые способности', False]]]
+    DateTabels = [['AttributeName', 'Название черты', False], ['Discription', 'Описание', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+        , [damageTypes, 'DamageResistance', 'Сопративление к урону', False], [damageTypes, 'DamageImmunity', 'Имунитет к урону', False]
+        , [damageTypes, 'DamageResistance', 'Сопративление к урону', False], [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]
+        , [spells, 'Spells', 'Дополнительные заклинания', False]           , [skills, 'Skills', 'Владение навыками', False]
+        , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
+        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]
+        , [abilities, 'Abilities', 'Особые способности', False]]
     if request.method == 'POST':
         AttributeName               = request.form['AttributeName']
         Discription                 = request.form['Discription']
@@ -289,9 +289,9 @@ def CreateBackgrounds():
     skills           = Skills.query.all()
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
-    DateTabels = [['BackgroundName', 'Название предыстрории', False], ['Discription', 'Описание', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-        , [[spells, 'Spells', 'Дополнительные заклинания', False]]           , [[skills, 'Skills', 'Владение навыками', False]]
-        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]]
+    DateTabels = [['BackgroundName', 'Название предыстрории', False], ['Discription', 'Описание', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+        , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
+        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]]
     if request.method == 'POST':
         BackgroundName   = request.form['BackgroundName']
         Discription     = request.form['Discription']
@@ -332,7 +332,7 @@ def CreateBackgrounds():
 def CreateCharacteristices():
     skills = Skills.query.all()
     DateTabels = [['CharacteristicName', 'Название характеристики', False], ['Discription', 'Описание', False]
-                , [[skills, 'Skills', 'Владение навыками', False]]]
+                , [skills, 'Skills', 'Владение навыками', False]]
     if request.method == 'POST':
         CharacteristicName   = request.form['CharacteristicName']
         Discription          = request.form['Discription']
@@ -366,10 +366,10 @@ def CreateClasses():
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
     DateTabels = [['ArchetypeName', 'Название подкласса', False], ['Discription', 'Описание', False], ['NotArmorSafe', 'Защита без доспехов', True]
-                , ['ArmorClass', 'Класс брони без доспехов', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-                , [[spells, 'Spells', 'Дополнительные заклинания', False]], [[skills, 'Skills', 'Владение навыками', False]]
-                , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
-                , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]]
+                , ['ArmorClass', 'Класс брони без доспехов', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+                , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
+                , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
+                , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]]
     if request.method == 'POST':
         ArmorClass  = request.form['ArmorClass']
         Discription = request.form['Discription']
@@ -460,7 +460,7 @@ def CreateEquipments():
     equipmentTypes = EquipmentTypes.query.all()
     DateTabels = [['EquipmentName', 'Название предыстрории', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
-                    , [[equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False]]]
+                    , [equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False]]
     if request.method == 'POST':
         EquipmentName   = request.form['EquipmentName']
         Discription = request.form['Discription']
@@ -559,14 +559,14 @@ def CreateMagicalItems():
     armors           = Armors.query.all()
     magicalItemTypes = MagicalItemsTypes.query.all()
     DateTabels = [['MagicalItemsName', 'Название магического предмета', False], ['Discription', 'Описание', False], ['ArmorBonus', 'Бонус защиты', False]
-        , ['PowerBonus', 'Бонус атаки', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
-        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[effects, 'Effects', 'Эффекты', False]]
-        , [[spells, 'Spells', 'Дополнительные заклинания', False]], [[skills, 'Skills', 'Владение навыками', False]]
-        , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
-        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]
-        , [[abilities, 'Abilities', 'Особые способности', False]], [[armors, 'ArmorTypes', 'Доспех основа магического предмета', True]]
-        , [[GunOwnership, 'WeapoonTypes', 'Оружие основа магического предмета', True]], [[magicalItemTypes, 'MagicalItemTypes', 'Тип магического предмета', True]]]
+        , ['PowerBonus', 'Бонус атаки', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+        , [damageTypes, 'DamageResistance', 'Сопративление к урону', False], [damageTypes, 'DamageImmunity', 'Имунитет к урону', False]
+        , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [effects, 'Effects', 'Эффекты', False]
+        , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
+        , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
+        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]
+        , [abilities, 'Abilities', 'Особые способности', False], [armors, 'ArmorTypes', 'Доспех основа магического предмета', True]
+        , [GunOwnership, 'WeapoonTypes', 'Оружие основа магического предмета', True], [magicalItemTypes, 'MagicalItemTypes', 'Тип магического предмета', True]]
     if request.method == 'POST':
         MagicalItemsName    = request.form['MagicalItemsName']
         Discription         = request.form['Discription']
@@ -669,12 +669,12 @@ def CreateRaces():
     abilities        = Abilities.query.all()
     DateTabels = [['RaceName', 'Название расы', False], ['Discription', 'Описание', False], ['Speed', 'Скорость бега', False]
         , ['Fly', 'Скорость полёта', False], ['Climb', 'Скорость лазания', False], ['Swim', 'Скорость плавания', False]
-        , ['Fight', 'Безоружная атака', False], ['Armor', 'Бонус к классу брони', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
-        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
-        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[spells, 'Spells', 'Дополнительные заклинания', False]]
-        , [[skills, 'Skills', 'Владение навыками', False]], [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]]
-        , [[GunOwnership, 'GunOwnership', 'Владение оружием', False]], [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]]
-        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]]
+        , ['Fight', 'Безоружная атака', False], ['Armor', 'Бонус к классу брони', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
+        , [damageTypes, 'DamageResistance', 'Сопративление к урону', False], [damageTypes, 'DamageImmunity', 'Имунитет к урону', False]
+        , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [spells, 'Spells', 'Дополнительные заклинания', False]
+        , [skills, 'Skills', 'Владение навыками', False], [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]
+        , [GunOwnership, 'GunOwnership', 'Владение оружием', False], [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]
+        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]]
     if request.method == 'POST':
         RaceName        = request.form['RaceName']
         Discription     = request.form['Discription']
@@ -766,10 +766,10 @@ def CreateSpells():
         , ['LevelSpell', 'Уровень заклинания', False], ['Damage', 'Атака заклинания', False]
         , ['ApplicationTime', 'Время накладывания', False], ['Distance', 'Дистанция', False]
         , ['Components', 'Компоненты', False], ['Duration', 'Продолжительность', False], ['Ritual', 'Ритуал', True]
-        , ['ArmorClass', 'Класс брони без доспехов', False], [[damageTypes, 'DamageTypes', 'Тип урона', False]]
-        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[effects, 'Effects', 'Эффекты', False]]
-        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]
-        , [[classes, 'Classes', 'Доступно для классов', True]] , [[archetypes, 'Archetypes', 'Доступно для подклассов', True]]]
+        , ['ArmorClass', 'Класс брони без доспехов', False], [damageTypes, 'DamageTypes', 'Тип урона', False]
+        , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [effects, 'Effects', 'Эффекты', False]
+        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]
+        , [classes, 'Classes', 'Доступно для классов', True] , [archetypes, 'Archetypes', 'Доступно для подклассов', True]]
     if request.method == 'POST':
         SpellName           = request.form['SpellName']
         Discription         = request.form['Discription']
@@ -829,7 +829,7 @@ def CreateTools():
     toolTypes = ToolTypes.query.all()
     DateTabels = [['ToolName', 'Название предыстрории', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
-                    , [[toolTypes, 'ToolTypes', 'Тип инструмента', True]]]
+                    , [toolTypes, 'ToolTypes', 'Тип инструмента', True]]
     if request.method == 'POST':
         ToolName            = request.form['ToolName']
         Discription         = request.form['Discription']
@@ -880,8 +880,8 @@ def CreateWeapoons():
     weapoonTypes = WeapoonTypes.query.all()
     DateTabels = [['WeapoonName', 'Название оружия', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False], ['Damage', 'Урон', False]
-                    , [[features, 'Features', 'Свойство оружия', True]], [[damageTypes, 'DamageTypes', 'Тип урона', True]]
-                    , [[weapoonTypes, 'WeapoonTypes', 'Тип оружия', True]]]
+                    , [features, 'Features', 'Свойство оружия', True], [damageTypes, 'DamageTypes', 'Тип урона', True]
+                    , [weapoonTypes, 'WeapoonTypes', 'Тип оружия', True]]
     if request.method == 'POST':
         WeapoonName    = request.form['WeapoonName']
         Discription = request.form['Discription']
