@@ -22,9 +22,6 @@ login_manager.init_app(app)
 logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 
-
-
-
 user_datastore  = SQLAlchemySessionUserDatastore(db.session, User, Role)
 security        = Security(app, user_datastore)
 
@@ -53,6 +50,7 @@ def create_tables():
 @app.route("/CreateAbilities", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateAbilities():
+    DateTabels = [['AbilitieName', 'Название способности', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         AbilitiesName   = request.form['AbilitieName']
         Discription     = request.form['Discription']
@@ -60,11 +58,11 @@ def CreateAbilities():
         try:
             db.session.add(abilities)
             db.session.commit()
-            return render_template("CreatePosts/CreateAbilities.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',Title='Создание способности')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateAbilities.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities', Title='Создание способности')
 
 
 @app.route("/CreateArchetypes", methods=['GET', 'POST'])
@@ -81,6 +79,14 @@ def CreateArchetypes():
     languages        = Languages.query.all()
     abilities        = Abilities.query.all()
     classes          = Classes.query.all()
+    DateTabels = [['ArchetypeName', 'Название подкласса', False], ['Discription', 'Описание', False], ['NotArmorSafe', 'Защита без доспехов', True]
+        , ['ArmorClass', 'Класс брони без доспехов', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
+        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[spells, 'Spells', 'Дополнительные заклинания', False]]
+        , [[skills, 'Skills', 'Владение навыками', False]], [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]]
+        , [[GunOwnership, 'GunOwnership', 'Владение оружием', False]], [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]]
+        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]
+        , [[classes, 'Classes', 'Класс', True]]]
     if request.method == 'POST':
         ArchetypeName   = request.form['ArchetypeName']
         Discription     = request.form['Discription']
@@ -89,57 +95,68 @@ def CreateArchetypes():
             NotArmorSafe=True
         else:
             NotArmorSafe=False
-        archetypes = Archetypes(Name=ArchetypeName, Discription=Discription, NotArmorSafe=NotArmorSafe
+        Archetype = Archetypes(Name=ArchetypeName, Discription=Discription, NotArmorSafe=NotArmorSafe
                                 , ArmorClass=ArmorClass)
-        MassivClasses               = parametrsoutput(request.form['ClassName'])
-        MassivClassApd              = [MassivClasses, Classes, archetypes.R_Class]
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, archetypes.Characteristic]
-        MassivDamageResistance      = parametrsoutput(request.form['DamageResistance'])
-        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, archetypes.DamageResistance]
-        MassivDamageImmunity        = parametrsoutput(request.form['DamageImmunity'])
-        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, archetypes.DamageImmunity]
-        MassivEffectsResistance     = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, archetypes.EffectsResistance]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
-        MassivSpellsApd             = [MassivSpells, Spells, archetypes.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
-        MassivSkillsApd             = [MassivSkills, Skills, archetypes.Skill]
-        MassivPossessionArmor       = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, archetypes.PossessionArmor]
-        MassivGunOwnership          = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, archetypes.GunOwnership]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, archetypes.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
-        MassivLanguagesApd          = [MassivLanguages, Languages, archetypes.Language]
-        MassivAbilities             = parametrsoutput(request.form['Abilities'])
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, archetypes.Abilities]
-        MassivDates                 = [MassivClassApd,MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
+        ClassesParam                = parametrsoutput(request.form['Classes'])
+        MassivClasses               = [''] if ClassesParam is None or ClassesParam =='' else ClassesParam
+        MassivClassesApd            = [MassivClasses, Classes, Archetype.Class]
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
+        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Archetype.Characteristic]
+        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
+        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
+        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Archetype.DamageResistance]
+        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
+        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
+        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Archetype.DamageImmunity]
+        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
+        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
+        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Archetype.EffectsResistance]
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
+        MassivSpellsApd             = [MassivSpells, Spells, Archetype.Spell]
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
+        MassivSkillsApd             = [MassivSkills, Skills, Archetype.Skill]
+        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
+        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
+        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Archetype.PossessionArmor]
+        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
+        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
+        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Archetype.GunOwnership]
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
+        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Archetype.ToolOwnership]
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
+        MassivLanguagesApd          = [MassivLanguages, Languages, Archetype.Language]
+        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
+        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
+        MassivAbilitiesApd          = [MassivAbilities, Abilities, Archetype.Abilities]
+        MassivDates                 = [MassivClassesApd,MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
                            ,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd]
         res = appenddatas(MassivDates)
         if res:
             try:
-                db.session.add(archetypes)
+                db.session.add(Archetype)
                 db.session.commit()
-                return render_template("CreatePosts/CreateArchetypes.html", Characteristices=characteristices
-                                       , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                       , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities, Classes=classes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes', Title='Создание подкласса (архетипа)')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateArchetypes.html", Characteristices=characteristices
-                                   , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                   , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities, Classes=classes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes', Title='Создание подкласса (архетипа)')
 
 
 @app.route("/CreateArmors", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArmors():
     armorTypes = ArmorTypes.query.all()
+    DateTabels = [['ArmorName', 'Название доспеха', False], ['Discription', 'Описание', False],['Hindrance', 'Помеха', True]
+                , ['Weight', 'Вес', False], ['Power', 'Сила', False], ['Cost', 'Цена', False], ['ArmorClass', 'Классс доспеха', False]
+                , ['ArmorClass', 'Класс брони без доспехов', False], [[armorTypes, 'ArmorTypes', 'Тип доспеха', True]]]
     if request.method == 'POST':
         ArmorName   = request.form['ArmorName']
         Discription = request.form['Discription']
@@ -154,7 +171,8 @@ def CreateArmors():
             Hindrance = False
         armors = Armors(Name=ArmorName, Discription=Discription, Weight=Weight, Power=Power
                              , Cost=Cost, ArmorClass=ArmorClass, Hindrance=Hindrance)
-        MassivArmorTypes    = parametrsoutput(request.form['ArmorTypes'])
+        ArmorTypesParam     = parametrsoutput(request.form['ArmorTypes'])
+        MassivArmorTypes    = ['']  if ArmorTypesParam is None or ArmorTypesParam == '' else ArmorTypesParam
         MassivArmorTypesApd = [MassivArmorTypes, ArmorTypes, armors.ArmorType]
         MassivDates         = [MassivArmorTypesApd]
         res = appenddatas(MassivDates)
@@ -162,18 +180,19 @@ def CreateArmors():
             try:
                 db.session.add(armors)
                 db.session.commit()
-                return render_template("CreatePosts/CreateArmors.html", ArmorTypes=armorTypes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateArmors.html", ArmorTypes=armorTypes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха')
 
 
 @app.route("/CreateArmorTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArmorTypes():
+    DateTabels = [['ArmorTypeName', 'Название способности', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         ArmorTypeName   = request.form['ArmorTypeName']
         Discription     = request.form['Discription']
@@ -181,11 +200,11 @@ def CreateArmorTypes():
         try:
             db.session.add(ArmorType)
             db.session.commit()
-            return render_template("CreatePosts/CreateArmorTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание типа доспеха')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateArmorTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ArmorTypes', Title='Создание типа доспеха')
 
 
 @app.route("/CreateAtributes", methods=['GET', 'POST'])
@@ -201,31 +220,49 @@ def CreateAtributes():
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
     abilities        = Abilities.query.all()
+    DateTabels = [['AttributeName', 'Название черты', False], ['Discription', 'Описание', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
+        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]]
+        , [[spells, 'Spells', 'Дополнительные заклинания', False]]           , [[skills, 'Skills', 'Владение навыками', False]]
+        , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
+        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]
+        , [[abilities, 'Abilities', 'Особые способности', False]]]
     if request.method == 'POST':
-        AttributeName   = request.form['AttributeName']
-        Discription     = request.form['Discription']
+        AttributeName               = request.form['AttributeName']
+        Discription                 = request.form['Discription']
         Attribute                   = Atributes(Name=AttributeName, Discription=Discription)
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = ['']  if CharacteristicesParam is None or CharacteristicesParam == '' else CharacteristicesParam
         MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Attribute.Characteristic]
-        MassivDamageResistance      = parametrsoutput(request.form['DamageResistance'])
+        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
+        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
         MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Attribute.DamageResistance]
-        MassivDamageImmunity        = parametrsoutput(request.form['DamageImmunity'])
+        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
+        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
         MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Attribute.DamageImmunity]
-        MassivEffectsResistance     = parametrsoutput(request.form['EffectsResistance'])
+        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
+        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
         MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Attribute.EffectsResistance]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
         MassivSpellsApd             = [MassivSpells, Spells, Attribute.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd             = [MassivSkills, Skills, Attribute.Skill]
-        MassivPossessionArmor       = parametrsoutput(request.form['PossessionArmor'])
+        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
+        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
         MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Attribute.PossessionArmor]
-        MassivGunOwnership          = parametrsoutput(request.form['GunOwnership'])
+        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
+        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
         MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Attribute.GunOwnership]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
         MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Attribute.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
         MassivLanguagesApd          = [MassivLanguages, Languages, Attribute.Language]
-        MassivAbilities             = parametrsoutput(request.form['Abilities'])
+        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
+        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
         MassivAbilitiesApd          = [MassivAbilities, Abilities, Attribute.Abilities]
         MassivDates                 = [MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
@@ -235,17 +272,13 @@ def CreateAtributes():
             try:
                 db.session.add(Attribute)
                 db.session.commit()
-                return render_template("CreatePosts/CreateAtributes.html", Characteristices=characteristices
-                                           , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                           , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateAtributes.html", Characteristices=characteristices
-                                       , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                       , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты')
 
 
 @app.route("/CreateBackgrounds", methods=['GET', 'POST'])
@@ -256,19 +289,27 @@ def CreateBackgrounds():
     skills           = Skills.query.all()
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
+    DateTabels = [['BackgroundName', 'Название предыстрории', False], ['Discription', 'Описание', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+        , [[spells, 'Spells', 'Дополнительные заклинания', False]]           , [[skills, 'Skills', 'Владение навыками', False]]
+        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]]
     if request.method == 'POST':
         BackgroundName   = request.form['BackgroundName']
         Discription     = request.form['Discription']
-        Background                   = Backgrounds(Name=BackgroundName, Discription=Discription)
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
+        Background                  = Backgrounds(Name=BackgroundName, Discription=Discription)
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = ['']  if CharacteristicesParam is None or CharacteristicesParam == '' else CharacteristicesParam
         MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Background.Characteristic]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
         MassivSpellsApd             = [MassivSpells, Spells, Background.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd             = [MassivSkills, Skills, Background.Skill]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
         MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Background.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
         MassivLanguagesApd          = [MassivLanguages, Languages, Background.Language]
         MassivDates                 = [MassivCharacteristicesApd,MassivSpellsApd,MassivSkillsApd
                                         ,MassivToolOwnershipApd,MassivLanguagesApd]
@@ -277,26 +318,27 @@ def CreateBackgrounds():
             try:
                 db.session.add(Background)
                 db.session.commit()
-                return render_template("CreatePosts/CreateBackgrounds.html", Characteristices=characteristices
-                                           , Spells=spells, Skills=skills, Tools=ToolOwnership, Languages=languages)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateBackgrounds.html", Characteristices=characteristices
-                                           , Spells=spells, Skills=skills, Tools=ToolOwnership, Languages=languages)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Backgrounds', Title='Создание предыстории')
 
 
 @app.route("/CreateCharacteristices", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateCharacteristices():
     skills = Skills.query.all()
+    DateTabels = [['CharacteristicName', 'Название характеристики', False], ['Discription', 'Описание', False]
+                , [[skills, 'Skills', 'Владение навыками', False]]]
     if request.method == 'POST':
         CharacteristicName   = request.form['CharacteristicName']
         Discription          = request.form['Discription']
         Characteristic       = Characteristices(Name=CharacteristicName, Discription=Discription)
-        MassivSkills         = parametrsoutput(request.form['Skills'])
+        SkillsParam          = parametrsoutput(request.form['Skills'])
+        MassivSkills         = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd      = [MassivSkills, Skills, Characteristic.Skill]
         MassivDates          = [MassivSkillsApd]
         res = appenddatas(MassivDates)
@@ -304,13 +346,13 @@ def CreateCharacteristices():
             try:
                 db.session.add(Characteristic)
                 db.session.commit()
-                return render_template("CreatePosts/CreateCharacteristices.html", Skills=skills)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices', Title='Создание характеристики')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateCharacteristices.html", Skills=skills)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices', Title='Создание характеристики')
 
 
 @app.route("/CreateClasses", methods=['GET', 'POST'])
@@ -323,6 +365,11 @@ def CreateClasses():
     GunOwnership     = Weapoons.query.all()
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
+    DateTabels = [['ArchetypeName', 'Название подкласса', False], ['Discription', 'Описание', False], ['NotArmorSafe', 'Защита без доспехов', True]
+                , ['ArmorClass', 'Класс брони без доспехов', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+                , [[spells, 'Spells', 'Дополнительные заклинания', False]], [[skills, 'Skills', 'Владение навыками', False]]
+                , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
+                , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]]
     if request.method == 'POST':
         ArmorClass  = request.form['ArmorClass']
         Discription = request.form['Discription']
@@ -333,19 +380,26 @@ def CreateClasses():
             NotArmorSafe = False
         Class = Classes(Name=ClassName, Discription=Discription, NotArmorSafe=NotArmorSafe
                                 , ArmorClass=ArmorClass)
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
         MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Class.Characteristic]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
         MassivSpellsApd             = [MassivSpells, Spells, Class.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd             = [MassivSkills, Skills, Class.Skill]
-        MassivPossessionArmor       = parametrsoutput(request.form['PossessionArmor'])
+        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
+        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
         MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Class.PossessionArmor]
-        MassivGunOwnership          = parametrsoutput(request.form['GunOwnership'])
+        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
+        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
         MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Class.GunOwnership]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
         MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Class.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
         MassivLanguagesApd          = [MassivLanguages, Languages, Class.Language]
         MassivDates                 = [MassivCharacteristicesApd
                            ,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
@@ -355,22 +409,19 @@ def CreateClasses():
             try:
                 db.session.add(Class)
                 db.session.commit()
-                return render_template("CreatePosts/CreateClasses.html", Characteristices=characteristices
-                                   , Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                   , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateClasses.html", Characteristices=characteristices
-                                   , Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                   , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса')
 
 
 @app.route("/CreateDamageTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateDamageTypes():
+    DateTabels = [['DamageTypeName', 'Название типа урона', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         DamageTypeName  = request.form['DamageTypeName']
         Discription     = request.form['Discription']
@@ -378,16 +429,17 @@ def CreateDamageTypes():
         try:
             db.session.add(DamageType)
             db.session.commit()
-            return render_template("CreatePosts/CreateDamageTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateDamageTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
 
 
 @app.route("/CreateEffects", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEffects():
+    DateTabels = [['EffectName', 'Название эффекта', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         EffectName  = request.form['EffectName']
         Discription = request.form['Discription']
@@ -395,24 +447,28 @@ def CreateEffects():
         try:
             db.session.add(Effect)
             db.session.commit()
-            return render_template("CreatePosts/CreateEffects.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateEffects.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
 
 
 @app.route("/CreateEquipments", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEquipments():
     equipmentTypes = EquipmentTypes.query.all()
+    DateTabels = [['EquipmentName', 'Название предыстрории', False], ['Discription', 'Описание', False]
+                    , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
+                    , [[equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False]]]
     if request.method == 'POST':
         EquipmentName   = request.form['EquipmentName']
         Discription = request.form['Discription']
         Weight      = request.form['Weight']
         Cost        = request.form['Cost']
         Equipment = Equipments(Name=EquipmentName, Discription=Discription, Weight=Weight, Cost=Cost)
-        MassivEquipmentTypes    = parametrsoutput(request.form['EquipmentTypes'])
+        EquipmentTypesParam     = parametrsoutput(request.form['EquipmentTypes'])
+        MassivEquipmentTypes    = ['']  if EquipmentTypesParam is None or EquipmentTypesParam == '' else EquipmentTypesParam
         MassivEquipmentTypesApd = [MassivEquipmentTypes, EquipmentTypes, Equipment.EquipmentType]
         MassivDates             = [MassivEquipmentTypesApd]
         res = appenddatas(MassivDates)
@@ -420,18 +476,19 @@ def CreateEquipments():
             try:
                 db.session.add(Equipment)
                 db.session.commit()
-                return render_template("CreatePosts/CreateEquipments.html", EquipmentTypes=equipmentTypes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments', Title='Создание снаряжения')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateEquipments.html", EquipmentTypes=equipmentTypes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments', Title='Создание снаряжения')
 
 
 @app.route("/CreateEquipmentTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEquipmentTypes():
+    DateTabels = [['EquipmentTypeName', 'Название типа снаряжения', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         EquipmentTypeName   = request.form['EquipmentTypeName']
         Discription         = request.form['Discription']
@@ -439,33 +496,36 @@ def CreateEquipmentTypes():
         try:
             db.session.add(EquipmentType)
             db.session.commit()
-            return render_template("CreatePosts/CreateEquipmentTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateEquipmentTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
 
 
 @app.route("/CreateFeatures", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateFeatures():
+    DateTabels = [['FeaturesName', 'Название свойства оружия', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
-        FeaturesName     = request.form['FeaturesName']
-        Discription      = request.form['Discription']
-        WeapoonType      = WeapoonTypes(Name=FeaturesName, Discription=Discription)
+        FeaturesName = request.form['FeaturesName']
+        Discription  = request.form['Discription']
+        features     = Features(Name=FeaturesName, Discription=Discription)
         try:
-            db.session.add(WeapoonType)
+            db.session.add(features)
             db.session.commit()
-            return render_template("CreatePosts/CreateFeatures.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateFeatures.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
 
 
 @app.route("/CreateLanguages", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateLanguages():
+    DateTabels = [['LanguageName', 'Название языка', False], ['Discription', 'Описание', False]
+                  ,['TypicalRepresentative', 'Типичные представители', False],['Writing', 'Письменность', False]]
     if request.method == 'POST':
         LanguageName            = request.form['LanguageName']
         Discription             = request.form['Discription']
@@ -476,11 +536,11 @@ def CreateLanguages():
         try:
             db.session.add(Language)
             db.session.commit()
-            return render_template("CreatePosts/CreateLanguages.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateLanguages.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
 
 
 @app.route("/CreateMagicalItems", methods=['GET', 'POST'])
@@ -497,6 +557,16 @@ def CreateMagicalItems():
     languages        = Languages.query.all()
     abilities        = Abilities.query.all()
     armors           = Armors.query.all()
+    magicalItemTypes = MagicalItemsTypes.query.all()
+    DateTabels = [['MagicalItemsName', 'Название магического предмета', False], ['Discription', 'Описание', False], ['ArmorBonus', 'Бонус защиты', False]
+        , ['PowerBonus', 'Бонус атаки', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
+        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[effects, 'Effects', 'Эффекты', False]]
+        , [[spells, 'Spells', 'Дополнительные заклинания', False]], [[skills, 'Skills', 'Владение навыками', False]]
+        , [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]], [[GunOwnership, 'GunOwnership', 'Владение оружием', False]]
+        , [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]], [[languages, 'Languages', 'Владение языками', False]]
+        , [[abilities, 'Abilities', 'Особые способности', False]], [[armors, 'ArmorTypes', 'Доспех основа магического предмета', True]]
+        , [[GunOwnership, 'WeapoonTypes', 'Оружие основа магического предмета', True]], [[magicalItemTypes, 'MagicalItemTypes', 'Тип магического предмета', True]]]
     if request.method == 'POST':
         MagicalItemsName    = request.form['MagicalItemsName']
         Discription         = request.form['Discription']
@@ -504,35 +574,50 @@ def CreateMagicalItems():
         ArmorBonus          = request.form['ArmorBonus']
         MagicalItem         = MagicalItems(Name=MagicalItemsName, Discription=Discription, ArmorBonus=ArmorBonus
                                 , PowerBonus=PowerBonus)
-        MassivMagicalItemTypes      = parametrsoutput(request.form['MagicalItemTypeName'])
+        MagicalItemTypesParam       = parametrsoutput(request.form['MagicalItemTypes'])
+        MassivMagicalItemTypes      = ['']  if MagicalItemTypesParam is None or MagicalItemTypesParam == '' else MagicalItemTypesParam
         MassivMagicalItemTypesApd   = [MassivMagicalItemTypes, MagicalItemsTypes, MagicalItem.Class]
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
         MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, MagicalItem.Characteristic]
-        MassivDamageResistance      = parametrsoutput(request.form['DamageResistance'])
+        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
+        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
         MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, MagicalItem.DamageResistance]
-        MassivDamageImmunity        = parametrsoutput(request.form['DamageImmunity'])
+        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
+        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
         MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, MagicalItem.DamageImmunity]
-        MassivEffectsResistance     = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, MagicalItem.EffectsResistance]
-        MassivEffects               = parametrsoutput(request.form['Effects'])
-        MassivEffectsApd            = [MassivEffects, Effects, MagicalItem.EffectsResistance]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
+        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
+        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
+        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, MagicalItem.EffectResistance]
+        EffectsParam                = parametrsoutput(request.form['Effects'])
+        MassivEffects               = ['']  if EffectsParam is None or EffectsParam == '' else EffectsParam
+        MassivEffectsApd            = [MassivEffects, Effects, MagicalItem.Effect]
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
         MassivSpellsApd             = [MassivSpells, Spells, MagicalItem.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd             = [MassivSkills, Skills, MagicalItem.Skill]
-        MassivPossessionArmor       = parametrsoutput(request.form['PossessionArmor'])
+        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
+        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
         MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, MagicalItem.PossessionArmor]
-        MassivGunOwnership          = parametrsoutput(request.form['GunOwnership'])
+        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
+        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
         MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, MagicalItem.GunOwnership]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
         MassivToolOwnershipApd      = [MassivToolOwnership, Tools, MagicalItem.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
         MassivLanguagesApd          = [MassivLanguages, Languages, MagicalItem.Language]
-        MassivAbilities             = parametrsoutput(request.form['Abilities'])
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, MagicalItem.Abilities]
-        MassivArmorTypes            = parametrsoutput(request.form['ArmorTypes'])
+        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
+        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
+        MassivAbilitiesApd          = [MassivAbilities, Abilities, MagicalItem.Abilitie]
+        ArmorTypesPAram             = parametrsoutput(request.form['ArmorTypes'])
+        MassivArmorTypes            = ['']  if ArmorTypesPAram is None or ArmorTypesPAram == '' else ArmorTypesPAram
         MassivArmorTypesApd         = [MassivArmorTypes, Armors, MagicalItem.ArmorTypeItem]
-        MassivWeapoonTypes          = parametrsoutput(request.form['WeapoonTypes'])
+        WeapoonTypesParam           = parametrsoutput(request.form['WeapoonTypes'])
+        MassivWeapoonTypes          = ['']  if WeapoonTypesParam is None or WeapoonTypesParam == '' else WeapoonTypesParam
         MassivWeapoonTypesApd       = [MassivWeapoonTypes, Weapoons, MagicalItem.WeapoonTypeItem]
         MassivDates                 = [MassivMagicalItemTypesApd,MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivEffectsApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd
@@ -542,24 +627,19 @@ def CreateMagicalItems():
             try:
                 db.session.add(MagicalItem)
                 db.session.commit()
-                return render_template("CreatePosts/CreateMagicalItems.html", Characteristices=characteristices
-                                       , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                       , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities
-                                       ,Armors=armors)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems', Title='Создание магического предмета')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateMagicalItems.html", Characteristices=characteristices
-                                   , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                   , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities
-                                   ,  Armors=armors)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems', Title='Создание магического предмета')
 
 
 @app.route("/CreateMagicalItemTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateMagicalItemTypes():
+    DateTabels = [['MagicalItemTypeName', 'Название типа магического предмета', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         MagicalItemTypeName = request.form['MagicalItemTypeName']
         Discription         = request.form['Discription']
@@ -567,11 +647,11 @@ def CreateMagicalItemTypes():
         try:
             db.session.add(MagicalItemsType)
             db.session.commit()
-            return render_template("CreatePosts/CreateMagicalItemTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateMagicalItemTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
 
 
 @app.route("/CreateRaces", methods=['GET', 'POST'])
@@ -587,7 +667,14 @@ def CreateRaces():
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
     abilities        = Abilities.query.all()
-    classes          = Classes.query.all()
+    DateTabels = [['RaceName', 'Название расы', False], ['Discription', 'Описание', False], ['Speed', 'Скорость бега', False]
+        , ['Fly', 'Скорость полёта', False], ['Climb', 'Скорость лазания', False], ['Swim', 'Скорость плавания', False]
+        , ['Fight', 'Безоружная атака', False], ['Armor', 'Бонус к классу брони', False], [[characteristices, 'Characteristices', 'Владение характеристиками', False]]
+        , [[damageTypes, 'DamageResistance', 'Сопративление к урону', False]], [[damageTypes, 'DamageImmunity', 'Имунитет к урону', False]]
+        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[spells, 'Spells', 'Дополнительные заклинания', False]]
+        , [[skills, 'Skills', 'Владение навыками', False]], [[PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]]
+        , [[GunOwnership, 'GunOwnership', 'Владение оружием', False]], [[ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]]
+        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]]
     if request.method == 'POST':
         RaceName        = request.form['RaceName']
         Discription     = request.form['Discription']
@@ -599,27 +686,37 @@ def CreateRaces():
         Armor           = request.form['Armor']
         Race            = Races(Name=RaceName, Discription=Discription
                                 , Speed=Speed, Fly=Fly, Climb=Climb, Swim=Swim, Fight=Fight, Armor=Armor)
-        MassivCharacteristices      = parametrsoutput(request.form['Characteristices'])
+        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
+        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
         MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Race.Characteristic]
-        MassivDamageResistance      = parametrsoutput(request.form['DamageResistance'])
+        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
+        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
         MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Race.DamageResistance]
-        MassivDamageImmunity        = parametrsoutput(request.form['DamageImmunity'])
+        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
+        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
         MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Race.DamageImmunity]
-        MassivEffectsResistance     = parametrsoutput(request.form['EffectsResistance'])
+        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
+        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
         MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Race.EffectsResistance]
-        MassivSpells                = parametrsoutput(request.form['Spells'])
+        SpellsParam                 = parametrsoutput(request.form['Spells'])
+        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
         MassivSpellsApd             = [MassivSpells, Spells, Race.Spell]
-        MassivSkills                = parametrsoutput(request.form['Skills'])
+        SkillsParam                 = parametrsoutput(request.form['Skills'])
+        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
         MassivSkillsApd             = [MassivSkills, Skills, Race.Skill]
-        MassivPossessionArmor       = parametrsoutput(request.form['PossessionArmor'])
+        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
+        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
         MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Race.PossessionArmor]
-        MassivGunOwnership          = parametrsoutput(request.form['GunOwnership'])
+        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
+        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
         MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Race.GunOwnership]
-        MassivToolOwnership         = parametrsoutput(request.form['ToolOwnership'])
+        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
+        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
         MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Race.ToolOwnership]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = ['']  if parametrsoutput(request.form['Languages']) is None else parametrsoutput(request.form['Languages'])
         MassivLanguagesApd          = [MassivLanguages, Languages, Race.Language]
-        MassivAbilities             = parametrsoutput(request.form['Abilities'])
+        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
+        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
         MassivAbilitiesApd          = [MassivAbilities, Abilities, Race.Abilities]
         MassivDates                 = [MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
@@ -629,22 +726,19 @@ def CreateRaces():
             try:
                 db.session.add(Race)
                 db.session.commit()
-                return render_template("CreatePosts/CreateRaces.html", Characteristices=characteristices
-                                       , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                       , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities, Classes=classes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateRaces.html", Characteristices=characteristices
-                                   , DamageTypes=damageTypes, Effects=effects, Spells=spells, Skills=skills, ArmorTypes=PossessionArmor
-                                   , Weapoons=GunOwnership, Tools=ToolOwnership, Languages=languages, Abilities=abilities, Classes=classes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
 
 
 @app.route("/CreateSkills", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateSkills():
+    DateTabels = [['SkillName', 'Название навыка', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         SkillName   = request.form['SkillName']
         Discription = request.form['Discription']
@@ -652,11 +746,11 @@ def CreateSkills():
         try:
             db.session.add(Skill)
             db.session.commit()
-            return render_template("CreatePosts/CreateSkills.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateSkills.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
 
 
 @app.route("/CreateSpells", methods=['GET', 'POST'])
@@ -668,6 +762,14 @@ def CreateSpells():
     abilities        = Abilities.query.all()
     classes          = Classes.query.all()
     archetypes       = Archetypes.query.all()
+    DateTabels = [['SpellName', 'Название заклинания', False], ['Discription', 'Описание', False]
+        , ['LevelSpell', 'Уровень заклинания', False], ['Damage', 'Атака заклинания', False]
+        , ['ApplicationTime', 'Время накладывания', False], ['Distance', 'Дистанция', False]
+        , ['Components', 'Компоненты', False], ['Duration', 'Продолжительность', False], ['Ritual', 'Ритуал', True]
+        , ['ArmorClass', 'Класс брони без доспехов', False], [[damageTypes, 'DamageTypes', 'Тип урона', False]]
+        , [[effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False]], [[effects, 'Effects', 'Эффекты', False]]
+        , [[languages, 'Languages', 'Владение языками', False]], [[abilities, 'Abilities', 'Особые способности', False]]
+        , [[classes, 'Classes', 'Доступно для классов', True]] , [[archetypes, 'Archetypes', 'Доступно для подклассов', True]]]
     if request.method == 'POST':
         SpellName           = request.form['SpellName']
         Discription         = request.form['Discription']
@@ -684,20 +786,27 @@ def CreateSpells():
         Spell               = Spells(Name=SpellName, Discription=Discription, Damage=Damage
                                 , LevelSpell=LevelSpell, ApplicationTime=ApplicationTime, Distance=Distance
                                 ,Components=Components,Duration=Duration, Ritual=Ritual)
-        MassivClasses               = parametrsoutput(request.form['Classes'])
+        ClassesParam                = parametrsoutput(request.form['Classes'])
+        MassivClasses               = [''] if ClassesParam is None or ClassesParam =='' else ClassesParam
         MassivClassesApd            = [MassivClasses, Classes, Spell.Class]
-        MassivArchetypes            = parametrsoutput(request.form['Archetypes'])
+        ArchetypesParam             = parametrsoutput(request.form['Archetypes'])
+        MassivArchetypes            = [''] if ArchetypesParam is None or ArchetypesParam == '' else ArchetypesParam
         MassivArchetypesApd         = [MassivArchetypes, Archetypes, Spell.Archetype]
-        MassivDamageTypes           = parametrsoutput(request.form['DamageTypes'])
+        DamageTypesParam            = parametrsoutput(request.form['DamageTypes'])
+        MassivDamageTypes           = [''] if DamageTypesParam is None or DamageTypesParam == '' else DamageTypesParam
         MassivDamageTypessApd       = [MassivDamageTypes, DamageTypes, Spell.DamageType]
-        MassivLanguages             = parametrsoutput(request.form['Languages'])
+        LanguagesParam              = parametrsoutput(request.form['Languages'])
+        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
         MassivLanguagesApd          = [MassivLanguages, Languages, Spell.Language]
-        MassivAbilities             = parametrsoutput(request.form['Abilities'])
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, Spell.Abilities]
-        MassivEffectsResistance     = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Spell.EffectsResistance]
-        MassivEffects               = parametrsoutput(request.form['Effects'])
-        MassivEffectsApd            = [MassivEffects, Effects, Spell.Effects]
+        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
+        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
+        MassivAbilitiesApd          = [MassivAbilities, Abilities, Spell.Abilitie]
+        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
+        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
+        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Spell.EffectResistance]
+        EffectsParam                = parametrsoutput(request.form['Effects'])
+        MassivEffects               = ['']  if EffectsParam is None or EffectsParam == '' else EffectsParam
+        MassivEffectsApd            = [MassivEffects, Effects, Spell.Effect]
         MassivDates                 = [MassivClassesApd,MassivArchetypesApd,MassivDamageTypessApd,MassivLanguagesApd
                                        ,MassivAbilitiesApd,MassivEffectsResistanceApd,MassivEffectsApd]
         res = appenddatas(MassivDates)
@@ -705,49 +814,50 @@ def CreateSpells():
             try:
                 db.session.add(Spell)
                 db.session.commit()
-                return render_template("CreatePosts/CreateSpells.html", Archetypes=archetypes
-                                       , DamageTypes=damageTypes, Effects=effects, Languages=languages, Abilities=abilities
-                                       , Classes=classes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells', Title='Создание заклинания')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateSpells.html", Archetypes=archetypes
-                                       , DamageTypes=damageTypes, Effects=effects, Languages=languages, Abilities=abilities
-                                       , Classes=classes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells', Title='Создание заклинания')
 
 
 @app.route("/CreateTools", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateTools():
     toolTypes = ToolTypes.query.all()
+    DateTabels = [['ToolName', 'Название предыстрории', False], ['Discription', 'Описание', False]
+                    , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
+                    , [[toolTypes, 'ToolTypes', 'Тип инструмента', True]]]
     if request.method == 'POST':
-        ToolName    = request.form['ToolName']
-        Discription = request.form['Discription']
-        Weight      = request.form['Weight']
-        Cost        = request.form['Cost']
-        Tool        = Tools(Name=ToolName, Discription=Discription, Weight=Weight, Cost=Cost)
-        MassivToolTypes    = parametrsoutput(request.form['ToolTypes'])
-        MassivToolTypesApd = [MassivToolTypes, ToolTypes, Tool.ToolType]
+        ToolName            = request.form['ToolName']
+        Discription         = request.form['Discription']
+        Weight              = request.form['Weight']
+        Cost                = request.form['Cost']
+        Tool                = Tools(Name=ToolName, Discription=Discription, Weight=Weight, Cost=Cost)
+        ToolTypesParam      = parametrsoutput(request.form['ToolTypes'])
+        MassivToolTypes     = [''] if ToolTypesParam is None or ToolTypesParam == '' else ToolTypesParam
+        MassivToolTypesApd  = [MassivToolTypes, ToolTypes, Tool.ToolType]
         MassivDates         = [MassivToolTypesApd]
         res = appenddatas(MassivDates)
         if res:
             try:
                 db.session.add(Tool)
                 db.session.commit()
-                return render_template("CreatePosts/CreateTools.html", ToolTypes=toolTypes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools', Title='Создание инструмента')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateTools.html", ToolTypes=toolTypes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools', Title='Создание инструмента')
 
 
 @app.route("/CreateToolTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateToolTypes():
+    DateTabels = [['ToolTypeName', 'Название типа инструмента', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         ToolTypeName  = request.form['ToolTypeName']
         Discription   = request.form['Discription']
@@ -755,18 +865,23 @@ def CreateToolTypes():
         try:
             db.session.add(ToolType)
             db.session.commit()
-            return render_template("CreatePosts/CreateToolTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateToolTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
 
 
 @app.route("/CreateWeapoons", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateWeapoons():
-    toolTypes   = ToolTypes.query.all()
-    damageTypes = DamageTypes.query.all()
+    features     = Features.query.all()
+    damageTypes  = DamageTypes.query.all()
+    weapoonTypes = WeapoonTypes.query.all()
+    DateTabels = [['WeapoonName', 'Название оружия', False], ['Discription', 'Описание', False]
+                    , ['Weight', 'Вес', False], ['Cost', 'Цена', False], ['Damage', 'Урон', False]
+                    , [[features, 'Features', 'Свойство оружия', True]], [[damageTypes, 'DamageTypes', 'Тип урона', True]]
+                    , [[weapoonTypes, 'WeapoonTypes', 'Тип оружия', True]]]
     if request.method == 'POST':
         WeapoonName    = request.form['WeapoonName']
         Discription = request.form['Discription']
@@ -775,28 +890,34 @@ def CreateWeapoons():
         Damage      = request.form['Damage']
         Weapoon               = Weapoons(Name=WeapoonName, Discription=Discription, Weight=Weight
                                          , Cost=Cost, Damage=Damage)
-        MassivWeapoonTypes    = parametrsoutput(request.form['WeapoonTypes'])
+        WeapoonTypesParam     = parametrsoutput(request.form['WeapoonTypes'])
+        MassivWeapoonTypes    = ['']  if WeapoonTypesParam is None or WeapoonTypesParam == '' else WeapoonTypesParam
         MassivWeapoonTypesApd = [MassivWeapoonTypes, WeapoonTypes, Weapoon.WeapoonType]
-        MassivDamageTypes     = parametrsoutput(request.form['DamageTypes'])
+        FeaturesParam         = parametrsoutput(request.form['Features'])
+        MassivFeatures        = [''] if FeaturesParam is None or FeaturesParam == '' else FeaturesParam
+        MassivFeaturesApd     = [MassivFeatures, Features, Weapoon.Feature]
+        DamageTypesParam      = parametrsoutput(request.form['DamageTypes'])
+        MassivDamageTypes     = [''] if DamageTypesParam is None or DamageTypesParam == '' else DamageTypesParam
         MassivDamageTypesApd  = [MassivDamageTypes, DamageTypes, Weapoon.DamageType]
-        MassivDates           = [MassivWeapoonTypesApd,MassivDamageTypesApd]
+        MassivDates           = [MassivWeapoonTypesApd,MassivDamageTypesApd,MassivFeaturesApd]
         res = appenddatas(MassivDates)
         if res:
             try:
                 db.session.add(Weapoon)
                 db.session.commit()
-                return render_template("CreatePosts/CreateWeapoons.html", ToolTypes=toolTypes, DamageTypes=damageTypes)
+                return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия')
             except:
                 return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
         else:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateWeapoons.html", ToolTypes=toolTypes, DamageTypes=damageTypes)
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия')
 
 
 @app.route("/CreateWeapoonTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateWeapoonTypes():
+    DateTabels = [['WeapoonTypeName', 'Название типа оружия', False], ['Discription', 'Описание', False]]
     if request.method == 'POST':
         WeapoonTypeName  = request.form['WeapoonTypeName']
         Discription      = request.form['Discription']
@@ -804,11 +925,11 @@ def CreateWeapoonTypes():
         try:
             db.session.add(WeapoonType)
             db.session.commit()
-            return render_template("CreatePosts/CreateWeapoonTypes.html")
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
         except:
             return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
     else:
-        return render_template("CreatePosts/CreateWeapoonTypes.html")
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
 
 
 @app.route("/VeiwAbilities", methods=['GET', 'POST'])

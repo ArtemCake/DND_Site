@@ -8,25 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/JoinString.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/JoinString.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArchetypes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateArmors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateAtributes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateBackgrounds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateCharacteristices.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateClasses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateEquipments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateFeatures.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateFeatures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateMagicalItems.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateRaces.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateSpells.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateTools.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoonTypes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePosts/CreateWeapoons.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759521622622</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759531897119</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759531897119</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,13 +202,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>1302</line>
-          <option name="timeStamp" value="261" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

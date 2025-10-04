@@ -17,7 +17,7 @@
     {% else %}
         {% if PostDate[1] == False or PostDate[1] == True %}
             {{ PostDate[0] }}: <input type="checkbox" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
-                                      {% if PostDate[1]  %} checked {% endif%}  disabled>
+                                      {% if PostDate[1]  %} checked {% endif%}>
         {% else %}
 
             {% if PostDate[0] != '' %}
