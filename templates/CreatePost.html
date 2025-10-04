@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+{{ Title }}
+{% endblock %}
+{% block content %}
+<Form method="POST"  id="{{ TableName }}Form" action="Create{{ TableName }}">
+	{% for Date in DateTabels %}
+		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
+			{% if Date[0][0]|length > 1 %}
+				{% for Table in Date[0][0] %}
+					<div class="input-item">
+						<label for="{{ Date[1] }}">{{ Date[2] }}:</label>
+						<input type="hidden" class="hiddenUpdate" name="{{ Date[1] }}" id="{{ Date[1] }}" placeholder="{{ Date[2] }}">
+						<ul>
+							{% for TableDate in Table[0] %}
+								{% if Table[3] %}
+									<li>
+										<input type="radio" name="{{ Date[1] }}Print" class ='checkboxUpdate'
+											id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
+									</li>
+								{% else %}
+									<li>
+										<input type="checkbox" name="{{ Date[1] }}Print" class ='checkboxUpdate'
+											id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				{% endfor %}
+			{% endif %}
+		{% else %}
+			{% if Date == 'Discription' %}
+				<textarea name="{{ Date[0] }}" id="{{ Date[0] }}" placeholder="{{ Date[1] }}"></textarea>
+			{% else %}
+				{% if Date[2] == True %}
+				<input type="checkbox" name="{{ Date[0] }}" id="{{ Date[0] }}"/>{{ Date[1] }}
+				{% else %}
+				<input type="text" name="{{ Date[0] }}" id="{{ Date[0] }}" placeholder="{{ Date[1] }}"/>
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+	<button type="submit">Создать</button>
+</Form>
+{% endblock %}
