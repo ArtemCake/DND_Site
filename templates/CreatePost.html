@@ -4,6 +4,8 @@
 {% endblock %}
 {% block content %}
 <Form method="POST"  id="{{ TableName }}Form" action="Create{{ TableName }}">
+	<label for="image_uploads">Загрузить картинку:</label>
+	<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"/>
 	{% for Date in DateTabels %}
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
 			{% if Date[0]|length > 1 %}

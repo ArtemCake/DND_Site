@@ -193,6 +193,11 @@ Characteristices_Skills = db.Table('Characteristices_Skills',
         db.Column('Skills_id', db.Integer(), db.ForeignKey('Skills.id')))
 
 
+Languages_Races = db.Table('Languages_Races',
+        db.Column('Languages_id', db.Integer(), db.ForeignKey('Languages.id')),
+        db.Column('Races_id', db.Integer(), db.ForeignKey('Races.id')))
+
+
 MagicalItems_Characteristices = db.Table('MagicalItems_Characteristices',
         db.Column('MagicalItems_id', db.Integer(), db.ForeignKey('MagicalItems.id')),
         db.Column('Characteristices_id', db.Integer(), db.ForeignKey('Characteristices.id')))
@@ -390,8 +395,8 @@ class User(db.Model, UserMixin):
     password    = db.Column(db.String(255), nullable=False, server_default='')
     active      = db.Column(db.Boolean())
     roles       = db.relationship('Role'  , secondary=Roles_Users
-                                                , backref=db.backref("roled", cascade='all,delete',single_parent=True, passive_deletes=True, lazy='dynamic')
-                                                , cascade='all,delete'      , single_parent=True, lazy='dynamic')
+                                                , backref=db.backref("roled", cascade='all,delete',single_parent=True, passive_deletes=True)
+                                                , cascade='all,delete'      , single_parent=True)
 
 
 class Role(db.Model, RoleMixin):
@@ -449,7 +454,7 @@ class Archetypes(db.Model):
     Language            = db.relationship('Languages'       , secondary=Archetypes_Languages
                                             , backref=db.backref("ArchetypesLanguages"               , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
-    Abilities           = db.relationship('Abilities'       , secondary=Archetypes_Abilities
+    Abilitie            = db.relationship('Abilities'       , secondary=Archetypes_Abilities
                                             , backref=db.backref("ArchetypesAbilities"               , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
 
@@ -465,8 +470,8 @@ class Armors(db.Model):
     Power       = db.Column(db.Text, nullable=True)
     Weight      = db.Column(db.Integer, nullable=True)
     ArmorType   = db.relationship('ArmorTypes'              , secondary=Armors_ArmorTypes
-                                            , backref=db.backref("ArmorsArmorTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ArmorsArmorTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class ArmorTypes(db.Model):
@@ -482,38 +487,38 @@ class Atributes(db.Model):
     Name              = db.Column(db.String(300), nullable=False, unique=True)
     Discription       = db.Column(db.Text, nullable=True)
     Characteristic    = db.relationship('Characteristices'  , secondary=Atributes_Characteristices
-                                            , backref=db.backref("AtributesCharacteristices"     , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesCharacteristices"     , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageResistance  = db.relationship('DamageTypes'       , secondary=Atributes_ResistanceDamageTypes
-                                            , backref=db.backref("AtributesResistanceDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesResistanceDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageImmunity    = db.relationship('DamageTypes'       , secondary=Atributes_ImmunityDamageTypes
-                                            , backref=db.backref("AtributesImmunityDamageTypes"  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesImmunityDamageTypes"  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language          = db.relationship('Languages'         , secondary=Atributes_Languages
-                                            , backref=db.backref("AtributesLanguages"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesLanguages"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Spell             = db.relationship('Spells'            , secondary=Atributes_Spells
-                                            , backref=db.backref("AtributesSpells"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesSpells"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Skill             = db.relationship('Skills'            , secondary=Atributes_Skills
-                                            , backref=db.backref("Atributeskills"                , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("Atributeskills"                , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     PossessionArmor   = db.relationship('ArmorTypes'        , secondary=Atributes_PossessionArmor
-                                            , backref=db.backref("AtributesPossessionArmor"      , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesPossessionArmor"      , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     GunOwnership      = db.relationship('Weapoons'          , secondary=Atributes_GunOwnership
-                                            , backref=db.backref("AtributesGunOwnership"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesGunOwnership"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ToolOwnership     = db.relationship('Tools'             , secondary=Atributes_ToolOwnership
-                                            , backref=db.backref("AtributesToolOwnership"        , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesToolOwnership"        , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     EffectsResistance = db.relationship('Effects'           , secondary=Atributes_EffectsResistance
-                                            , backref=db.backref("AtributesEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Abilities         = db.relationship('Abilities'         , secondary=Atributes_Abilities
-                                            , backref=db.backref("AtributesAbilities"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("AtributesAbilities"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class Backgrounds(db.Model):
@@ -522,20 +527,20 @@ class Backgrounds(db.Model):
     Name             = db.Column(db.String(300), nullable=False, unique=True)
     Discription      = db.Column(db.Text, nullable=True)
     Characteristic   = db.relationship('Characteristices'   , secondary=Backgrounds_Characteristices
-                                            , backref=db.backref("BackgroundsCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("BackgroundsCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language         = db.relationship('Languages'          , secondary=Backgrounds_Languages
-                                            , backref=db.backref("BackgroundsLanguages"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("BackgroundsLanguages"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Skill            = db.relationship('Skills'             , secondary=Backgrounds_Skills
-                                            , backref=db.backref("BackgroundsSkills"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("BackgroundsSkills"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ToolOwnership    = db.relationship('Tools'              , secondary=Backgrounds_ToolOwnership
-                                            , backref=db.backref("BackgroundsToolOwnership"     , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("BackgroundsToolOwnership"     , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Spell            = db.relationship('Spells'             , secondary=Backgrounds_Spells
-                                            , backref=db.backref("BackgroundsSpells"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("BackgroundsSpells"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class Characteristices(db.Model):
@@ -544,8 +549,8 @@ class Characteristices(db.Model):
     Name                 = db.Column(db.String(300), nullable=False, unique=True)
     Discription          = db.Column(db.Text, nullable=True)
     Skill                = db.relationship('Skills'        , secondary=Characteristices_Skills
-                                           , backref=db.backref("CharacteristicesSkills", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                           , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                           , backref=db.backref("CharacteristicesSkills", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                           , cascade='all,delete', single_parent=True)
 
 
 class Classes(db.Model):
@@ -556,26 +561,26 @@ class Classes(db.Model):
     ArmorClass          = db.Column(db.Text, nullable=True)
     NotArmorSafe        = db.Column(db.Boolean, nullable=True)
     Characteristic      = db.relationship('Characteristices', secondary=Classes_Characteristices
-                                            , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     PossessionArmor     = db.relationship('ArmorTypes'      , secondary=Classes_PossessionArmor
-                                            , backref=db.backref("ClassesPossessionArmor"   , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesPossessionArmor"   , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     GunOwnership        = db.relationship('Weapoons'        , secondary=Classes_GunOwnership
-                                            , backref=db.backref("ClassesGunOwnership"      , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesGunOwnership"      , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ToolOwnership       = db.relationship('Tools'           , secondary=Classes_ToolOwnership
-                                            , backref=db.backref("ClassesToolOwnership"     , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete',  single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesToolOwnership"     , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete',  single_parent=True)
     Skill               = db.relationship('Skills'          , secondary=Classes_Skills
-                                            , backref=db.backref("ClassesSkills"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesSkills"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Spell               = db.relationship('Spells'          , secondary=Classes_Spells
-                                            , backref=db.backref("ClassesSpells"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesSpells"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language            = db.relationship('Languages'       , secondary=Classes_Languages
-                                            , backref=db.backref("ClassesLanguages"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ClassesLanguages"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class DamageTypes(db.Model):
@@ -600,8 +605,8 @@ class Equipments(db.Model):
     Cost            = db.Column(db.Integer, nullable=True)
     Weight          = db.Column(db.Integer, nullable=True)
     EquipmentType   = db.relationship('EquipmentTypes'      , secondary=Equipments_EquipmentTypes
-                                            , backref=db.backref("EquipmentsEquipmentTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("EquipmentsEquipmentTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class EquipmentTypes(db.Model):
@@ -623,7 +628,9 @@ class Languages(db.Model):
     id                      = db.Column(db.Integer, primary_key=True)
     Name                    = db.Column(db.String(300), nullable=False, unique=True)
     Discription             = db.Column(db.Text, nullable=True)
-    TypicalRepresentative   = db.Column(db.Text, nullable=True)
+    TypicalRepresentative   = db.relationship('Races', secondary=Languages_Races
+                            , backref=db.backref("LanguagesRaces"    , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                                                     , cascade='all,delete', single_parent=True)
     Writing                 = db.Column(db.Text, nullable=True)
 
 
@@ -635,50 +642,50 @@ class MagicalItems(db.Model):
     PowerBonus          = db.Column(db.Text, nullable=True)
     ArmorBonus          = db.Column(db.Text, nullable=True)
     MagicalItemType     = db.relationship('MagicalItemsTypes', secondary=MagicalItems_MagicalItemsTypes
-                                            , backref=db.backref("MagicalItemsMagicalItemsTypes"    , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsMagicalItemsTypes"    , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Characteristic      = db.relationship('Characteristices', secondary=MagicalItems_Characteristices
-                                            , backref=db.backref("MagicalItemsCharacteristices"     , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsCharacteristices"     , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Spell               = db.relationship('Spells'          , secondary=MagicalItems_Spells
-                                            , backref=db.backref("MagicalItemsSpells"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsSpells"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     PossessionArmor     = db.relationship('ArmorTypes'      , secondary=MagicalItems_PossessionArmor
-                                            , backref=db.backref("MagicalItemsPossessionArmor"      , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsPossessionArmor"      , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     GunOwnership        = db.relationship('Weapoons'        , secondary=MagicalItems_GunOwnership
-                                            , backref=db.backref("MagicalItemsGunOwnership"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsGunOwnership"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ToolOwnership       = db.relationship('Tools'           , secondary=MagicalItems_ToolOwnership
-                                            , backref=db.backref("MagicalItemsToolOwnership"        , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete',  single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsToolOwnership"        , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete',  single_parent=True)
     DamageResistance    = db.relationship('DamageTypes'     , secondary=MagicalItems_ResistanceDamageTypes
-                                            , backref=db.backref("MagicalItemsResistanceDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsResistanceDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageImmunity      = db.relationship('DamageTypes'     , secondary=MagicalItems_ImmunityDamageTypes
-                                            , backref=db.backref("MagicalItemsImmunityDamageTypes"  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsImmunityDamageTypes"  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Skill               = db.relationship('Skills'          , secondary=MagicalItems_Skills
-                                            , backref=db.backref("MagicalItemsSkills"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsSkills"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language            = db.relationship('Languages'       , secondary=MagicalItems_Languages
-                                            , backref=db.backref("MagicalItemsLanguages"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsLanguages"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     EffectResistance   = db.relationship('Effects'         , secondary=MagicalItems_EffectsResistance
-                                            , backref=db.backref("MagicalItemsEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Effect              = db.relationship('Effects'         , secondary=MagicalItems_Effects
-                                            , backref=db.backref("MagicalItemsEffects"              , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsEffects"              , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Abilitie            = db.relationship('Abilities'       , secondary=MagicalItems_Abilities
-                                            , backref=db.backref("MagicalItemsAbilities"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsAbilities"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ArmorTypeItem       = db.relationship('Armors'          , secondary=MagicalItems_Armors
-                                            , backref=db.backref("MagicalItemsArmors"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsArmors"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     WeapoonTypeItem     = db.relationship('Weapoons'        , secondary=MagicalItems_Weapoons
-                                            , backref=db.backref("MagicalItemsWeapoons"             , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("MagicalItemsWeapoons"             , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class MagicalItemsTypes(db.Model):
@@ -700,38 +707,38 @@ class Races(db.Model):
     Fight               = db.Column(db.Text, nullable=True)
     Armor               = db.Column(db.Text, nullable=True)
     Characteristic      = db.relationship('Characteristices', secondary=Races_Characteristices
-                                            , backref=db.backref("RacesCharacteristices"        , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesCharacteristices"        , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageResistance    = db.relationship('DamageTypes'     , secondary=Races_ResistanceDamageTypes
-                                            , backref=db.backref("RacesResistanceDamageTypes"   , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesResistanceDamageTypes"   , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageImmunity      = db.relationship('DamageTypes'     , secondary=Races_ImmunityDamageTypes
-                                            , backref=db.backref("RacesImmunityDamageTypes"     , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesImmunityDamageTypes"     , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Spell               = db.relationship('Spells'          , secondary=Races_Spells
-                                            , backref=db.backref("RacesSpells"                  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesSpells"                  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Skill               = db.relationship('Skills'          , secondary=Races_Skills
-                                            , backref=db.backref("RacesSkills"                  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesSkills"                  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language            = db.relationship('Languages'       , secondary=Races_Languages
-                                            , backref=db.backref("RacesLanguages"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesLanguages"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     PossessionArmor     = db.relationship('ArmorTypes'      , secondary=Races_PossessionArmor
-                                            , backref=db.backref("RacesPossessionArmor"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesPossessionArmor"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     GunOwnership        = db.relationship('Weapoons'        , secondary=Races_GunOwnership
-                                            , backref=db.backref("RacesGunOwnership"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesGunOwnership"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     ToolOwnership       = db.relationship('Tools'           , secondary=Races_ToolOwnership
-                                            , backref=db.backref("RacesToolOwnership"           , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesToolOwnership"           , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     EffectsResistance   = db.relationship('Effects'         , secondary=Races_EffectsResistance
-                                            , backref=db.backref("RacesEffectsResistance"       , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesEffectsResistance"       , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Abilities           = db.relationship('Abilities'       , secondary=Races_Abilities
-                                            , backref=db.backref("RacesAbilities"               , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("RacesAbilities"               , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class Skills(db.Model):
@@ -754,26 +761,26 @@ class Spells(db.Model):
     LevelSpell        = db.Column(db.Integer, nullable=True)
     Ritual            = db.Column(db.Boolean, nullable=True)
     Class             = db.relationship('Classes'           , secondary=Spells_Classes
-                                            , backref=db.backref("SpellsClasses"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsClasses"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Archetype         = db.relationship('Archetypes'        , secondary=Spells_Archetypes
-                                            , backref=db.backref("SpellsArchetypes"         , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsArchetypes"         , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageType        = db.relationship('DamageTypes'       , secondary=Spells_DamageTypes
-                                            , backref=db.backref("SpellsDamageTypes"        , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsDamageTypes"        , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     EffectResistance  = db.relationship('Effects'           , secondary=Spells_EffectsResistance
-                                            , backref=db.backref("SpellsEffectsResistance"  , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsEffectsResistance"  , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Effect            = db.relationship('Effects'           , secondary=Spells_Effects
-                                            , backref=db.backref("SpellsEffects"            , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsEffects"            , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Language          = db.relationship('Languages'         , secondary=Spells_Languages
-                                            , backref=db.backref("SpellsLanguages"          , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsLanguages"          , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     Abilitie          = db.relationship('Abilities'         , secondary=Spells_Abilities
-                                            , backref=db.backref("SpellsAbilities"          , cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("SpellsAbilities"          , cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class Tools(db.Model):
@@ -784,8 +791,8 @@ class Tools(db.Model):
     Cost        = db.Column(db.Integer, nullable=True)
     Weight      = db.Column(db.Integer, nullable=True)
     ToolType    = db.relationship('ToolTypes'               , secondary=Tools_ToolTypes
-                                            , backref=db.backref("ToolsToolTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("ToolsToolTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class ToolTypes(db.Model):
@@ -804,14 +811,14 @@ class Weapoons(db.Model):
     Damage          = db.Column(db.Text, nullable=True)
     Weight          = db.Column(db.Integer, nullable=True)
     Feature         = db.relationship('Features'            , secondary=Weapoons_Features
-                                            , backref=db.backref("WeapoonsFeatures", cascade='all,delete'   , single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("WeapoonsFeatures", cascade='all,delete'   , single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     DamageType      = db.relationship('DamageTypes'         , secondary=Weapoons_DamageTypes
-                                            , backref=db.backref("WeapoonsDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("WeapoonsDamageTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
     WeapoonType     = db.relationship('WeapoonTypes'        , secondary=Weapoons_WeapoonTypes
-                                            , backref=db.backref("WeapoonsWeapoonTypes", cascade='all,delete', single_parent=True, passive_deletes=True, lazy='dynamic')
-                                            , cascade='all,delete', single_parent=True, lazy='dynamic')
+                                            , backref=db.backref("WeapoonsWeapoonTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
+                                            , cascade='all,delete', single_parent=True)
 
 
 class WeapoonTypes(db.Model):

@@ -1,4 +1,4 @@
-from flask import (render_template)
+from flask import render_template
 from .Classes import *
 
 def parametrsoutput(Resultrequest):
@@ -23,6 +23,23 @@ def appenddatas(MassivDates):
             return True
         except:
             return False
+
+
+def MassivTablesDates(Parametrs):
+    RequestForm     = Parametrs[0]
+    TablesName      = Parametrs[1]
+    Tables          = Parametrs[2]
+    TableParametr   = Parametrs[3]
+    if TablesName in RequestForm:
+        Param = parametrsoutput(RequestForm[TablesName])
+    else:
+        Param = ''
+    if Param == '':
+        MassivDates = []
+    else:
+        MassivDates = Param
+
+    return [MassivDates, Tables, TableParametr]
 
 
 def ParamNameRepresentationValue(ParamName):
@@ -113,6 +130,7 @@ def OpenEditPost(Parametrs):
     Date_id             = Parametrs[1]
     OnlyvalueTablesName = Parametrs[2]
     ClassDate           = get_class(tableName)
+
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
     PostDates           = [['', DateName, 'Name']]
@@ -139,7 +157,7 @@ def OpenEditPost(Parametrs):
                         else:
                             representationValue = ''
                         PostDates.append([representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
-    return render_template("EditPost.html",Date_id=Date_id, tableName=tableName, DateName=DateName, PostDates=PostDates)
+    return render_template("EditPost.html",DatesMassiv=[Date_id, tableName, DateName, PostDates])
 
 
 def UpdateTable(Parametrs):

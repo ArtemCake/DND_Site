@@ -1,7 +1,7 @@
 from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
-from functions.functions import appenddatas, parametrsoutput, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable
+from functions.functions import (appenddatas, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, MassivTablesDates)
 import logging
 from functions.Classes import *
 
@@ -97,42 +97,18 @@ def CreateArchetypes():
             NotArmorSafe=False
         Archetype = Archetypes(Name=ArchetypeName, Discription=Discription, NotArmorSafe=NotArmorSafe
                                 , ArmorClass=ArmorClass)
-        ClassesParam                = parametrsoutput(request.form['Classes'])
-        MassivClasses               = [''] if ClassesParam is None or ClassesParam =='' else ClassesParam
-        MassivClassesApd            = [MassivClasses, Classes, Archetype.Class]
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Archetype.Characteristic]
-        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
-        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
-        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Archetype.DamageResistance]
-        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
-        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
-        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Archetype.DamageImmunity]
-        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Archetype.EffectsResistance]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, Archetype.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, Archetype.Skill]
-        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Archetype.PossessionArmor]
-        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Archetype.GunOwnership]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Archetype.ToolOwnership]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, Archetype.Language]
-        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
-        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, Archetype.Abilities]
+        MassivClassesApd            = MassivTablesDates([request.form, 'Classes'            , Classes            , Archetype.Class])
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Archetype.Characteristic])
+        MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Archetype.DamageResistance])
+        MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , Archetype.DamageImmunity])
+        MassivEffectsResistanceApd  = MassivTablesDates([request.form, 'EffectsResistance'  , Effects            , Archetype.EffectsResistance])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , Archetype.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , Archetype.Skill])
+        MassivPossessionArmorApd    = MassivTablesDates([request.form, 'PossessionArmor'    , ArmorTypes         , Archetype.PossessionArmor])
+        MassivGunOwnershipApd       = MassivTablesDates([request.form, 'GunOwnership'       , Weapoons           , Archetype.GunOwnership])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'      , Tools              , Archetype.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages          , Archetype.Language])
+        MassivAbilitiesApd          = MassivTablesDates([request.form, 'Abilities'          , Abilities          , Archetype.Abilitie])
         MassivDates                 = [MassivClassesApd,MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
                            ,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd]
@@ -171,9 +147,7 @@ def CreateArmors():
             Hindrance = False
         armors = Armors(Name=ArmorName, Discription=Discription, Weight=Weight, Power=Power
                              , Cost=Cost, ArmorClass=ArmorClass, Hindrance=Hindrance)
-        ArmorTypesParam     = parametrsoutput(request.form['ArmorTypes'])
-        MassivArmorTypes    = ['']  if ArmorTypesParam is None or ArmorTypesParam == '' else ArmorTypesParam
-        MassivArmorTypesApd = [MassivArmorTypes, ArmorTypes, armors.ArmorType]
+        MassivArmorTypesApd =  MassivTablesDates([request.form, 'ArmorTypes',ArmorTypes , armors.ArmorType])
         MassivDates         = [MassivArmorTypesApd]
         res = appenddatas(MassivDates)
         if res:
@@ -231,42 +205,20 @@ def CreateAtributes():
         AttributeName               = request.form['AttributeName']
         Discription                 = request.form['Discription']
         Attribute                   = Atributes(Name=AttributeName, Discription=Discription)
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = ['']  if CharacteristicesParam is None or CharacteristicesParam == '' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Attribute.Characteristic]
-        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
-        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
-        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Attribute.DamageResistance]
-        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
-        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
-        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Attribute.DamageImmunity]
-        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Attribute.EffectsResistance]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, Attribute.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, Attribute.Skill]
-        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Attribute.PossessionArmor]
-        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Attribute.GunOwnership]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Attribute.ToolOwnership]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, Attribute.Language]
-        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
-        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, Attribute.Abilities]
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Attribute.Characteristic])
+        MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Attribute.DamageResistance])
+        MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , Attribute.DamageImmunity])
+        MassivEffectsResistanceApd  = MassivTablesDates([request.form, 'EffectsResistance'  , Effects            , Attribute.EffectsResistance])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , Attribute.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , Attribute.Skill])
+        MassivPossessionArmorApd    = MassivTablesDates([request.form, 'PossessionArmor'    , ArmorTypes         , Attribute.PossessionArmor])
+        MassivGunOwnershipApd       = MassivTablesDates([request.form, 'GunOwnership'       , Weapoons           , Attribute.GunOwnership])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'      , Tools              , Attribute.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages          , Attribute.Language])
+        MassivAbilitiesApd          = MassivTablesDates([request.form, 'Abilities'          , Abilities          , Attribute.Abilitie])
         MassivDates                 = [MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
-                           ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
-                           ,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd]
+                                        ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
+                                        ,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd]
         res = appenddatas(MassivDates)
         if res:
             try:
@@ -296,21 +248,11 @@ def CreateBackgrounds():
         BackgroundName   = request.form['BackgroundName']
         Discription     = request.form['Discription']
         Background                  = Backgrounds(Name=BackgroundName, Discription=Discription)
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = ['']  if CharacteristicesParam is None or CharacteristicesParam == '' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Background.Characteristic]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, Background.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, Background.Skill]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Background.ToolOwnership]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, Background.Language]
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices', Characteristices  , Background.Characteristic])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'          , Spells            , Background.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'          , Skills            , Background.Skill])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'   , Tools             , Background.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'       , Languages         , Background.Language])
         MassivDates                 = [MassivCharacteristicesApd,MassivSpellsApd,MassivSkillsApd
                                         ,MassivToolOwnershipApd,MassivLanguagesApd]
         res = appenddatas(MassivDates)
@@ -337,9 +279,7 @@ def CreateCharacteristices():
         CharacteristicName   = request.form['CharacteristicName']
         Discription          = request.form['Discription']
         Characteristic       = Characteristices(Name=CharacteristicName, Discription=Discription)
-        SkillsParam          = parametrsoutput(request.form['Skills'])
-        MassivSkills         = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd      = [MassivSkills, Skills, Characteristic.Skill]
+        MassivSkillsApd      = MassivTablesDates([request.form, 'Skills', Skills, Characteristic.Skill])
         MassivDates          = [MassivSkillsApd]
         res = appenddatas(MassivDates)
         if res:
@@ -380,27 +320,13 @@ def CreateClasses():
             NotArmorSafe = False
         Class = Classes(Name=ClassName, Discription=Discription, NotArmorSafe=NotArmorSafe
                                 , ArmorClass=ArmorClass)
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Class.Characteristic]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, Class.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, Class.Skill]
-        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Class.PossessionArmor]
-        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Class.GunOwnership]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Class.ToolOwnership]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, Class.Language]
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Class.Characteristic])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , Class.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , Class.Skill])
+        MassivPossessionArmorApd    = MassivTablesDates([request.form, 'PossessionArmor'    , ArmorTypes         , Class.PossessionArmor])
+        MassivGunOwnershipApd       = MassivTablesDates([request.form, 'GunOwnership'       , Weapoons           , Class.GunOwnership])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'      , Tools              , Class.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages          , Class.Language])
         MassivDates                 = [MassivCharacteristicesApd
                            ,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
                            ,MassivToolOwnershipApd,MassivLanguagesApd]
@@ -466,10 +392,8 @@ def CreateEquipments():
         Discription = request.form['Discription']
         Weight      = request.form['Weight']
         Cost        = request.form['Cost']
-        Equipment = Equipments(Name=EquipmentName, Discription=Discription, Weight=Weight, Cost=Cost)
-        EquipmentTypesParam     = parametrsoutput(request.form['EquipmentTypes'])
-        MassivEquipmentTypes    = ['']  if EquipmentTypesParam is None or EquipmentTypesParam == '' else EquipmentTypesParam
-        MassivEquipmentTypesApd = [MassivEquipmentTypes, EquipmentTypes, Equipment.EquipmentType]
+        Equipment   = Equipments(Name=EquipmentName, Discription=Discription, Weight=Weight, Cost=Cost)
+        MassivEquipmentTypesApd = MassivTablesDates([request.form, 'EquipmentTypes', EquipmentTypes, Equipment.GunOwnership])
         MassivDates             = [MassivEquipmentTypesApd]
         res = appenddatas(MassivDates)
         if res:
@@ -574,51 +498,21 @@ def CreateMagicalItems():
         ArmorBonus          = request.form['ArmorBonus']
         MagicalItem         = MagicalItems(Name=MagicalItemsName, Discription=Discription, ArmorBonus=ArmorBonus
                                 , PowerBonus=PowerBonus)
-        MagicalItemTypesParam       = parametrsoutput(request.form['MagicalItemTypes'])
-        MassivMagicalItemTypes      = ['']  if MagicalItemTypesParam is None or MagicalItemTypesParam == '' else MagicalItemTypesParam
-        MassivMagicalItemTypesApd   = [MassivMagicalItemTypes, MagicalItemsTypes, MagicalItem.Class]
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, MagicalItem.Characteristic]
-        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
-        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
-        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, MagicalItem.DamageResistance]
-        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
-        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
-        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, MagicalItem.DamageImmunity]
-        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, MagicalItem.EffectResistance]
-        EffectsParam                = parametrsoutput(request.form['Effects'])
-        MassivEffects               = ['']  if EffectsParam is None or EffectsParam == '' else EffectsParam
-        MassivEffectsApd            = [MassivEffects, Effects, MagicalItem.Effect]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, MagicalItem.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, MagicalItem.Skill]
-        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, MagicalItem.PossessionArmor]
-        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, MagicalItem.GunOwnership]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, MagicalItem.ToolOwnership]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, MagicalItem.Language]
-        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
-        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, MagicalItem.Abilitie]
-        ArmorTypesPAram             = parametrsoutput(request.form['ArmorTypes'])
-        MassivArmorTypes            = ['']  if ArmorTypesPAram is None or ArmorTypesPAram == '' else ArmorTypesPAram
-        MassivArmorTypesApd         = [MassivArmorTypes, Armors, MagicalItem.ArmorTypeItem]
-        WeapoonTypesParam           = parametrsoutput(request.form['WeapoonTypes'])
-        MassivWeapoonTypes          = ['']  if WeapoonTypesParam is None or WeapoonTypesParam == '' else WeapoonTypesParam
-        MassivWeapoonTypesApd       = [MassivWeapoonTypes, Weapoons, MagicalItem.WeapoonTypeItem]
+        MassivMagicalItemTypesApd   = MassivTablesDates([request.form, 'MagicalItemTypes'   , MagicalItemsTypes  , MagicalItem.MagicalItemType])
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , MagicalItem.Characteristic])
+        MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , MagicalItem.DamageResistance])
+        MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , MagicalItem.DamageImmunity])
+        MassivEffectsResistanceApd  = MassivTablesDates([request.form, 'EffectsResistance'  , Effects            , MagicalItem.EffectsResistance])
+        MassivEffectsApd            = MassivTablesDates([request.form, 'Effects'            , Effects            , MagicalItem.Effect])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , MagicalItem.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , MagicalItem.Skill])
+        MassivPossessionArmorApd    = MassivTablesDates([request.form, 'PossessionArmor'    , ArmorTypes         , MagicalItem.PossessionArmor])
+        MassivGunOwnershipApd       = MassivTablesDates([request.form, 'GunOwnership'       , Weapoons           , MagicalItem.GunOwnership])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'      , Tools              , MagicalItem.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages          , MagicalItem.Language])
+        MassivAbilitiesApd          = MassivTablesDates([request.form, 'Abilities'          , Abilities          , MagicalItem.Abilitie])
+        MassivArmorTypesApd         = MassivTablesDates([request.form, 'ArmorTypes'         , Armors             , MagicalItem.ArmorTypeItem])
+        MassivWeapoonTypesApd       = MassivTablesDates([request.form, 'WeapoonTypes'       , Weapoons           , MagicalItem.WeapoonTypeItem])
         MassivDates                 = [MassivMagicalItemTypesApd,MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivEffectsApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd
                             ,MassivGunOwnershipApd,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd,MassivArmorTypesApd,MassivWeapoonTypesApd]
@@ -686,38 +580,17 @@ def CreateRaces():
         Armor           = request.form['Armor']
         Race            = Races(Name=RaceName, Discription=Discription
                                 , Speed=Speed, Fly=Fly, Climb=Climb, Swim=Swim, Fight=Fight, Armor=Armor)
-        CharacteristicesParam       = parametrsoutput(request.form['Characteristices'])
-        MassivCharacteristices      = [''] if CharacteristicesParam is None or CharacteristicesParam =='' else CharacteristicesParam
-        MassivCharacteristicesApd   = [MassivCharacteristices, Characteristices, Race.Characteristic]
-        DamageResistanceParam       =  parametrsoutput(request.form['DamageResistance'])
-        MassivDamageResistance      = [''] if DamageResistanceParam is None or DamageResistanceParam =='' else DamageResistanceParam
-        MassivDamageResistanceApd   = [MassivDamageResistance, DamageTypes, Race.DamageResistance]
-        DamageImmunityParam         = parametrsoutput(request.form['DamageImmunity'])
-        MassivDamageImmunity        = [''] if DamageImmunityParam is None or DamageImmunityParam =='' else DamageImmunityParam
-        MassivDamageImmunityApd     = [MassivDamageImmunity, DamageTypes, Race.DamageImmunity]
-        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Race.EffectsResistance]
-        SpellsParam                 = parametrsoutput(request.form['Spells'])
-        MassivSpells                = [''] if SpellsParam is None or SpellsParam == '' else SpellsParam
-        MassivSpellsApd             = [MassivSpells, Spells, Race.Spell]
-        SkillsParam                 = parametrsoutput(request.form['Skills'])
-        MassivSkills                = [''] if SkillsParam is None or SkillsParam == '' else SkillsParam
-        MassivSkillsApd             = [MassivSkills, Skills, Race.Skill]
-        PossessionArmorParam        = parametrsoutput(request.form['PossessionArmor'])
-        MassivPossessionArmor       = [''] if PossessionArmorParam is None or PossessionArmorParam == '' else PossessionArmorParam
-        MassivPossessionArmorApd    = [MassivPossessionArmor, ArmorTypes, Race.PossessionArmor]
-        GunOwnershipParam           = parametrsoutput(request.form['GunOwnership'])
-        MassivGunOwnership          = [''] if GunOwnershipParam is None or GunOwnershipParam == '' else GunOwnershipParam
-        MassivGunOwnershipApd       = [MassivGunOwnership, Weapoons, Race.GunOwnership]
-        ToolOwnershipParam          = parametrsoutput(request.form['ToolOwnership'])
-        MassivToolOwnership         = [''] if ToolOwnershipParam is None or ToolOwnershipParam == '' else ToolOwnershipParam
-        MassivToolOwnershipApd      = [MassivToolOwnership, Tools, Race.ToolOwnership]
-        MassivLanguages             = ['']  if parametrsoutput(request.form['Languages']) is None else parametrsoutput(request.form['Languages'])
-        MassivLanguagesApd          = [MassivLanguages, Languages, Race.Language]
-        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
-        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, Race.Abilities]
+        MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Race.Characteristic])
+        MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Race.DamageResistance])
+        MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , Race.DamageImmunity])
+        MassivEffectsResistanceApd  = MassivTablesDates([request.form, 'EffectsResistance'  , Effects            , Race.EffectsResistance])
+        MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , Race.Spell])
+        MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , Race.Skill])
+        MassivPossessionArmorApd    = MassivTablesDates([request.form, 'PossessionArmor'    , ArmorTypes         , Race.PossessionArmor])
+        MassivGunOwnershipApd       = MassivTablesDates([request.form, 'GunOwnership'       , Weapoons           , Race.GunOwnership])
+        MassivToolOwnershipApd      = MassivTablesDates([request.form, 'ToolOwnership'      , Tools              , Race.ToolOwnership])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages          , Race.Language])
+        MassivAbilitiesApd          = MassivTablesDates([request.form, 'Abilities'          , Abilities          , Race.Abilitie])
         MassivDates                 = [MassivCharacteristicesApd,MassivDamageResistanceApd,MassivDamageImmunityApd
                            ,MassivEffectsResistanceApd,MassivSpellsApd,MassivSkillsApd,MassivPossessionArmorApd,MassivGunOwnershipApd
                            ,MassivToolOwnershipApd,MassivLanguagesApd,MassivAbilitiesApd]
@@ -786,27 +659,13 @@ def CreateSpells():
         Spell               = Spells(Name=SpellName, Discription=Discription, Damage=Damage
                                 , LevelSpell=LevelSpell, ApplicationTime=ApplicationTime, Distance=Distance
                                 ,Components=Components,Duration=Duration, Ritual=Ritual)
-        ClassesParam                = parametrsoutput(request.form['Classes'])
-        MassivClasses               = [''] if ClassesParam is None or ClassesParam =='' else ClassesParam
-        MassivClassesApd            = [MassivClasses, Classes, Spell.Class]
-        ArchetypesParam             = parametrsoutput(request.form['Archetypes'])
-        MassivArchetypes            = [''] if ArchetypesParam is None or ArchetypesParam == '' else ArchetypesParam
-        MassivArchetypesApd         = [MassivArchetypes, Archetypes, Spell.Archetype]
-        DamageTypesParam            = parametrsoutput(request.form['DamageTypes'])
-        MassivDamageTypes           = [''] if DamageTypesParam is None or DamageTypesParam == '' else DamageTypesParam
-        MassivDamageTypessApd       = [MassivDamageTypes, DamageTypes, Spell.DamageType]
-        LanguagesParam              = parametrsoutput(request.form['Languages'])
-        MassivLanguages             = [''] if LanguagesParam is None or LanguagesParam == '' else LanguagesParam
-        MassivLanguagesApd          = [MassivLanguages, Languages, Spell.Language]
-        AbilitiesParam              = parametrsoutput(request.form['Abilities'])
-        MassivAbilities             = [''] if AbilitiesParam is None or AbilitiesParam == '' else AbilitiesParam
-        MassivAbilitiesApd          = [MassivAbilities, Abilities, Spell.Abilitie]
-        EffectsResistanceParam      = parametrsoutput(request.form['EffectsResistance'])
-        MassivEffectsResistance     = [''] if EffectsResistanceParam is None or EffectsResistanceParam =='' else EffectsResistanceParam
-        MassivEffectsResistanceApd  = [MassivEffectsResistance, Effects, Spell.EffectResistance]
-        EffectsParam                = parametrsoutput(request.form['Effects'])
-        MassivEffects               = ['']  if EffectsParam is None or EffectsParam == '' else EffectsParam
-        MassivEffectsApd            = [MassivEffects, Effects, Spell.Effect]
+        MassivClassesApd            = MassivTablesDates([request.form, 'Classes'            , Classes           , Spell.Class])
+        MassivArchetypesApd         = MassivTablesDates([request.form, 'Archetypes'         , Archetypes        , Spell.Archetype])
+        MassivDamageTypessApd       = MassivTablesDates([request.form, 'DamageTypes'        , DamageTypes       , Spell.DamageType])
+        MassivEffectsResistanceApd  = MassivTablesDates([request.form, 'EffectsResistance'  , Effects           , Spell.EffectsResistance])
+        MassivEffectsApd            = MassivTablesDates([request.form, 'Effects'            , Effects           , Spell.Effect])
+        MassivLanguagesApd          = MassivTablesDates([request.form, 'Languages'          , Languages         , Spell.Language])
+        MassivAbilitiesApd          = MassivTablesDates([request.form, 'Abilities'          , Abilities         , Spell.Abilitie])
         MassivDates                 = [MassivClassesApd,MassivArchetypesApd,MassivDamageTypessApd,MassivLanguagesApd
                                        ,MassivAbilitiesApd,MassivEffectsResistanceApd,MassivEffectsApd]
         res = appenddatas(MassivDates)
@@ -836,9 +695,7 @@ def CreateTools():
         Weight              = request.form['Weight']
         Cost                = request.form['Cost']
         Tool                = Tools(Name=ToolName, Discription=Discription, Weight=Weight, Cost=Cost)
-        ToolTypesParam      = parametrsoutput(request.form['ToolTypes'])
-        MassivToolTypes     = [''] if ToolTypesParam is None or ToolTypesParam == '' else ToolTypesParam
-        MassivToolTypesApd  = [MassivToolTypes, ToolTypes, Tool.ToolType]
+        MassivToolTypesApd  = MassivTablesDates([request.form, 'ToolTypes', ToolTypes, Tool.ToolType])
         MassivDates         = [MassivToolTypesApd]
         res = appenddatas(MassivDates)
         if res:
@@ -890,15 +747,9 @@ def CreateWeapoons():
         Damage      = request.form['Damage']
         Weapoon               = Weapoons(Name=WeapoonName, Discription=Discription, Weight=Weight
                                          , Cost=Cost, Damage=Damage)
-        WeapoonTypesParam     = parametrsoutput(request.form['WeapoonTypes'])
-        MassivWeapoonTypes    = ['']  if WeapoonTypesParam is None or WeapoonTypesParam == '' else WeapoonTypesParam
-        MassivWeapoonTypesApd = [MassivWeapoonTypes, WeapoonTypes, Weapoon.WeapoonType]
-        FeaturesParam         = parametrsoutput(request.form['Features'])
-        MassivFeatures        = [''] if FeaturesParam is None or FeaturesParam == '' else FeaturesParam
-        MassivFeaturesApd     = [MassivFeatures, Features, Weapoon.Feature]
-        DamageTypesParam      = parametrsoutput(request.form['DamageTypes'])
-        MassivDamageTypes     = [''] if DamageTypesParam is None or DamageTypesParam == '' else DamageTypesParam
-        MassivDamageTypesApd  = [MassivDamageTypes, DamageTypes, Weapoon.DamageType]
+        MassivWeapoonTypesApd = MassivTablesDates([request.form, 'WeapoonTypes', WeapoonTypes, Weapoon.WeapoonType])
+        MassivFeaturesApd     = MassivTablesDates([request.form, 'Features', Features, Weapoon.Feature])
+        MassivDamageTypesApd  = MassivTablesDates([request.form, 'DamageTypes', DamageTypes, Weapoon.DamageType])
         MassivDates           = [MassivWeapoonTypesApd,MassivDamageTypesApd,MassivFeaturesApd]
         res = appenddatas(MassivDates)
         if res:
@@ -1420,21 +1271,24 @@ def EditWeapoonTypes():
 def EditPost():
     if request.method == 'POST':
         Parametrs = request.form
-        if request.form['two_buttons'] == "update":
-            updateTrue = UpdateTable(Parametrs)
-            if type(updateTrue) != bool:
-                db.session.add(updateTrue)
-                db.session.commit()
-            else:
-                db.session.rollback()
+        if 'two_buttons' in request.form:
+            if request.form['two_buttons'] == "update":
+                updateTrue = UpdateTable(Parametrs)
+                if type(updateTrue) != bool:
+                    db.session.add(updateTrue)
+                    db.session.commit()
+                else:
+                    db.session.rollback()
+                return render_template("EditMaterial.html")
+            elif request.form['two_buttons'] == "remove":
+                removeTrue = RemoveTable(Parametrs)
+                if removeTrue:
+                    db.session.commit()
+                else:
+                    db.session.rollback()
             return render_template("EditMaterial.html")
-        elif request.form['two_buttons'] == "remove":
-            removeTrue = RemoveTable(Parametrs)
-            if removeTrue:
-                db.session.commit()
-            else:
-                db.session.rollback()
-        return render_template("EditMaterial.html")
+        else:
+            return render_template("EditMaterial.html")
     return render_template("EditMaterial.html")
 
 
