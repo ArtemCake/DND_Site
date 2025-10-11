@@ -1,7 +1,10 @@
+from Crypto.Util.RFC1751 import binary
 from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
-from functions.functions import (appenddatas, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, MassivTablesDates)
+from mammoth.documents import image
+from functions.functions import (appenddatas, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, MassivTablesDates,
+                                 FileDelete)
 import logging
 from functions.Classes import *
 
@@ -50,11 +53,19 @@ def create_tables():
 @app.route("/CreateAbilities", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateAbilities():
-    DateTabels = [['AbilitieName', 'Название способности', False], ['Discription', 'Описание', False]]
+    DateTabels = [['AbilitieName', 'Название способности', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         AbilitiesName   = request.form['AbilitieName']
         Discription     = request.form['Discription']
-        abilities       = Abilities(Name=AbilitiesName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        abilities = Abilities(Name=AbilitiesName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(abilities)
             db.session.commit()
@@ -86,7 +97,7 @@ def CreateArchetypes():
         , [skills, 'Skills', 'Владение навыками', False], [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]
         , [GunOwnership, 'GunOwnership', 'Владение оружием', False], [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]
         , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]
-        , [classes, 'Classes', 'Класс', True]]
+        , [classes, 'Classes', 'Класс', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ArchetypeName   = request.form['ArchetypeName']
         Discription     = request.form['Discription']
@@ -95,8 +106,15 @@ def CreateArchetypes():
             NotArmorSafe=True
         else:
             NotArmorSafe=False
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Archetype = Archetypes(Name=ArchetypeName, Discription=Discription, NotArmorSafe=NotArmorSafe
-                                , ArmorClass=ArmorClass)
+                               , ArmorClass=ArmorClass, imageName=imageName, image=image)
         MassivClassesApd            = MassivTablesDates([request.form, 'Classes'            , Classes            , Archetype.Class])
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Archetype.Characteristic])
         MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Archetype.DamageResistance])
@@ -132,7 +150,8 @@ def CreateArmors():
     armorTypes = ArmorTypes.query.all()
     DateTabels = [['ArmorName', 'Название доспеха', False], ['Discription', 'Описание', False],['Hindrance', 'Помеха', True]
                 , ['Weight', 'Вес', False], ['Power', 'Сила', False], ['Cost', 'Цена', False], ['ArmorClass', 'Классс доспеха', False]
-                , ['ArmorClass', 'Класс брони без доспехов', False], [armorTypes, 'ArmorTypes', 'Тип доспеха', True]]
+        , ['ArmorClass', 'Класс брони без доспехов', False], [armorTypes, 'ArmorTypes', 'Тип доспеха', True],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ArmorName   = request.form['ArmorName']
         Discription = request.form['Discription']
@@ -145,8 +164,15 @@ def CreateArmors():
             Hindrance = True
         else:
             Hindrance = False
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         armors = Armors(Name=ArmorName, Discription=Discription, Weight=Weight, Power=Power
-                             , Cost=Cost, ArmorClass=ArmorClass, Hindrance=Hindrance)
+                        , Cost=Cost, ArmorClass=ArmorClass, Hindrance=Hindrance, imageName=imageName, image=image)
         MassivArmorTypesApd =  MassivTablesDates([request.form, 'ArmorTypes',ArmorTypes , armors.ArmorType])
         MassivDates         = [MassivArmorTypesApd]
         res = appenddatas(MassivDates)
@@ -166,11 +192,19 @@ def CreateArmors():
 @app.route("/CreateArmorTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArmorTypes():
-    DateTabels = [['ArmorTypeName', 'Название способности', False], ['Discription', 'Описание', False]]
+    DateTabels = [['ArmorTypeName', 'Название способности', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ArmorTypeName   = request.form['ArmorTypeName']
         Discription     = request.form['Discription']
-        ArmorType       = ArmorTypes(Name=ArmorTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        ArmorType = ArmorTypes(Name=ArmorTypeName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(ArmorType)
             db.session.commit()
@@ -200,11 +234,18 @@ def CreateAtributes():
         , [spells, 'Spells', 'Дополнительные заклинания', False]           , [skills, 'Skills', 'Владение навыками', False]
         , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
         , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]
-        , [abilities, 'Abilities', 'Особые способности', False]]
+        , [abilities, 'Abilities', 'Особые способности', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         AttributeName               = request.form['AttributeName']
         Discription                 = request.form['Discription']
-        Attribute                   = Atributes(Name=AttributeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Attribute = Atributes(Name=AttributeName, Discription=Discription, imageName=imageName, image=image)
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Attribute.Characteristic])
         MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Attribute.DamageResistance])
         MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , Attribute.DamageImmunity])
@@ -243,11 +284,19 @@ def CreateBackgrounds():
     languages        = Languages.query.all()
     DateTabels = [['BackgroundName', 'Название предыстрории', False], ['Discription', 'Описание', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
         , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
-        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]]
+        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False],
+                  [languages, 'Languages', 'Владение языками', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         BackgroundName   = request.form['BackgroundName']
         Discription     = request.form['Discription']
-        Background                  = Backgrounds(Name=BackgroundName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Background = Backgrounds(Name=BackgroundName, Discription=Discription, imageName=imageName, image=image)
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices', Characteristices  , Background.Characteristic])
         MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'          , Spells            , Background.Spell])
         MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'          , Skills            , Background.Skill])
@@ -274,11 +323,19 @@ def CreateBackgrounds():
 def CreateCharacteristices():
     skills = Skills.query.all()
     DateTabels = [['CharacteristicName', 'Название характеристики', False], ['Discription', 'Описание', False]
-                , [skills, 'Skills', 'Владение навыками', False]]
+        , [skills, 'Skills', 'Владение навыками', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         CharacteristicName   = request.form['CharacteristicName']
         Discription          = request.form['Discription']
-        Characteristic       = Characteristices(Name=CharacteristicName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Characteristic = Characteristices(Name=CharacteristicName, Discription=Discription, imageName=imageName,
+                                          image=image)
         MassivSkillsApd      = MassivTablesDates([request.form, 'Skills', Skills, Characteristic.Skill])
         MassivDates          = [MassivSkillsApd]
         res = appenddatas(MassivDates)
@@ -309,7 +366,8 @@ def CreateClasses():
                 , ['ArmorClass', 'Класс брони без доспехов', False], [characteristices, 'Characteristices', 'Владение характеристиками', False]
                 , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
                 , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
-                , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]]
+        , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False],
+                  [languages, 'Languages', 'Владение языками', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ArmorClass  = request.form['ArmorClass']
         Discription = request.form['Discription']
@@ -318,8 +376,15 @@ def CreateClasses():
             NotArmorSafe = True
         else:
             NotArmorSafe = False
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Class = Classes(Name=ClassName, Discription=Discription, NotArmorSafe=NotArmorSafe
-                                , ArmorClass=ArmorClass)
+                        , ArmorClass=ArmorClass, imageName=imageName, image=image)
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Class.Characteristic])
         MassivSpellsApd             = MassivTablesDates([request.form, 'Spells'             , Spells             , Class.Spell])
         MassivSkillsApd             = MassivTablesDates([request.form, 'Skills'             , Skills             , Class.Skill])
@@ -347,11 +412,19 @@ def CreateClasses():
 @app.route("/CreateDamageTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateDamageTypes():
-    DateTabels = [['DamageTypeName', 'Название типа урона', False], ['Discription', 'Описание', False]]
+    DateTabels = [['DamageTypeName', 'Название типа урона', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         DamageTypeName  = request.form['DamageTypeName']
         Discription     = request.form['Discription']
-        DamageType      = DamageTypes(Name=DamageTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        DamageType = DamageTypes(Name=DamageTypeName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(DamageType)
             db.session.commit()
@@ -365,11 +438,19 @@ def CreateDamageTypes():
 @app.route("/CreateEffects", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEffects():
-    DateTabels = [['EffectName', 'Название эффекта', False], ['Discription', 'Описание', False]]
+    DateTabels = [['EffectName', 'Название эффекта', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         EffectName  = request.form['EffectName']
         Discription = request.form['Discription']
-        Effect      = Effects(Name=EffectName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Effect = Effects(Name=EffectName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(Effect)
             db.session.commit()
@@ -386,13 +467,21 @@ def CreateEquipments():
     equipmentTypes = EquipmentTypes.query.all()
     DateTabels = [['EquipmentName', 'Название предыстрории', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
-                    , [equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False]]
+        , [equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         EquipmentName   = request.form['EquipmentName']
         Discription = request.form['Discription']
         Weight      = request.form['Weight']
         Cost        = request.form['Cost']
-        Equipment   = Equipments(Name=EquipmentName, Discription=Discription, Weight=Weight, Cost=Cost)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Equipment = Equipments(Name=EquipmentName, Discription=Discription, Weight=Weight, Cost=Cost,
+                               imageName=imageName, image=image)
         MassivEquipmentTypesApd = MassivTablesDates([request.form, 'EquipmentTypes', EquipmentTypes, Equipment.GunOwnership])
         MassivDates             = [MassivEquipmentTypesApd]
         res = appenddatas(MassivDates)
@@ -412,11 +501,20 @@ def CreateEquipments():
 @app.route("/CreateEquipmentTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEquipmentTypes():
-    DateTabels = [['EquipmentTypeName', 'Название типа снаряжения', False], ['Discription', 'Описание', False]]
+    DateTabels = [['EquipmentTypeName', 'Название типа снаряжения', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         EquipmentTypeName   = request.form['EquipmentTypeName']
         Discription         = request.form['Discription']
-        EquipmentType       = EquipmentTypes(Name=EquipmentTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        EquipmentType = EquipmentTypes(Name=EquipmentTypeName, Discription=Discription, imageName=imageName,
+                                       image=image)
         try:
             db.session.add(EquipmentType)
             db.session.commit()
@@ -430,11 +528,19 @@ def CreateEquipmentTypes():
 @app.route("/CreateFeatures", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateFeatures():
-    DateTabels = [['FeaturesName', 'Название свойства оружия', False], ['Discription', 'Описание', False]]
+    DateTabels = [['FeaturesName', 'Название свойства оружия', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         FeaturesName = request.form['FeaturesName']
         Discription  = request.form['Discription']
-        features     = Features(Name=FeaturesName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        features = Features(Name=FeaturesName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(features)
             db.session.commit()
@@ -449,14 +555,23 @@ def CreateFeatures():
 @roles_accepted('Admin', 'Master')
 def CreateLanguages():
     DateTabels = [['LanguageName', 'Название языка', False], ['Discription', 'Описание', False]
-                  ,['TypicalRepresentative', 'Типичные представители', False],['Writing', 'Письменность', False]]
+        , ['TypicalRepresentative', 'Типичные представители', False], ['Writing', 'Письменность', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         LanguageName            = request.form['LanguageName']
         Discription             = request.form['Discription']
         TypicalRepresentative   = request.form['TypicalRepresentative']
         Writing                 = request.form['Writing']
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Language                = Languages(Name=LanguageName, Discription=Discription
-                                             , TypicalRepresentative=TypicalRepresentative, Writing=Writing)
+                                            , TypicalRepresentative=TypicalRepresentative, Writing=Writing,
+                                            imageName=imageName, image=image)
         try:
             db.session.add(Language)
             db.session.commit()
@@ -490,14 +605,23 @@ def CreateMagicalItems():
         , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False], [GunOwnership, 'GunOwnership', 'Владение оружием', False]
         , [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False], [languages, 'Languages', 'Владение языками', False]
         , [abilities, 'Abilities', 'Особые способности', False], [armors, 'ArmorTypes', 'Доспех основа магического предмета', True]
-        , [GunOwnership, 'WeapoonTypes', 'Оружие основа магического предмета', True], [magicalItemTypes, 'MagicalItemTypes', 'Тип магического предмета', True]]
+        , [GunOwnership, 'WeapoonTypes', 'Оружие основа магического предмета', True],
+                  [magicalItemTypes, 'MagicalItemTypes', 'Тип магического предмета', True],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         MagicalItemsName    = request.form['MagicalItemsName']
         Discription         = request.form['Discription']
         PowerBonus          = request.form['PowerBonus']
         ArmorBonus          = request.form['ArmorBonus']
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         MagicalItem         = MagicalItems(Name=MagicalItemsName, Discription=Discription, ArmorBonus=ArmorBonus
-                                , PowerBonus=PowerBonus)
+                                           , PowerBonus=PowerBonus, imageName=imageName, image=image)
         MassivMagicalItemTypesApd   = MassivTablesDates([request.form, 'MagicalItemTypes'   , MagicalItemsTypes  , MagicalItem.MagicalItemType])
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , MagicalItem.Characteristic])
         MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , MagicalItem.DamageResistance])
@@ -533,11 +657,20 @@ def CreateMagicalItems():
 @app.route("/CreateMagicalItemTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateMagicalItemTypes():
-    DateTabels = [['MagicalItemTypeName', 'Название типа магического предмета', False], ['Discription', 'Описание', False]]
+    DateTabels = [['MagicalItemTypeName', 'Название типа магического предмета', False],
+                  ['Discription', 'Описание', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         MagicalItemTypeName = request.form['MagicalItemTypeName']
         Discription         = request.form['Discription']
-        MagicalItemsType    = MagicalItemsTypes(Name=MagicalItemTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        MagicalItemsType = MagicalItemsTypes(Name=MagicalItemTypeName, Discription=Discription, imageName=imageName,
+                                             image=image)
         try:
             db.session.add(MagicalItemsType)
             db.session.commit()
@@ -568,7 +701,8 @@ def CreateRaces():
         , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [spells, 'Spells', 'Дополнительные заклинания', False]
         , [skills, 'Skills', 'Владение навыками', False], [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]
         , [GunOwnership, 'GunOwnership', 'Владение оружием', False], [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]
-        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]]
+        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         RaceName        = request.form['RaceName']
         Discription     = request.form['Discription']
@@ -578,8 +712,16 @@ def CreateRaces():
         Swim            = request.form['Swim']
         Fight           = request.form['Fight']
         Armor           = request.form['Armor']
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Race            = Races(Name=RaceName, Discription=Discription
-                                , Speed=Speed, Fly=Fly, Climb=Climb, Swim=Swim, Fight=Fight, Armor=Armor)
+                                , Speed=Speed, Fly=Fly, Climb=Climb, Swim=Swim, Fight=Fight, Armor=Armor,
+                                imageName=imageName, image=image)
         MassivCharacteristicesApd   = MassivTablesDates([request.form, 'Characteristices'   , Characteristices   , Race.Characteristic])
         MassivDamageResistanceApd   = MassivTablesDates([request.form, 'DamageResistance'   , DamageTypes        , Race.DamageResistance])
         MassivDamageImmunityApd     = MassivTablesDates([request.form, 'DamageImmunity'     , DamageTypes        , Race.DamageImmunity])
@@ -611,11 +753,19 @@ def CreateRaces():
 @app.route("/CreateSkills", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateSkills():
-    DateTabels = [['SkillName', 'Название навыка', False], ['Discription', 'Описание', False]]
+    DateTabels = [['SkillName', 'Название навыка', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         SkillName   = request.form['SkillName']
         Discription = request.form['Discription']
-        Skill       = Skills(Name=SkillName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Skill = Skills(Name=SkillName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(Skill)
             db.session.commit()
@@ -642,7 +792,8 @@ def CreateSpells():
         , ['ArmorClass', 'Класс брони без доспехов', False], [damageTypes, 'DamageTypes', 'Тип урона', False]
         , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False], [effects, 'Effects', 'Эффекты', False]
         , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]
-        , [classes, 'Classes', 'Доступно для классов', True] , [archetypes, 'Archetypes', 'Доступно для подклассов', True]]
+        , [classes, 'Classes', 'Доступно для классов', True],
+                  [archetypes, 'Archetypes', 'Доступно для подклассов', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         SpellName           = request.form['SpellName']
         Discription         = request.form['Discription']
@@ -656,9 +807,17 @@ def CreateSpells():
             Ritual = True
         else:
             Ritual = False
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Spell               = Spells(Name=SpellName, Discription=Discription, Damage=Damage
                                 , LevelSpell=LevelSpell, ApplicationTime=ApplicationTime, Distance=Distance
-                                ,Components=Components,Duration=Duration, Ritual=Ritual)
+                                     , Components=Components, Duration=Duration, Ritual=Ritual, imageName=imageName,
+                                     image=image)
         MassivClassesApd            = MassivTablesDates([request.form, 'Classes'            , Classes           , Spell.Class])
         MassivArchetypesApd         = MassivTablesDates([request.form, 'Archetypes'         , Archetypes        , Spell.Archetype])
         MassivDamageTypessApd       = MassivTablesDates([request.form, 'DamageTypes'        , DamageTypes       , Spell.DamageType])
@@ -688,13 +847,20 @@ def CreateTools():
     toolTypes = ToolTypes.query.all()
     DateTabels = [['ToolName', 'Название предыстрории', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
-                    , [toolTypes, 'ToolTypes', 'Тип инструмента', True]]
+        , [toolTypes, 'ToolTypes', 'Тип инструмента', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ToolName            = request.form['ToolName']
         Discription         = request.form['Discription']
         Weight              = request.form['Weight']
         Cost                = request.form['Cost']
-        Tool                = Tools(Name=ToolName, Discription=Discription, Weight=Weight, Cost=Cost)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        Tool = Tools(Name=ToolName, Discription=Discription, Weight=Weight, Cost=Cost, imageName=imageName, image=image)
         MassivToolTypesApd  = MassivTablesDates([request.form, 'ToolTypes', ToolTypes, Tool.ToolType])
         MassivDates         = [MassivToolTypesApd]
         res = appenddatas(MassivDates)
@@ -714,11 +880,19 @@ def CreateTools():
 @app.route("/CreateToolTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateToolTypes():
-    DateTabels = [['ToolTypeName', 'Название типа инструмента', False], ['Discription', 'Описание', False]]
+    DateTabels = [['ToolTypeName', 'Название типа инструмента', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         ToolTypeName  = request.form['ToolTypeName']
         Discription   = request.form['Discription']
-        ToolType      = ToolTypes(Name=ToolTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        ToolType = ToolTypes(Name=ToolTypeName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(ToolType)
             db.session.commit()
@@ -738,15 +912,22 @@ def CreateWeapoons():
     DateTabels = [['WeapoonName', 'Название оружия', False], ['Discription', 'Описание', False]
                     , ['Weight', 'Вес', False], ['Cost', 'Цена', False], ['Damage', 'Урон', False]
                     , [features, 'Features', 'Свойство оружия', True], [damageTypes, 'DamageTypes', 'Тип урона', True]
-                    , [weapoonTypes, 'WeapoonTypes', 'Тип оружия', True]]
+        , [weapoonTypes, 'WeapoonTypes', 'Тип оружия', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         WeapoonName    = request.form['WeapoonName']
         Discription = request.form['Discription']
         Weight      = request.form['Weight']
         Cost        = request.form['Cost']
         Damage      = request.form['Damage']
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
         Weapoon               = Weapoons(Name=WeapoonName, Discription=Discription, Weight=Weight
-                                         , Cost=Cost, Damage=Damage)
+                                         , Cost=Cost, Damage=Damage, imageName=imageName, image=image)
         MassivWeapoonTypesApd = MassivTablesDates([request.form, 'WeapoonTypes', WeapoonTypes, Weapoon.WeapoonType])
         MassivFeaturesApd     = MassivTablesDates([request.form, 'Features', Features, Weapoon.Feature])
         MassivDamageTypesApd  = MassivTablesDates([request.form, 'DamageTypes', DamageTypes, Weapoon.DamageType])
@@ -768,11 +949,19 @@ def CreateWeapoons():
 @app.route("/CreateWeapoonTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateWeapoonTypes():
-    DateTabels = [['WeapoonTypeName', 'Название типа оружия', False], ['Discription', 'Описание', False]]
+    DateTabels = [['WeapoonTypeName', 'Название типа оружия', False], ['Discription', 'Описание', False],
+                  ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         WeapoonTypeName  = request.form['WeapoonTypeName']
         Discription      = request.form['Discription']
-        WeapoonType      = WeapoonTypes(Name=WeapoonTypeName, Discription=Discription)
+        if 'image_uploads' in request.files:
+            file = request.files['image_uploads']
+            imageName = file.filename
+            image = file.read()
+        else:
+            imageName = ''
+            image = None
+        WeapoonType = WeapoonTypes(Name=WeapoonTypeName, Discription=Discription, imageName=imageName, image=image)
         try:
             db.session.add(WeapoonType)
             db.session.commit()
@@ -1270,8 +1459,9 @@ def EditWeapoonTypes():
 @roles_accepted('Admin', 'Master')
 def EditPost():
     if request.method == 'POST':
-        Parametrs = request.form
+        Parametrs = [request.form, request.files['image_uploads']]
         if 'two_buttons' in request.form:
+            oldimageName = request.form['oldimageName']
             if request.form['two_buttons'] == "update":
                 updateTrue = UpdateTable(Parametrs)
                 if type(updateTrue) != bool:
@@ -1279,6 +1469,7 @@ def EditPost():
                     db.session.commit()
                 else:
                     db.session.rollback()
+                FileDelete([oldimageName])
                 return render_template("EditMaterial.html")
             elif request.form['two_buttons'] == "remove":
                 removeTrue = RemoveTable(Parametrs)

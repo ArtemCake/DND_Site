@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/no-view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/image/view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/JoinString.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/JoinString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,18 +40,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ArtemCake"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ArtemCake&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ArtemCake/DND_Site.git",
-    "accountId": "45fb3327-ab84-40cf-8a3c-ffd7daedda45"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ArtemCake/DND_Site.git&quot;,
+    &quot;accountId&quot;: &quot;45fb3327-ab84-40cf-8a3c-ffd7daedda45&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -48,19 +61,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.app.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/templates",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.app.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/pythonProject/templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
@@ -249,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760019001217</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760036619322</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760036619322</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +294,28 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>738</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/functions.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/functions/functions.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

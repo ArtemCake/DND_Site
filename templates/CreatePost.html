@@ -3,9 +3,8 @@
 {{ Title }}
 {% endblock %}
 {% block content %}
-<Form method="POST"  id="{{ TableName }}Form" action="Create{{ TableName }}">
-	<label for="image_uploads">Загрузить картинку:</label>
-	<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"/>
+<Form method="POST" id="CreateForm" class="{{ TableName }}Form" action="Create{{ TableName }}"
+	  enctype="multipart/form-data">
 	{% for Date in DateTabels %}
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
 			{% if Date[0]|length > 1 %}
@@ -29,8 +28,13 @@
 					{% endfor %}
 				</div>
 			{% endif %}
+	{% elif Date[0] == "imageName" %}
+	<input type="hidden" id="oldimageName" name="oldimageName" value=""/>
+	<label for="image_uploads" id="image_uploads_label">Загрузить картинку:</label>
+	<canvas id="imageDate"></canvas>
+	<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"/>
 		{% else %}
-			{% if Date == 'Discription' %}
+	{% if Date[0] == 'Discription' %}
 				<textarea name="{{ Date[0] }}" id="{{ Date[0] }}" placeholder="{{ Date[1] }}"></textarea>
 			{% else %}
 				{% if Date[2] == True %}

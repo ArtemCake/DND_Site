@@ -281,9 +281,15 @@ margin: 0;
 
 
 /* /EditPost */
-input#TableName, input#Date_id, input#Date_id
-, input#Characteristices, input#DamageResistance, input#DamageImmunity
-, input#EffectsResistance, input#Spells, input#Skills, input#PossessionArmor, input#GunOwnership
-, input#ToolOwnership, input#Languages, input#Date_id, input#Abilities, input#ArmorClass{
-
+#image_uploads {
+        display: none;
 }
+
+#image_uploads_label {
+        font-size: 1.3em;
+        padding: 10px 15px;
+        border: 1px solid black;
+        border-radius: 4%;
+}
+
+

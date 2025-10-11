@@ -1,5 +1,7 @@
+from Crypto.Util.RFC1751 import binary
 from flask import render_template
 from .Classes import *
+import os
 
 def parametrsoutput(Resultrequest):
     ParamDate = Resultrequest
@@ -98,12 +100,15 @@ def RepresentationList():
                           , ['Ritual','Ритуал']
                           , ['Class','Классы']
                           , ['Features','Свойства оружия']
+        , ['imageName', 'Картинка']
+        , ['image', 'Картинка']
                           , ['Name','']]
 
     return RepresentationList
 
 
 def OpenVeiwPost(Parametrs):
+    AllFilesDelete()
     tableName           = Parametrs[0]
     Date_id             = Parametrs[1]
     ClassDate           = get_class(tableName)
@@ -115,8 +120,10 @@ def OpenVeiwPost(Parametrs):
         if not callable(parametr) and not variables.startswith("__"):
             if variables != 'id' and variables != 'Name':
                 if not (isinstance(parametr, list) and len(parametr) == 0):
-                    if isinstance(parametr, (int, str, list)):
+                    if isinstance(parametr, (int, str, list, bytes)):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
+                        if isinstance(parametr, bytes):
+                            FileDonload([parametr, PostDate.imageName])
                         if len(RepresentationValueArray) > 1:
                             representationValue = RepresentationValueArray[1]
                         else:
@@ -126,6 +133,7 @@ def OpenVeiwPost(Parametrs):
 
 
 def OpenEditPost(Parametrs):
+    AllFilesDelete()
     tableName           = Parametrs[0]
     Date_id             = Parametrs[1]
     OnlyvalueTablesName = Parametrs[2]
@@ -150,8 +158,10 @@ def OpenEditPost(Parametrs):
                         if variables in OnlyvalueTablesName:
                             TableOnly = True
                         variablesClassDate = type(parametr[0]).query.all()
-                    if isinstance(parametr, (int, str, list)):
+                    if isinstance(parametr, (int, str, list, bytes)):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
+                        if isinstance(parametr, (bytes)):
+                            FileDonload([parametr, PostDate.imageName])
                         if len(RepresentationValueArray) > 1:
                             representationValue = RepresentationValueArray[1]
                         else:
@@ -160,9 +170,33 @@ def OpenEditPost(Parametrs):
     return render_template("EditPost.html",DatesMassiv=[Date_id, tableName, DateName, PostDates])
 
 
+def FileDonload(Parametrs):
+    fileBinaryDate = Parametrs[0]
+    fileNames = Parametrs[1]
+    if fileNames != '':
+        fileName = 'static/image/' + fileNames
+        with open(fileName, 'wb') as file:
+            file.write(fileBinaryDate)
+
+
+def FileDelete(Parametrs):
+    fileName = 'static/image/' + Parametrs[0]
+    os.remove(fileName)
+
+
+def AllFilesDelete():
+    folder = 'static/image'
+    for filename in os.listdir(folder):
+        print(filename)
+        if filename != '':
+            os.remove(folder + '/' + filename)
+
+
 def UpdateTable(Parametrs):
-    ClassDate = get_class(Parametrs['tableName'])
-    PostDate = ClassDate.query.filter_by(id=Parametrs['Date_id']).first()
+    DateForm = Parametrs[0]
+    FileDate = Parametrs[1]
+    ClassDate = get_class(DateForm['tableName'])
+    PostDate = ClassDate.query.filter_by(id=DateForm['Date_id']).first()
     try:
         for variables in dir(PostDate):
             parametr = getattr(PostDate, variables)
@@ -173,11 +207,14 @@ def UpdateTable(Parametrs):
                             classparam = type(parametr[0])
                             if parametr is not None:
                                 parametr.clear()
-                                for date_id in Parametrs[variables].split(sep=','):
+                                for date_id in DateForm[variables].split(sep=','):
                                     parametr.append(classparam.query.filter_by(id=date_id).first())
                         else:
-                            if Parametrs.get(variables) is not None:
-                                setattr(PostDate, variables, Parametrs[variables])
+                            if DateForm.get(variables) is not None:
+                                setattr(PostDate, variables, DateForm[variables])
+                    if variables == 'image':
+                        PostDate.image = FileDate.read()
+                        PostDate.imageName = FileDate.filename
         return PostDate
     except:
         return False

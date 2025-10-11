@@ -17,27 +17,34 @@
         {% else %}
 
             {% if PostDate[0] != '' %}
-                {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
-                    <div class="input-item">
-                        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                        <input type="hidden" name="Skills">
-                        <ul>
-                             {% for Parametr in PostDate[1] %}
-                            <li>
-                                <input type="checkbox" name="{{ PostDate[2] }}Print" class ='{{ PostDate[2] }}Print'
-                                       id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="Даваемые навыками"
-                                       value="{{ Parametr.id }}" checked disabled/> {{ Parametr.Name }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% else %}
-                <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-                {% if PostDate[2] == "Discription" %}
-                <textarea name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[2] }}" disabled> {{ PostDate[1] }}  </textarea>
-                {% else %}
-                 <input type="text" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}" value="{{ PostDate[1] }}" disabled/>
-                {% endif %}
+    {% if PostDate[2] != 'image' %}
+    {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
+    <div class="input-item">
+        <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+        <input type="hidden" name="Skills">
+        <ul>
+            {% for Parametr in PostDate[1] %}
+            <li>
+                <input type="checkbox" name="{{ PostDate[2] }}Print" class='{{ PostDate[2] }}Print'
+                       id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="Даваемые навыками"
+                       value="{{ Parametr.id }}" checked disabled/> {{ Parametr.Name }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% elif PostDate[2] == "imageName" %}
+    {% if PostDate[1] != '' %}
+    <img id="oldimageName" name="oldimageName" src="static/image/{{ PostDate[1] }}">
+    {% endif %}
+    {% else %}
+    <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
+    {% if PostDate[2] == "Discription" %}
+    <textarea name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[2] }}" disabled> {{ PostDate[1] }}  </textarea>
+    {% else %}
+    <input type="text" name="{{ PostDate[2] }}" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
+           value="{{ PostDate[1] }}" disabled/>
+    {% endif %}
+    {% endif %}
                 {% endif %}
             {% endif %}
         {% endif %}
