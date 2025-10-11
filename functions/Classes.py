@@ -526,7 +526,7 @@ class Atributes(db.Model):
     EffectsResistance = db.relationship('Effects'           , secondary=Atributes_EffectsResistance
                                             , backref=db.backref("AtributesEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
-    Abilities         = db.relationship('Abilities'         , secondary=Atributes_Abilities
+    Abilitie = db.relationship('Abilities', secondary=Atributes_Abilities
                                             , backref=db.backref("AtributesAbilities"            , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
 
@@ -656,10 +656,10 @@ class Languages(db.Model):
     Discription             = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Writing = db.Column(db.Text, nullable=True)
     TypicalRepresentative   = db.relationship('Races', secondary=Languages_Races
                             , backref=db.backref("LanguagesRaces"    , cascade='all,delete', single_parent=True, passive_deletes=True)
                                                                      , cascade='all,delete', single_parent=True)
-    Writing                 = db.Column(db.Text, nullable=True)
 
 
 class MagicalItems(db.Model):
@@ -701,7 +701,7 @@ class MagicalItems(db.Model):
     Language            = db.relationship('Languages'       , secondary=MagicalItems_Languages
                                             , backref=db.backref("MagicalItemsLanguages"            , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
-    EffectResistance   = db.relationship('Effects'         , secondary=MagicalItems_EffectsResistance
+    EffectsResistance = db.relationship('Effects', secondary=MagicalItems_EffectsResistance
                                             , backref=db.backref("MagicalItemsEffectsResistance"    , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
     Effect              = db.relationship('Effects'         , secondary=MagicalItems_Effects
@@ -770,7 +770,7 @@ class Races(db.Model):
     EffectsResistance   = db.relationship('Effects'         , secondary=Races_EffectsResistance
                                             , backref=db.backref("RacesEffectsResistance"       , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
-    Abilities           = db.relationship('Abilities'       , secondary=Races_Abilities
+    Abilitie = db.relationship('Abilities', secondary=Races_Abilities
                                             , backref=db.backref("RacesAbilities"               , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
 
@@ -807,7 +807,7 @@ class Spells(db.Model):
     DamageType        = db.relationship('DamageTypes'       , secondary=Spells_DamageTypes
                                             , backref=db.backref("SpellsDamageTypes"        , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
-    EffectResistance  = db.relationship('Effects'           , secondary=Spells_EffectsResistance
+    EffectsResistance = db.relationship('Effects', secondary=Spells_EffectsResistance
                                             , backref=db.backref("SpellsEffectsResistance"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
     Effect            = db.relationship('Effects'           , secondary=Spells_Effects

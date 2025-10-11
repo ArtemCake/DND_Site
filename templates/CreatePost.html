@@ -7,7 +7,7 @@
 	  enctype="multipart/form-data">
 	{% for Date in DateTabels %}
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
-			{% if Date[0]|length > 1 %}
+	{% if Date[0]|length > 0 %}
 				<div class="input-item">
 					<label for="{{ Date[1] }}">{{ Date[2] }}:</label>
 					<input type="hidden" class="hiddenUpdate" name="{{ Date[1] }}" id="{{ Date[1] }}" placeholder="{{ Date[2] }}">
@@ -29,7 +29,7 @@
 				</div>
 			{% endif %}
 	{% elif Date[0] == "imageName" %}
-	<input type="hidden" id="oldimageName" name="oldimageName" value=""/>
+	<input type="hidden" id="oldimageName" name="oldimageName" value="static/image/"/>
 	<label for="image_uploads" id="image_uploads_label">Загрузить картинку:</label>
 	<canvas id="imageDate"></canvas>
 	<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png"/>

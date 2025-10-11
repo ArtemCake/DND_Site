@@ -1,5 +1,4 @@
-from Crypto.Util.RFC1751 import binary
-from flask import render_template
+from flask import render_template, request
 from .Classes import *
 import os
 
@@ -9,39 +8,22 @@ def parametrsoutput(Resultrequest):
         ParamMassiv = []
     else:
         ParamMassiv = ParamDate.split(sep=',')
-
+    if 'on' in ParamMassiv:
+        ParamMassiv.remove('on')
     return ParamMassiv
 
 
-def appenddatas(MassivDates):
-    for MassivDate in MassivDates:
-        Dates           = MassivDate[0]
-        TabelsParametrs = MassivDate[1]
-        ParametrTabls   = MassivDate[2]
-        try:
-            for Date in Dates:
-                date = TabelsParametrs.query.filter_by(id=Date).first()
-                ParametrTabls.append(date)
-            return True
-        except:
-            return False
-
-
-def MassivTablesDates(Parametrs):
-    RequestForm     = Parametrs[0]
-    TablesName      = Parametrs[1]
-    Tables          = Parametrs[2]
-    TableParametr   = Parametrs[3]
-    if TablesName in RequestForm:
-        Param = parametrsoutput(RequestForm[TablesName])
-    else:
-        Param = ''
-    if Param == '':
-        MassivDates = []
-    else:
-        MassivDates = Param
-
-    return [MassivDates, Tables, TableParametr]
+def appenddatas(Parametrs):
+    Dates = Parametrs[0]
+    TabelsParametrs = Parametrs[1]
+    ParametrTabls = Parametrs[2]
+    try:
+        for Date in Dates:
+            date = TabelsParametrs.query.filter_by(id=Date).first()
+            ParametrTabls.append(date)
+        return True
+    except:
+        return False
 
 
 def ParamNameRepresentationValue(ParamName):
@@ -170,6 +152,30 @@ def OpenEditPost(Parametrs):
     return render_template("EditPost.html",DatesMassiv=[Date_id, tableName, DateName, PostDates])
 
 
+def CreateDate(Parametrs):
+    Object = Parametrs[0]
+    requestDate = Parametrs[1]
+    Dateslist = Parametrs[2]
+    dates = requestDate.form
+    filles = requestDate.files
+    for variables in dir(Object):
+        parametr = getattr(Object, variables)
+        if not callable(parametr) and not variables.startswith("__"):
+            if variables != 'id':
+                if variables in dates:
+                    setattr(Object, variables, dates[variables])
+                else:
+                    for Datelist in Dateslist:
+                        if isinstance(Datelist, (list)):
+                            if Datelist[1] == variables:
+                                appenddatas([parametrsoutput(dates[Datelist[0]]), get_class(Datelist[0]), parametr])
+    if len(filles) > 0:
+        Object.image = filles['image_uploads'].read()
+        Object.imageName = filles['image_uploads'].filename
+
+    return Object
+
+
 def FileDonload(Parametrs):
     fileBinaryDate = Parametrs[0]
     fileNames = Parametrs[1]
@@ -221,9 +227,10 @@ def UpdateTable(Parametrs):
 
 
 def RemoveTable(Parametrs):
-    ClassDate = get_class(Parametrs['tableName'])
+    PaaramDelete = Parametrs[0]
+    ClassDate = get_class(PaaramDelete['tableName'])
     try:
-        PostDate = ClassDate.query.filter_by(id=Parametrs['Date_id']).first()
+        PostDate = ClassDate.query.filter_by(id=PaaramDelete['Date_id']).first()
         for variables in dir(PostDate):
             parametr = getattr(PostDate, variables)
             if not callable(parametr) and (not variables.startswith("__") or variables.startswith("_sa_")):
@@ -232,7 +239,7 @@ def RemoveTable(Parametrs):
                         if isinstance(parametr, list):
                             if parametr is not None:
                                 parametr.clear()
-        ClassDate.query.filter_by(id=Parametrs['Date_id']).delete()
+        ClassDate.query.filter_by(id=PaaramDelete['Date_id']).delete()
         return True
     except:
         return False
