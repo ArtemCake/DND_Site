@@ -4,70 +4,78 @@ $(function() {
         $('input:checked').each(function() {
             values.push($(this).val());
         });
-        $('[class="hiddenUpdate"]').attr({value: values.join(', ')});
+        $('[class="hiddenUpdate"]').attr({
+            value: values.join(', ')
+        });
     });
 });
 
-window.onload = function(){
+window.onload = function() {
     const mainForm = document.getElementById('EditForm')
-    mainForm.onsubmit = function(event){
-    if (document.getElementById('update') != event.submitter && document.getElementById('closeOn')!= event.submitter){
-    event.preventDefault();
-    }
-    }
+    if (mainForm != null) {
+        mainForm.onsubmit = function(event) {
+            if (document.getElementById('update') != event.submitter && document.getElementById('closeOn') != event.submitter) {
+                event.preventDefault();
+            };
+        };
+    };
 };
 
-  var dialog = document.querySelector('dialog')
-  document.querySelector('#open').onclick = function () {
-    dialog.showModal()
-  };
+var dialog = document.querySelector('dialog')
+if (dialog != null) {
+    document.querySelector('#open').onclick = function() {
+        dialog.showModal()
+    };
 
-  document.querySelector('#closeOn').onclick = function () {
-  dialog.close()
-};
+    document.querySelector('#closeOn').onclick = function() {
+        dialog.close()
+    };
 
-  document.querySelector('#closeOff').onclick = function () {
-  dialog.close()
+    document.querySelector('#closeOff').onclick = function() {
+        dialog.close()
+    };
 };
 
 const canvas = document.getElementById('imageDate');
-const ctx = canvas.getContext('2d');
-pic       = new Image();              // "Создаём" изображение
-pic.src    = 'static/image/'+document.getElementById("oldimageName").value;  // Источник изображения, позаимствовано на хабре
+if (canvas != null) {
+    const ctx = canvas.getContext('2d');
+    pic = new Image(); // "Создаём" изображение
+    pic.src = 'static/image/' + document.getElementById("oldimageName").value; // Источник изображения, позаимствовано на хабре
+    console.log("13123");
+    const imageInput = document.getElementById('image_uploads');
+    let uploadedImage = null;
+    console.log("Усп312ех");
+    // Load the image onto the canvas
+    imageInput.addEventListener('change', (event) => {
+        console.log("1");
+        const file = event.target.files[0];
+        const reader = new FileReader();
 
-const imageInput = document.getElementById('image_uploads');
-let uploadedImage = null;
+        reader.onload = (e) => {
+            console.log("2");
+            const img = new Image();
+            img.src = e.target.result;
+            img.onload = () => {
+                uploadedImage = img;
+                drawImage();
+            };
+        };
 
-// Load the image onto the canvas
-imageInput.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  const reader = new FileReader();
+        reader.readAsDataURL(file);
+    });
 
-  reader.onload = (e) => {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      uploadedImage = img;
-      drawImage();
+    // Draw image and text on canvas
+    function drawImage() {
+        if (uploadedImage) {
+            // Clear canvas and set canvas dimensions to fit the image
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
+            console.log("Успех");
+        };
     };
-  };
 
-  reader.readAsDataURL(file);
-});
-
-// Draw image and text on canvas
-function drawImage() {
-  if (uploadedImage) {
-    // Clear canvas and set canvas dimensions to fit the image
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
-
-  }
+    pic.onload = function() { // Событие onLoad, ждём момента пока загрузится изображение
+        ctx.drawImage(pic, 0, 0, canvas.width, canvas.height); // Рисуем изображение от точки с координатами 0, 0
+        console.log("Успех");
+    };
 };
-
-pic.onload = function() {    // Событие onLoad, ждём момента пока загрузится изображение
-ctx.drawImage(pic, 0, 0, canvas.width, canvas.height);  // Рисуем изображение от точки с координатами 0, 0
- }
-
-
-
