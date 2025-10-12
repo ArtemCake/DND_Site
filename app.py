@@ -404,8 +404,9 @@ def CreateFeatures():
 @app.route("/CreateLanguages", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateLanguages():
+    rases = Races.query.all()
     DateTabels = [['Name', 'Название языка', False], ['Discription', 'Описание', False]
-        , ['TypicalRepresentative', 'Типичные представители', False], ['Writing', 'Письменность', False]
+        , [rases, 'TypicalRepresentative', 'Типичные представители', False], ['Writing', 'Письменность', False]
         , ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         MassivDates = [['Races', 'TypicalRepresentative', Languages().TypicalRepresentative]]
