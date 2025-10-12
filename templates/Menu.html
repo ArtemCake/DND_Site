@@ -18,6 +18,42 @@
                         <a href="{{ url_for('CreateMaterial') }}" class="nav-link px-2 text-secondary">Добавить данные по днд</a>
                      </li>
                      {% endif %}
+                     {% if (role.name == 'Gamer') %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('CreatePersonage') }}" class="nav-link px-2 text-secondary">Добавить
+                           персонажа</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('EditPersonage') }}" class="nav-link px-2 text-secondary">Изменить
+                           персонажей</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('VeiwPersonage') }}" class="nav-link px-2 text-secondary">Мои персонажи</a>
+                     </li>
+                     {% endif %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('VeiwMyGames') }}" class="nav-link px-2 text-secondary">Мои игры</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('ActiveGames') }}" class="nav-link px-2 text-secondary">Активные игры</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('CloseGames') }}" class="nav-link px-2 text-secondary">Завершённые игры</a>
+                     </li>
+                     {% if (role.name == 'Master') %}
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('CreateNewGames') }}" class="nav-link px-2 text-secondary">Начать новую
+                           игру</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('EditMyGames') }}" class="nav-link px-2 text-secondary">Редактировать мои
+                           игры</a>
+                     </li>
+                     <li class="nav-link px-2 text-secondary">
+                        <a href="{{ url_for('PersonageMyGames') }}" class="nav-link px-2 text-secondary">Персонажи из
+                           моих игр</a>
+                     </li>
+                     {% endif %}
                       {% if (role.name == 'Admin') %}
                      <li class="nav-link px-2 text-secondary">
                         <a href="{{ url_for('AdminPanel') }}" class="nav-link px-2 text-secondary">Админ панель</a>

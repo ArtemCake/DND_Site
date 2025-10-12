@@ -226,10 +226,10 @@ li.loginMobile{
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	background: url(../image/view.png) no-repeat 0 0;
+	background: url(../logo/view.png) no-repeat 0 0;
 }
 .password-control.view, .password-control-1.view, .password-control-2.view, .password-control-3.view, .password-control-4.view  {
-	background: url(../image/no-view.png) no-repeat 0 0;
+	background: url(../logo/no-view.png) no-repeat 0 0;
 }
 
 #password-input{

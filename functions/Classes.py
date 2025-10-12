@@ -387,6 +387,124 @@ Roles_Users = db.Table('Roles_Users',
         db.Column('user_id', db.Integer(), db.ForeignKey('User.id')),
         db.Column('role_id', db.Integer(), db.ForeignKey('Role.id')))
 
+StorageBags_Personages = db.Table('StorageBags_Personages',
+                                  db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                                  db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')))
+
+StorageBags_Armors = db.Table('StorageBags_Armors',
+                              db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                              db.Column('Armors_id', db.Integer(), db.ForeignKey('Armors.id')))
+
+StorageBags_Weapoons = db.Table('StorageBags_Weapoons',
+                                db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                                db.Column('Weapoons_id', db.Integer(), db.ForeignKey('Weapoons.id')))
+
+StorageBags_Tools = db.Table('StorageBags_Tools',
+                             db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                             db.Column('Tools_id', db.Integer(), db.ForeignKey('Tools.id')))
+
+StorageBags_MagicalItems = db.Table('StorageBags_MagicalItems',
+                                    db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                                    db.Column('MagicalItems_id', db.Integer(), db.ForeignKey('MagicalItems.id')))
+
+StorageBags_Equipments = db.Table('StorageBags_Equipments',
+                                  db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                                  db.Column('Equipments_id', db.Integer(), db.ForeignKey('Equipments.id')))
+
+Personages_User = db.Table('Personages_User',
+                           db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                           db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Personages_ActiveMagicalItems = db.Table('Personages_ActiveMagicalItems',
+                                         db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                         db.Column('ActiveMagicalItems_id', db.Integer(),
+                                                   db.ForeignKey('MagicalItems.id')))
+
+Personages_ActiveArmors = db.Table('Personages_ActiveArmors',
+                                   db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                   db.Column('ActiveArmors_id', db.Integer(), db.ForeignKey('Armors.id')))
+
+Personages_ActiveWeapoon = db.Table('Personages_ActiveWeapoon',
+                                    db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                    db.Column('ActiveWeapoon_id', db.Integer(), db.ForeignKey('Weapoons.id')))
+
+Personages_TypesMagic = db.Table('Personages_TypesMagic',
+                                 db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                 db.Column('TypesMagic_id', db.Integer(), db.ForeignKey('TypesMagic.id')))
+
+Personages_SpellcastingCharacteristics = db.Table('Personages_SpellcastingCharacteristics',
+                                                  db.Column('Personages_id', db.Integer(),
+                                                            db.ForeignKey('Personages.id')),
+                                                  db.Column('SpellcastingCharacteristics_id', db.Integer(),
+                                                            db.ForeignKey('Characteristices.id')))
+
+Personages_Spells = db.Table('Personages_Spells',
+                             db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                             db.Column('Spells_id', db.Integer(), db.ForeignKey('Spells.id')))
+
+Personages_PossessionArmor = db.Table('Personages_PossessionArmor',
+                                      db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                      db.Column('PossessionArmor_id', db.Integer(), db.ForeignKey('ArmorTypes.id')))
+
+Personages_GunOwnership = db.Table('Personages_GunOwnership',
+                                   db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                   db.Column('GunOwnership_id', db.Integer(), db.ForeignKey('Weapoons.id')))
+
+Personages_ToolOwnership = db.Table('Personages_ToolOwnership',
+                                    db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                    db.Column('ToolOwnership_id', db.Integer(), db.ForeignKey('Tools.id')))
+
+Personages_ResistanceDamageTypes = db.Table('Personages_ResistanceDamageTypes',
+                                            db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                            db.Column('ResistanceDamageTypes_id', db.Integer(),
+                                                      db.ForeignKey('DamageTypes.id')))
+
+Personages_ImmunityDamageTypes = db.Table('Personages_ImmunityDamageTypes',
+                                          db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                          db.Column('ImmunityDamageTypes_id', db.Integer(),
+                                                    db.ForeignKey('DamageTypes.id')))
+
+Personages_Skills = db.Table('Personages_Skills',
+                             db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                             db.Column('Skills_id', db.Integer(), db.ForeignKey('Skills.id')))
+
+Personages_Languages = db.Table('Personages_Languages',
+                                db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                db.Column('Languages_id', db.Integer(), db.ForeignKey('Languages.id')))
+
+Personages_EffectsResistance = db.Table('Personages_EffectsResistance',
+                                        db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                        db.Column('EffectsResistance_id', db.Integer(), db.ForeignKey('Effects.id')))
+
+Personages_Effects = db.Table('Personages_Effects',
+                              db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                              db.Column('Effects_id', db.Integer(), db.ForeignKey('Effects.id')))
+
+Personages_Abilities = db.Table('Personages_Abilities',
+                                db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                db.Column('Abilities_id', db.Integer(), db.ForeignKey('Abilities.id')))
+
+Personages_Characteristices = db.Table('Personages_Characteristices',
+                                       db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                       db.Column('Characteristices_id', db.Integer(),
+                                                 db.ForeignKey('Characteristices.id')))
+
+Personages_Archetypes = db.Table('Personages_Archetypes',
+                                 db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                 db.Column('Archetypes_id', db.Integer(), db.ForeignKey('Archetypes.id')))
+
+Personages_Classes = db.Table('Personages_Classes',
+                              db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                              db.Column('Classes_id', db.Integer(), db.ForeignKey('Classes.id')))
+
+Personages_Backgrounds = db.Table('Personages_Backgrounds',
+                                  db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                  db.Column('Backgrounds_id', db.Integer(), db.ForeignKey('Backgrounds.id')))
+
+Personages_Races = db.Table('Personages_Races',
+                            db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                            db.Column('Races_id', db.Integer(), db.ForeignKey('Races.id')))
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
@@ -669,6 +787,10 @@ class MagicalItems(db.Model):
     Discription         = db.Column(db.Text, nullable=True)
     PowerBonus          = db.Column(db.Text, nullable=True)
     ArmorBonus          = db.Column(db.Text, nullable=True)
+    Speed = db.Column(db.Integer, nullable=True)
+    Climb = db.Column(db.Integer, nullable=True)
+    Fly = db.Column(db.Integer, nullable=True)
+    Swim = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
     MagicalItemType     = db.relationship('MagicalItemsTypes', secondary=MagicalItems_MagicalItemsTypes
@@ -872,3 +994,168 @@ class WeapoonTypes(db.Model):
     Discription         = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+
+
+class TypesMagic(db.Model):
+    __tablename__ = 'TypesMagic'
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(300), nullable=False)
+    Discription = db.Column(db.Text, nullable=True)
+
+
+class StorageBags(db.Model):
+    __tablename__ = 'StorageBags'
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(300), nullable=False)
+    Quantity = db.Column(db.String(300), nullable=True)
+    Height = db.Column(db.String(300), nullable=True)
+    Personage = db.relationship('Personages', secondary=StorageBags_Personages
+                                , backref=db.backref("PStorageBagsPersonages", cascade='all,delete', single_parent=True,
+                                                     passive_deletes=True)
+                                , cascade='all,delete', single_parent=True)
+    Armor = db.relationship('Armors', secondary=StorageBags_Armors
+                            , backref=db.backref("StorageBagsArmors", cascade='all,delete', single_parent=True,
+                                                 passive_deletes=True)
+                            , cascade='all,delete', single_parent=True)
+    Weapoon = db.relationship('Weapoons', secondary=StorageBags_Weapoons
+                              , backref=db.backref("StorageBagsWeapoons", cascade='all,delete', single_parent=True,
+                                                   passive_deletes=True)
+                              , cascade='all,delete', single_parent=True)
+    Tool = db.relationship('Tools', secondary=StorageBags_Tools
+                           , backref=db.backref("StorageBagsTools", cascade='all,delete', single_parent=True,
+                                                passive_deletes=True)
+                           , cascade='all,delete', single_parent=True)
+    MagicalItem = db.relationship('MagicalItems', secondary=StorageBags_MagicalItems
+                                  , backref=db.backref("StorageBagsMagicalItems", cascade='all,delete',
+                                                       single_parent=True, passive_deletes=True)
+                                  , cascade='all,delete', single_parent=True)
+    Equipment = db.relationship('Equipments', secondary=StorageBags_Equipments
+                                , backref=db.backref("StorageBagsEquipments", cascade='all,delete', single_parent=True,
+                                                     passive_deletes=True)
+                                , cascade='all,delete', single_parent=True)
+
+
+class Personages(db.Model):
+    __tablename__ = 'Personages'
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(300), nullable=False)
+    LevelPersonages = db.Column(db.Integer, nullable=True)
+    LevelsClasses = db.Column(db.String(300), nullable=True)
+    Gender = db.Column(db.String(300), nullable=True)
+    ArmorClass = db.Column(db.Integer, nullable=True)
+    Initiative = db.Column(db.Integer, nullable=True)
+    Inspiration = db.Column(db.Boolean, nullable=True)
+    Mastery = db.Column(db.Integer, nullable=True)
+    SavedSuccessThrow = db.Column(db.Integer, nullable=True)
+    FailedSuccessThrow = db.Column(db.Integer, nullable=True)
+    MaxHP = db.Column(db.Integer, nullable=True)
+    HP = db.Column(db.Integer, nullable=True)
+    Damage = db.Column(db.Integer, nullable=True)
+    TimedHP = db.Column(db.Integer, nullable=True)
+    imageName = db.Column(db.String(300), nullable=True)
+    image = db.Column(db.LargeBinary, nullable=True)
+    NotArmorSafe = db.Column(db.Boolean, nullable=True)
+    Multiclassing = db.Column(db.Boolean, nullable=True)
+    HistoryPersonages = db.Column(db.Text, nullable=True)
+    PersonalityTraits = db.Column(db.Text, nullable=True)
+    Ideals = db.Column(db.Text, nullable=True)
+    Bonds = db.Column(db.Text, nullable=True)
+    Flaws = db.Column(db.Text, nullable=True)
+    FeaturesAppearance = db.Column(db.Text, nullable=True)
+    Tattoos = db.Column(db.String(300), nullable=True)
+    Hairstyle = db.Column(db.String(300), nullable=True)
+    Skin = db.Column(db.String(300), nullable=True)
+    Face = db.Column(db.String(300), nullable=True)
+    Physique = db.Column(db.String(300), nullable=True)
+    Weight = db.Column(db.Integer, nullable=True)
+    Height = db.Column(db.Integer, nullable=True)
+    ActiveMagicalItems = db.relationship('MagicalItems', secondary=Personages_ActiveMagicalItems
+                                         , backref=db.backref("PersonagesActiveMagicalItems", cascade='all,delete',
+                                                              single_parent=True, passive_deletes=True)
+                                         , cascade='all,delete', single_parent=True)
+    ActiveAromr = db.relationship('Armors', secondary=Personages_ActiveArmors
+                                  ,
+                                  backref=db.backref("PersonagesActiveArmors", cascade='all,delete', single_parent=True,
+                                                     passive_deletes=True)
+                                  , cascade='all,delete', single_parent=True)
+    ActiveWeapoon = db.relationship('Weapoons', secondary=Personages_ActiveWeapoon
+                                    , backref=db.backref("PersonagesActiveWeapoon", cascade='all,delete',
+                                                         single_parent=True, passive_deletes=True)
+                                    , cascade='all,delete', single_parent=True)
+    TypeMagic = db.relationship('TypesMagic', secondary=Personages_TypesMagic
+                                , backref=db.backref("PersonagesTypesMagic", cascade='all,delete', single_parent=True,
+                                                     passive_deletes=True)
+                                , cascade='all,delete', single_parent=True)
+    SpellcastingCharacteristics = db.relationship('Characteristices', secondary=Personages_SpellcastingCharacteristics
+                                                  , backref=db.backref("PersonagesSpellcastingCharacteristics",
+                                                                       cascade='all,delete', single_parent=True,
+                                                                       passive_deletes=True)
+                                                  , cascade='all,delete', single_parent=True)
+    Spell = db.relationship('Spells', secondary=Personages_Spells
+                            , backref=db.backref("PersonagesSpells", cascade='all,delete', single_parent=True,
+                                                 passive_deletes=True)
+                            , cascade='all,delete', single_parent=True)
+    PossessionArmor = db.relationship('ArmorTypes', secondary=Personages_PossessionArmor
+                                      , backref=db.backref("PersonagesPossessionArmor", cascade='all,delete',
+                                                           single_parent=True, passive_deletes=True)
+                                      , cascade='all,delete', single_parent=True)
+    GunOwnership = db.relationship('Weapoons', secondary=Personages_GunOwnership
+                                   , backref=db.backref("PersonagesGunOwnership", cascade='all,delete',
+                                                        single_parent=True, passive_deletes=True)
+                                   , cascade='all,delete', single_parent=True)
+    ToolOwnership = db.relationship('Tools', secondary=Personages_ToolOwnership
+                                    , backref=db.backref("PersonagesToolOwnership", cascade='all,delete',
+                                                         single_parent=True, passive_deletes=True)
+                                    , cascade='all,delete', single_parent=True)
+    DamageResistance = db.relationship('DamageTypes', secondary=Personages_ResistanceDamageTypes
+                                       , backref=db.backref("PersonagesResistanceDamageTypes", cascade='all,delete',
+                                                            single_parent=True, passive_deletes=True)
+                                       , cascade='all,delete', single_parent=True)
+    DamageImmunity = db.relationship('DamageTypes', secondary=Personages_ImmunityDamageTypes
+                                     , backref=db.backref("PersonagesImmunityDamageTypes", cascade='all,delete',
+                                                          single_parent=True, passive_deletes=True)
+                                     , cascade='all,delete', single_parent=True)
+    Skill = db.relationship('Skills', secondary=Personages_Skills
+                            , backref=db.backref("PersonagesSkills", cascade='all,delete', single_parent=True,
+                                                 passive_deletes=True)
+                            , cascade='all,delete', single_parent=True)
+    Language = db.relationship('Languages', secondary=Personages_Languages
+                               , backref=db.backref("PersonagesLanguages", cascade='all,delete', single_parent=True,
+                                                    passive_deletes=True)
+                               , cascade='all,delete', single_parent=True)
+    EffectsResistance = db.relationship('Effects', secondary=Personages_EffectsResistance
+                                        , backref=db.backref("PersonagesEffectsResistance", cascade='all,delete',
+                                                             single_parent=True, passive_deletes=True)
+                                        , cascade='all,delete', single_parent=True)
+    Effect = db.relationship('Effects', secondary=Personages_Effects
+                             , backref=db.backref("PersonagesEffects", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
+    Abilitie = db.relationship('Abilities', secondary=Personages_Abilities
+                               , backref=db.backref("PersonagesAbilities", cascade='all,delete', single_parent=True,
+                                                    passive_deletes=True)
+                               , cascade='all,delete', single_parent=True)
+    Characteristic = db.relationship('Characteristices', secondary=Personages_Characteristices
+                                     , backref=db.backref("PersonagesCharacteristices", cascade='all,delete',
+                                                          single_parent=True, passive_deletes=True)
+                                     , cascade='all,delete', single_parent=True)
+    Archetype = db.relationship('Archetypes', secondary=Personages_Archetypes
+                                , backref=db.backref("PersonagesArchetypes", cascade='all,delete', single_parent=True,
+                                                     passive_deletes=True)
+                                , cascade='all,delete', single_parent=True)
+    Class = db.relationship('Classes', secondary=Personages_Classes
+                            , backref=db.backref("PersonagesClasses", cascade='all,delete', single_parent=True,
+                                                 passive_deletes=True)
+                            , cascade='all,delete', single_parent=True)
+    Background = db.relationship('Backgrounds', secondary=Personages_Backgrounds
+                                 , backref=db.backref("PersonagesBackgrounds", cascade='all,delete', single_parent=True,
+                                                      passive_deletes=True)
+                                 , cascade='all,delete', single_parent=True)
+    Race = db.relationship('Races', secondary=Personages_Races
+                           , backref=db.backref("PersonagesRaces", cascade='all,delete', single_parent=True,
+                                                passive_deletes=True)
+                           , cascade='all,delete', single_parent=True)
+    user = db.relationship('User', secondary=Personages_User
+                           , backref=db.backref("PersonagesUser", cascade='all,delete', single_parent=True,
+                                                passive_deletes=True)
+                           , cascade='all,delete', single_parent=True)

@@ -1238,6 +1238,61 @@ def EditMaterial():
     return render_template("EditMaterial.html")
 
 
+@roles_accepted('Gamer')
+@app.route("/CreatePersonage", methods=['GET', 'POST'])
+def CreatePersonage():
+    return render_template("CreatePersonage.html")
+
+
+@roles_accepted('Gamer')
+@app.route("/EditPersonage", methods=['GET', 'POST'])
+def EditPersonage():
+    return render_template("EditPersonage.html")
+
+
+@roles_accepted('Gamer')
+@app.route("/VeiwPersonage", methods=['GET', 'POST'])
+def VeiwPersonage():
+    return render_template("VeiwPersonage.html")
+
+
+@app.route("/VeiwMyGames", methods=['GET', 'POST'])
+def VeiwMyGames():
+    return render_template("VeiwMyGames.html")
+
+
+@app.route("/ActiveGames", methods=['GET', 'POST'])
+def ActiveGames():
+    return render_template("ActiveGames.html")
+
+
+@app.route("/CloseGames", methods=['GET', 'POST'])
+def CloseGames():
+    return render_template("CloseGames.html")
+
+
+@roles_accepted('Master')
+@app.route("/CreateNewGames", methods=['GET', 'POST'])
+def CreateNewGames():
+    return render_template("CreateNewGames.html")
+
+
+@roles_accepted('Master')
+@app.route("/EditMyGames", methods=['GET', 'POST'])
+def EditMyGames():
+    return render_template("EditMyGames.html")
+
+
+@roles_accepted('Master')
+@app.route("/PersonageMyGames", methods=['GET', 'POST'])
+def PersonageMyGames():
+    return render_template("PersonageMyGames.html")
+
+
+
+
+
+
 @app.route('/CreateUsers', methods=['GET', 'POST'])
 def CreateUsers():
     msg = ""
