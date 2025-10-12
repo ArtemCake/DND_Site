@@ -106,7 +106,7 @@ def OpenVeiwPost(Parametrs):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
                         if isinstance(parametr, bytes):
                             FileDonload([parametr, PostDate.imageName])
-                        if len(RepresentationValueArray) > 1:
+                        if len(RepresentationValueArray) > 0:
                             representationValue = RepresentationValueArray[1]
                         else:
                             representationValue = ''
@@ -144,7 +144,7 @@ def OpenEditPost(Parametrs):
                         RepresentationValueArray = ParamNameRepresentationValue(variables)
                         if isinstance(parametr, (bytes)):
                             FileDonload([parametr, PostDate.imageName])
-                        if len(RepresentationValueArray) > 1:
+                        if len(RepresentationValueArray) > 0:
                             representationValue = RepresentationValueArray[1]
                         else:
                             representationValue = ''
@@ -158,17 +158,19 @@ def CreateDate(Parametrs):
     Dateslist = Parametrs[2]
     dates = requestDate.form
     filles = requestDate.files
+    paramtable = False
     for variables in dir(Object):
         parametr = getattr(Object, variables)
         if not callable(parametr) and not variables.startswith("__"):
             if variables != 'id':
                 if variables in dates:
-                    setattr(Object, variables, dates[variables])
-                else:
                     for Datelist in Dateslist:
-                        if isinstance(Datelist, (list)):
-                            if Datelist[1] == variables:
-                                appenddatas([parametrsoutput(dates[Datelist[0]]), get_class(Datelist[0]), parametr])
+                        if Datelist[1] == variables:
+                            paramtable = True
+                            if len(Datelist[1]) > 0:
+                                appenddatas([parametrsoutput(dates[Datelist[1]]), get_class(Datelist[0]), parametr])
+                    if not paramtable:
+                        setattr(Object, variables, dates[variables])
     if len(filles) > 0:
         Object.image = filles['image_uploads'].read()
         Object.imageName = filles['image_uploads'].filename

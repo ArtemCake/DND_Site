@@ -532,8 +532,7 @@ def CreateRaces():
             , ['DamageTypes', 'DamageImmunity', Races().DamageImmunity],
                        ['Effects', 'EffectsResistance', Races().EffectsResistance]
             , ['Spells', 'Spell', Races().Spell], ['Abilities', 'Abilitie', Races().Abilitie]
-            , ['Skills', 'Skill', Races().Skill], ['ArmorTypes', 'ArmorType', Races().ArmorType]
-            , ['ArmorTypes', 'PossessionArmor', Races().PossessionArmor],
+            , ['Skills', 'Skill', Races().Skill], ['ArmorTypes', 'PossessionArmor', Races().PossessionArmor],
                        ['Weapoons', 'GunOwnership', Races().GunOwnership]
             , ['Tools', 'ToolOwnership', Races().ToolOwnership], ['Languages', 'Language', Races().Language]]
         Race = CreateDate([Races(), request, MassivDates])
