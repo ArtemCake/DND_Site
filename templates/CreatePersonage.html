@@ -1,9 +1,130 @@
 {% extends "base.html" %}
 {% block title %}
-
+Создание персонажа
 {% endblock %}
 {% block content %}
-<Form method="POST">
+<h1>Создание персонажа</h1>
+<Form method="POST" id="CreateForm" class="CreatePersonageForm" action="CreatePersonage" enctype="multipart/form-data">
+
+	<table>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Клан: <input type="text" class="Clan" name="Clan" id="Clan" placeholder="Клан" disabled/></th>
+			<th></th>
+			<th>Черты: <input type="text" class="hiddenUpdate" name="Atributes" id="Atributes" placeholder="Черты"
+							  disabled/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Имя игрока: {{ user.login }}</th>
+			<th>Уровень персонажа:</th>
+			<th>Происхождение:</th>
+			<th>Пол:</th>
+			<th>Класс:</th>
+			<th>Архетип(подкласс):</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Имя персонажа: <input type="text" name="Name" id="Name" placeholder="Имя персонажа"/></th>
+			<th><input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
+					   value="2"/></th>
+			<th><input type="text" class="hiddenUpdate" name="Background" id="Background" placeholder="Происхождение"
+					   disabled/></th>
+			<th>
+				<input type="text" list="Genderlist" id=Gender" name="Gender">
+				<datalist id="Genderlist">
+					<option value="Мужской">
+					<option value="Женский">
+				</datalist>
+			</th>
+			<th><input list="Classlist" type="text" class="hiddenUpdate" name="Class" id="Class" placeholder="Класс"/>
+			</th>
+			<datalist id="Classlist">
+				{% for Class in Classes %}
+				<option name=ClassPrint" class='checkboxUpdate'
+						id="ClassPrint{{ Class.id }}" value="{{ Class.Name }}">
+					{% endfor %}
+			</datalist>
+
+			<th><input list="Archetypelist" type="text" class="hiddenUpdate" name="Archetype" id="Archetype"
+					   placeholder="Архетип(подкласс)"/></th>
+			<datalist id="Archetypelist">
+				{% for Archetype in Archetypes %}
+				{{ Archetype.Class in Classes }}
+				{% if Archetype.Class.Name == request.form['Class'] %}
+				<option name=ArchetypePrint" class='checkboxUpdate'
+						id="ArchetypePrint{{ Archetype.id }}" value="{{ Archetype.Name }}">
+					{% endif %}
+					{% endfor %}
+			</datalist>
+			<th>
+				{% for Archetype in Archetypes %}
+				{{ Archetype.Class[0].Name }}
+				{% if Archetype.Class[0].Name == request.form['Class'] %}
+				{% endif %}
+				{{ Archetype.Class[0].Name == form.Class }}
+				{% endfor %}
+				{{ request.form['Class'] }}
+			</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+
+	{% for Clan in Clans %}
+	<ul>
+		<li>
+			<input type="checkbox" name=ClansPrint" class='checkboxUpdate'
+				   id="ClansPrint{{ Clan.id }}" value="{{ Clan.id }}"/> {{ Clan.Name }}
+		</li>
+	</ul>
+	{% endfor %}
+	{% for Background in Backgrounds %}
+	<ul>
+		<li>
+			<input type="radio" name=BackgroundPrint" class='checkboxUpdate'
+				   id="BackgroundPrint{{ Background.id }}" value="{{ Background.id }}"/> {{ Background.Name }}
+		</li>
+	</ul>
+	{% endfor %}
+	{% for Atribute in Atributes %}
+	<ul>
+		<li>
+			<input type="checkbox" name=AtributesPrint" class='checkboxUpdate'
+				   id="AtributesPrint{{ Atribute.id }}" value="{{ Atribute.id }}"/> {{ Atribute.Name }}
+		</li>
+	</ul>
+	{% endfor %}
 
 </Form>
 {% endblock %}

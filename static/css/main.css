@@ -10,7 +10,6 @@ background: repeating-linear-gradient(255deg, #06071b , #1e0f38 100%);
 html, body {
   padding: 0;
   margin: 0;
-  color: white;
 }
 
 body {
@@ -291,5 +290,49 @@ margin: 0;
         border: 1px solid black;
         border-radius: 4%;
 }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: top; /* выравниваем блоки вертикально */
+            margin-right: 20px; /* отступ справа для удобства просмотра */
+        }
+
+        /* скрываем стрелочку select */
+        .dropdown select {
+            appearance: none;
+            border-radius: 0;
+            background-color: transparent;
+            padding-right: 0px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            width: auto;
+            min-width: 100%;
+            max-height: 150px;
+            overflow-y: scroll;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background-color: #fff;
+            margin-top: 5px;
+        }
+
+        .dropdown-content li {
+            cursor: not-allowed; /* запрещаем изменение */
+            padding: 8px 16px;
+        }
+
+        .dropdown-content li.selected {
+            color: white;
+            background-color: #007bff;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+
 
 

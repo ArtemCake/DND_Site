@@ -505,6 +505,14 @@ Personages_Races = db.Table('Personages_Races',
                             db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
                             db.Column('Races_id', db.Integer(), db.ForeignKey('Races.id')))
 
+Personages_Atributes = db.Table('Personages_Atributes',
+                                db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                                db.Column('Atributes_id', db.Integer(), db.ForeignKey('Atributes.id')))
+
+Personages_Clans = db.Table('Personages_Clans',
+                            db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                            db.Column('Clans_id', db.Integer(), db.ForeignKey('Clans.id')))
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
@@ -1003,6 +1011,13 @@ class TypesMagic(db.Model):
     Discription = db.Column(db.Text, nullable=True)
 
 
+class Clans(db.Model):
+    __tablename__ = 'Clans'
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(300), nullable=False)
+    Discription = db.Column(db.Text, nullable=True)
+
+
 class StorageBags(db.Model):
     __tablename__ = 'StorageBags'
     id = db.Column(db.Integer, primary_key=True)
@@ -1069,6 +1084,10 @@ class Personages(db.Model):
     Physique = db.Column(db.String(300), nullable=True)
     Weight = db.Column(db.Integer, nullable=True)
     Height = db.Column(db.Integer, nullable=True)
+    Clan = db.relationship('Clans', secondary=Personages_Clans
+                           , backref=db.backref("PersonagesClans", cascade='all,delete',
+                                                single_parent=True, passive_deletes=True)
+                           , cascade='all,delete', single_parent=True)
     ActiveMagicalItems = db.relationship('MagicalItems', secondary=Personages_ActiveMagicalItems
                                          , backref=db.backref("PersonagesActiveMagicalItems", cascade='all,delete',
                                                               single_parent=True, passive_deletes=True)
@@ -1153,6 +1172,10 @@ class Personages(db.Model):
                                  , cascade='all,delete', single_parent=True)
     Race = db.relationship('Races', secondary=Personages_Races
                            , backref=db.backref("PersonagesRaces", cascade='all,delete', single_parent=True,
+                                                passive_deletes=True)
+                           , cascade='all,delete', single_parent=True)
+    Atribute = db.relationship('Atributes', secondary=Personages_Atributes
+                               , backref=db.backref("PersonagesAtributes", cascade='all,delete', single_parent=True,
                                                 passive_deletes=True)
                            , cascade='all,delete', single_parent=True)
     user = db.relationship('User', secondary=Personages_User

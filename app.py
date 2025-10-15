@@ -1,9 +1,7 @@
-from Crypto.Util.RFC1751 import binary
 from flask import (Flask, render_template, request, redirect)
-from flask_login import login_user, login_required, logout_user, LoginManager
+from flask_login import login_user, login_required, logout_user, LoginManager, current_user
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
-from functions.functions import (appenddatas, OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable,
-                                 FileDelete, CreateDate)
+from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, FileDelete, CreateDate)
 import logging
 from functions.Classes import *
 
@@ -61,9 +59,9 @@ def CreateAbilities():
             db.session.add(abilities)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',Title='Создание способности')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities', Title='Создание способности')
 
@@ -88,13 +86,13 @@ def CreateArchetypes():
         , [damageTypes, 'DamageResistance', 'Сопративление к урону', False],
                   [damageTypes, 'DamageImmunity', 'Имунитет к урону', False]
         , [effects, 'EffectsResistance', 'Невосприимчивость к эффектам', False],
-                  [spells, 'Spells', 'Дополнительные заклинания', False]
-        , [skills, 'Skills', 'Владение навыками', False],
+                  [spells, 'Spell', 'Дополнительные заклинания', False]
+        , [skills, 'Skill', 'Владение навыками', False],
                   [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False]
         , [GunOwnership, 'GunOwnership', 'Владение оружием', False],
                   [ToolOwnership, 'ToolOwnership', 'Владение инструментами', False]
-        , [languages, 'Languages', 'Владение языками', False], [abilities, 'Abilities', 'Особые способности', False]
-        , [classes, 'Classes', 'Класс', True], ['imageName', 'Картинка', False]
+        , [languages, 'Language', 'Владение языками', False], [abilities, 'Abilitie', 'Особые способности', False]
+        , [classes, 'Class', 'Класс', True], ['imageName', 'Картинка', False]
         , ['NotArmorSafe', 'Защита без доспехов', True]]
     if request.method == 'POST':
         MassivDates = [['Classes', 'Class', Archetypes().Class],
@@ -102,8 +100,7 @@ def CreateArchetypes():
             , ['DamageTypes', 'DamageResistance', Archetypes().DamageResistance],
                        ['DamageTypes', 'DamageImmunity', Archetypes().DamageImmunity]
             , ['Effects', 'EffectsResistance', Archetypes().EffectsResistance], ['Spells', 'Spell', Archetypes().Spell]
-            , ['Skills', 'Skill', Archetypes().Skill], ['ArmorTypes', 'ArmorType', Archetypes().ArmorType]
-            , ['ArmorTypes', 'PossessionArmor', Archetypes().PossessionArmor],
+            , ['Skills', 'Skill', Archetypes().Skill], ['ArmorTypes', 'PossessionArmor', Archetypes().PossessionArmor],
                        ['Weapoons', 'GunOwnership', Archetypes().GunOwnership]
             , ['Tools', 'ToolOwnership', Archetypes().ToolOwnership], ['Languages', 'Language', Archetypes().Language]
             , ['Abilities', 'Abilitie', Archetypes().Abilitie]]
@@ -113,9 +110,9 @@ def CreateArchetypes():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
                                    Title='Создание подкласса (архетипа)')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes', Title='Создание подкласса (архетипа)')
 
@@ -136,9 +133,9 @@ def CreateArmors():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
                                    Title='Создание доспеха')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха')
 
@@ -155,9 +152,9 @@ def CreateArmorTypes():
             db.session.add(ArmorType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание типа доспеха')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ArmorTypes', Title='Создание типа доспеха')
 
@@ -204,9 +201,9 @@ def CreateAtributes():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
                                    Title='Создание черты')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты')
 
@@ -236,9 +233,9 @@ def CreateBackgrounds():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
                                    Title='Создание черты')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Backgrounds', Title='Создание предыстории')
 
@@ -248,7 +245,7 @@ def CreateBackgrounds():
 def CreateCharacteristices():
     skills = Skills.query.all()
     DateTabels = [['Name', 'Название характеристики', False], ['Discription', 'Описание', False]
-        , [skills, 'Skills', 'Владение навыками', False], ['imageName', 'Картинка', False]]
+        , [skills, 'Skill', 'Владение навыками', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
         MassivDates = [['Skills', 'Skill', Characteristices().Skill]]
         Characteristic = CreateDate([Characteristices(), request, MassivDates])
@@ -257,9 +254,9 @@ def CreateCharacteristices():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
                                    Title='Создание характеристики')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices', Title='Создание характеристики')
 
@@ -296,9 +293,9 @@ def CreateClasses():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes',
                                    Title='Создание класса')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса')
 
@@ -315,9 +312,9 @@ def CreateDamageTypes():
             db.session.add(DamageType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
 
@@ -334,9 +331,9 @@ def CreateEffects():
             db.session.add(Effect)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
 
@@ -356,9 +353,9 @@ def CreateEquipments():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
                                    Title='Создание снаряжения')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments', Title='Создание снаряжения')
 
@@ -375,9 +372,9 @@ def CreateEquipmentTypes():
             db.session.add(EquipmentType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
 
@@ -394,9 +391,9 @@ def CreateFeatures():
             db.session.add(features)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
 
@@ -415,9 +412,9 @@ def CreateLanguages():
             db.session.add(Language)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
 
@@ -473,9 +470,9 @@ def CreateMagicalItems():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
                                    Title='Создание магического предмета')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems', Title='Создание магического предмета')
 
@@ -492,9 +489,9 @@ def CreateMagicalItemTypes():
             db.session.add(MagicalItemsType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
 
@@ -541,9 +538,9 @@ def CreateRaces():
             db.session.add(Race)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
 
@@ -560,9 +557,9 @@ def CreateSkills():
             db.session.add(Skill)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
 
@@ -603,9 +600,9 @@ def CreateSpells():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
                                    Title='Создание заклинания')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells', Title='Создание заклинания')
 
@@ -625,9 +622,9 @@ def CreateTools():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
                                    Title='Создание инструмента')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools', Title='Создание инструмента')
 
@@ -644,9 +641,9 @@ def CreateToolTypes():
             db.session.add(ToolType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
 
@@ -672,9 +669,9 @@ def CreateWeapoons():
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons',
                                    Title='Создание оружия')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия')
 
@@ -691,9 +688,9 @@ def CreateWeapoonTypes():
             db.session.add(WeapoonType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
-        except:
+        except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg='Ошибка загрузки данных')
+            return render_template("CreateMaterial.html", msg=msg)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
 
@@ -1241,7 +1238,45 @@ def EditMaterial():
 @roles_accepted('Gamer')
 @app.route("/CreatePersonage", methods=['GET', 'POST'])
 def CreatePersonage():
-    return render_template("CreatePersonage.html")
+    ActiveMagicalItems = MagicalItems.query.all()
+    ActiveAromr = Armors.query.all()
+    TypeMagic = TypesMagic.query.all()
+    Spell = Spells.query.all()
+    PossessionArmor = ArmorTypes.query.all()
+    Weapoon = Weapoons.query.all()
+    ToolOwnership = Tools.query.all()
+    DamageType = DamageTypes.query.all()
+    Skill = Skills.query.all()
+    Language = Languages.query.all()
+    Effect = Effects.query.all()
+    Abilitie = Abilities.query.all()
+    Characteristic = Characteristices.query.all()
+    Class = Classes.query.all()
+    Archetype = Archetypes.query.all()
+    Background = Backgrounds.query.all()
+    Race = Races.query.all()
+    Atribute = Atributes.query.all()
+    Clan = Clans.query.all()
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
+    if request.method == 'POST':
+        requestForm = request.form
+        requestFiles = request.files
+        return render_template("Index.html")
+    else:
+        return render_template("CreatePersonage.html", ActiveMagicalItems=ActiveMagicalItems, ActiveAromrs=ActiveAromr
+                               , ActiveWeapoons=Weapoon, TypesMagic=TypeMagic,
+                               SpellcastingCharacteristicses=Characteristic
+                               , Spells=Spell, PossessionArmor=PossessionArmor, GunOwnership=Weapoon,
+                               ToolOwnership=ToolOwnership
+                               , DamageResistance=DamageType, DamageImmunity=DamageType, Skills=Skill,
+                               Languages=Language
+                               , EffectsResistance=Effect, Effects=Effect, Abilities=Abilitie,
+                               Characteristices=Characteristic
+                               , Archetypes=Archetype, Classes=Class, Backgrounds=Background, Races=Race, user=user,
+                               Atributes=Atribute, Clans=Clan)
 
 
 @roles_accepted('Gamer')
@@ -1284,13 +1319,9 @@ def EditMyGames():
 
 
 @roles_accepted('Master')
-@app.route("/PersonageMyGames", methods=['GET', 'POST'])
-def PersonageMyGames():
-    return render_template("PersonageMyGames.html")
-
-
-
-
+@app.route("/PersonagesMyGames", methods=['GET', 'POST'])
+def PersonagesMyGames():
+    return render_template("PersonagesMyGames.html")
 
 
 @app.route('/CreateUsers', methods=['GET', 'POST'])

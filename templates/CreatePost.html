@@ -7,26 +7,36 @@
 	  enctype="multipart/form-data">
 	{% for Date in DateTabels %}
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
-	{% if Date[0]|length > 0 %}
-				<div class="input-item">
-					<label for="{{ Date[1] }}">{{ Date[2] }}:</label>
-					<input type="hidden" class="hiddenUpdate" name="{{ Date[1] }}" id="{{ Date[1] }}" placeholder="{{ Date[2] }}">
-					{% for Table in Date[0] %}
-						<ul>
-							{% if Date[3] %}
-								<li>
-									<input type="radio" name="{{ Date[1] }}Print" class ='checkboxUpdate'
-										   id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
-								</li>
-							{% else %}
-								<li>
-									<input type="checkbox" name="{{ Date[1] }}Print" class ='checkboxUpdate'
-										   id="{{ Date[1] }}Print {{ Table.id }}"  value="{{ Table.id }}"/> {{ Table.Name }}
-								</li>
-							{% endif %}
-						</ul>
-					{% endfor %}
-				</div>
+    {% if Date[0]|length > 0 %}
+    {% if Date[3] %}
+    <div class="dropdown single-select">
+        <input type="hidden" class="values-input" id="{{ Date[1] }}" placeholder="{{ Date[2] }}" name="{{ Date[1] }}"
+               readonly style="width: 200px;"/>
+        <input type="text" class="texts-input" id="{{ Date[1] }}-{{ Date[2] }}" placeholder="{{ Date[2] }}" readonly
+               style="width: 200px;"/>
+        <div class="dropdown-content">
+            <ul>
+                {% for Table in Date[0] %}
+                <li data-value="{{ Table.id }}">{{ Table.Name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% else %}
+    <div class="dropdown">
+        <input type="hidden" class="values-input" id="{{ Date[1] }}" placeholder="{{ Date[2] }}" name="{{ Date[1] }}"
+               readonly style="width: 200px;"/>
+        <input type="text" class="texts-input" id="{{ Date[1] }}-{{ Date[2] }}" placeholder="{{ Date[2] }}" readonly
+               style="width: 200px;"/>
+        <div class="dropdown-content">
+            <ul>
+                {% for Table in Date[0] %}
+                <li data-value="{{ Table.id }}">{{ Table.Name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
 			{% endif %}
 	{% elif Date[0] == "imageName" %}
 	<input type="hidden" id="oldimageName" name="oldimageName" value="1"/>

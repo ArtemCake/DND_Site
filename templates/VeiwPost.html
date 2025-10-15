@@ -19,18 +19,19 @@
             {% if PostDate[0] != '' %}
     {% if PostDate[2] != 'image' %}
     {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
-    <div class="input-item">
+    <div class="dropdown fixed-selected">
         <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
-        <input type="hidden" name="Skills">
-        <ul>
-            {% for Parametr in PostDate[1] %}
-            <li>
-                <input type="checkbox" name="{{ PostDate[2] }}Print" class='{{ PostDate[2] }}Print'
-                       id="{{ PostDate[2] }}Print {{ Parametr.id }}" placeholder="Даваемые навыками"
-                       value="{{ Parametr.id }}" checked disabled/> {{ Parametr.Name }}
-            </li>
-            {% endfor %}
-        </ul>
+        <input type="hidden" class="values-input" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
+               name="{{ PostDate[2] }}" readonly style="width: 200px;" disabled/>
+        <input type="text" class="texts-input" id="{{ PostDate[2] }}Print" placeholder="{{ PostDate[0] }}" readonly
+               style="width: 200px;" disabled/>
+        <div class="dropdown-content">
+            <ul>
+                {% for Parametr in PostDate[1] %}
+                <li data-value="{{ Parametr.id }}" class="selected">{{ Parametr.Name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     {% elif PostDate[2] == "imageName" %}
     {% if PostDate[1] != '' %}
