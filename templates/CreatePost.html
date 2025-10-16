@@ -9,7 +9,7 @@
 		{% if Date[0] is iterable and (Date[0] is not string and Date[0] is not mapping) %}
     {% if Date[0]|length > 0 %}
     {% if Date[3] %}
-    <div class="dropdown single-select">
+    <div class="dropdown single-select" data-type="single" data-fixed="false">
         <input type="hidden" class="values-input" id="{{ Date[1] }}" placeholder="{{ Date[2] }}" name="{{ Date[1] }}"
                readonly style="width: 200px;"/>
         <input type="text" class="texts-input" id="{{ Date[1] }}-{{ Date[2] }}" placeholder="{{ Date[2] }}" readonly
@@ -23,7 +23,7 @@
         </div>
     </div>
     {% else %}
-    <div class="dropdown">
+    <div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
         <input type="hidden" class="values-input" id="{{ Date[1] }}" placeholder="{{ Date[2] }}" name="{{ Date[1] }}"
                readonly style="width: 200px;"/>
         <input type="text" class="texts-input" id="{{ Date[1] }}-{{ Date[2] }}" placeholder="{{ Date[2] }}" readonly

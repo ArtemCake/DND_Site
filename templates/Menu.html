@@ -1,155 +1,48 @@
-﻿ <div class="headmenu">
-            <div class="container">
-               <div class="d-flex flex-wrap align-items-right justify-content-right justify-content">
-                  <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('Index') }}" class="nav-link px-2 text-secondary">Главная</a>
-                     </li>
-                     {% if current_user.is_authenticated %}
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('VeiwMaterial') }}" class="nav-link px-2 text-secondary">Данные по днд</a>
-                     </li>
-                     {% for role in current_user.roles %}
-                     {% if (role.name == 'Admin') or (role.name == 'Master') %}
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('EditMaterial') }}" class="nav-link px-2 text-secondary">Изменить данные по днд</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('CreateMaterial') }}" class="nav-link px-2 text-secondary">Добавить данные по днд</a>
-                     </li>
-                     {% endif %}
-                     {% if (role.name == 'Gamer') %}
-                     <li class="nav-link px-2 text-secondary">
-                         <a href="{{ url_for('CreatePersonage') }}" class="nav-link px-2 text-secondary">Добавить
-                             персонажа</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                         <a href="{{ url_for('EditPersonage') }}" class="nav-link px-2 text-secondary">Изменить
-                             персонажей</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('VeiwPersonage') }}" class="nav-link px-2 text-secondary">Мои персонажи</a>
-                     </li>
-                     {% endif %}
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('VeiwMyGames') }}" class="nav-link px-2 text-secondary">Мои игры</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('ActiveGames') }}" class="nav-link px-2 text-secondary">Активные игры</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('CloseGames') }}" class="nav-link px-2 text-secondary">Завершённые игры</a>
-                     </li>
-                     {% if (role.name == 'Master') %}
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('CreateNewGames') }}" class="nav-link px-2 text-secondary">Начать новую
-                           игру</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('EditMyGames') }}" class="nav-link px-2 text-secondary">Редактировать мои
-                           игры</a>
-                     </li>
-                     <li class="nav-link px-2 text-secondary">
-                         <a href="{{ url_for('PersonagesMyGames') }}" class="nav-link px-2 text-secondary">Персонажи из
-                           моих игр</a>
-                     </li>
-                     {% endif %}
-                      {% if (role.name == 'Admin') %}
-                     <li class="nav-link px-2 text-secondary">
-                        <a href="{{ url_for('AdminPanel') }}" class="nav-link px-2 text-secondary">Админ панель</a>
-                     </li>
-                     {% endif %}
-                     {% endfor %}
-                     {% endif %}
-                     <li  Class ="login">
-                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li class="nav-link px-2 text-secondary">
-                           {% if current_user.is_authenticated %}
-                           <a href="#" class="nav-link px-2 text-secondary">
-                           <b>Логин</b>: {{current_user.login}}
-                           </a>
-                        </li>
-                        <li class="nav-link px-2 text-secondary">
-                           {% for role in current_user.roles %}
-                           <a href="#" class="nav-link px-2 text-secondary">
-                           <b>Роль:</b> {{ role.NameUser }}
-                           </a>
-                           {% endfor %}
-                        </li>
-                     </ul>
-                     <button type="button" class="btn btn-outline-light me-2">
-                     <a href="/Logout" class="nav-link px-2 text-secondary">
-                     Выйти
-                     </a>
-                     </button>
-                     {% else %}
-                     <button type="button" class="btn btn-outline-light me-2">
-                     <a href="{{ url_for('LoginUsers') }}" class="nav-link px-2 text-secondary">
-                     Войти
-                     </a>
-                     </button>
-                     <button type="button" class="btn btn-warning">
-                     <a href="{{ url_for('CreateUsers') }}" class="nav-link px-2 text-secondary">
-                     Зарегистрироваться
-                     </a>
-                     </button>
-                     {% endif %}
-                     </li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-         <div class="mobilemenu">
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-               <ul class="nav nav-pills flex-column mb-auto">
-                  <li class="nav-item">
-                     <a href="{{ url_for('Index') }}" class="nav-link active" aria-current="page">
-                        Главная
-                     </a>
-                  </li>
-                  {% if current_user.is_authenticated %}
-                  <li>
-                     <a href="{{ url_for('VeiwMaterial') }}" class="nav-link text-white">
-                        Все статьи
-                     </a>
-                  </li>
-                  {% for role in current_user.roles %}
-                  {% if (role.name == 'Admin') or (role.name == 'Master') %}
-                  <li>
-                     <a href="{{ url_for('CreateMaterial') }}" class="nav-link text-white">
-                        Добавить статьи
-                     </a>
-                  </li>
-                  {% endif %}
-                   {% if (role.name == 'Admin') %}
-                  <li class="nav-link text-white">
-                     <a href="{{ url_for('AdminPanel') }}" class="nav-link text-white">Админ панель</a>
-                  </li>
-                  {% endif %}
-                  {% endfor %}
-                  {% endif %}
-                     <ul class="nav nav-pills flex-column mb-auto login topmenu">
-                              {% if current_user.is_authenticated %}
-                              <li>
-                                 <b>Логин</b>: {{current_user.login}}
-                                 {% for role in current_user.roles %}
-                              </li>
-                              <li>
-                                 <b>Роль:</b> {{ role.name }}
-                                 {% endfor %}
-                              </li>
-                              <li>
-                                 <a href="/Logout">Выйти</a>
-                              </li>
-                              {% else %}
-                              <li>
-                                 <a href="{{ url_for('LoginUsers') }}">Войти</a>
-                              </li>
-                              <li>
-                                 <a href="{{ url_for('CreateUsers') }}">Зарегистрироваться</a>
-                              </li>
-                              {% endif %}
-                     </ul>
-               </ul>
-            </div>
-         </div>
+﻿<div class="container">
+    <ul>
+        <li><a href="{{ url_for('Index') }}">Главная</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('VeiwMaterial') }}">Данные по ДнД</a></li>
+        {% for role in current_user.roles %}{% if (role.name == 'Admin') or (role.name == 'Master') %}
+        <li><a href="{{ url_for('EditMaterial') }}">Изменить данные по ДнД</a></li>
+        <li><a href="{{ url_for('CreateMaterial') }}">Добавить данные по ДнД</a></li>
+        {% endif %}{% if (role.name == 'Gamer') %}
+        <li><a href="{{ url_for('CreatePersonage') }}">Добавить персонажа</a></li>
+        <li><a href="{{ url_for('EditPersonage') }}">Изменить персонажей</a></li>
+        <li><a href="{{ url_for('VeiwPersonage') }}">Мои персонажи</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('VeiwMyGames') }}">Мои игры</a></li>
+        <li><a href="{{ url_for('ActiveGames') }}">Активные игры</a></li>
+        <li><a href="{{ url_for('CloseGames') }}">Завершённые игры</a></li>
+        {% if (role.name == 'Master') %}
+        <li><a href="{{ url_for('CreateNewGames') }}">Начать новую игру</a></li>
+        <li><a href="{{ url_for('EditMyGames') }}">Редактировать мои игры</a></li>
+        <li><a href="{{ url_for('PersonagesMyGames') }}">Персонажи из моих игр</a></li>
+        {% endif %}{% if (role.name == 'Admin') %}
+        <li><a href="{{ url_for('AdminPanel') }}">Админ панель</a></li>
+        {% endif %}{% endfor %}{% endif %}
+        <!-- Блок входа -->
+        <li class="login">
+            <ul>
+                <li>{% if current_user.is_authenticated %}
+                    <a href="#"><b>Логин:</b> {{current_user.login}}</a>
+                    {% endif %}
+                </li>
+                <li>{% if current_user.is_authenticated %}
+                    {% for role in current_user.roles %}
+                    <a href="#"><b>Роль:</b> {{ role.NameUser }}</a>
+                    {% endfor %}
+                    {% endif %}
+                </li>
+            </ul>
+            {% if current_user.is_authenticated %}
+            <a href="/Logout">Выйти</a>
+            {% else %}
+            <a href="LoginUsers#login" id="login-link" class="btn btn-primary">Войти</a>
+            {% endif %}
+            {% if not current_user.is_authenticated %}
+            <a href="LoginUsers#register" id="signup-link" class="btn btn-warning">Зарегистрироваться</a>
+            {% endif %}
+        </li>
+    </ul>
+</div>

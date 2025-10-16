@@ -19,12 +19,12 @@
             {% if PostDate[0] != '' %}
     {% if PostDate[2] != 'image' %}
     {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
-    <div class="dropdown fixed-selected">
+    <div class="dropdown fixed-selected" data-type="fixed" data-fixed="true">
         <label for="{{ PostDate[2] }}Print">{{ PostDate[0] }}:</label>
         <input type="hidden" class="values-input" id="{{ PostDate[2] }}" placeholder="{{ PostDate[0] }}"
-               name="{{ PostDate[2] }}" readonly style="width: 200px;" disabled/>
+               name="{{ PostDate[2] }}" readonly style="width: 200px;"/>
         <input type="text" class="texts-input" id="{{ PostDate[2] }}Print" placeholder="{{ PostDate[0] }}" readonly
-               style="width: 200px;" disabled/>
+               style="width: 200px;"/>
         <div class="dropdown-content">
             <ul>
                 {% for Parametr in PostDate[1] %}

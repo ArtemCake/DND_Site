@@ -10,10 +10,39 @@
 		<tr>
 			<th></th>
 			<th></th>
-			<th>Клан: <input type="text" class="Clan" name="Clan" id="Clan" placeholder="Клан" disabled/></th>
+            <th>
+                Клан:
+                <div class="dropdown">
+                    <input type="hidden" class="values-input" id="Clan" placeholder="Выберете клан..." name="Clan"
+                           readonly style="width: 200px;"/>
+                    <input type="text" class="texts-input" id="ClanPrint" placeholder="Выберете клан..." readonly
+                           style="width: 200px;"/>
+                    <div class="dropdown-content">
+                        <ul>
+                            {% for Clan in Clans %}
+                            <li data-value="{{ Clan.id }}">{{ Clan.Name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </th>
 			<th></th>
-			<th>Черты: <input type="text" class="hiddenUpdate" name="Atributes" id="Atributes" placeholder="Черты"
-							  disabled/></th>
+            <th>
+                Черты:
+                <div class="dropdown single-select">
+                    <input type="hidden" class="values-input" id="Atributes" placeholder="Выберете черту..."
+                           name="Atributes" readonly style="width: 200px;"/>
+                    <input type="text" class="texts-input" id="AtributesPrint"
+                           placeholder="Выберете черту..." readonly style="width: 200px;"/>
+                    <div class="dropdown-content">
+                        <ul>
+                            {% for Atribute in Atributes %}
+                            <li data-value="{{ Atribute.id }}">{{ Atribute.Name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -30,12 +59,24 @@
 		<tr>
 			<th></th>
 			<th></th>
-			<th>Имя игрока: {{ user.login }}</th>
-			<th>Уровень персонажа:</th>
-			<th>Происхождение:</th>
-			<th>Пол:</th>
-			<th>Класс:</th>
-			<th>Архетип(подкласс):</th>
+            <th>
+                Имя игрока: {{ user.login }}
+            </th>
+            <th>
+                Уровень персонажа:
+            </th>
+            <th>
+                Происхождение:
+            </th>
+            <th>
+                Пол:
+            </th>
+            <th
+            >Класс:
+            </th>
+            <th>
+                Архетип(подкласс):
+            </th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -49,11 +90,16 @@
 		<tr>
 			<th></th>
 			<th></th>
-			<th>Имя персонажа: <input type="text" name="Name" id="Name" placeholder="Имя персонажа"/></th>
-			<th><input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
-					   value="2"/></th>
-			<th><input type="text" class="hiddenUpdate" name="Background" id="Background" placeholder="Происхождение"
-					   disabled/></th>
+            <th>
+                Имя персонажа: <input type="text" name="Name" id="Name" placeholder="Имя персонажа"/>
+            </th>
+            <th>
+                <input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
+                       value="2"/>
+            </th>
+            <th>
+                <input type="text" class="hiddenUpdate" name="Background" id="Background" placeholder="Происхождение"/>
+            </th>
 			<th>
 				<input type="text" list="Genderlist" id=Gender" name="Gender">
 				<datalist id="Genderlist">
@@ -61,34 +107,14 @@
 					<option value="Женский">
 				</datalist>
 			</th>
-			<th><input list="Classlist" type="text" class="hiddenUpdate" name="Class" id="Class" placeholder="Класс"/>
+            <th>
+                <input type="text" class="hiddenUpdate" name="Class" id="Class" placeholder="Класс"/>
 			</th>
-			<datalist id="Classlist">
-				{% for Class in Classes %}
-				<option name=ClassPrint" class='checkboxUpdate'
-						id="ClassPrint{{ Class.id }}" value="{{ Class.Name }}">
-					{% endfor %}
-			</datalist>
-
-			<th><input list="Archetypelist" type="text" class="hiddenUpdate" name="Archetype" id="Archetype"
-					   placeholder="Архетип(подкласс)"/></th>
-			<datalist id="Archetypelist">
-				{% for Archetype in Archetypes %}
-				{{ Archetype.Class in Classes }}
-				{% if Archetype.Class.Name == request.form['Class'] %}
-				<option name=ArchetypePrint" class='checkboxUpdate'
-						id="ArchetypePrint{{ Archetype.id }}" value="{{ Archetype.Name }}">
-					{% endif %}
-					{% endfor %}
-			</datalist>
 			<th>
-				{% for Archetype in Archetypes %}
-				{{ Archetype.Class[0].Name }}
-				{% if Archetype.Class[0].Name == request.form['Class'] %}
-				{% endif %}
-				{{ Archetype.Class[0].Name == form.Class }}
-				{% endfor %}
-				{{ request.form['Class'] }}
+                <input type="text" class="hiddenUpdate" name="Archetype" id="Archetype"
+                       placeholder="Архетип(подкласс)"/>
+            </th>
+            <th>
 			</th>
 			<th></th>
 			<th></th>
@@ -100,31 +126,5 @@
 			<th></th>
 		</tr>
 	</table>
-
-	{% for Clan in Clans %}
-	<ul>
-		<li>
-			<input type="checkbox" name=ClansPrint" class='checkboxUpdate'
-				   id="ClansPrint{{ Clan.id }}" value="{{ Clan.id }}"/> {{ Clan.Name }}
-		</li>
-	</ul>
-	{% endfor %}
-	{% for Background in Backgrounds %}
-	<ul>
-		<li>
-			<input type="radio" name=BackgroundPrint" class='checkboxUpdate'
-				   id="BackgroundPrint{{ Background.id }}" value="{{ Background.id }}"/> {{ Background.Name }}
-		</li>
-	</ul>
-	{% endfor %}
-	{% for Atribute in Atributes %}
-	<ul>
-		<li>
-			<input type="checkbox" name=AtributesPrint" class='checkboxUpdate'
-				   id="AtributesPrint{{ Atribute.id }}" value="{{ Atribute.id }}"/> {{ Atribute.Name }}
-		</li>
-	</ul>
-	{% endfor %}
-
 </Form>
 {% endblock %}

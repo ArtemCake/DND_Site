@@ -5,13 +5,14 @@
       <meta name="viewport"
          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
       <title>{% block title %} {% endblock %}</title>
    </head>
    <body>
    <header class="p-3 text-bg-dark">
+      <div class="container">
       {% include 'Menu.html' %}
+      </div>
    </header>
    <div class="content container">
        {% block content %} {% endblock %}
@@ -19,9 +20,6 @@
    <footer>
       {% include 'Footer.html' %}
    </footer>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="{{ url_for('static', filename='js/mainscript.js') }}"></script>
-   <script src="{{ url_for('static', filename='js/JoinString.js') }}"></script>
+   <script type="module" src="{{ url_for('static', filename='js/mainscript.js') }}"></script>
    </body>
 </html>

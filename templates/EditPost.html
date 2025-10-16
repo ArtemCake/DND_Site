@@ -26,7 +26,7 @@
     {% if PostDate[1] is iterable and (PostDate[1] is not string and PostDate[1] is not mapping) %}
     <label for="{{ PostDate[2] }}">{{ PostDate[0] }}:</label>
     {% if PostDate[5]==True %}
-    <div class="dropdown single-select">
+    <div class="dropdown single-select" data-type="single" data-fixed="false">
         <input type="hidden" class="values-input" id="{{ PostDate[2] }}" placeholder="{{  PostDate[0] }}"
                name="{{ PostDate[2] }}" readonly style="width: 200px;"/>
         <input type="text" class="texts-input" id="{{ PostDate[2] }}Print {{ PostDate[0] }}"
@@ -44,7 +44,7 @@
         </div>
     </div>
     {% else %}
-    <div class="dropdown">
+    <div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
         <input type="hidden" class="values-input" id="{{ PostDate[2] }}" placeholder="{{  PostDate[0] }}"
                name="{{ PostDate[2] }}" readonly style="width: 200px;"/>
         <input type="text" class="texts-input" id="{{ PostDate[2] }}Print {{ PostDate[0] }}"

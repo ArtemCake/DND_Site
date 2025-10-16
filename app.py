@@ -1332,7 +1332,7 @@ def CreateUsers():
         user = User.query.filter_by(login=request.form['login']).first()
         if user:
             msg = "Пользователь уже существует"
-            return render_template('CreateUsers.html', msg=msg)
+            return render_template('LoginUsers.html', msg=msg)
         user = User(login=request.form['login'], active=1, password=request.form['password'])
         role = Role.query.filter_by(NameUser=request.form['Role']).first()
         user.roles.append(role)
@@ -1340,7 +1340,7 @@ def CreateUsers():
         db.session.commit()
         return render_template("Index.html")
     else:
-        return render_template("CreateUsers.html", msg=msg, roles=Roles)
+        return render_template("LoginUsers.html", msg=msg, roles=Roles)
 
 
 @login_manager.user_loader

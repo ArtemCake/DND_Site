@@ -1,0 +1,35 @@
+/* reset.css */
+html,
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+form,
+label,
+input,
+button,
+dialog {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-size: 100%;
+  line-height: inherit;
+  font-weight: normal;
+  list-style-type: none;
+  text-decoration: none;
+  border: none;
+  color: inherit;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}

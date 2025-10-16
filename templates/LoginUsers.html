@@ -1,47 +1,79 @@
 {% extends "LoginPage.html" %}
 
-{% block title %}
-Авторизация
-{% endblock %}
+{% block title %} Регистрация / Вход {% endblock %}
 
 {% block content %}
-<h1>Авторизация</h1>
 
-{% if current_user.is_authenticated %}
-   Вы уже вошли в систему.
-{% else %}
-{{ msg }}<br>
-<div class="login-page">
-  <div class="form">
-    <form class="register-form" method="POST" id="signup-form">
-      <div class="login">
-        <input type="text" name="login" id="login-input-2" placeholder="Введите логин" required />
-      </div>
-        <div class="password">
-          <input type="password" id="password-input-3" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$"
-                 placeholder="Введите пароль" name="password" required/>
-	      <a href="#" class="password-control-3"></a>
+<div class="content container" bis_skin_checked="1">
+    <div class="form-container" bis_skin_checked="1">
+        <h1>Регистрация / Вход</h1>
+        <div class="login-page" bis_skin_checked="1">
+            <div class="form" bis_skin_checked="1">
+                <!-- Форма регистрации -->
+                <form class="registration-form hidden" method="POST" id="signup-form" action="CreateUsers">
+                    <div class="login" bis_skin_checked="1">
+                        <input type="text" name="login" id="login-input" placeholder="Введите логин" required=""
+                               autocomplete="username">
+                    </div>
+                    <div class="password-field-wrapper" bis_skin_checked="1">
+                        <input type="password" id="password-input" placeholder="Введите пароль" name="password"
+                               required="" autocomplete="new-password">
+                        <span class="toggle-password-one" onclick="togglePasswordVisibility(this, 'password-input')">
+                            <img src="{{ url_for('static', filename='logo/no-view.png') }}" alt="Показать пароль">
+                        </span>
+                        <p class="message">
+                            Пароль должен состоять из 6-20 символов, и включать хотя бы по одной цифре и букве в
+                            верхнем/нижнем регистрах
+                        </p>
+                    </div>
+                    <div class="password-field-wrapper" bis_skin_checked="1">
+                        <input type="password" id="password-input-confirm" placeholder="Повторите пароль"
+                               name="password-two" required="" autocomplete="current-password">
+                        <span class="toggle-password"
+                              onclick="togglePasswordVisibility(this, 'password-input-confirm')">
+                            <img src="{{ url_for('static', filename='logo/no-view.png') }}"
+                                 alt="Показать повтор пароля">
+                        </span>
+                    </div>
+                    <div class="Role" bis_skin_checked="1">
+                        <input type="text" list="Role" id="RoleInput" placeholder="Выберите роль" name="Role"
+                               required="">
+                        <datalist id="Role">э
+                            {% for Role in roles %}
+                            {% if Role.RoleName != 'Admin' %}
+                            <option value="{{ Role.NameUser }}">
+                                {% endif %}
+                                {% endfor %}
+                        </datalist>
+                    </div>
+                    <button type="submit">Зарегистрироваться</button>
+                    <p class="message">
+                        У вас уже есть аккаунт?
+                        <a href="#login">Войти</a>
+                    </p>
+                </form>
+                <!-- Форма входа -->
+                <form class="authentication-form" method="POST" id="signin-form" action="LoginUsers">
+                    <div class="login" bis_skin_checked="1">
+                        <input type="text" name="login" id="login-input-1" placeholder="Введите логин" required=""
+                               autocomplete="username">
+                    </div>
+                    <div class="password-field-wrapper" bis_skin_checked="1">
+                        <input type="password" id="password-input-2" placeholder="Введите пароль" name="password"
+                               required="" autocomplete="new-password" aria-autocomplete="list">
+                        <span class="toggle-password" onclick="togglePasswordVisibility(this, 'password-input-entry')">
+                            <img src="{{ url_for('static', filename='logo/no-view.png') }}" alt="Показать пароль">
+                        </span>
+                    </div>
+                    <button type="submit">Войти</button>
+                    <p class="message">
+                        У вас нет учетной записи?
+                        <a href="#register">Зарегистрироваться</a>
+                    </p>
+                </form>
+            </div>
         </div>
-       <button type="submit">Зарегистрироваться</button>
-      <p class="message">У вас уже есть аккаунт? <a href="{{ url_for('LoginUsers') }}">Войти</a></p>
-    </form>
-    <form class="login-form" method="POST" id="signin-form">
-       <div class="login">
-        <input type="text" name="login" id="login-input-3" placeholder="Введите логин" required />
-      </div>
-        <div class="password">
-          <input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$"
-                 id="password-input-4" placeholder="Введите пароль" name="password" required/>
-	      <a href="#" class="password-control-4"></a>
-        </div>
-      <button type="submit">Войти</button>
-      <p class="message">У вас нет учетной записи? <a href="{{ url_for('CreateUsers') }}">Зарегистрироваться</a></p>
-    </form>
-  </div>
+    </div>
 </div>
-{% endif %}
 
 {% endblock %}
-
-
-
