@@ -35,16 +35,22 @@
                                  alt="Показать повтор пароля">
                         </span>
                     </div>
-                    <div class="Role" bis_skin_checked="1">
-                        <input type="text" list="Role" id="RoleInput" placeholder="Выберите роль" name="Role"
-                               required="">
-                        <datalist id="Role">э
-                            {% for Role in roles %}
+                    <div class="dropdown single-select" data-type="single" data-fixed="false" bis_skin_checked="1">
+                        <input type="hidden" class="values-input" id="RoleInput" placeholder="Выберите роль..."
+                               name="Role"
+                               readonly style="width: 200px;"/>
+                        <input type="text" class="texts-input" id="RoleInputPrint" placeholder="Выберите роль..."
+                               readonly
+                               style="width: 200px;"/>
+                        <div class="dropdown-content">
+                            <ul>
+                                {% for Role in roles %}
                             {% if Role.RoleName != 'Admin' %}
-                            <option value="{{ Role.NameUser }}">
+                                <li data-value="{{ Role.id }}">{{ Role.NameUser }}</li>
                                 {% endif %}
                                 {% endfor %}
-                        </datalist>
+                            </ul>
+                        </div>
                     </div>
                     <button type="submit">Зарегистрироваться</button>
                     <p class="message">

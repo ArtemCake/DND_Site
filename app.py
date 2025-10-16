@@ -1353,6 +1353,7 @@ def load_user(user_id):
 @app.route('/LoginUsers', methods=['GET', 'POST'])
 def LoginUsers():
     msg = ""
+    Roles = Role.query.all()
     if request.method == 'POST':
         user = User.query.filter_by(login=request.form['login']).first()
         if user:
@@ -1363,10 +1364,9 @@ def LoginUsers():
                 msg = "Неверный пароль"
         else:
             msg = "Пользователь не существует"
-        return render_template('LoginUsers.html', msg=msg)
-
+        return render_template('LoginUsers.html', msg=msg, roles=Roles)
     else:
-        return render_template("LoginUsers.html", msg=msg)
+        return render_template("LoginUsers.html", msg=msg, roles=Roles)
 
 
 @app.route('/Logout')
