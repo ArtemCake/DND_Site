@@ -4,6 +4,11 @@
 
 {% block content %}
 
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <div class="content container" bis_skin_checked="1">
     <div class="form-container" bis_skin_checked="1">
         <h1>Регистрация / Вход</h1>
@@ -21,10 +26,10 @@
                         <span class="toggle-password-one" onclick="togglePasswordVisibility(this, 'password-input')">
                             <img src="{{ url_for('static', filename='logo/no-view.png') }}" alt="Показать пароль">
                         </span>
-                        <p class="message">
-                            Пароль должен состоять из 6-20 символов, и включать хотя бы по одной цифре и букве в
-                            верхнем/нижнем регистрах
-                        </p>
+                        <span class="tooltip-icon"
+                              title="Пароль должен состоять из 6-20 символов, и включать хотя бы по одной цифре и букве в верхнем/нижнем регистрах">
+                            <img src="{{ url_for('static', filename='logo/exclamation.png') }}" alt="Подсказка">
+                        </span>
                     </div>
                     <div class="password-field-wrapper" bis_skin_checked="1">
                         <input type="password" id="password-input-confirm" placeholder="Повторите пароль"
@@ -35,6 +40,8 @@
                                  alt="Показать повтор пароля">
                         </span>
                     </div>
+                    <!-- Сообщение об ошибке -->
+                    <p class="error-message" style="display:none;">Пароли не совпадают!</p>
                     <div class="dropdown single-select" data-type="single" data-fixed="false" bis_skin_checked="1">
                         <input type="hidden" class="values-input" id="RoleInput" placeholder="Выберите роль..."
                                name="Role"

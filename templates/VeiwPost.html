@@ -6,6 +6,11 @@
 
 {% block content %}
 
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <div id="{{ tableName }}Form" class="{{ tableName }}Form">
 {% for PostDate in PostDates %}
     {% if PostDate[0] == '' and PostDate[1] is string  %}

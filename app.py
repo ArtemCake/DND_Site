@@ -58,12 +58,14 @@ def CreateAbilities():
         try:
             db.session.add(abilities)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',Title='Создание способности')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',
+                                   Title='Создание способности', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities', Title='Создание способности')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',
+                               Title='Создание способности', show_back_button=True)
 
 
 @app.route("/CreateArchetypes", methods=['GET', 'POST'])
@@ -109,12 +111,13 @@ def CreateArchetypes():
             db.session.add(Archetype)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
-                                   Title='Создание подкласса (архетипа)')
+                                   Title='Создание подкласса (архетипа)', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes', Title='Создание подкласса (архетипа)')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
+                               Title='Создание подкласса (архетипа)', show_back_button=True)
 
 
 @app.route("/CreateArmors", methods=['GET', 'POST'])
@@ -132,12 +135,13 @@ def CreateArmors():
             db.session.add(armors)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
-                                   Title='Создание доспеха')
+                                   Title='Создание доспеха', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха',
+                               show_back_button=True)
 
 
 @app.route("/CreateArmorTypes", methods=['GET', 'POST'])
@@ -151,12 +155,14 @@ def CreateArmorTypes():
         try:
             db.session.add(ArmorType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание типа доспеха')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
+                                   Title='Создание типа доспеха', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ArmorTypes', Title='Создание типа доспеха')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ArmorTypes',
+                               Title='Создание типа доспеха', show_back_button=True)
 
 
 @app.route("/CreateAtributes", methods=['GET', 'POST'])
@@ -200,12 +206,13 @@ def CreateAtributes():
             db.session.add(Attribute)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
-                                   Title='Создание черты')
+                                   Title='Создание черты', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты',
+                               show_back_button=True)
 
 
 @app.route("/CreateBackgrounds", methods=['GET', 'POST'])
@@ -232,12 +239,13 @@ def CreateBackgrounds():
             db.session.add(Background)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
-                                   Title='Создание черты')
+                                   Title='Создание черты', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Backgrounds', Title='Создание предыстории')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Backgrounds',
+                               Title='Создание предыстории', show_back_button=True)
 
 
 @app.route("/CreateCharacteristices", methods=['GET', 'POST'])
@@ -253,12 +261,13 @@ def CreateCharacteristices():
             db.session.add(Characteristic)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
-                                   Title='Создание характеристики')
+                                   Title='Создание характеристики', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices', Title='Создание характеристики')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
+                               Title='Создание характеристики', show_back_button=True)
 
 
 @app.route("/CreateClasses", methods=['GET', 'POST'])
@@ -292,12 +301,13 @@ def CreateClasses():
             db.session.add(Class)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes',
-                                   Title='Создание класса')
+                                   Title='Создание класса', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса',
+                               show_back_button=True)
 
 
 @app.route("/CreateDamageTypes", methods=['GET', 'POST'])
@@ -311,12 +321,14 @@ def CreateDamageTypes():
         try:
             db.session.add(DamageType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes',
+                                   Title='Создание типа урона', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes', Title='Создание типа урона')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes',
+                               Title='Создание типа урона', show_back_button=True)
 
 
 @app.route("/CreateEffects", methods=['GET', 'POST'])
@@ -330,12 +342,14 @@ def CreateEffects():
         try:
             db.session.add(Effect)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects',
+                                   Title='Создание эффекта', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта',
+                               show_back_button=True)
 
 
 @app.route("/CreateEquipments", methods=['GET', 'POST'])
@@ -352,12 +366,13 @@ def CreateEquipments():
             db.session.add(Equipment)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
-                                   Title='Создание снаряжения')
+                                   Title='Создание снаряжения', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments', Title='Создание снаряжения')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
+                               Title='Создание снаряжения', show_back_button=True)
 
 
 @app.route("/CreateEquipmentTypes", methods=['GET', 'POST'])
@@ -371,12 +386,14 @@ def CreateEquipmentTypes():
         try:
             db.session.add(EquipmentType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes',
+                                   Title='Создание типа снаряжения', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes', Title='Создание типа снаряжения')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes',
+                               Title='Создание типа снаряжения', show_back_button=True)
 
 
 @app.route("/CreateFeatures", methods=['GET', 'POST'])
@@ -390,12 +407,14 @@ def CreateFeatures():
         try:
             db.session.add(features)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features',
+                                   Title='Создание свойства оружия', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features', Title='Создание свойства оружия')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features',
+                               Title='Создание свойства оружия', show_back_button=True)
 
 
 @app.route("/CreateLanguages", methods=['GET', 'POST'])
@@ -411,12 +430,14 @@ def CreateLanguages():
         try:
             db.session.add(Language)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages',
+                                   Title='Создание языка', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка',
+                               show_back_button=True)
 
 
 @app.route("/CreateMagicalItems", methods=['GET', 'POST'])
@@ -469,12 +490,13 @@ def CreateMagicalItems():
             db.session.add(MagicalItem)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
-                                   Title='Создание магического предмета')
+                                   Title='Создание магического предмета', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems', Title='Создание магического предмета')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
+                               Title='Создание магического предмета', show_back_button=True)
 
 
 @app.route("/CreateMagicalItemTypes", methods=['GET', 'POST'])
@@ -488,12 +510,14 @@ def CreateMagicalItemTypes():
         try:
             db.session.add(MagicalItemsType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes',
+                                   Title='Создание типа магического предмета', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes', Title='Создание типа магического предмета')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes',
+                               Title='Создание типа магического предмета', show_back_button=True)
 
 
 @app.route("/CreateRaces", methods=['GET', 'POST'])
@@ -537,12 +561,14 @@ def CreateRaces():
         try:
             db.session.add(Race)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы',
+                                   show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы',
+                               show_back_button=True)
 
 
 @app.route("/CreateSkills", methods=['GET', 'POST'])
@@ -556,12 +582,14 @@ def CreateSkills():
         try:
             db.session.add(Skill)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills',
+                                   Title='Создание навыка', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка',
+                               show_back_button=True)
 
 
 @app.route("/CreateSpells", methods=['GET', 'POST'])
@@ -599,12 +627,13 @@ def CreateSpells():
             db.session.add(Spell)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
-                                   Title='Создание заклинания')
+                                   Title='Создание заклинания', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells', Title='Создание заклинания')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
+                               Title='Создание заклинания', show_back_button=True)
 
 
 @app.route("/CreateTools", methods=['GET', 'POST'])
@@ -621,12 +650,13 @@ def CreateTools():
             db.session.add(Tool)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
-                                   Title='Создание инструмента')
+                                   Title='Создание инструмента', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools', Title='Создание инструмента')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
+                               Title='Создание инструмента', show_back_button=True)
 
 
 @app.route("/CreateToolTypes", methods=['GET', 'POST'])
@@ -640,12 +670,14 @@ def CreateToolTypes():
         try:
             db.session.add(ToolType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes',
+                                   Title='Создание типа инструмента', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes', Title='Создание типа инструмента')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes',
+                               Title='Создание типа инструмента', show_back_button=True)
 
 
 @app.route("/CreateWeapoons", methods=['GET', 'POST'])
@@ -668,12 +700,13 @@ def CreateWeapoons():
             db.session.add(Weapoon)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons',
-                                   Title='Создание оружия')
+                                   Title='Создание оружия', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия',
+                               show_back_button=True)
 
 
 @app.route("/CreateWeapoonTypes", methods=['GET', 'POST'])
@@ -687,12 +720,14 @@ def CreateWeapoonTypes():
         try:
             db.session.add(WeapoonType)
             db.session.commit()
-            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
+            return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes',
+                                   Title='Создание типа оружия', show_back_button=True)
         except Exception as msg:
             db.session.rollback()
-            return render_template("CreateMaterial.html", msg=msg)
+            return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
-        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes', Title='Создание типа оружия')
+        return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes',
+                               Title='Создание типа оружия', show_back_button=True)
 
 
 @app.route("/VeiwAbilities", methods=['GET', 'POST'])
@@ -702,7 +737,7 @@ def VeiwAbilities():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Abilities', Date_id])
     return render_template("VeiwElementPage.html", Dates=abilities
-                           , TableName='VeiwAbilities', TitlePage='Способности')
+                           , TableName='VeiwAbilities', TitlePage='Способности', show_back_button=True)
 
 
 @app.route("/VeiwArchetypes", methods=['GET', 'POST'])
@@ -712,7 +747,7 @@ def VeiwArchetypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Archetypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=archetypes
-                           , TableName='VeiwArchetypes', TitlePage='Подклассы (Архетипы)')
+                           , TableName='VeiwArchetypes', TitlePage='Подклассы (Архетипы)', show_back_button=True)
 
 
 @app.route("/VeiwArmors", methods=['GET', 'POST'])
@@ -722,7 +757,7 @@ def VeiwArmors():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Armors', Date_id])
     return render_template("VeiwElementPage.html", Dates=armors
-                           , TableName='VeiwArmors', TitlePage='Доспехи')
+                           , TableName='VeiwArmors', TitlePage='Доспехи', show_back_button=True)
 
 
 @app.route("/VeiwArmorTypes", methods=['GET', 'POST'])
@@ -732,7 +767,7 @@ def VeiwArmorTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['ArmorTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=armorTypes
-                           , TableName='VeiwArmorTypes', TitlePage='Типы доспехов')
+                           , TableName='VeiwArmorTypes', TitlePage='Типы доспехов', show_back_button=True)
 
 
 @app.route("/VeiwAtributes", methods=['GET', 'POST'])
@@ -742,7 +777,7 @@ def VeiwAtributes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Atributes', Date_id])
     return render_template("VeiwElementPage.html", Dates=atributes
-                           , VeiwAtributes='VeiwAtributes', TitlePage='Черты')
+                           , VeiwAtributes='VeiwAtributes', TitlePage='Черты', show_back_button=True)
 
 
 @app.route("/VeiwBackgrounds", methods=['GET', 'POST'])
@@ -752,7 +787,7 @@ def VeiwBackgrounds():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Backgrounds', Date_id])
     return render_template("VeiwElementPage.html", Dates=backgrounds
-                           , VeiwAtributes='VeiwBackgrounds', TitlePage='Предыстории')
+                           , VeiwAtributes='VeiwBackgrounds', TitlePage='Предыстории', show_back_button=True)
 
 
 @app.route("/VeiwCharacteristices", methods=['GET', 'POST'])
@@ -762,7 +797,7 @@ def VeiwCharacteristices():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Characteristices', Date_id])
     return render_template("VeiwElementPage.html", Dates=characteristices
-                           , VeiwAtributes='VeiwCharacteristices', TitlePage='Характеристики')
+                           , VeiwAtributes='VeiwCharacteristices', TitlePage='Характеристики', show_back_button=True)
 
 
 @app.route("/VeiwClasses", methods=['GET', 'POST'])
@@ -772,7 +807,7 @@ def VeiwClasses():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Classes', Date_id])
     return render_template("VeiwElementPage.html", Dates=classes
-                           , VeiwAtributes='VeiwClasses', TitlePage='Классы')
+                           , VeiwAtributes='VeiwClasses', TitlePage='Классы', show_back_button=True)
 
 
 @app.route("/VeiwDamageTypes", methods=['GET', 'POST'])
@@ -782,7 +817,7 @@ def VeiwDamageTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['DamageTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=damageTypes
-                           , VeiwAtributes='VeiwDamageTypes', TitlePage='Типы урона')
+                           , VeiwAtributes='VeiwDamageTypes', TitlePage='Типы урона', show_back_button=True)
 
 
 @app.route("/VeiwEffects", methods=['GET', 'POST'])
@@ -792,7 +827,7 @@ def VeiwEffects():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Effects', Date_id])
     return render_template("VeiwElementPage.html", Dates=effects
-                           , VeiwAtributes='VeiwEffects', TitlePage='Эффекты')
+                           , VeiwAtributes='VeiwEffects', TitlePage='Эффекты', show_back_button=True)
 
 
 @app.route("/VeiwEquipments", methods=['GET', 'POST'])
@@ -802,7 +837,7 @@ def VeiwEquipments():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Equipments', Date_id])
     return render_template("VeiwElementPage.html", Dates=equipments
-                           , VeiwAtributes='VeiwEquipments', TitlePage='Снаряжения')
+                           , VeiwAtributes='VeiwEquipments', TitlePage='Снаряжения', show_back_button=True)
 
 
 @app.route("/VeiwEquipmentTypes", methods=['GET', 'POST'])
@@ -812,7 +847,7 @@ def VeiwEquipmentTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['EquipmentTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=equipmentTypes
-                           , VeiwAtributes='VeiwEquipmentTypes', TitlePage='Типы снаряжения')
+                           , VeiwAtributes='VeiwEquipmentTypes', TitlePage='Типы снаряжения', show_back_button=True)
 
 
 @app.route("/VeiwFeatures", methods=['GET', 'POST'])
@@ -822,7 +857,7 @@ def VeiwFeatures():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Features', Date_id])
     return render_template("VeiwElementPage.html", Dates=features
-                           , VeiwAtributes='VeiwFeatures', TitlePage='Особенности')
+                           , VeiwAtributes='VeiwFeatures', TitlePage='Особенности', show_back_button=True)
 
 
 @app.route("/VeiwLanguages", methods=['GET', 'POST'])
@@ -832,7 +867,7 @@ def VeiwLanguages():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Languages', Date_id])
     return render_template("VeiwElementPage.html", Dates=languages
-                           , VeiwAtributes='VeiwLanguages', TitlePage='Языки')
+                           , VeiwAtributes='VeiwLanguages', TitlePage='Языки', show_back_button=True)
 
 
 @app.route("/VeiwMagicalItems", methods=['GET', 'POST'])
@@ -842,7 +877,7 @@ def VeiwMagicalItems():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['MagicalItems', Date_id])
     return render_template("VeiwElementPage.html", Dates=magicalItems
-                           , VeiwAtributes='VeiwMagicalItems', TitlePage='Магические предметы')
+                           , VeiwAtributes='VeiwMagicalItems', TitlePage='Магические предметы', show_back_button=True)
 
 
 @app.route("/VeiwMagicalItemTypes", methods=['GET', 'POST'])
@@ -852,7 +887,8 @@ def VeiwMagicalItemTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['MagicalItemsTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=magicalItemsTypes
-                           , VeiwAtributes='VeiwMagicalItemTypes', TitlePage='Типы магических предметов')
+                           , VeiwAtributes='VeiwMagicalItemTypes', TitlePage='Типы магических предметов',
+                           show_back_button=True)
 
 
 @app.route("/VeiwRaces", methods=['GET', 'POST'])
@@ -862,7 +898,7 @@ def VeiwRaces():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Races', Date_id])
     return render_template("VeiwElementPage.html", Dates=races
-                           , VeiwAtributes='VeiwRaces', TitlePage='Расы')
+                           , VeiwAtributes='VeiwRaces', TitlePage='Расы', show_back_button=True)
 
 
 @app.route("/VeiwSkills", methods=['GET', 'POST'])
@@ -872,7 +908,7 @@ def VeiwSkills():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Skills', Date_id])
     return render_template("VeiwElementPage.html", Dates=skills
-                           , VeiwAtributes='VeiwSkills', TitlePage='Навыки')
+                           , VeiwAtributes='VeiwSkills', TitlePage='Навыки', show_back_button=True)
 
 
 @app.route("/VeiwSpells", methods=['GET', 'POST'])
@@ -882,7 +918,7 @@ def VeiwSpells():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Spells', Date_id])
     return render_template("VeiwElementPage.html", Dates=spells
-                           , VeiwAtributes='VeiwSpells', TitlePage='Заклинания')
+                           , VeiwAtributes='VeiwSpells', TitlePage='Заклинания', show_back_button=True)
 
 
 @app.route("/VeiwTools", methods=['GET', 'POST'])
@@ -892,7 +928,7 @@ def VeiwTools():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Tools', Date_id])
     return render_template("VeiwElementPage.html", Dates=tools
-                           , VeiwAtributes='VeiwTools', TitlePage='Инструменты')
+                           , VeiwAtributes='VeiwTools', TitlePage='Инструменты', show_back_button=True)
 
 
 @app.route("/VeiwToolTypes", methods=['GET', 'POST'])
@@ -902,7 +938,7 @@ def VeiwToolTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['ToolTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=toolTypes
-                           , VeiwAtributes='VeiwToolTypes', TitlePage='Типы инструментов')
+                           , VeiwAtributes='VeiwToolTypes', TitlePage='Типы инструментов', show_back_button=True)
 
 
 @app.route("/VeiwWeapoons", methods=['GET', 'POST'])
@@ -912,7 +948,7 @@ def VeiwWeapoons():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['Weapoons', Date_id])
     return render_template("VeiwElementPage.html", Dates=weapoons
-                           , VeiwAtributes='VeiwWeapoons', TitlePage='Оружия')
+                           , VeiwAtributes='VeiwWeapoons', TitlePage='Оружия', show_back_button=True)
 
 
 @app.route("/VeiwWeapoonTypes", methods=['GET', 'POST'])
@@ -922,7 +958,7 @@ def VeiwWeapoonTypes():
         Date_id = request.form.get('Date_id')
         return OpenVeiwPost(['WeapoonTypes', Date_id])
     return render_template("VeiwElementPage.html", Dates=weapoonTypes
-                           , VeiwAtributes='VeiwWeapoonTypes', TitlePage='Типы оружия')
+                           , VeiwAtributes='VeiwWeapoonTypes', TitlePage='Типы оружия', show_back_button=True)
 
 
 @app.route("/EditAbilities", methods=['GET', 'POST'])
@@ -933,7 +969,7 @@ def EditAbilities():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Abilities', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=abilities
-                           , TableName='EditAbilities', TitlePage='Изменить способности')
+                           , TableName='EditAbilities', TitlePage='Изменить способности', show_back_button=True)
 
 
 @app.route("/EditArchetypes", methods=['GET', 'POST'])
@@ -944,7 +980,8 @@ def EditArchetypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Archetypes', Date_id, ['Class']])
     return render_template("EditElementPage.html", Dates=archetypes
-                           , TableName='EditArchetypes', TitlePage='Изменить подклассы (Архетипы)')
+                           , TableName='EditArchetypes', TitlePage='Изменить подклассы (Архетипы)',
+                           show_back_button=True)
 
 
 @app.route("/EditArmors", methods=['GET', 'POST'])
@@ -955,7 +992,7 @@ def EditArmors():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Armors', Date_id, ['ArmorType']])
     return render_template("EditElementPage.html", Dates=armors
-                           , TableName='EditArmors', TitlePage='Изменить доспехи')
+                           , TableName='EditArmors', TitlePage='Изменить доспехи', show_back_button=True)
 
 
 @app.route("/EditArmorTypes", methods=['GET', 'POST'])
@@ -966,7 +1003,7 @@ def EditArmorTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['ArmorTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=armorTypes
-                           , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов')
+                           , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов', show_back_button=True)
 
 
 @app.route("/EditAtributes", methods=['GET', 'POST'])
@@ -977,7 +1014,7 @@ def EditAtributes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Atributes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=atributes
-                           , TableName='EditAtributes', TitlePage='Изменить черты')
+                           , TableName='EditAtributes', TitlePage='Изменить черты', show_back_button=True)
 
 
 @app.route("/EditBackgrounds", methods=['GET', 'POST'])
@@ -988,7 +1025,7 @@ def EditBackgrounds():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Backgrounds', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=backgrounds
-                           , TableName='EditBackgrounds', TitlePage='Изменить предыстории')
+                           , TableName='EditBackgrounds', TitlePage='Изменить предыстории', show_back_button=True)
 
 
 @app.route("/EditCharacteristices", methods=['GET', 'POST'])
@@ -999,7 +1036,8 @@ def EditCharacteristices():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Characteristices', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=characteristices
-                           , TableName='EditCharacteristices', TitlePage='Изменить характеристики')
+                           , TableName='EditCharacteristices', TitlePage='Изменить характеристики',
+                           show_back_button=True)
 
 
 @app.route("/EditClasses", methods=['GET', 'POST'])
@@ -1010,7 +1048,7 @@ def EditClasses():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Classes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=classes
-                           , TableName='EditClasses', TitlePage='Изменить классы')
+                           , TableName='EditClasses', TitlePage='Изменить классы', show_back_button=True)
 
 
 @app.route("/EditDamageTypes", methods=['GET', 'POST'])
@@ -1021,7 +1059,7 @@ def EditDamageTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['DamageTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=damageTypes
-                           , TableName='EditDamageTypes', TitlePage='Изменить типы урона')
+                           , TableName='EditDamageTypes', TitlePage='Изменить типы урона', show_back_button=True)
 
 
 @app.route("/EditEffects", methods=['GET', 'POST'])
@@ -1032,7 +1070,7 @@ def EditEffects():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Effects', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=effects
-                           , TableName='EditEffects', TitlePage='Изменить эффекты')
+                           , TableName='EditEffects', TitlePage='Изменить эффекты', show_back_button=True)
 
 
 @app.route("/EditEquipments", methods=['GET', 'POST'])
@@ -1043,7 +1081,7 @@ def EditEquipments():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Equipments', Date_id, ['EquipmentType']])
     return render_template("EditElementPage.html", Dates=equipments
-                           , TableName='EditEquipments', TitlePage='Изменить снаряжения')
+                           , TableName='EditEquipments', TitlePage='Изменить снаряжения', show_back_button=True)
 
 
 @app.route("/EditEquipmentTypes", methods=['GET', 'POST'])
@@ -1054,7 +1092,8 @@ def EditEquipmentTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['EquipmentTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=equipmentTypes
-            , TableName='EditEquipmentTypes', TitlePage='Изменить типы снаряжений')
+                           , TableName='EditEquipmentTypes', TitlePage='Изменить типы снаряжений',
+                           show_back_button=True)
 
 
 @app.route("/EditFeatures", methods=['GET', 'POST'])
@@ -1065,7 +1104,7 @@ def EditFeatures():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['EquipmentTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=features
-        , TableName='EditFeatures', TitlePage='Изменить особенности')
+                           , TableName='EditFeatures', TitlePage='Изменить особенности', show_back_button=True)
 
 
 @app.route("/EditLanguages", methods=['GET', 'POST'])
@@ -1076,7 +1115,7 @@ def EditLanguages():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Languages', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=languages
-        , TableName='EditLanguages', TitlePage='Изменить языки')
+                           , TableName='EditLanguages', TitlePage='Изменить языки', show_back_button=True)
 
 
 @app.route("/EditMagicalItems", methods=['GET', 'POST'])
@@ -1087,7 +1126,8 @@ def EditMagicalItems():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['MagicalItems', Date_id, ['ArmorTypeItem','WeapoonTypeItem','MagicalItemType']])
     return render_template("EditElementPage.html", Dates=magicalItems
-        , TableName='EditMagicalItems', TitlePage='Изменить магические предметы')
+                           , TableName='EditMagicalItems', TitlePage='Изменить магические предметы',
+                           show_back_button=True)
 
 
 @app.route("/EditMagicalItemTypes", methods=['GET', 'POST'])
@@ -1098,7 +1138,8 @@ def EditMagicalItemTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['MagicalItemsTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=magicalItemsTypes
-        , TableName='EditMagicalItemTypes', TitlePage='Изменить типы магических предметов')
+                           , TableName='EditMagicalItemTypes', TitlePage='Изменить типы магических предметов',
+                           show_back_button=True)
 
 
 @app.route("/EditRaces", methods=['GET', 'POST'])
@@ -1109,7 +1150,7 @@ def EditRaces():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Races', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=races
-        , TableName='EditRaces', TitlePage='Изменить расы')
+                           , TableName='EditRaces', TitlePage='Изменить расы', show_back_button=True)
 
 
 @app.route("/EditSkills", methods=['GET', 'POST'])
@@ -1120,7 +1161,7 @@ def EditSkills():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Skills', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=skills
-        , TableName='EditSkills', TitlePage='Изменить навыки')
+                           , TableName='EditSkills', TitlePage='Изменить навыки', show_back_button=True)
 
 
 @app.route("/EditSpells", methods=['GET', 'POST'])
@@ -1131,7 +1172,7 @@ def EditSpells():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Spells', Date_id, ['DamageType']])
     return render_template("EditElementPage.html", Dates=spells
-        , TableName='EditSpells', TitlePage='Изменить заклинания')
+                           , TableName='EditSpells', TitlePage='Изменить заклинания', show_back_button=True)
 
 
 @app.route("/EditTools", methods=['GET', 'POST'])
@@ -1142,7 +1183,7 @@ def EditTools():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Tools', Date_id, ['ToolType']])
     return render_template("EditElementPage.html", Dates=tools
-        , TableName='EditTools', TitlePage='Изменить инструменты')
+                           , TableName='EditTools', TitlePage='Изменить инструменты', show_back_button=True)
 
 
 @app.route("/EditToolTypes", methods=['GET', 'POST'])
@@ -1153,7 +1194,7 @@ def EditToolTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['ToolTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=toolTypes
-        , TableName='EditToolTypes', TitlePage='Изменить типы инструментов')
+                           , TableName='EditToolTypes', TitlePage='Изменить типы инструментов', show_back_button=True)
 
 
 @app.route("/EditWeapoons", methods=['GET', 'POST'])
@@ -1164,7 +1205,7 @@ def EditWeapoons():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Weapoons', Date_id, ['Features','DamageType','WeapoonType']])
     return render_template("EditElementPage.html", Dates=weapoons
-                           , TableName='EditWeapoons', TitlePage='Изменить оружия')
+                           , TableName='EditWeapoons', TitlePage='Изменить оружия', show_back_button=True)
 
 
 @app.route("/EditWeapoonTypes", methods=['GET', 'POST'])
@@ -1175,7 +1216,7 @@ def EditWeapoonTypes():
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['WeapoonTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=weapoonTypes
-                           , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия')
+                           , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия', show_back_button=True)
 
 
 @app.route("/EditPost", methods=['GET', 'POST'])
@@ -1193,17 +1234,17 @@ def EditPost():
                 else:
                     db.session.rollback()
                 FileDelete([oldimageName])
-                return render_template("EditMaterial.html")
+                return render_template("EditMaterial.html", show_back_button=True)
             elif request.form['two_buttons'] == "remove":
                 removeTrue = RemoveTable(Parametrs)
                 if removeTrue:
                     db.session.commit()
                 else:
                     db.session.rollback()
-            return render_template("EditMaterial.html")
+            return render_template("EditMaterial.html", show_back_button=True)
         else:
-            return render_template("EditMaterial.html")
-    return render_template("EditMaterial.html")
+            return render_template("EditMaterial.html", show_back_button=True)
+    return render_template("EditMaterial.html", show_back_button=True)
 
 
 @app.route("/Index")
@@ -1215,24 +1256,24 @@ def Index():
 @app.route("/AdminPanel")
 @roles_accepted('Admin')
 def AdminPanel():
-    return render_template("AdminPanel.html")
+    return render_template("AdminPanel.html", show_back_button=True)
 
 
 @app.route("/CreateMaterial", methods=['POST','GET'])
 @roles_accepted('Admin', 'Master')
 def CreateMaterial():
-    return render_template("CreateMaterial.html")
+    return render_template("CreateMaterial.html", show_back_button=True)
 
 
 @app.route("/VeiwMaterial", methods=['GET', 'POST'])
 def VeiwMaterial():
-    return render_template("VeiwMaterial.html")
+    return render_template("VeiwMaterial.html", show_back_button=True)
 
 
 @app.route("/EditMaterial", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditMaterial():
-    return render_template("EditMaterial.html")
+    return render_template("EditMaterial.html", show_back_button=True)
 
 
 @roles_accepted('Gamer')
@@ -1276,52 +1317,52 @@ def CreatePersonage():
                                , EffectsResistance=Effect, Effects=Effect, Abilities=Abilitie,
                                Characteristices=Characteristic
                                , Archetypes=Archetype, Classes=Class, Backgrounds=Background, Races=Race, user=user,
-                               Atributes=Atribute, Clans=Clan)
+                               Atributes=Atribute, Clans=Clan, show_back_button=True)
 
 
 @roles_accepted('Gamer')
 @app.route("/EditPersonage", methods=['GET', 'POST'])
 def EditPersonage():
-    return render_template("EditPersonage.html")
+    return render_template("EditPersonage.html", show_back_button=True)
 
 
 @roles_accepted('Gamer')
 @app.route("/VeiwPersonage", methods=['GET', 'POST'])
 def VeiwPersonage():
-    return render_template("VeiwPersonage.html")
+    return render_template("VeiwPersonage.html", show_back_button=True)
 
 
 @app.route("/VeiwMyGames", methods=['GET', 'POST'])
 def VeiwMyGames():
-    return render_template("VeiwMyGames.html")
+    return render_template("VeiwMyGames.html", show_back_button=True)
 
 
 @app.route("/ActiveGames", methods=['GET', 'POST'])
 def ActiveGames():
-    return render_template("ActiveGames.html")
+    return render_template("ActiveGames.html", show_back_button=True)
 
 
 @app.route("/CloseGames", methods=['GET', 'POST'])
 def CloseGames():
-    return render_template("CloseGames.html")
+    return render_template("CloseGames.html", show_back_button=True)
 
 
 @roles_accepted('Master')
 @app.route("/CreateNewGames", methods=['GET', 'POST'])
 def CreateNewGames():
-    return render_template("CreateNewGames.html")
+    return render_template("CreateNewGames.html", show_back_button=True)
 
 
 @roles_accepted('Master')
 @app.route("/EditMyGames", methods=['GET', 'POST'])
 def EditMyGames():
-    return render_template("EditMyGames.html")
+    return render_template("EditMyGames.html", show_back_button=True)
 
 
 @roles_accepted('Master')
 @app.route("/PersonagesMyGames", methods=['GET', 'POST'])
 def PersonagesMyGames():
-    return render_template("PersonagesMyGames.html")
+    return render_template("PersonagesMyGames.html", show_back_button=True)
 
 
 @app.route('/CreateUsers', methods=['GET', 'POST'])
@@ -1333,8 +1374,9 @@ def CreateUsers():
         if user:
             msg = "Пользователь уже существует"
             return render_template('LoginUsers.html', msg=msg)
+
         user = User(login=request.form['login'], active=1, password=request.form['password'])
-        role = Role.query.filter_by(NameUser=request.form['Role']).first()
+        role = Role.query.filter_by(id=request.form['Role']).first()
         user.roles.append(role)
         db.session.add(user)
         db.session.commit()
@@ -1364,9 +1406,9 @@ def LoginUsers():
                 msg = "Неверный пароль"
         else:
             msg = "Пользователь не существует"
-        return render_template('LoginUsers.html', msg=msg, roles=Roles)
+        return render_template('LoginUsers.html', msg=msg, roles=Roles, show_back_button=True)
     else:
-        return render_template("LoginUsers.html", msg=msg, roles=Roles)
+        return render_template("LoginUsers.html", msg=msg, roles=Roles, show_back_button=True)
 
 
 @app.route('/Logout')

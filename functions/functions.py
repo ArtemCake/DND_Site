@@ -20,7 +20,8 @@ def appenddatas(Parametrs):
     try:
         for Date in Dates:
             date = TabelsParametrs.query.filter_by(id=Date).first()
-            ParametrTabls.append(date)
+            if date is not None:
+                ParametrTabls.append(date)
         return True
     except:
         return False
@@ -111,7 +112,8 @@ def OpenVeiwPost(Parametrs):
                         else:
                             representationValue = ''
                         PostDates.append([representationValue, parametr, variables])
-    return render_template("VeiwPost.html", tableName=tableName, DateName=DateName, PostDates=PostDates)
+    return render_template("VeiwPost.html", tableName=tableName, DateName=DateName, PostDates=PostDates,
+                           show_back_button=True)
 
 
 def OpenEditPost(Parametrs):
@@ -153,7 +155,8 @@ def OpenEditPost(Parametrs):
                                 [representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
     except Exception as msg:
         print(msg)
-    return render_template("EditPost.html",DatesMassiv=[Date_id, tableName, DateName, PostDates])
+    return render_template("EditPost.html", DatesMassiv=[Date_id, tableName, DateName, PostDates],
+                           show_back_button=True)
 
 
 def CreateDate(Parametrs):
@@ -170,7 +173,9 @@ def CreateDate(Parametrs):
                 if variables in dates:
                     for Datelist in Dateslist:
                         if Datelist[1] == variables:
-                            paramtable = True
+                            if parametr is not None:
+                                parametr.clear()
+                                paramtable = True
                             if len(Datelist[1]) > 0:
                                 appenddatas([parametrsoutput(dates[Datelist[1]]), get_class(Datelist[0]), parametr])
                     if not paramtable:

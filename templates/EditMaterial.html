@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block content %}
+
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <h1>Изменить данные по ДНД</h1>
 
 <ul>

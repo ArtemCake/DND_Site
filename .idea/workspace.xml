@@ -5,10 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
+      <change afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/dropdowns.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/media-queries.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/hidden_elements.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/images.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/interactive-components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/links_and_buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/links_and_buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/reset.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ActiveGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ActiveGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CloseGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CloseGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreateMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreateNewGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateNewGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditElementPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/LoginUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LoginUsers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/PersonagesMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/PersonagesMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwElementPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +77,9 @@
     &quot;accountId&quot;: &quot;45fb3327-ab84-40cf-8a3c-ffd7daedda45&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -62,15 +97,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/static/css",
+    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/static/js",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
+      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\VeiwPosts" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\CreatePosts" />
@@ -369,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760646692793</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760646991816</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1760646991816</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,13 +436,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="163" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

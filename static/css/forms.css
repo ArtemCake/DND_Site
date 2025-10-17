@@ -1,83 +1,108 @@
-/* Общий стиль формы */
+/* forms.css */
+
 .form-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Заголовок формы */
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Поля ввода */
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-/* Поле ввода пароля с иконкой */
 .password-field-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .password-field-wrapper input {
-    padding-right: 40px; /* Место для иконки */
-}
-.toggle-password-one {
-    position: absolute;
-    top: 15%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 1;
+  padding-right: 40px; /* пространство для иконки */
 }
 
+.toggle-password-one,
 .toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 1;
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
 }
 
 .toggle-password img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
-/* Кнопка "Зарегистрироваться" */
 button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-/* Ссылка "У вас уже есть аккаунт?" */
 .message a {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .message a:hover {
-    opacity: 0.8;
+  opacity: 0.8;
+}
+
+/* Стили для иконки подсказки */
+
+.tooltip-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.tooltip-icon:hover::after {
+  content: attr(title);
+  position: absolute;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+span.tooltip-icon {
+    position: absolute;
+    top: 40%;
+    right: 40px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
 }

@@ -1,29 +1,29 @@
-﻿<div class="container">
-    <ul>
-        <li><a href="{{ url_for('Index') }}">Главная</a></li>
+﻿<div class="container nav-menu" bis_skin_checked="1">
+    <ul class="menu-list">
+        <li class="nav-item"><a href="{{ url_for('Index') }}">Главная</a></li>
         {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('VeiwMaterial') }}">Данные по ДнД</a></li>
+        <li class="nav-item"><a href="{{ url_for('VeiwMaterial') }}">Данные по ДнД</a></li>
         {% for role in current_user.roles %}{% if (role.name == 'Admin') or (role.name == 'Master') %}
-        <li><a href="{{ url_for('EditMaterial') }}">Изменить данные по ДнД</a></li>
-        <li><a href="{{ url_for('CreateMaterial') }}">Добавить данные по ДнД</a></li>
+        <li class="nav-item"><a href="{{ url_for('EditMaterial') }}">Изменить данные по ДнД</a></li>
+        <li class="nav-item"><a href="{{ url_for('CreateMaterial') }}">Добавить данные по ДнД</a></li>
         {% endif %}{% if (role.name == 'Gamer') %}
-        <li><a href="{{ url_for('CreatePersonage') }}">Добавить персонажа</a></li>
-        <li><a href="{{ url_for('EditPersonage') }}">Изменить персонажей</a></li>
-        <li><a href="{{ url_for('VeiwPersonage') }}">Мои персонажи</a></li>
+        <li class="nav-item"><a href="{{ url_for('CreatePersonage') }}">Добавить персонажа</a></li>
+        <li class="nav-item"><a href="{{ url_for('EditPersonage') }}">Изменить персонажей</a></li>
+        <li class="nav-item"><a href="{{ url_for('VeiwPersonage') }}">Мои персонажи</a></li>
         {% endif %}
-        <li><a href="{{ url_for('VeiwMyGames') }}">Мои игры</a></li>
-        <li><a href="{{ url_for('ActiveGames') }}">Активные игры</a></li>
-        <li><a href="{{ url_for('CloseGames') }}">Завершённые игры</a></li>
+        <li class="nav-item"><a href="{{ url_for('VeiwMyGames') }}">Мои игры</a></li>
+        <li class="nav-item"><a href="{{ url_for('ActiveGames') }}">Активные игры</a></li>
+        <li class="nav-item"><a href="{{ url_for('CloseGames') }}">Завершённые игры</a></li>
         {% if (role.name == 'Master') %}
-        <li><a href="{{ url_for('CreateNewGames') }}">Начать новую игру</a></li>
-        <li><a href="{{ url_for('EditMyGames') }}">Редактировать мои игры</a></li>
-        <li><a href="{{ url_for('PersonagesMyGames') }}">Персонажи из моих игр</a></li>
+        <li class="nav-item"><a href="{{ url_for('CreateNewGames') }}">Начать новую игру</a></li>
+        <li class="nav-item"><a href="{{ url_for('EditMyGames') }}">Редактировать мои игры</a></li>
+        <li class="nav-item"><a href="{{ url_for('PersonagesMyGames') }}">Персонажи из моих игр</a></li>
         {% endif %}{% if (role.name == 'Admin') %}
-        <li><a href="{{ url_for('AdminPanel') }}">Админ панель</a></li>
+        <li class="nav-item"><a href="{{ url_for('AdminPanel') }}">Админ панель</a></li>
         {% endif %}{% endfor %}{% endif %}
         <!-- Блок входа -->
-        <li class="login">
-            <ul>
+        <li class="nav-item login">
+            <ul class="submenu">
                 <li>{% if current_user.is_authenticated %}
                     <a href="#"><b>Логин:</b> {{current_user.login}}</a>
                     {% endif %}
