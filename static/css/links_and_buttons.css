@@ -1,4 +1,4 @@
-/* links_and_buttons.css */
+/* buttons-and-links.css */
 a {
   text-decoration: underline;
   color: blue;
@@ -7,6 +7,7 @@ a {
 a:hover {
   opacity: 0.8;
 }
+
 button {
   padding: 10px 20px;
   background-color: #007bff;
@@ -15,6 +16,20 @@ button {
   cursor: pointer;
   font-size: 16px;
 }
+
 button:hover {
   background-color: #0056b3;
+}
+
+#back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#back-button:hover {
+  background-color: #45a049;
 }

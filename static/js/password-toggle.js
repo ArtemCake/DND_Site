@@ -1,9 +1,14 @@
-// script.js
+// password-toggle.js
 
 // Функция для переключения отображения пароля
 function togglePasswordVisibility(spanElement, fieldID) {
     var passwordField = document.getElementById(fieldID);
     var imgElement = spanElement.querySelector('img');
+
+    if (!passwordField || !imgElement) {
+        console.log('Один или несколько элементов не найдены. Скрипт не будет выполнен.');
+        return;
+    }
 
     if (passwordField.type === 'password') {
         passwordField.type = 'text'; // Покажем пароль

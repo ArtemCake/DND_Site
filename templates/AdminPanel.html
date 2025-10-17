@@ -3,6 +3,12 @@
 Админ панель
 {% endblock %}
 {% block content %}
+
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <h1>Админ панель</h1>
 
 <div class="row">

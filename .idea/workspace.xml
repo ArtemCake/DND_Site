@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/LoginUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LoginUsers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/buttons-return.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/buttons-return.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dialog-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dialog-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/form-submission.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form-submission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/form-switcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form-switcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/forms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/image-canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/image-canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/password-toggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/password-toggle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +53,9 @@
     &quot;accountId&quot;: &quot;45fb3327-ab84-40cf-8a3c-ffd7daedda45&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -62,15 +73,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/static/css",
+    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/pythonProject/static/js",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
+      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\VeiwPosts" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\CreatePosts" />
@@ -369,7 +380,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760646692793</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760646991816</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1760646991816</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760740498297</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1760740498297</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,13 +420,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="163" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -421,6 +441,7 @@
         <watch expression="damagetype" />
         <watch expression="PostDate()" language="Python" />
         <watch expression="PostDates[1][1].0" />
+        <watch expression="Skill" />
       </configuration>
     </watches-manager>
   </component>

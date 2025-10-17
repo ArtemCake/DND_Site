@@ -4,6 +4,12 @@
 {% endblock %}
 {% block content %}
 <h1>{{ TitlePage }}</h1>
+
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 {% for Date in Dates %}
 <form method="POST"  id="Edit{{ TableName }}Form{{ Date.id }}" action="{{ TableName }}">
 	<input type="hidden" name="Date_id" id="Date_id"  placeholder='{{ Date.Name }}' value="{{ Date.id }}">

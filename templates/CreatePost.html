@@ -3,6 +3,12 @@
 {{ Title }}
 {% endblock %}
 {% block content %}
+
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <Form method="POST" id="CreateForm" class="{{ TableName }}Form" action="Create{{ TableName }}"
 	  enctype="multipart/form-data">
 	{% for Date in DateTabels %}
@@ -57,4 +63,5 @@
 	{% endfor %}
 	<button type="submit">Создать</button>
 </Form>
+
 {% endblock %}

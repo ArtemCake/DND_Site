@@ -6,6 +6,11 @@
 
 {% block content %}
 
+<!-- Показываем кнопку "назад", если разрешено -->
+{% if show_back_button %}
+<button id="back-button">Вернуться назад</button>
+{% endif %}
+
 <Form method="POST" id="EditForm" class="{{ DatesMassiv[1] }}Form" action="EditPost" enctype="multipart/form-data">
     <input type="hidden" class="tableName" name="tableName" id="tableName" placeholder="tableName" value="{{ DatesMassiv[1] }}"/>
     <input type="hidden" class="Date_id" name="Date_id" id="Date_id" placeholder="Date_id" value="{{ DatesMassiv[0] }}"/>
