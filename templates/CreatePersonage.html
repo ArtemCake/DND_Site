@@ -152,7 +152,7 @@
                 </div>
             </th>
             <th>
-                <div class="dropdown single-select" data-type="single" data-fixed="false">
+                <div class="dropdown single-select" data-type="single" data-fixed="false" data-dependent-on="Class">
                     <input type="hidden" class="values-input archetype-select" name="Archetype" id="Archetype"
                            placeholder="Выберете архетип(подкласс)..."
                            readonly style="width: 200px;"/>
@@ -162,7 +162,7 @@
                         <ul>
                             {% for Archetype in Archetypes %}
 
-                            <li data-value="{{ Archetype.id }}" data-class="{{ Archetype.Class[0].id }}">{{
+                            <li data-value="{{ Archetype.id }}" data-parent-id="{{ Archetype.Class[0].id }}">{{
                                 Archetype.Name }}
                             </li>
                             {% endfor %}
@@ -198,7 +198,30 @@
                     <div class="dropdown-content">
                         <ul>
                             {% for Race in Races %}
-                            <li data-value="{{ Race.id }}">{{ Race.Name }}</li>
+                            <li data-value="{{ Race.id }}" data-speed="
+                            {% if {{ Race.Speed }}=='' or {{ Race.Speed }} == Null %}
+                                0
+                            {% else %}
+                                {{ Race.Speed }}
+                            {% endif %}"
+                                data-fly="
+                            {% if {{ Race.Fly }}=='' or {{ Race.Fly }} == Null %}
+                                0
+                            {% else %}
+                                {{ Race.Fly }}
+                            {% endif %}"
+                                data-swim="
+                            {% if {{ Race.Swim }}=='' or {{ Race.Swim }} == Null %}
+                                0
+                            {% else %}
+                                {{ Race.Swim }}
+                            {% endif %}"
+                                data-climb="{% if {{ Race.Climb }}=='' or {{ Race.Climb }} == Null %}
+                                0
+                            {% else %}
+                                {{ Race.Climb }}
+                            {% endif %}">{{ Race.Name }}
+                            </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -231,56 +254,58 @@
             <th>
                 Пассивное внимание:
             </th>
+            {% for Characteristic in Characteristices %}
             <th>
-                Сила:
+                <div>
+                    <span class="Characteristics" data-param-id="{{ Characteristic.id }}">
+                        {{ Characteristic.Name }}:
+                    </span>
+                </div>
             </th>
-            <th>
-                Ловкость:
-            </th>
-            <th>
-                Телосложение:
-            </th>
-            <th>
-                Интеллект:
-            </th>
-            <th>
-                Мудрость:
-            </th>
-            <th>
-                Харизма:
-            </th>
-            <th></th>
+            {% endfor %}
             <th>
                 Мастерство:
             </th>
+            <th></th>
             <th>
                 Скорость:
             </th>
-			<th></th>
             <th>
                 Очки здоровья:
             </th>
+            <th></th>
             <th>
                 Урон: <input type="number" name="Damage" id="Damage" placeholder="Нанесенный урон..."/>
             </th>
         </tr>
         <tr>
             <th>
-                <input type="number" name="PassivAttention" id="PassivAttention" placeholder="Пассивное внимание"
+                <input type="number" name="PassivAttention" id="PassivAttention" placeholder="Пассивное внимание..."
                        value="{{ 10 +  0 }}"/>
             </th>
             {% for Characteristic in Characteristices %}
             <th>
-                {{ Characteristic.name }}:
-                <input type="hidden" value="{{ Characteristic.id }}">
+                <div class="CharacteristicsValue">
+                    <input type="hidden" name="CharacteristicId" class="ParamId" value="{{ Characteristic.id }}">
+                    <input type="number" name="CharacteristicsValue" placeholder="{{ Characteristic.Name }}" value="">
+                </div>
             </th>
             {% endfor %}
+            <th>
+                <input type="number" name="Mastery" placeholder="Мастерство..." value="2">
+            </th>
             <th></th>
             <th>
-                Мастерство:
-            </th>
-            <th>
-                Скорость:
+                <div data-dependent-on="Race">
+                    <input type="number" name="Speed" placeholder="Скорость ходльбы..." value=""
+                           title="Скорость ходльбы" disabled>
+                    <input type="number" name="Climb" placeholder="Скорость лазанья..." value=""
+                           title="Скорость лазанья" disabled>
+                    <input type="number" name="Fly" placeholder="Скорость полёта..." value="" title="Скорость полёта"
+                           disabled>
+                    <input type="number" name="Swim" placeholder="Скорость плаванья..." value=""
+                           title="Скорость плаванья" disabled>
+                </div>
             </th>
 			<th></th>
             <th>

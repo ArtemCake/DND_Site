@@ -20,3 +20,5 @@ import './dialog-controller.js';            // Контроль диалогов
 import './image-canvas.js';                 // Работа с изображением на холсте
 import './buttons-return.js';               // Работа с кнопками возврата
 import './universal_filter_script.js';      // Работа со связанными списками
+import './element-filter.js';               // Работа фильтр значений для связанных объектов
+import './SpeedCalculation.js';             // Расчёт скоростей перстонажа

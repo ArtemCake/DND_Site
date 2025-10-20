@@ -57,6 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Обновляем состояние полей
             updateDropdownDisplay();
+
+            // Пересчитываем скорости после каждого изменения
+            updateSpeeds();
+
         });
 
         // Функция обновления состояний полей
