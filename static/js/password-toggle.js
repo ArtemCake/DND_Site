@@ -1,46 +1,31 @@
 // password-toggle.js
 
-// Функция для переключения отображения пароля
-function togglePasswordVisibility(spanElement, fieldID) {
-    var passwordField = document.getElementById(fieldID);
-    var imgElement = spanElement.querySelector('img');
+document.addEventListener('DOMContentLoaded', () => {
+    // Обобщенный обработчик переключателей пароля
+    document.querySelectorAll('.toggle-password').forEach((spanElement) => {
+        const fieldID = spanElement.getAttribute('data-for-field'); // Получаем ID поля пароля
 
-    if (!passwordField || !imgElement) {
-        console.log('Один или несколько элементов не найдены. Скрипт не будет выполнен.');
-        return;
-    }
+        if (!fieldID) {
+            console.error('Не задан атрибут data-for-field на переключателе пароля');
+            return;
+        }
 
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text'; // Покажем пароль
-        imgElement.src = '/static/logo/view.png'; // Установим иконку "Видеть"
-    } else {
-        passwordField.type = 'password'; // Скроем пароль
-        imgElement.src = '/static/logo/no-view.png'; // Установим иконку "Невидеть"
-    }
-}
+        const passwordField = document.getElementById(fieldID);
+        const imgElement = spanElement.querySelector('img');
 
-// Связывание событий с иконками
-document.addEventListener("DOMContentLoaded", function() {
-    // Формы регистрации
-    document.querySelectorAll('.registration-form .toggle-password').forEach((element) => {
-        element.addEventListener('click', function() {
-            var fieldID = element.parentNode.querySelector('input').id; // Берём ID ближайшего поля пароля
-            togglePasswordVisibility(element, fieldID);
-        });
-    });
+        if (!passwordField || !imgElement) {
+            console.error('Элементы не найдены для переключателя пароля');
+            return;
+        }
 
-    document.querySelectorAll('.registration-form .toggle-password-one').forEach((element) => {
-        element.addEventListener('click', function() {
-            var fieldID = element.parentNode.querySelector('input').id; // Берём ID ближайшего поля пароля
-            togglePasswordVisibility(element, fieldID);
-        });
-    });
-
-    // Форма входа
-    document.querySelectorAll('.authentication-form .toggle-password').forEach((element) => {
-        element.addEventListener('click', function() {
-            var fieldID = element.parentNode.querySelector('input').id; // Берём ID ближайшего поля пароля
-            togglePasswordVisibility(element, fieldID);
+        spanElement.addEventListener('click', () => {
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text'; // Пароль отображается открыто
+                imgElement.src = '/static/logo/view.png'; // Меняем иконку на "видеть"
+            } else {
+                passwordField.type = 'password'; // Пароль снова маскируется
+                imgElement.src = '/static/logo/no-view.png'; // Меняем иконку на "не видеть"
+            }
         });
     });
 });

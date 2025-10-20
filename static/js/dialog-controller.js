@@ -1,17 +1,18 @@
 // dialog-controller.js
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const dialog = document.querySelector('dialog');
     const openButton = document.querySelector('#open');
-    const closeOnButton = document.querySelector('#closeOn');
-    const closeOffButton = document.querySelector('#closeOff');
+    const closeButtons = document.querySelectorAll('#closeOn, #closeOff');
 
-    if (!dialog || !openButton || !closeOnButton || !closeOffButton) {
-        console.log('Один или несколько элементов не найдены. Скрипт не будет выполнен.');
+    if (!dialog) {
+        console.warn('Диалоговое окно не найдено. Скрипт не будет выполнен.');
         return;
     }
 
-    openButton.addEventListener('click', () => dialog.showModal());
-    closeOnButton.addEventListener('click', () => dialog.close());
-    closeOffButton.addEventListener('click', () => dialog.close());
+    openButton?.addEventListener('click', () => dialog.showModal());
+
+    closeButtons.forEach(button => {
+        button?.addEventListener('click', () => dialog.close());
+    });
 });

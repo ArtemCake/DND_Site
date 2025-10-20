@@ -1,12 +1,12 @@
 // image-canvas.js
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('imageDate');
     const imageInput = document.getElementById('image_uploads');
     const oldImageName = document.getElementById('oldimageName');
 
     if (!canvas || !imageInput || !oldImageName) {
-        console.log('Один или несколько элементов не найдены. Скрипт не будет выполнен.');
+        console.error('Один или несколько элементов не найдены');
         return;
     }
 
@@ -14,28 +14,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const oldImageSrc = 'static/image/' + oldImageName.value;
     let uploadedImage = null;
 
+    // Рисуем изначальное изображение
     const pic = new Image();
     pic.src = oldImageSrc;
     pic.onload = function() {
-        ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(pic, 0, 0, canvas.width, canvas.height);
     };
 
+    // Обработка изменения файла
     imageInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
-        const reader = new FileReader();
+        if (!file) return;
 
+        const reader = new FileReader();
         reader.onload = function(e) {
             const img = new Image();
             img.src = e.target.result;
             img.onload = function() {
                 uploadedImage = img;
-                redrawCanvas();
+                requestAnimationFrame(redrawCanvas); // Используем анимационный кадр для плавной перерисовки
             };
         };
 
         reader.readAsDataURL(file);
     });
 
+    // Перерисовка изображения на канвасе
     function redrawCanvas() {
         if (uploadedImage) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);

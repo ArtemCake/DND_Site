@@ -1,52 +1,54 @@
+// universal_filter_script.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Ищем все зависимые выпадающие списки
+    // Получаем все зависимые выпадающие списки
     const dependentDropdowns = document.querySelectorAll('[data-dependent-on]');
 
     dependentDropdowns.forEach(dependentDropdown => {
-        // Идентификатор родительского поля
-        const parentFieldSelector = '#' + dependentDropdown.getAttribute('data-dependent-on');
+        // Получаем родительский элемент
+        const parentFieldSelector = `[data-param-id="${dependentDropdown.getAttribute('data-dependent-on')}"]`;
         const parentField = document.querySelector(parentFieldSelector);
 
-        // Проверяем существование контейнера
-        const dropdownContainer = dependentDropdown.querySelector('.dropdown-content');
-        if (!dropdownContainer) {
-            console.error(`Контейнер .dropdown-content не найден в ${dependentDropdown}`);
+        // Проверяем существование родительского поля
+        if (!parentField) {
+            console.error(`Родительское поле (${parentFieldSelector}) не найдено.`);
             return;
         }
 
-        // Только элементы <li> в контейнере
+        // Получаем контейнер с опциями
+        const dropdownContainer = dependentDropdown.querySelector('.dropdown-content');
+        if (!dropdownContainer) {
+            console.error(`Контейнер (.dropdown-content) не найден в ${dependentDropdown}.`);
+            return;
+        }
+
+        // Получаем доступные опции
         const childOptions = dropdownContainer.querySelectorAll('ul li');
 
-        // Формируем массив ссылок на связанные поля
+        // Получаем поля для хранения значений и текста
         const relatedFields = [
             dependentDropdown.querySelector('.values-input'),
             dependentDropdown.querySelector('.texts-input')
         ];
 
-        // Изначально скрываем все опции зависимого списка
-        childOptions.forEach(option => {
-            option.style.display = 'none';
-        });
+        // Изначально скрываем все опции
+        childOptions.forEach(option => option.style.display = 'none');
 
-        // Обработчик кликов по элементам родительского списка
-        parentField.closest('.dropdown').addEventListener('click', e => {
-            const clickedItem = e.target.closest('li');
-            if (clickedItem) {
-                const selectedParentValue = clickedItem.getAttribute('data-value');
-                parentField.value = selectedParentValue;
+        // Обработчик кликов по родительскому элементу
+        parentField.addEventListener('change', () => {
+            const selectedParentValue = parentField.value;
 
-                // Сбрасываем выбор зависимых полей
-                relatedFields.forEach(field => field.value = '');
+            // Обновляем отображаемые опции
+            childOptions.forEach(option => {
+                if (option.getAttribute('data-parent-id') === selectedParentValue) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
 
-                // Обновляем отображаемые опции зависимого списка
-                childOptions.forEach(option => {
-                    if (option.getAttribute('data-parent-id') === selectedParentValue) {
-                        option.style.display = '';
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-            }
+            // Сбрасываем значения зависимых полей
+            relatedFields.forEach(field => field.value = '');
         });
     });
 });

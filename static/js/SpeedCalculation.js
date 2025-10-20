@@ -1,72 +1,95 @@
-// calculator.js
+// SpeedCalculation.js
 
-// Функция расчета скоростей
-function updateSpeeds() {
-    const raceItem = document.querySelector('#Race').value; // Выбираем выбранную расу
-    const bonusesElements = document.querySelectorAll('.bonuses-dropdown'); // Берём все блоки бонусов
-    const finalSpeeds = calculateFinalSpeeds(raceItem, bonusesElements);
-
-    // Обновляем поля с результатами
-    document.getElementById('Speed').value = finalSpeeds.walk;
-    document.getElementById('Fly').value = finalSpeeds.fly;
-    document.getElementById('Swim').value = finalSpeeds.swim;
-    document.getElementById('Climb').value = finalSpeeds.climb;
-}
-
-// Основная функция расчета итоговых скоростей
-function calculateFinalSpeeds(raceItem, bonusesElements) {
-    const raceData = getRaceData(raceItem); // Получаем базовые скорости расы
-    const bonusesSum = aggregateBonuses(bonusesElements); // Суммируем бонусы всех блоков
-
-    // Общая формула расчета
-    const finalSpeeds = {
-        walk: applyBonusToBase(raceData.speed, bonusesSum.walk),
-        fly: applyBonusToBase(raceData.fly, bonusesSum.fly),
-        swim: applyBonusToBase(raceData.swim, bonusesSum.swim),
-        climb: applyBonusToBase(raceData.climb, bonusesSum.climb)
+document.addEventListener('DOMContentLoaded', () => {
+    // Связываем элементы с DOM
+    const raceSelect = document.querySelector('#Race');
+    const bonusesContainers = document.querySelectorAll('.bonuses-dropdown');
+    const outputFields = {
+        walk: document.getElementById('Speed'),
+        fly: document.getElementById('Fly'),
+        swim: document.getElementById('Swim'),
+        climb: document.getElementById('Climb')
     };
 
-    return finalSpeeds;
-}
-
-// Получение данных расы
-function getRaceData(value) {
-    const races = document.querySelectorAll('#Race ~ .dropdown-content ul li');
-    for (const race of races) {
-        if (race.dataset.value === value) {
-            return {
-                speed: parseFloat(race.dataset.speed),
-                fly: parseFloat(race.dataset.fly),
-                swim: parseFloat(race.dataset.swim),
-                climb: parseFloat(race.dataset.climb)
-            };
-        }
+    // Проверим наличие всех элементов
+    if (!raceSelect || !bonusesContainers.length || Object.values(outputFields).some(f => !f)) {
+        console.error('Один или несколько элементов не найдены');
+        return;
     }
-    return {};
-}
 
-// Агрегация бонусов
-function aggregateBonuses(elements) {
-    const bonuses = { walk: 0, fly: 0, swim: 0, climb: 0 };
+    // Основная функция расчета скоростей
+    function updateSpeeds() {
+        const raceItem = raceSelect.value;
+        const bonuses = aggregateBonuses(bonusesContainers);
+        const finalSpeeds = calculateFinalSpeeds(raceItem, bonuses);
 
-    elements.forEach(element => {
-        const bonusesInput = element.querySelector('.dropdown-content ul li.selected');
-        if (bonusesInput) {
-            bonuses.walk += parseFloat(bonusesInput.dataset.bonusSpeed) || 0;
-            bonuses.fly += parseFloat(bonusesInput.dataset.bonusFly) || 0;
-            bonuses.swim += parseFloat(bonusesInput.dataset.bonusSwim) || 0;
-            bonuses.climb += parseFloat(bonusesInput.dataset.bonusClimb) || 0;
+        // Обновляем поля с результатами
+        outputFields.walk.value = finalSpeeds.walk;
+        outputFields.fly.value = finalSpeeds.fly;
+        outputFields.swim.value = finalSpeeds.swim;
+        outputFields.climb.value = finalSpeeds.climb;
+    }
+
+    // Функция агрегации бонусов
+    function aggregateBonuses(elements) {
+        const bonuses = { walk: 0, fly: 0, swim: 0, climb: 0 };
+
+        elements.forEach(container => {
+            const selectedOption = container.querySelector('.dropdown-content ul li.selected');
+            if (selectedOption) {
+                bonuses.walk += parseFloat(selectedOption.dataset.bonusSpeed) || 0;
+                bonuses.fly += parseFloat(selectedOption.dataset.bonusFly) || 0;
+                bonuses.swim += parseFloat(selectedOption.dataset.bonusSwim) || 0;
+                bonuses.climb += parseFloat(selectedOption.dataset.bonusClimb) || 0;
+            }
+        });
+
+        return bonuses;
+    }
+
+    // Функция расчета финальной скорости
+    function calculateFinalSpeeds(raceItem, bonuses) {
+        const raceData = getRaceData(raceItem);
+        const finalSpeeds = {
+            walk: applyBonusToBase(raceData.speed, bonuses.walk),
+            fly: applyBonusToBase(raceData.fly, bonuses.fly),
+            swim: applyBonusToBase(raceData.swim, bonuses.swim),
+            climb: applyBonusToBase(raceData.climb, bonuses.climb)
+        };
+
+        return finalSpeeds;
+    }
+
+    // Функция получения данных расы
+    function getRaceData(value) {
+        const races = document.querySelectorAll('#Race ~ .dropdown-content ul li');
+        for (const race of races) {
+            if (race.dataset.value === value) {
+                return {
+                    speed: parseFloat(race.dataset.speed) || 0,
+                    fly: parseFloat(race.dataset.fly) || 0,
+                    swim: parseFloat(race.dataset.swim) || 0,
+                    climb: parseFloat(race.dataset.climb) || 0
+                };
+            }
         }
+        return {};
+    }
+
+    // Функция применения бонуса к базовым характеристикам
+    function applyBonusToBase(base, bonus) {
+        if (base === undefined || base === null || base === "") {
+            return Math.max(parseFloat(bonus), 0);
+        }
+        return Math.max(parseFloat(base) + parseFloat(bonus), 0);
+    }
+
+    // Вызов при загрузке страницы
+    updateSpeeds();
+
+    // Реакция на изменения формы
+    raceSelect.addEventListener('change', updateSpeeds);
+    bonusesContainers.forEach(container => {
+        container.addEventListener('change', updateSpeeds);
     });
-
-    return bonuses;
-}
-
-// Новое правило применения бонуса: если у расы нет данной характеристики, то берем сам бонус
-function applyBonusToBase(base, bonus) {
-    // Если базовая характеристика не указана у расы, принимаем бонус как отдельную величину
-    if (base === "" || typeof base === 'undefined' || base === null) {
-        return Math.max(parseFloat(bonus), 0);
-    }
-    return Math.max(parseFloat(base) + parseFloat(bonus), 0);
-}
+});

@@ -1,9 +1,6 @@
 // healthCalculator.js
 
-// Ждём загрузки DOM
-document.addEventListener('DOMContentLoaded', function() {
-    // Тело нашего скрипта начинается отсюда
-
+document.addEventListener('DOMContentLoaded', () => {
     // Связываем элементы с DOM
     const maxHealthInput = document.querySelector('input[name="MaxHP"]');
     const tempHealthInput = document.querySelector('input[name="TimedHP"]');
@@ -18,18 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Функция для пересчета текущего здоровья
     function recalculateCurrentHealth() {
-        // Проверим, вызвали ли события (для диагностики)
-        console.log('Function called');
-
         // Получаем введённые значения
         const maxHealth = parseFloat(maxHealthInput.value) || 0;
         const tempHealth = parseFloat(tempHealthInput.value) || 0;
         const damage = parseFloat(damageInput.value) || 0;
 
-        // Посмотрим полученные значения (для диагностики)
-        console.log('Max HP:', maxHealth);
-        console.log('Temp HP:', tempHealth);
-        console.log('Damage:', damage);
+        // Проверка корректности ввода
+        if (isNaN(maxHealth) || isNaN(tempHealth) || isNaN(damage)) {
+            alert('Введите корректные численные значения!');
+            return;
+        }
 
         // Вычислим текущее здоровье
         const currentHealth = Math.max(0, maxHealth + tempHealth - damage);

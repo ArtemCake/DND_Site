@@ -6,13 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/SpeedCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/SpeedCalculation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dialog-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dialog-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/element-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/element-filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/external-libraries.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/external-libraries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/form-switcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form-switcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/forms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/healthCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/healthCalculator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/image-canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/image-canvas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/password-toggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/password-toggle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/universal_filter_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/universal_filter_script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/LoginUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LoginUsers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760970128000</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760994721576</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1760994721576</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

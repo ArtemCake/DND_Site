@@ -6,30 +6,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordField = document.getElementById('password-input');
     const confirmPasswordField = document.getElementById('password-input-confirm');
 
-    if (registrationForm && errorMessage && passwordField && confirmPasswordField) {
-        // Проверка совпадения паролей при отправке формы
-        registrationForm.addEventListener('submit', event => {
-            if (passwordField.value !== confirmPasswordField.value) {
-                event.preventDefault(); // Предотвращаем отправку формы
-                errorMessage.style.display = 'block'; // Показываем сообщение об ошибке
-            } else {
-                errorMessage.style.display = 'none'; // Скрываем сообщение об ошибке
-            }
-        });
-
-        // Скрытие сообщения об ошибке при изменении полей пароля
-        passwordField.addEventListener('input', () => {
-            if (!passwordField.value || !confirmPasswordField.value) {
-                errorMessage.style.display = 'none';
-            }
-        });
-
-        confirmPasswordField.addEventListener('input', () => {
-            if (!passwordField.value || !confirmPasswordField.value) {
-                errorMessage.style.display = 'none';
-            }
-        });
-    } else {
+    if (!registrationForm || !errorMessage || !passwordField || !confirmPasswordField) {
         console.error('Один или несколько элементов не найдены.');
+        return;
     }
+
+    // Базовая проверка соответствия паролей
+    function validatePasswords(event) {
+        if (passwordField.value !== confirmPasswordField.value) {
+            event.preventDefault(); // Предотвращение отправки формы
+            errorMessage.style.display = 'block'; // Показываем сообщение об ошибке
+        } else {
+            errorMessage.style.display = 'none'; // Скрываем сообщение об ошибке
+        }
+    }
+
+    // Обработчик отправки формы
+    registrationForm.addEventListener('submit', validatePasswords);
+
+    // Слежение за полем пароля
+    passwordField.addEventListener('input', () => {
+        errorMessage.style.display = 'none';
+    });
+
+    // Слежение за полем подтверждения пароля
+    confirmPasswordField.addEventListener('input', () => {
+        errorMessage.style.display = 'none';
+    });
+
+    // Дополнительная проверка длины пароля (минимум 8 символов)
+    passwordField.addEventListener('blur', () => {
+        if (passwordField.value.length < 8) {
+            alert('Пароль должен быть длиной не менее 8 символов.');
+        }
+    });
+
+    // Возможность отключения отображения ошибки при очистке полей
+    [passwordField, confirmPasswordField].forEach(input => {
+        input.addEventListener('focus', () => {
+            errorMessage.style.display = 'none';
+        });
+    });
 });
