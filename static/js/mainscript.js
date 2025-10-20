@@ -10,6 +10,7 @@ loadExternalLibraries()
     .catch((error) => {
         console.error('Ошибка при загрузке внешних библиотек:', error);
     });
+import'https://code.jquery.com/jquery-3.6.0.min.js';
 import'./external-libraries.js';                    // Загрузка внешних библиотек
 import './password-toggle.js';                      // Подключение модуля управления видимостью паролей
 import './form-switcher.js';                        // Модуль переключения форм
