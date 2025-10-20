@@ -85,6 +85,7 @@ def RepresentationList():
                           , ['Features','Свойства оружия']
         , ['imageName', 'Картинка']
         , ['image', 'Картинка']
+        , ['BoneHealth', 'Кость хитов']
                           , ['Name','']]
 
     return RepresentationList

@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/universal_filter_script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/universal_filter_script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -400,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760970088604</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1760970128000</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1760970128000</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

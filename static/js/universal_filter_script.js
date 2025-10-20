@@ -7,8 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentFieldSelector = '#' + dependentDropdown.getAttribute('data-dependent-on');
         const parentField = document.querySelector(parentFieldSelector);
 
-        // Контейнер зависимого выпадающего списка
+        // Проверяем существование контейнера
         const dropdownContainer = dependentDropdown.querySelector('.dropdown-content');
+        if (!dropdownContainer) {
+            console.error(`Контейнер .dropdown-content не найден в ${dependentDropdown}`);
+            return;
+        }
 
         // Только элементы <li> в контейнере
         const childOptions = dropdownContainer.querySelectorAll('ul li');

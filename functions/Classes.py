@@ -518,6 +518,12 @@ Personages_CharacteristicsValues = db.Table('Personages_CharacteristicsValues',
                                             db.Column('CharacteristicsValues_id', db.Integer(),
                                                       db.ForeignKey('CharacteristicsValues.id')))
 
+Personages_CharacteristicsModificators = db.Table('Personages_CharacteristicsModificators',
+                                                  db.Column('Personages_id', db.Integer(),
+                                                            db.ForeignKey('Personages.id')),
+                                                  db.Column('CharacteristicsModificators_id', db.Integer(),
+                                                            db.ForeignKey('CharacteristicsModificators.id')))
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
@@ -707,6 +713,7 @@ class Classes(db.Model):
     NotArmorSafe        = db.Column(db.Boolean, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    BoneHealth = db.Column(db.Integer, nullable=True)
     Characteristic      = db.relationship('Characteristices', secondary=Classes_Characteristices
                                             , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -1097,6 +1104,12 @@ class Personages(db.Model):
                                            , backref=db.backref("PersonagesCharacteristicsValues", cascade='all,delete',
                                                                 single_parent=True, passive_deletes=True)
                                            , cascade='all,delete', single_parent=True)
+    CharacteristicsModificator = db.relationship('CharacteristicsModificators',
+                                                 secondary=Personages_CharacteristicsModificators
+                                                 , backref=db.backref("PersonagesCharacteristicsModificators",
+                                                                      cascade='all,delete',
+                                                                      single_parent=True, passive_deletes=True)
+                                                 , cascade='all,delete', single_parent=True)
     Clan = db.relationship('Clans', secondary=Personages_Clans
                            , backref=db.backref("PersonagesClans", cascade='all,delete',
                                                 single_parent=True, passive_deletes=True)
@@ -1199,6 +1212,13 @@ class Personages(db.Model):
 
 class CharacteristicsValues(db.Model):
     __tablename__ = 'CharacteristicsValues'
+    id = db.Column(db.Integer, primary_key=True)
+    CharacteristicId = db.Column(db.Integer, nullable=True)
+    value = db.Column(db.Integer, nullable=True)
+
+
+class CharacteristicsModificators(db.Model):
+    __tablename__ = 'CharacteristicsModificators'
     id = db.Column(db.Integer, primary_key=True)
     CharacteristicId = db.Column(db.Integer, nullable=True)
     value = db.Column(db.Integer, nullable=True)

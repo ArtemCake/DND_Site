@@ -281,7 +281,7 @@ def CreateClasses():
     ToolOwnership    = Tools.query.all()
     languages        = Languages.query.all()
     DateTabels = [['Name', 'Название подкласса', False], ['Discription', 'Описание', False]
-        , ['ArmorClass', 'Класс брони без доспехов', False],
+        , ['ArmorClass', 'Класс брони без доспехов', False], ['BoneHealth', 'Кость хитов', False],
                   [characteristices, 'Characteristices', 'Владение характеристиками', False]
         , [spells, 'Spells', 'Дополнительные заклинания', False], [skills, 'Skills', 'Владение навыками', False]
         , [PossessionArmor, 'PossessionArmor', 'Владение доспехами', False],

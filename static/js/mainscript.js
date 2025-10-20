@@ -1,24 +1,43 @@
-// app.js
+// mainscript.js
 import { loadExternalLibraries } from './external-libraries.js';
+
+// Список наших собственных скриптов
+const internalScripts = [
+    './password-toggle.js',
+    './form-switcher.js',
+    './dropdown.js',
+    './form-submission.js',
+    './forms.js',
+    './dialog-controller.js',
+    './image-canvas.js',
+    './buttons-return.js',
+    './universal_filter_script.js',
+    './element-filter.js',
+    './SpeedCalculation.js',
+    './healthCalculator.js',
+    './CharacteristicModificatorCalculation.js'
+];
+
+// Функция для загрузки скриптов
+async function loadInternalScripts() {
+    for (const scriptPath of internalScripts) {
+        try {
+            await import(scriptPath);
+            console.log(`Скрипт ${scriptPath} загружен`);
+        } catch (err) {
+            console.error(`Ошибка при загрузке скрипта ${scriptPath}:`, err);
+        }
+    }
+}
 
 // Загрузка внешних библиотек
 loadExternalLibraries()
-    .then(() => {
+    .then(async () => {
         console.log('Внешние библиотеки загружены успешно.');
-        // Здесь можно разместить код, который зависит от внешних библиотек
+
+        // Начинаем асинхронную загрузку внутренних скриптов
+        await loadInternalScripts();
     })
     .catch((error) => {
         console.error('Ошибка при загрузке внешних библиотек:', error);
     });
-import'./external-libraries.js';            // Загрузка внешних библиотек
-import './password-toggle.js';              // Подключение модуля управления видимостью паролей
-import './form-switcher.js';                // Модуль переключения форм
-import './dropdown.js';                     // Выпадающие списки
-import './form-submission.js';              // Управление формой отправки
-import './forms.js';                        // Управление формами
-import './dialog-controller.js';            // Контроль диалогового окна
-import './image-canvas.js';                 // Работа с изображением на холсте
-import './buttons-return.js';               // Работа с кнопками возврата
-import './universal_filter_script.js';      // Работа со связанными списками
-import './element-filter.js';               // Работа фильтр значений для связанных объектов
-import './SpeedCalculation.js';             // Расчёт скоростей перстонажа

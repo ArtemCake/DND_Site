@@ -199,24 +199,24 @@
                         <ul>
                             {% for Race in Races %}
                             <li data-value="{{ Race.id }}" data-speed="
-                            {% if {{ Race.Speed }}=='' or {{ Race.Speed }} == Null %}
+                            {% if ( Race.Speed =='' or Race.Speed is none) %}
                                 0
                             {% else %}
                                 {{ Race.Speed }}
                             {% endif %}"
                                 data-fly="
-                            {% if {{ Race.Fly }}=='' or {{ Race.Fly }} == Null %}
+                            {% if (Race.Fly=='' or Race.Fly is none) %}
                                 0
                             {% else %}
                                 {{ Race.Fly }}
                             {% endif %}"
                                 data-swim="
-                            {% if {{ Race.Swim }}=='' or {{ Race.Swim }} == Null %}
+                            {% if (Race.Swim=='' or Race.Swim is none) %}
                                 0
                             {% else %}
                                 {{ Race.Swim }}
                             {% endif %}"
-                                data-climb="{% if {{ Race.Climb }}=='' or {{ Race.Climb }} == Null %}
+                                data-climb="{% if (Race.Climb =='' or Race.Climb is none) %}
                                 0
                             {% else %}
                                 {{ Race.Climb }}
@@ -275,7 +275,7 @@
             </th>
             <th></th>
             <th>
-                Урон: <input type="number" name="Damage" id="Damage" placeholder="Нанесенный урон..."/>
+                Урон: <input type="number" name="Damage" id="Damage" placeholder="Нанесенный урон..." value="0"/>
             </th>
         </tr>
         <tr>
@@ -297,8 +297,8 @@
             <th></th>
             <th>
                 <div data-dependent-on="Race">
-                    <input type="number" name="Speed" placeholder="Скорость ходльбы..." value=""
-                           title="Скорость ходльбы" disabled>
+                    <input type="number" name="Speed" placeholder="Скорость ходьбы..." value=""
+                           title="Скорость ходьбы" disabled>
                     <input type="number" name="Climb" placeholder="Скорость лазанья..." value=""
                            title="Скорость лазанья" disabled>
                     <input type="number" name="Fly" placeholder="Скорость полёта..." value="" title="Скорость полёта"
@@ -308,14 +308,38 @@
                 </div>
             </th>
             <th>
-                <input type="number" name="Speed" placeholder="Скорость ходльбы..." value=""
-                       title="Скорость ходльбы" disabled>
+                <input type="number" name="HP" placeholder="Текущее здоровье..." value=""
+                       title="Текущее здоровье" disabled>
             </th>
             <th>
-                Очки здоровья:
+                <input type="number" name="MaxHP" placeholder="Максимальное здоровье..." value=""
+                       title="Максимальное здоровье">
             </th>
-			<th></th>
+            <th>
+                <input type="number" name="TimedHP" placeholder="Временное здоровье..." value="0"
+                       title="Временное здоровье">
+            </th>
 		</tr>
+        <tr>
+            <th>
+            </th>
+            {% for Characteristic in Characteristices %}
+            <th>
+                <div class="CharacteristicsModificator">
+                    <input type="hidden" name="CharacteristicId" class="ParamId" value="{{ Characteristic.id }}">
+                    <input type="number" name="CharacteristicsModificator" placeholder="{{ Characteristic.Name }}"
+                           value="" disabled>
+                </div>
+            </th>
+            {% endfor %}
+            <th>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
 	</table>
 </Form>
 {% endblock %}
