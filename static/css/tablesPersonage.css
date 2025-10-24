@@ -1,0 +1,56 @@
+/* tablesPersonage.css */
+
+.MainDates {
+	border: 1em ridge rgb(129 64 236 / 1);
+	max-width: 10%;
+}
+
+.MainDates td {
+	border: 0.3em solid rgb(131 70 236 / 0.5);
+}
+
+td.border-none {
+	border: none;
+}
+
+#photo-container {
+	position: relative;
+	width: 100%;
+	height: 100%; /* Вы можете настроить высоту */
+}
+
+#imageDate {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bottom-left,
+.bottom-right {
+	position: absolute;
+	font-size: 14px;
+	padding: 5px;
+	z-index: 1;
+}
+
+.bottom-left {
+	bottom: 5px;
+	left: 5px;
+}
+
+.bottom-right {
+	bottom: 5px;
+	right: 5px;
+}
+
+#image_uploads_label {
+	cursor: pointer;
+}
+
+#image_uploads {
+	display: none;
+}
+
+label#image_uploads_label {
+	width: 100%;
+}

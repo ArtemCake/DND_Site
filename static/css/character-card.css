@@ -1,0 +1,85 @@
+/* character-card.css */
+
+/* Основные стили */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #282c34;
+	color: #ffffff;
+}
+
+/* Контейнер для карточки персонажа */
+.character-card {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #36393f;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Верхняя часть с основными данными */
+.character-card .top-section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.character-card .top-section input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #42464b;
+	border-radius: 5px;
+	background-color: #36393f;
+	color: #ffffff;
+}
+
+/* Средняя часть с характеристиками */
+.character-card .middle-section {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.character-card .middle-section .characteristic {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.character-card .middle-section .characteristic label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.character-card .middle-section .characteristic input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #42464b;
+	border-radius: 5px;
+	background-color: #36393f;
+	color: #ffffff;
+}
+
+/* Нижняя часть с дополнительными параметрами */
+.character-card .bottom-section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.character-card .bottom-section input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #42464b;
+	border-radius: 5px;
+	background-color: #36393f;
+	color: #ffffff;
+}
+
+/* Уменьшение ширины ячейки с фото */
+.character-card .photo-cell {
+	width: 50%; /* Уменьшаем ширину ячейки с фото в два раза */
+}
