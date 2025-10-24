@@ -1,52 +1,55 @@
 /* structure.css */
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
 }
 
 header, main, footer {
-  width: 100%;
+    width: 100%;
 }
 
 header {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
 }
 
 footer {
-  background-color: #333;
-  color: white;
-  padding: 10px 0;
-  text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
+
 .content {
-  padding: 20px;
+    padding: 20px;
 }
+
 .header {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
 }
+
 footer {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
 .nav-menu ul.menu-list {

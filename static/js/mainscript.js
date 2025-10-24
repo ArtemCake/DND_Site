@@ -25,3 +25,4 @@ import './element-filter.js';                       // Работа фильтр
 import './SpeedCalculation.js';                     // Расчёт скоростей перстонажа
 import './healthCalculator.js';                     // Расчёт текущего здоровья персонажа
 import './CharacteristicModificatorCalculation.js'; // Расчёт модификаторов характеристик
+import './universal_filter_script.js';              // Смена между темным и светлым стилями
