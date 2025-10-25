@@ -1,45 +1,77 @@
-﻿/* Стили для кнопки */
-.theme-toggle {
-	padding: 10px 20px;
-	background-color: #007bff;
-	color: white;
-	border: none;
+﻿/* ChangingStyles.css */
+
+#photo-container {
+	position: relative;
+}
+
+/* Общий класс для полей с иконками */
+.icon-field {
+	display: inline-block;
+	vertical-align: middle;
 	cursor: pointer;
+	width: 25%; /* примерная ширина */
+	height: 25%;/* примерная высота */
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute; /* абсолютное позиционирование */
+	bottom: 0px; /* отступ снизу */
+}
+
+/* Левое поле ("Пассивное внимание") */
+#PassivAttentionField {
+	background-image: url('/static/logo/magnifyingglass.png');
+	left: 5px; /* расположение слева */
+}
+
+/* Правое поле ("Класс брони") */
+#ArmorClassField {
+	background-image: url('/static/logo/shield.png');
+	right: 5px; /* расположение справа */
+}
+
+/* Оформление полей ввода */
+#PassivAttention,
+#ArmorClass {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	font-size: 16px;
-	transition: background-color 0.3s;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: transparent; /* прозрачность */
+	color: black;
+	box-sizing: border-box;
+	text-align: center; /* центровка по горизонтали */
+	line-height: 25%; /* центровка по вертикали (выравнивание текста) */
+	outline: none; /* убрать контур при фокусе */
+	transition: all 0.3s ease-in-out; /* плавный переход эффектов */
+	display: flex; /* использование Flexbox для точного центра текста */
+	align-items: center; /* вертикально-центрирует текст */
+	justify-content: center; /* горизонтально-центрирует текст */
 }
 
-.theme-toggle:hover {
-	background-color: #0056b3;
+/* Эффект при фокусировании */
+#PassivAttention:focus,
+#ArmorClass:focus {
+	background-color: rgba(255, 255, 255, 0.5); /* полупрозрачный фон при фокусе */
 }
 
-/* Светлый режим */
-.sun-icon {
-	display: block;
+/* Адаптивные настройки для малых экранов */
+@media screen and (max-width: 600px) {
+	.icon-field {
+		width: 30px;
+		height: 30px;
+	}
+
+	#PassivAttention,
+	#ArmorClass {
+		line-height: 30px; /* Центровка на меньших размерах */
+	}
 }
 
-.moon-icon {
-	display: none;
-}
-
-/* Темный режим */
-body.dark-mode {
-	background-color: #282c34;
-	color: #ffffff;
-}
-
-body.dark-mode .theme-toggle {
-	background-color: #4CAF50;
-}
-
-body.dark-mode .theme-toggle:hover {
-	background-color: #45a049;
-}
-
-body.dark-mode .sun-icon {
-	display: none;
-}
-
-body.dark-mode .moon-icon {
-	display: block;
+div#PassivAttentionField {
+	bottom: -3%;
 }

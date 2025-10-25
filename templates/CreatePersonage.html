@@ -11,8 +11,8 @@
 
 <h1>Создание персонажа</h1>
 <Form method="POST" id="CreateForm" class="CreatePersonageForm" action="CreatePersonage" enctype="multipart/form-data">
-
-	<table>
+	
+	<table style="display:none">
 		<tr>
 			<th></th>
 			<th></th>
@@ -252,22 +252,26 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" rowspan="5" class="border-none photo-cell">
+			<td colspan="3" rowspan="5" class="border-none photo-cell">
 				<div id="photo-container">
 					<label for="image_uploads" id="image_uploads_label">
 						<input type="hidden" id="oldimageName" name="oldimageName" value="1">
 						<canvas id="imageDate"></canvas>
 						<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
-						<input type="number" name="PassivAttention" id="PassivAttention"
-						       placeholder="Пассивное внимание..." value="" class="bottom-left">
-						<input type="number" name="ArmorClass" id="ArmorClass" placeholder="Класс брони" value=""
-						       class="bottom-right">
+						<div id="PassivAttentionField" class="icon-field">
+							<input type="number" name="PassivAttention" id="PassivAttention"
+							       placeholder="Пассивное внимание..." value="" class="bottom-left">
+						</div>
+						<div id="ArmorClassField" class="icon-field">
+							<input type="number" name="ArmorClass" id="ArmorClass" placeholder="Класс брони" value=""
+							       class="bottom-right">
+						</div>
 					</label>
 				</div>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="3">
 				<span>Класс:</span>
 				<div class="dropdown single-select" data-type="single" data-fixed="false">
 					<input type="hidden" class="values-input class-select" name="Class" id="Class"
@@ -286,7 +290,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="3">
 				<span>Архетип(подкласс): </span>
 				<div class="dropdown single-select" data-type="single" data-fixed="false" data-dependent-on="Class">
 					<input type="hidden" class="values-input archetype-select" name="Archetype" id="Archetype"
@@ -308,7 +312,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="1">
 				<span>ХП: </span>
 				<input type="number" name="HP" placeholder="Текущее здоровье..." value=""
 				       title="Текущее здоровье" disabled/>
@@ -320,7 +324,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="1">
 				<span>Временное ХП: </span>
 				<input type="number" name="TimedHP" placeholder="Временное здоровье..." value="0"
 				       title="Временное здоровье"/>

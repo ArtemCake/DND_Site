@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates">
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Сохранение данных перед разработкой дизайна">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/ChangingStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ChangingStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/interactive-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/interactive-components.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/reset.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/ChangingStyles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/image-canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/image-canvas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
     </list>
@@ -455,7 +454,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761200253346</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Сохранение данных перед разработкой дизайна">
+      <option name="closed" value="true" />
+      <created>1761317807783</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1761317807783</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Сохранение данных перед разработкой дизайна">
+      <option name="closed" value="true" />
+      <created>1761317822697</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1761317822697</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +489,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Save dates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save dates" />
+    <MESSAGE value="Сохранение данных перед разработкой дизайна" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сохранение данных перед разработкой дизайна" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>

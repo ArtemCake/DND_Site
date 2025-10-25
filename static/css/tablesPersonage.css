@@ -16,7 +16,7 @@ td.border-none {
 #photo-container {
 	position: relative;
 	width: 100%;
-	height: 100%; /* Вы можете настроить высоту */
+	height: 16em; /* Вы можете настроить высоту */
 }
 
 #imageDate {
@@ -53,4 +53,36 @@ td.border-none {
 
 label#image_uploads_label {
 	width: 100%;
+	height: 100%;
 }
+
+/* Уменьшение ширины таблицы */
+.MainDates {
+	width: 50%; /* Уменьшаем ширину таблицы в два раза */
+}
+
+/* Уменьшение ширины ячеек таблицы */
+.MainDates td {
+	padding: 5px; /* Уменьшаем отступы внутри ячеек */
+}
+
+/* Уменьшение ширины элементов внутри ячеек */
+.MainDates input[type="text"],
+.MainDates input[type="number"],
+.MainDates input[type="file"]  {
+	width: 100%; /* Элементы занимают всю ширину ячейки */
+	height: 100%; /* Элементы занимают всю ширину ячейки */
+	padding: 5px; /* Уменьшаем отступы внутри элементов */
+}
+
+/* Уменьшение ширины выпадающих списков */
+.MainDates .dropdown {
+	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
+}
+
+/* Уменьшение ширины выпадающих списков */
+.MainDates .dropdown-content {
+	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
+}
+
+

@@ -14,14 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const oldImageSrc = 'static/image/' + oldImageName.value;
     let uploadedImage = null;
 
-    // Рисуем изначальное изображение
+    // Функция для прорисовки изображения с поддержкой масштабирования
+    function drawFittingImage(image, canvasWidth, canvasHeight) {
+        const aspectRatio = image.width / image.height;
+        let scaledWidth = canvasWidth;
+        let scaledHeight = canvasHeight;
+
+        // Сохраняем полную площадь изображения
+        if ((canvasWidth / canvasHeight) >= aspectRatio) {
+            scaledWidth = canvasHeight * aspectRatio;
+        } else {
+            scaledHeight = canvasWidth / aspectRatio;
+        }
+
+        // Рассчитываем смещение для центрального расположения
+        const xOffset = Math.floor((canvasWidth - scaledWidth) / 2);
+        const yOffset = Math.floor((canvasHeight - scaledHeight) / 2);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(image, xOffset, yOffset, scaledWidth, scaledHeight);
+    }
+
+    // Загрузка первоначального изображения
     const pic = new Image();
     pic.src = oldImageSrc;
     pic.onload = function() {
-        ctx.drawImage(pic, 0, 0, canvas.width, canvas.height);
+        drawFittingImage(pic, canvas.width, canvas.height);
     };
 
-    // Обработка изменения файла
+    // Обработчик загрузки файла
     imageInput.addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -32,18 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = e.target.result;
             img.onload = function() {
                 uploadedImage = img;
-                requestAnimationFrame(redrawCanvas); // Используем анимационный кадр для плавной перерисовки
+                drawFittingImage(img, canvas.width, canvas.height);
             };
         };
 
         reader.readAsDataURL(file);
     });
-
-    // Перерисовка изображения на канвасе
-    function redrawCanvas() {
-        if (uploadedImage) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(uploadedImage, 0, 0, canvas.width, canvas.height);
-        }
-    }
 });
