@@ -2,7 +2,7 @@
 
 .MainDates, .inventory {
 	border: 1em ridge rgb(129 64 236 / 1);
-	max-width: 10%;
+	max-width: 60%;
 }
 
 .MainDates td, .inventory th, .inventory td {
@@ -58,7 +58,7 @@ label#image_uploads_label {
 
 /* Уменьшение ширины таблицы */
 .MainDates {
-	width: 50%; /* Уменьшаем ширину таблицы в два раза */
+	width: 100%; /* Уменьшаем ширину таблицы в два раза */
 }
 
 /* Уменьшение ширины ячеек таблицы */
@@ -85,4 +85,13 @@ label#image_uploads_label {
 /* Уменьшение ширины выпадающих списков */
 .MainDates .dropdown-content, .inventory .dropdown-content {
 	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
+}
+
+input#MaxWeight, input#TotalWeight {
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	background-color: #282c34;
+	color:white;
+	border:none;
 }

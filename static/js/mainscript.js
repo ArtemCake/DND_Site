@@ -25,3 +25,4 @@ import './SpeedCalculation.js';                     // Расчёт скорос
 import './healthCalculator.js';                     // Расчёт текущего здоровья персонажа
 import './CharacteristicModificatorCalculation.js'; // Расчёт модификаторов характеристик
 import './DynamicTables.js';                        // Динамическое создание таблицы
+import './MaxWeightCalculate.js';                   // Расчет масксимального веса исходя из силы

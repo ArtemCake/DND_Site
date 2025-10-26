@@ -350,8 +350,14 @@
 				<td>
 					<div class="CharacteristicsValue">
 						<input type="hidden" name="CharacteristicId" class="ParamId" value="{{ Characteristic.id }}">
+						{% if Characteristic.Name == "Сила" %}
+						<input type="number" name="CharacteristicsValue" data-MaxWeight-param="CharacteristicsValue"
+						       placeholder="{{ Characteristic.Name }}"
+						       value="0">
+						{% else %}
 						<input type="number" name="CharacteristicsValue" placeholder="{{ Characteristic.Name }}"
 						       value="0">
+						{% endif %}
 					</div>
 				</td>
 				{% endfor %}
@@ -374,12 +380,18 @@
 			<thead>
 			<tr>
 				<th><span id="addRowButton">+</span></th>
-				<th>Общ/перегруз</th>
-				<th colspan="2">значение макс веса</th>
-				<th>значение веса</th>
+				<th colspan="2">Общ/перегруз</th>
+				<th colspan="2">
+					<label for="MaxWeight">Максимальный вес: </label>
+					<input id="MaxWeight" name="MaxWeight" class="MaxWeight" value="" readonly/>
+				</th>
+				<th>
+					<label for="TotalWeight">Общий вес: </label>
+					<input id="TotalWeight" name="TotalWeight" class="TotalWeight" value="0" readonly/>
+				</th>
 			</tr>
 			<tr>
-				<th colspan="2">Наименование</th>
+				<th colspan="3">Наименование</th>
 				<th>Количество</th>
 				<th>Цена</th>
 				<th>Вес</th>

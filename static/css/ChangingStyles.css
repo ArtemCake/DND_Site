@@ -75,3 +75,7 @@
 .MainDates div#PassivAttentionField {
 	bottom: -3%;
 }
+
+.MainDates input#PassivAttention{
+	color:white;
+}
