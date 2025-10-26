@@ -201,7 +201,8 @@ def FileDonload(Parametrs):
 
 def FileDelete(Parametrs):
     fileName = 'static/image/' + Parametrs[0]
-    os.remove(fileName)
+    if fileName != 'static/image/':
+        os.remove(fileName)
 
 
 def AllFilesDelete():
@@ -236,7 +237,8 @@ def UpdateTable(Parametrs):
                         PostDate.image = FileDate.read()
                         PostDate.imageName = FileDate.filename
         return PostDate
-    except:
+    except Exception as msg:
+        print(msg)
         return False
 
 
@@ -255,7 +257,8 @@ def RemoveTable(Parametrs):
                                 parametr.clear()
         ClassDate.query.filter_by(id=PaaramDelete['Date_id']).delete()
         return True
-    except:
+    except Exception as msg:
+        print(msg)
         return False
 
 

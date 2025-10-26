@@ -26,3 +26,4 @@ import './healthCalculator.js';                     // Расчёт текуще
 import './CharacteristicModificatorCalculation.js'; // Расчёт модификаторов характеристик
 import './DynamicTables.js';                        // Динамическое создание таблицы
 import './MaxWeightCalculate.js';                   // Расчет масксимального веса исходя из силы
+import './MaxXPCalculate.js';                       // Расчет масксимального здоровья при создании персонажа

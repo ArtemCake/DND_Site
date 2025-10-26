@@ -285,7 +285,9 @@
 						<div class="dropdown-content">
 							<ul>
 								{% for Class in Classes %}
-								<li data-value="{{ Class.id }}">{{ Class.Name }}</li>
+								<li data-value="{{ Class.id }}" data-BoneHealth="{{ Class.BoneHealth }}">{{ Class.Name
+									}}
+								</li>
 								{% endfor %}
 							</ul>
 						</div>
@@ -319,7 +321,7 @@
 				</td>
 				<td colspan="2">
 					<span>максимальное ХП:</span>
-					<input type="number" name="MaxHP" placeholder="Максимальное здоровье..." value=""
+					<input type="number" id="MaxHP" name="MaxHP" placeholder="Максимальное здоровье..." value=""
 					       title="Максимальное здоровье"/>
 				</td>
 			</tr>
@@ -352,6 +354,10 @@
 						<input type="hidden" name="CharacteristicId" class="ParamId" value="{{ Characteristic.id }}">
 						{% if Characteristic.Name == "Сила" %}
 						<input type="number" name="CharacteristicsValue" data-MaxWeight-param="CharacteristicsValue"
+						       placeholder="{{ Characteristic.Name }}"
+						       value="0">
+						{% elif Characteristic.Name == "Телосложение" %}
+						<input type="number" name="CharacteristicsValue" data-MaxXP-param="MaxXP"
 						       placeholder="{{ Characteristic.Name }}"
 						       value="0">
 						{% else %}

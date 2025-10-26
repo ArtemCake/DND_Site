@@ -718,7 +718,7 @@ class Classes(db.Model):
     NotArmorSafe        = db.Column(db.Boolean, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
-    BoneHealth = db.Column(db.Integer, nullable=True)
+    BoneHealth = db.Column(db.String(300), nullable=True)
     Characteristic      = db.relationship('Characteristices', secondary=Classes_Characteristices
                                             , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
