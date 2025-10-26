@@ -1,11 +1,11 @@
 /* tablesPersonage.css */
 
-.MainDates {
+.MainDates, .inventory {
 	border: 1em ridge rgb(129 64 236 / 1);
 	max-width: 10%;
 }
 
-.MainDates td {
+.MainDates td, .inventory th, .inventory td {
 	border: 0.3em solid rgb(131 70 236 / 0.5);
 }
 
@@ -69,20 +69,20 @@ label#image_uploads_label {
 /* Уменьшение ширины элементов внутри ячеек */
 .MainDates input[type="text"],
 .MainDates input[type="number"],
-.MainDates input[type="file"]  {
+.MainDates input[type="file"],
+.inventory input[type="text"],
+.inventory input[type="number"] {
 	width: 100%; /* Элементы занимают всю ширину ячейки */
 	height: 100%; /* Элементы занимают всю ширину ячейки */
 	padding: 5px; /* Уменьшаем отступы внутри элементов */
 }
 
 /* Уменьшение ширины выпадающих списков */
-.MainDates .dropdown {
+.MainDates .dropdown, .inventory .dropdown {
 	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
 }
 
 /* Уменьшение ширины выпадающих списков */
-.MainDates .dropdown-content {
+.MainDates .dropdown-content, .inventory .dropdown-content {
 	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
 }
-
-

@@ -34,13 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.style.display = 'none';
     });
 
-    // Дополнительная проверка длины пароля (минимум 8 символов)
-    passwordField.addEventListener('blur', () => {
-        if (passwordField.value.length < 8) {
-            alert('Пароль должен быть длиной не менее 8 символов.');
-        }
-    });
-
     // Возможность отключения отображения ошибки при очистке полей
     [passwordField, confirmPasswordField].forEach(input => {
         input.addEventListener('focus', () => {

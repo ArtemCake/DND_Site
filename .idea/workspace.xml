@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Сохранение данных перед разработкой дизайна">
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="таблица персонажа с основными характеристиками сделана">
+      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/ChangingStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ChangingStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/interactive-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/interactive-components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/links_and_buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/links_and_buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/reset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/ChangingStyles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/image-canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/image-canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/element-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/element-filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/forms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/universal_filter_script.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/LoginUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/LoginUsers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,27 +76,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.app.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "test",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/DND_Site/static/js",
-    "project.structure.last.edited": "SDK",
-    "project.structure.proportion": "0.090909064",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.app.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/DND_Site/static/css&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.090909064&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\js" />
       <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\css" />
+      <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\js" />
       <recent name="C:\Server\data\htdocs\dnd_site\DND_Site" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
@@ -470,7 +476,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761317822697</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="таблица персонажа с основными характеристиками сделана">
+      <option name="closed" value="true" />
+      <created>1761382297402</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1761382297402</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,7 +504,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Save dates" />
     <MESSAGE value="Сохранение данных перед разработкой дизайна" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сохранение данных перед разработкой дизайна" />
+    <MESSAGE value="таблица персонажа с основными характеристиками сделана" />
+    <option name="LAST_COMMIT_MESSAGE" value="таблица персонажа с основными характеристиками сделана" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>

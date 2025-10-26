@@ -19,20 +19,20 @@
 }
 
 /* Левое поле ("Пассивное внимание") */
-#PassivAttentionField {
+.MainDates #PassivAttentionField {
 	background-image: url('/static/logo/magnifyingglass.png');
 	left: 5px; /* расположение слева */
 }
 
 /* Правое поле ("Класс брони") */
-#ArmorClassField {
+.MainDates #ArmorClassField {
 	background-image: url('/static/logo/shield.png');
 	right: 5px; /* расположение справа */
 }
 
 /* Оформление полей ввода */
-#PassivAttention,
-#ArmorClass {
+.MainDates #PassivAttention,
+.MainDates #ArmorClass {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -54,8 +54,8 @@
 }
 
 /* Эффект при фокусировании */
-#PassivAttention:focus,
-#ArmorClass:focus {
+.MainDates #PassivAttention:focus,
+.MainDates #ArmorClass:focus {
 	background-color: rgba(255, 255, 255, 0.5); /* полупрозрачный фон при фокусе */
 }
 
@@ -66,12 +66,12 @@
 		height: 30px;
 	}
 
-	#PassivAttention,
+	.MainDates #PassivAttention,
 	#ArmorClass {
 		line-height: 30px; /* Центровка на меньших размерах */
 	}
 }
 
-div#PassivAttentionField {
+.MainDates div#PassivAttentionField {
 	bottom: -3%;
 }

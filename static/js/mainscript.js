@@ -20,9 +20,8 @@ import './forms.js';                                // Управление фо
 import './dialog-controller.js';                    // Контроль диалогового окна
 import './image-canvas.js';                         // Работа с изображением на холсте
 import './buttons-return.js';                       // Работа с кнопками возврата
-import './universal_filter_script.js';              // Работа со связанными списками
 import './element-filter.js';                       // Работа фильтр значений для связанных объектов
 import './SpeedCalculation.js';                     // Расчёт скоростей перстонажа
 import './healthCalculator.js';                     // Расчёт текущего здоровья персонажа
 import './CharacteristicModificatorCalculation.js'; // Расчёт модификаторов характеристик
-import './universal_filter_script.js';              // Смена между темным и светлым стилями
+import './DynamicTables.js';                        // Динамическое создание таблицы

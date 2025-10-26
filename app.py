@@ -1,6 +1,7 @@
 from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager, current_user
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
+import json
 from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, FileDelete, CreateDate)
 import logging
 from functions.Classes import *
@@ -1279,12 +1280,13 @@ def EditMaterial():
 @roles_accepted('Gamer')
 @app.route("/CreatePersonage", methods=['GET', 'POST'])
 def CreatePersonage():
-    ActiveMagicalItems = MagicalItems.query.all()
-    ActiveAromr = Armors.query.all()
+    MagicalItem = MagicalItems.query.all()
+    Armor = Armors.query.all()
     TypeMagic = TypesMagic.query.all()
     Spell = Spells.query.all()
     PossessionArmor = ArmorTypes.query.all()
     Weapoon = Weapoons.query.all()
+    Equipment = Equipments.query.all()
     ToolOwnership = Tools.query.all()
     DamageType = DamageTypes.query.all()
     Skill = Skills.query.all()
@@ -1298,6 +1300,19 @@ def CreatePersonage():
     Race = Races.query.all()
     Atribute = Atributes.query.all()
     Clan = Clans.query.all()
+    arrayitems = []
+
+    for armor in Armor:
+        arrayitems.append({"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight})
+    for magicalItem in MagicalItem:
+        arrayitems.append(
+            {"id": magicalItem.id, "Name": magicalItem.Name, "Cost": magicalItem.Cost, "Weight": magicalItem.Weight})
+    for weapoon in Weapoon:
+        arrayitems.append({"id": weapoon.id, "Name": weapoon.Name, "Cost": weapoon.Cost, "Weight": weapoon.Weight})
+    for equipment in Equipment:
+        arrayitems.append(
+            {"id": equipment.id, "Name": equipment.Name, "Cost": equipment.Cost, "Weight": equipment.Weight})
+
     if current_user.is_authenticated:
         user = current_user
     else:
@@ -1307,13 +1322,14 @@ def CreatePersonage():
         requestFiles = request.files
         return render_template("Index.html")
     else:
-        return render_template("CreatePersonage.html", ActiveMagicalItems=ActiveMagicalItems, ActiveAromrs=ActiveAromr
+        return render_template("CreatePersonage.html", ActiveMagicalItems=MagicalItem, ActiveAromrs=Armor
                                , ActiveWeapoons=Weapoon, TypesMagic=TypeMagic,
                                SpellcastingCharacteristicses=Characteristic
-                               , Spells=Spell, PossessionArmor=PossessionArmor, GunOwnership=Weapoon,
-                               ToolOwnership=ToolOwnership
+                               , Spells=Spell, PossessionArmor=PossessionArmor, arrayitems=json.dumps(arrayitems),
+                               GunOwnership=Weapoon,
+                               ToolOwnership=ToolOwnership, Equipments=Equipment
                                , DamageResistance=DamageType, DamageImmunity=DamageType, Skills=Skill,
-                               Languages=Language
+                               Languages=Language, Armors=Armor, Weapoons=Weapoon, MagicalItems=MagicalItem
                                , EffectsResistance=Effect, Effects=Effect, Abilities=Abilitie,
                                Characteristices=Characteristic
                                , Archetypes=Archetype, Classes=Class, Backgrounds=Background, Races=Race, user=user,
