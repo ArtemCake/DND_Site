@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const hasCategoryAttr = target.hasAttribute('data-category'); // Проверка наличия атрибута
             const category = hasCategoryAttr ? target.dataset.category : null;
 
+            console.log(hasCategoryAttr);
+
             // Обновляем выбранный элемент и категорию
             valuesInput.value = elementValue;
             textsInput.value = target.textContent;

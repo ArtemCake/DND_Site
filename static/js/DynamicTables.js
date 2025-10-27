@@ -113,7 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdownContent1.addEventListener('click', function(event) {
                 if (event.target.tagName === 'LI') {
                     const selectedItemId = event.target.dataset.value;
-                    const selectedItem = items.find(item => item.id === parseInt(selectedItemId));
+                    const selectedItemcategory = event.target.dataset.category;
+                    const selectedItem = items.find(item =>
+                    item.id === parseInt(selectedItemId) && item.Category === selectedItemcategory); // ищем элемент по сочетанию ID и категории
 
                     if (selectedItem) {
                         input3.value = selectedItem.Cost;

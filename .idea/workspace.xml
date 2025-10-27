@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="сохранение данных">
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Исправление ошибок работы скриптов">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/character-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/character-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/DynamicTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/DynamicTables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/MaxWeightCalculate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MaxWeightCalculate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dropdown.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,14 +143,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00003" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1758887124207</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1758887124207</updated>
     </task>
     <task id="LOCAL-00004" summary="Save dates">
       <option name="closed" value="true" />
@@ -543,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761586894438</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Исправление ошибок работы скриптов">
+      <option name="closed" value="true" />
+      <created>1761596827056</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1761596827056</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +575,8 @@
     <MESSAGE value="Добавлен расчет максимального ХП" />
     <MESSAGE value="Исправлен расчет максимального ХП" />
     <MESSAGE value="сохранение данных" />
-    <option name="LAST_COMMIT_MESSAGE" value="сохранение данных" />
+    <MESSAGE value="Исправление ошибок работы скриптов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление ошибок работы скриптов" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
