@@ -1,0 +1,81 @@
+﻿/* ChangingStyles.css */
+
+#photo-container {
+	position: relative;
+}
+
+/* Общий класс для полей с иконками */
+.icon-field {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 25%; /* примерная ширина */
+	height: 25%;/* примерная высота */
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: absolute; /* абсолютное позиционирование */
+	bottom: 0px; /* отступ снизу */
+}
+
+/* Левое поле ("Пассивное внимание") */
+.MainDates #PassivAttentionField {
+	background-image: url('/static/logo/magnifyingglass.png');
+	left: 5px; /* расположение слева */
+}
+
+/* Правое поле ("Класс брони") */
+.MainDates #ArmorClassField {
+	background-image: url('/static/logo/shield.png');
+	right: 5px; /* расположение справа */
+}
+
+/* Оформление полей ввода */
+.MainDates #PassivAttention,
+.MainDates #ArmorClass {
+	position: absolute;
+	top: 0;
+	left: 12%;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: transparent; /* прозрачность */
+	color: black;
+	box-sizing: border-box;
+	text-align: center; /* центровка по горизонтали */
+	line-height: 25%; /* центровка по вертикали (выравнивание текста) */
+	outline: none; /* убрать контур при фокусе */
+	transition: all 0.3s ease-in-out; /* плавный переход эффектов */
+	display: flex; /* использование Flexbox для точного центра текста */
+	align-items: center; /* вертикально-центрирует текст */
+	justify-content: center; /* горизонтально-центрирует текст */
+}
+
+/* Эффект при фокусировании */
+.MainDates #PassivAttention:focus,
+.MainDates #ArmorClass:focus {
+	background-color: rgba(255, 255, 255, 0.5); /* полупрозрачный фон при фокусе */
+}
+
+/* Адаптивные настройки для малых экранов */
+@media screen and (max-width: 600px) {
+	.icon-field {
+		width: 30px;
+		height: 30px;
+	}
+
+	.MainDates #PassivAttention,
+	#ArmorClass {
+		line-height: 30px; /* Центровка на меньших размерах */
+	}
+}
+
+.MainDates div#PassivAttentionField {
+	bottom: -3%;
+}
+
+.MainDates input#PassivAttention{
+	color:white;
+}

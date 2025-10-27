@@ -524,6 +524,11 @@ Personages_CharacteristicsModificators = db.Table('Personages_CharacteristicsMod
                                                   db.Column('CharacteristicsModificators_id', db.Integer(),
                                                             db.ForeignKey('CharacteristicsModificators.id')))
 
+Personages_StorageBags = db.Table('Personages_StorageBags',
+                                  db.Column('Personages_id', db.Integer(),
+                                            db.ForeignKey('Personages.id')),
+                                  db.Column('StorageBags_id', db.Integer(),
+                                            db.ForeignKey('StorageBags.id')))
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
@@ -713,7 +718,7 @@ class Classes(db.Model):
     NotArmorSafe        = db.Column(db.Boolean, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
-    BoneHealth = db.Column(db.Integer, nullable=True)
+    BoneHealth = db.Column(db.String(300), nullable=True)
     Characteristic      = db.relationship('Characteristices', secondary=Classes_Characteristices
                                             , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -812,6 +817,8 @@ class MagicalItems(db.Model):
     Fly = db.Column(db.Integer, nullable=True)
     Swim = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
+    Cost = db.Column(db.Integer, nullable=True)
+    Weight = db.Column(db.Integer, nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
     MagicalItemType     = db.relationship('MagicalItemsTypes', secondary=MagicalItems_MagicalItemsTypes
                                             , backref=db.backref("MagicalItemsMagicalItemsTypes"    , cascade='all,delete', single_parent=True, passive_deletes=True)
@@ -1035,7 +1042,8 @@ class StorageBags(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(300), nullable=False)
     Quantity = db.Column(db.String(300), nullable=True)
-    Height = db.Column(db.String(300), nullable=True)
+    Cost = db.Column(db.String(300), nullable=True)
+    Weight = db.Column(db.String(300), nullable=True)
     Personage = db.relationship('Personages', secondary=StorageBags_Personages
                                 , backref=db.backref("PStorageBagsPersonages", cascade='all,delete', single_parent=True,
                                                      passive_deletes=True)
@@ -1208,6 +1216,11 @@ class Personages(db.Model):
                            , backref=db.backref("PersonagesUser", cascade='all,delete', single_parent=True,
                                                 passive_deletes=True)
                            , cascade='all,delete', single_parent=True)
+    StorageBag = db.relationship('StorageBags', secondary=Personages_StorageBags
+                                 , backref=db.backref("PersonagesStorageBags", cascade='all,delete', single_parent=True,
+                                                      passive_deletes=True)
+                                 , cascade='all,delete', single_parent=True)
+
 
 
 class CharacteristicsValues(db.Model):

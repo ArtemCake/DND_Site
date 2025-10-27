@@ -1,4 +1,4 @@
-/* buttons-and-links.css */
+/* links_and_buttons.css */
 a {
   text-decoration: underline;
   color: blue;
@@ -8,7 +8,7 @@ a:hover {
   opacity: 0.8;
 }
 
-button {
+button, span#addRowButton, span.delete-row {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -17,8 +17,8 @@ button {
   font-size: 16px;
 }
 
-button:hover {
-  background-color: #0056b3;
+button:hover, span#addRowButton, span.delete-row {
+  background-color: #9bb8dc;
 }
 
 #back-button {

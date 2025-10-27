@@ -1,0 +1,97 @@
+/* tablesPersonage.css */
+
+.MainDates, .inventory {
+	border: 1em ridge rgb(129 64 236 / 1);
+	max-width: 60%;
+}
+
+.MainDates td, .inventory th, .inventory td {
+	border: 0.3em solid rgb(131 70 236 / 0.5);
+}
+
+td.border-none {
+	border: none;
+}
+
+#photo-container {
+	position: relative;
+	width: 100%;
+	height: 16em; /* Вы можете настроить высоту */
+}
+
+#imageDate {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bottom-left,
+.bottom-right {
+	position: absolute;
+	font-size: 14px;
+	padding: 5px;
+	z-index: 1;
+}
+
+.bottom-left {
+	bottom: 5px;
+	left: 5px;
+}
+
+.bottom-right {
+	bottom: 5px;
+	right: 5px;
+}
+
+#image_uploads_label {
+	cursor: pointer;
+}
+
+#image_uploads {
+	display: none;
+}
+
+label#image_uploads_label {
+	width: 100%;
+	height: 100%;
+}
+
+/* Уменьшение ширины таблицы */
+.MainDates {
+	width: 100%; /* Уменьшаем ширину таблицы в два раза */
+}
+
+/* Уменьшение ширины ячеек таблицы */
+.MainDates td {
+	padding: 5px; /* Уменьшаем отступы внутри ячеек */
+}
+
+/* Уменьшение ширины элементов внутри ячеек */
+.MainDates input[type="text"],
+.MainDates input[type="number"],
+.MainDates input[type="file"],
+.inventory input[type="text"],
+.inventory input[type="number"] {
+	width: 100%; /* Элементы занимают всю ширину ячейки */
+	height: 100%; /* Элементы занимают всю ширину ячейки */
+	padding: 5px; /* Уменьшаем отступы внутри элементов */
+}
+
+/* Уменьшение ширины выпадающих списков */
+.MainDates .dropdown, .inventory .dropdown {
+	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
+}
+
+/* Уменьшение ширины выпадающих списков */
+.MainDates .dropdown-content, .inventory .dropdown-content {
+	width: 100%; /* Выпадающие списки занимают всю ширину ячейки */
+}
+
+input#MaxWeight, input#TotalWeight {
+	width: 100%;
+	height: 100%;
+	padding: 5px;
+	background-color: #282c34;
+	color:white;
+	border:none;
+}

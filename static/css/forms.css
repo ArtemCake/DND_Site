@@ -21,6 +21,14 @@ input[type="password"] {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: #333; /* Темный текст */
+  background-color: #fafafa; /* Светлый фон */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  color: #333; /* Темный текст при фокусе */
+  background-color: #fafafa; /* Светлый фон при фокусе */
 }
 
 .password-field-wrapper {
@@ -99,10 +107,10 @@ button[type="submit"]:hover {
 }
 
 span.tooltip-icon {
-    position: absolute;
-    top: 40%;
-    right: 40px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 1;
+  position: absolute;
+  top: 40%;
+  right: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
 }

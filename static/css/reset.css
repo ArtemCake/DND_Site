@@ -10,7 +10,7 @@ ol,
 li,
 form,
 label,
-input,
+,
 button,
 dialog {
   margin: 0;
@@ -24,6 +24,11 @@ dialog {
   border: none;
   color: inherit;
 }
+
+input{
+  color:black;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #fafafa;

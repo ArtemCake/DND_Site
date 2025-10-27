@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Save dates" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавлен расчет максимального ХП">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/ChangingStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ChangingStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +30,11 @@
         <option name="argument" value="--tags" />
         <option name="title" value="All" />
       </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -55,29 +65,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.app.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/DND_Site/venv&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.090909064&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.app.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "test",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/DND_Site/static/js",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.090909064",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\js" />
+      <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\css" />
       <recent name="C:\Server\data\htdocs\dnd_site\DND_Site" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\js" />
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\css" />
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates" />
-      <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\templates\VeiwPosts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Server\data\htdocs\dnd_site\pythonProject\static\logo" />
@@ -430,7 +441,79 @@
       <option name="project" value="LOCAL" />
       <updated>1761002712946</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1761200253346</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1761200253346</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Сохранение данных перед разработкой дизайна">
+      <option name="closed" value="true" />
+      <created>1761317807783</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1761317807783</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Сохранение данных перед разработкой дизайна">
+      <option name="closed" value="true" />
+      <created>1761317822697</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1761317822697</updated>
+    </task>
+    <task id="LOCAL-00041" summary="таблица персонажа с основными характеристиками сделана">
+      <option name="closed" value="true" />
+      <created>1761382297402</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1761382297402</updated>
+    </task>
+    <task id="LOCAL-00042" summary="промежуточный этап создания карточки персонажа. Добавлена таблица инвентаря с динамическим заполением">
+      <option name="closed" value="true" />
+      <created>1761512627471</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1761512627471</updated>
+    </task>
+    <task id="LOCAL-00043" summary="промежуточный этап создания карточки персонажа. Добавлена таблица инвентаря с динамическим заполением">
+      <option name="closed" value="true" />
+      <created>1761512643660</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1761512643660</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Поправил редми">
+      <option name="closed" value="true" />
+      <created>1761512690669</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1761512690669</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Добавлен расчет общего веса и веса предметов инвентаря">
+      <option name="closed" value="true" />
+      <created>1761517692727</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1761517692727</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Добавлен расчет максимального ХП">
+      <option name="closed" value="true" />
+      <created>1761520300185</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1761520300185</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +532,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Save dates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save dates" />
+    <MESSAGE value="Сохранение данных перед разработкой дизайна" />
+    <MESSAGE value="таблица персонажа с основными характеристиками сделана" />
+    <MESSAGE value="промежуточный этап создания карточки персонажа. Добавлена таблица инвентаря с динамическим заполением" />
+    <MESSAGE value="Поправил редми" />
+    <MESSAGE value="Добавлен расчет общего веса и веса предметов инвентаря" />
+    <MESSAGE value="Добавлен расчет максимального ХП" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен расчет максимального ХП" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
