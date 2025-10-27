@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавлен расчет общего веса и веса предметов инвентаря">
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавлен расчет максимального ХП">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/ChangingStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ChangingStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MaxXPCalculate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -507,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761517692727</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Добавлен расчет максимального ХП">
+      <option name="closed" value="true" />
+      <created>1761520300185</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1761520300185</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,19 +537,13 @@
     <MESSAGE value="промежуточный этап создания карточки персонажа. Добавлена таблица инвентаря с динамическим заполением" />
     <MESSAGE value="Поправил редми" />
     <MESSAGE value="Добавлен расчет общего веса и веса предметов инвентаря" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлен расчет общего веса и веса предметов инвентаря" />
+    <MESSAGE value="Добавлен расчет максимального ХП" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен расчет максимального ХП" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/functions/functions.py</url>
-          <line>239</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

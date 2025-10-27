@@ -1,27 +1,39 @@
+//MaxXPCalculate.js
+
 document.addEventListener('DOMContentLoaded', function() {
-	// Элементы списка классов
-	const classesListItems = document.querySelectorAll('#classes-list li[data-BoneHealth]');
 	// Поле для опыта героя
 	const experienceField = document.querySelector('input[data-MaxXP-param]');
 	// Поле для отображения максимального здоровья
 	const maxHpField = document.getElementById('MaxHP');
+	const HpField = document.getElementById('HP');
+	// Элементы списка классов
+	const classesListItems = document.querySelectorAll('#classes-list li[data-BoneHealth]');
+
+	console.log(classesListItems);
 
 	// Обработчик для подсчета Maximum Health
 	function calculateMaxHealth() {
 		// Получаем опыт героя
 		const xp = parseFloat(experienceField.value) || 0;
 
-		// Находим текущий выбранный класс (если ни один не выбран, берём первый по умолчанию)
-		const selectedClassItem = document.querySelector('#classes-list li.selected') ||
-		classesListItems[0]; // Обратите внимание, объявили переменную внутри функции!
+		// Находим текущий выбранный класс (если ни один не выбран, берем первый по умолчанию)
+		let selectedClassItem = document.querySelector('#classes-list li.selected');
 
-		// Извлекаем число из атрибута data-BoneHealth
-		const match = selectedClassItem.dataset.bonehealth.match(/\d+/);
-		const boneHealth = match ? parseFloat(match[0]) : 0;
+		// Проверяем, существует ли selectedClassItem, чтобы избежать ошибки
+		if (selectedClassItem) {
+			// Извлекаем число из атрибута data-BoneHealth
+			const match = selectedClassItem.dataset.bonehealth.match(/\d+/);
+			const boneHealth = match ? parseFloat(match[0]) : 0;
 
-		// Рассчитываем максимальное здоровье
-		const maxHealth = boneHealth + xp;
-		maxHpField.value = maxHealth.toFixed(0); // Округляем до целого числа
+			// Рассчитываем максимальное здоровье
+			const maxHealth = boneHealth + xp;
+			maxHpField.value = maxHealth.toFixed(0); // Округляем до целого числа
+			HpField.value = maxHealth.toFixed(0);
+		} else {
+			// Если класс не выбран, оставляем значение MaxHP пустым или устанавливаем нулевое значение
+			maxHpField.value = "";
+			HpField.value = "";
+		}
 	}
 
 	// Назначаем обработчик кликов на выбор класса
