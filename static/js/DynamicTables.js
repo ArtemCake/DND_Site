@@ -1,3 +1,5 @@
+// DynamicTables.js
+
 document.addEventListener('DOMContentLoaded', function() {
     // Получаем все таблицы с классом "inventory"
     const tables = document.querySelectorAll('.inventory');
@@ -41,6 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
             hiddenInput.value = '';
             dropdown1.appendChild(hiddenInput);
 
+            // Новое скрытое поле для хранения категории
+            const categoryHiddenInput = document.createElement('input');
+            categoryHiddenInput.type = 'hidden';
+            categoryHiddenInput.className = 'categories-input';              // Новая категория
+            categoryHiddenInput.name = 'StorageBagCategory';               // Имя поля
+            categoryHiddenInput.id = 'StorageBagCategory';                 // Идентификатор
+            categoryHiddenInput.readOnly = true;
+            categoryHiddenInput.value = '';                                 // Изначально пустое
+            dropdown1.appendChild(categoryHiddenInput);                     // Добавляем скрытое поле
+
             const textInput = document.createElement('input');
             textInput.type = 'text';
             textInput.className = 'texts-input';
@@ -60,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const li = document.createElement('li');
                 li.dataset.value = itemParam.id;
                 li.textContent = itemParam.Name;
+                li.setAttribute('data-category', itemParam.Category);     // Сохраняем категорию
                 ul.appendChild(li);
             });
 
@@ -87,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cell4.appendChild(input4);
 
             // Добавляем ячейки в строку
-            row.appendChild(cell5); // Добавляем ячейку с элементом span
+            row.appendChild(cell5); // Ячейка с кнопкой удаления
             row.appendChild(cell1);
             row.appendChild(cell2);
             row.appendChild(cell3);
@@ -108,7 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         textInput.value = selectedItem.Name;
                         hiddenInput.value = selectedItem.id;
 
-                        // Рассчитываем сумму значений в колонке "Вес" с учетом количества
+                        // Устанавливаем категорию в новом скрытом поле
+                        categoryHiddenInput.value = selectedItem.Category; // Присваиваем категорию
+
+                        // Расчёт суммы значений в колонке "Вес" с учетом количества
                         const weightInputs = tableBody.querySelectorAll('input[name="Weight"]');
                         const quantityInputs = tableBody.querySelectorAll('input[name="Quantity"]');
                         let totalWeight = 0;
@@ -133,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteSpan.addEventListener('click', function() {
                 row.remove();
 
-                // Пересчитываем сумму значений в колонке "Вес" после удаления строки
+                // Пересчет суммы значений в колонке "Вес" после удаления строки
                 const weightInputs = tableBody.querySelectorAll('input[name="Weight"]');
                 const quantityInputs = tableBody.querySelectorAll('input[name="Quantity"]');
                 let totalWeight = 0;

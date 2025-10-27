@@ -1303,15 +1303,22 @@ def CreatePersonage():
     arrayitems = []
 
     for armor in Armor:
-        arrayitems.append({"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight})
+        arrayitems.append(
+            {"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight, "Category": "Armors"})
     for magicalItem in MagicalItem:
         arrayitems.append(
-            {"id": magicalItem.id, "Name": magicalItem.Name, "Cost": magicalItem.Cost, "Weight": magicalItem.Weight})
+            {"id": magicalItem.id, "Name": magicalItem.Name, "Cost": magicalItem.Cost, "Weight": magicalItem.Weight,
+             "Category": "MagicalItems"})
     for weapoon in Weapoon:
-        arrayitems.append({"id": weapoon.id, "Name": weapoon.Name, "Cost": weapoon.Cost, "Weight": weapoon.Weight})
+        arrayitems.append({"id": weapoon.id, "Name": weapoon.Name, "Cost": weapoon.Cost, "Weight": weapoon.Weight,
+                           "Category": "Weapoons"})
     for equipment in Equipment:
         arrayitems.append(
-            {"id": equipment.id, "Name": equipment.Name, "Cost": equipment.Cost, "Weight": equipment.Weight})
+            {"id": equipment.id, "Name": equipment.Name, "Cost": equipment.Cost, "Weight": equipment.Weight,
+             "Category": "Equipments"})
+    for Tool in ToolOwnership:
+        arrayitems.append(
+            {"id": Tool.id, "Name": Tool.Name, "Cost": Tool.Cost, "Weight": Tool.Weight, "Category": "Tools"})
 
     if current_user.is_authenticated:
         user = current_user

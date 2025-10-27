@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Элементы списка классов
 	const classesListItems = document.querySelectorAll('#classes-list li[data-BoneHealth]');
 
-	console.log(classesListItems);
-
 	// Обработчик для подсчета Maximum Health
 	function calculateMaxHealth() {
 		// Получаем опыт героя

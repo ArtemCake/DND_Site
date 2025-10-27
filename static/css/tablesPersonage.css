@@ -60,12 +60,17 @@ label#image_uploads_label {
 
 /* Уменьшение ширины таблицы */
 .MainDates {
-	width: 100%;
+	width: 25%;
+	height: 100%;
+}
+
+#dynamicTable {
+	width: 45%;
 	height: 100%;
 }
 
 /* Уменьшение ширины ячеек таблицы */
-.MainDates td {
+.MainDates td, #dynamicTable td {
 	padding: 5px; /* Уменьшаем отступы внутри ячеек */
 }
 

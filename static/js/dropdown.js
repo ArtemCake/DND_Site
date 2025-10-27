@@ -43,29 +43,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!target || modeFixed) return;
 
-            switch (selectionType) {
-                case 'single':
-                    items.forEach(item => item.classList.remove('selected'));
-                    target.classList.add('selected');
-                    break;
-                case 'multiple':
-                    target.classList.toggle('selected');
-                    break;
+            // Получаем необходимые атрибуты
+            const elementValue = target.dataset.value;
+            const hasCategoryAttr = target.hasAttribute('data-category'); // Проверка наличия атрибута
+            const category = hasCategoryAttr ? target.dataset.category : null;
+
+            // Обновляем выбранный элемент и категорию
+            valuesInput.value = elementValue;
+            textsInput.value = target.textContent;
+
+            // Только если есть категория, обновляем скрытое поле
+            if (hasCategoryAttr) {
+                const categoriesInput = dropdown.querySelector('.categories-input');
+                if (categoriesInput) {
+                    categoriesInput.value = category;
+                }
             }
 
-            updateDropdownDisplay();
+            // Обновляем визуальное состояние (класс selected)
+            items.forEach(item => item.classList.remove('selected'));
+            target.classList.add('selected');
         });
 
         // Вспомогательная функция для обновления отображения
         function updateDropdownDisplay() {
             const selectedItems = items.filter(item => item.classList.contains('selected'))
-                                      .map(item => ({
-                                          value: item.dataset.value,
-                                          text: item.textContent
-                                      }));
+                .map(item => ({
+                value: item.dataset.value,
+                text: item.textContent,
+                category: item.dataset.category || ''
+            }));
 
-            valuesInput.value = selectedItems.map(i => i.value).join(', ');
-            textsInput.value = selectedItems.map(i => i.text).join(', ');
+            valuesInput.value = selectedItems.map(i => i.value).join(', ');      // Заполняем скрытые поля
+            textsInput.value = selectedItems.map(i => i.text).join(', ');        // Текущие названия элементов
+
+            // Если имеется хотя бы один элемент с категорией, обновляем поле категорий
+            const hasAnyCategory = selectedItems.some(item => item.category);
+            if (hasAnyCategory) {
+                const categoriesInput = dropdown.querySelector('.categories-input');
+                if (categoriesInput) {
+                    categoriesInput.value = selectedItems.map(i => i.category).filter(Boolean).join(', ');
+                }
+            }
         }
     });
 });
