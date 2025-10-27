@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="сохранение данных">
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ActiveGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ActiveGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/AdminPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminPanel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CloseGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CloseGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreateMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreateNewGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateNewGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditElementPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMyGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPersonage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/PersonagesMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/PersonagesMyGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwElementPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMyGames.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPersonage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,14 +142,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00001" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1758886601698</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1758886601698</updated>
     </task>
     <task id="LOCAL-00002" summary="Save dates">
       <option name="closed" value="true" />
@@ -555,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761574776210</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="сохранение данных">
+      <option name="closed" value="true" />
+      <created>1761584880083</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1761584880085</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

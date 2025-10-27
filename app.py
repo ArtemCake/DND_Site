@@ -6,7 +6,7 @@ from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, Remove
 import logging
 from functions.Classes import *
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///newflask.db'
