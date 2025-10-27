@@ -16,13 +16,15 @@ td.border-none {
 #photo-container {
 	position: relative;
 	width: 100%;
-	height: 16em; /* Вы можете настроить высоту */
+	height: 100%;
 }
 
 #imageDate {
-	width: 100%;
+	width: 14em;
 	height: 100%;
 	object-fit: cover;
+	border: 1px solid black;
+	border-radius: 4%;
 }
 
 .bottom-left,
@@ -58,7 +60,8 @@ label#image_uploads_label {
 
 /* Уменьшение ширины таблицы */
 .MainDates {
-	width: 100%; /* Уменьшаем ширину таблицы в два раза */
+	width: 100%;
+	height: 100%;
 }
 
 /* Уменьшение ширины ячеек таблицы */
@@ -95,3 +98,4 @@ input#MaxWeight, input#TotalWeight {
 	color:white;
 	border:none;
 }
+
