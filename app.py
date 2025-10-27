@@ -6,7 +6,7 @@ from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, Remove
 import logging
 from functions.Classes import *
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///newflask.db'
@@ -1435,4 +1435,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True, passthrough_errors=True,
+            use_debugger=False, use_reloader=False)

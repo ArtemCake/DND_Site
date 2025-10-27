@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="сохранение данных">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/ChangingStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ChangingStyles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/interactive-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/interactive-components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ActiveGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ActiveGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/AdminPanel.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/AdminPanel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CloseGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CloseGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreateMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreateNewGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreateNewGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditElementPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/PersonagesMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/PersonagesMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwElementPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwMaterial.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMaterial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwMyGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwMyGames.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/VeiwPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/VeiwPost.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -525,7 +539,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761552425949</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="сохранение данных">
+      <option name="closed" value="true" />
+      <created>1761574706613</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1761574706613</updated>
+    </task>
+    <task id="LOCAL-00049" summary="сохранение данных">
+      <option name="closed" value="true" />
+      <created>1761574776210</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1761574776210</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
