@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета мастерства">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/character-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/character-card.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,30 +145,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00009" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759521622622</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521622622</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759531897119</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1759531897119</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759587282120</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1759587282120</updated>
     </task>
     <task id="LOCAL-00012" summary="Save dates">
       <option name="closed" value="true" />
@@ -538,7 +514,31 @@
       <option name="project" value="LOCAL" />
       <updated>1761682612989</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Добавление расчета мастерства">
+      <option name="closed" value="true" />
+      <created>1761682631996</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1761682631996</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Добавление расчета мастерства">
+      <option name="closed" value="true" />
+      <created>1761683088387</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1761683088387</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Добавление расчета мастерства">
+      <option name="closed" value="true" />
+      <created>1761683095279</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1761683095279</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
