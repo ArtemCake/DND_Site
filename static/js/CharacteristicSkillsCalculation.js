@@ -33,8 +33,8 @@ export function calculateSkills() {
 
 			// Применяем формулу исходя из статуса владения навыком
 			let skillValue = isProficient
-			? 2 * masteryValue + modifier
-			: masteryValue + modifier;
+			? 1 * masteryValue + modifier
+			: 0 * masteryValue + modifier;
 
 			$(this).val(skillValue);
 		});

@@ -87,12 +87,24 @@ body {
 form#CreateForm {
 	width: 100%;
 }
-.tables-up, .tables-down {
+.tables-left, .tables-right {
 	display: flex;
-	justify-content: space-between;
 	align-content: space-between;
-	flex-direction: row;
-	align-items: stretch;
+	flex-direction: column;
+	align-items: flex-start;
 	padding: 15px;
 	margin: 5px;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.tables-personage {
+	display: flex
+	;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	align-content: space-between;
 }

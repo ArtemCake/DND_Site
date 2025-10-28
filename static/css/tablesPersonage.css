@@ -2,7 +2,8 @@
 
 .MainDates, .inventory, .DopParametrs {
 	border: 1em ridge rgb(129 64 236 / 1);
-	max-width: 60%;
+	max-width: 100%;
+	margin: 3%;
 }
 
 .MainDates td, .inventory th, .inventory td, .DopParametrs td {
@@ -60,12 +61,12 @@ label#image_uploads_label {
 
 /* Уменьшение ширины таблицы */
 .MainDates, .DopParametrs {
-	width: 25%;
+	width: 100%;
 	height: 100%;
 }
 
 #dynamicTable {
-	width: 45%;
+	width: 100%;
 	height: 100%;
 }
 
