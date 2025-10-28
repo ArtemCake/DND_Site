@@ -28,3 +28,4 @@ import './DynamicTables.js';                        // Динамическое 
 import './MaxWeightCalculate.js';                   // Расчет масксимального веса исходя из силы
 import './MaxXPCalculate.js';                       // Расчет масксимального здоровья при создании персонажа
 import './CharacteristicSkillsCalculation.js';      // Расчёт навыков характеристик
+import './MasteryrCalculation.js';                  // Расчёт мастерства

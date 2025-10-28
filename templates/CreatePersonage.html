@@ -20,17 +20,8 @@
             <th>
                 {{ user.login }}
             </th>
-            <th>
-                Уровень персонажа:
-            </th>
 			<th>Вдохновение</th>
 		</tr>
-		<tr>
-            <th>
-	            <input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
-	                   value="2"/>
-            </th>
-        </tr>
         <tr>
 	        <th>Успехи:</th>
 	        <th>
@@ -74,114 +65,136 @@
 	<div class="tables-up">
 		
 		<table class="MainDates">
-			
 			<tr>
-				<td colspan="4">
-					<span>Имя персонажа: </span> <input type="text" name="Name" id="Name" placeholder="Имя персонажа"/>
+				<td colspan="3">
+					<div class="block-item">
+						<span>Имя персонажа: </span>
+						<input type="text" name="Name" id="Name" placeholder="Имя персонажа"/>
+					</div>
+				</td>
+				<td colspan="1">
+					<div class="block-item">
+						<span>Уровень персонажа: </span>
+						<input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
+						       value="2"/>
+					</div>
 				</td>
 				<td colspan="2">
-					<span>Раса: </span>
-					<div class="dropdown single-select" data-type="single" data-fixed="false">
-						<input type="hidden" class="values-input" name="Race" id="Race" placeholder="Выберете расу..."
-						       readonly/>
-						<input type="text" class="texts-input" id="RacePrint"
-						       placeholder="Выберете расу..." readonly/>
-						<div class="dropdown-content">
-							<ul>
-								{% for Race in Races %}
-								<li data-value="{{ Race.id }}" data-speed="
-	                            {% if ( Race.Speed =='' or Race.Speed is none) %}
-	                                0
-	                            {% else %}
-	                                {{ Race.Speed }}
-	                            {% endif %}"
-								    data-fly="
-	                            {% if (Race.Fly=='' or Race.Fly is none) %}
-	                                0
-	                            {% else %}
-	                                {{ Race.Fly }}
-	                            {% endif %}"
-								    data-swim="
-	                            {% if (Race.Swim=='' or Race.Swim is none) %}
-	                                0
-	                            {% else %}
-	                                {{ Race.Swim }}
-	                            {% endif %}"
-								    data-climb="{% if (Race.Climb =='' or Race.Climb is none) %}
-	                                0
-	                            {% else %}
-	                                {{ Race.Climb }}
-	                            {% endif %}">{{ Race.Name }}
-								</li>
-								{% endfor %}
-							</ul>
+					<div class="block-item">
+						<span>Раса: </span>
+						<div class="dropdown single-select" data-type="single" data-fixed="false">
+							<input type="hidden" class="values-input" name="Race" id="Race"
+							       placeholder="Выберете расу..."
+							       readonly/>
+							<input type="text" class="texts-input" id="RacePrint"
+							       placeholder="Выберете расу..." readonly/>
+							<div class="dropdown-content">
+								<ul>
+									{% for Race in Races %}
+									<li data-value="{{ Race.id }}" data-speed="
+		                            {% if ( Race.Speed =='' or Race.Speed is none) %}
+		                                0
+		                            {% else %}
+		                                {{ Race.Speed }}
+		                            {% endif %}"
+									    data-fly="
+		                            {% if (Race.Fly=='' or Race.Fly is none) %}
+		                                0
+		                            {% else %}
+		                                {{ Race.Fly }}
+		                            {% endif %}"
+									    data-swim="
+		                            {% if (Race.Swim=='' or Race.Swim is none) %}
+		                                0
+		                            {% else %}
+		                                {{ Race.Swim }}
+		                            {% endif %}"
+									    data-climb="{% if (Race.Climb =='' or Race.Climb is none) %}
+		                                0
+		                            {% else %}
+		                                {{ Race.Climb }}
+		                            {% endif %}">{{ Race.Name }}
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="1">
-					<span>Клан: </span>
-					<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
-						<input type="hidden" class="values-input" id="Clan" placeholder="Выберете клан..." name="Clan"
-						       readonly/>
-						<input type="text" class="texts-input" id="ClanPrint" placeholder="Выберете клан..." readonly
-						/>
-						<div class="dropdown-content">
-							<ul>
-								{% for Clan in Clans %}
-								<li data-value="{{ Clan.id }}">{{ Clan.Name }}</li>
-								{% endfor %}
-							</ul>
+					<div class="block-item">
+						<span>Клан: </span>
+						<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
+							<input type="hidden" class="values-input" id="Clan" placeholder="Выберете клан..."
+							       name="Clan"
+							       readonly/>
+							<input type="text" class="texts-input" id="ClanPrint" placeholder="Выберете клан..."
+							       readonly
+							/>
+							<div class="dropdown-content">
+								<ul>
+									{% for Clan in Clans %}
+									<li data-value="{{ Clan.id }}">{{ Clan.Name }}</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
 				<td colspan="1">
-					<span>Происхождение: </span>
-					<div class="dropdown single-select" data-type="single" data-fixed="false">
-						<input type="hidden" class="values-input" name="Background" id="Background"
-						       placeholder="Выберете происхождение..."
-						       readonly/>
-						<input type="text" class="texts-input" id="BackgroundPrint"
-						       placeholder="Выберете происхождение..." readonly/>
-						<div class="dropdown-content">
-							<ul>
-								{% for Background in Backgrounds %}
-								<li data-value="{{ Background.id }}">{{ Background.Name }}</li>
-								{% endfor %}
-							</ul>
+					<div class="block-item">
+						<span>Происхождение: </span>
+						<div class="dropdown single-select" data-type="single" data-fixed="false">
+							<input type="hidden" class="values-input" name="Background" id="Background"
+							       placeholder="Выберете происхождение..."
+							       readonly/>
+							<input type="text" class="texts-input" id="BackgroundPrint"
+							       placeholder="Выберете происхождение..." readonly/>
+							<div class="dropdown-content">
+								<ul>
+									{% for Background in Backgrounds %}
+									<li data-value="{{ Background.id }}">{{ Background.Name }}</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
 				<td colspan="2">
-					<span>Черты: </span>
-					<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
-						<input type="hidden" class="values-input" id="Atributes" placeholder="Выберете черту..."
-						       name="Atributes" readonly/>
-						<input type="text" class="texts-input" id="AtributesPrint"
-						       placeholder="Выберете черту..." readonly/>
-						<div class="dropdown-content">
-							<ul>
-								{% for Atribute in Atributes %}
-								<li data-value="{{ Atribute.id }}">{{ Atribute.Name }}</li>
-								{% endfor %}
-							</ul>
+					<div class="block-item">
+						<span>Черты: </span>
+						<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
+							<input type="hidden" class="values-input" id="Atributes" placeholder="Выберете черту..."
+							       name="Atributes" readonly/>
+							<input type="text" class="texts-input" id="AtributesPrint"
+							       placeholder="Выберете черту..." readonly/>
+							<div class="dropdown-content">
+								<ul>
+									{% for Atribute in Atributes %}
+									<li data-value="{{ Atribute.id }}">{{ Atribute.Name }}</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
 				<td colspan="2">
-					<span>Пол: </span>
-					<div class="dropdown single-select" data-type="single" data-fixed="false">
-						<input type="hidden" class="values-input" id=Gender" name="Gender"
-						       placeholder="Выберете  пол..."
-						       readonly/>
-						<input type="text" class="texts-input" id="GenderPrint"
-						       placeholder="Выберете пол..." readonly/>
-						<div class="dropdown-content">
-							<ul>
-								<li data-value="Мужской">Мужской</li>
-								<li data-value="Женский">Женский</li>
-							</ul>
+					<div class="block-item">
+						<span>Пол: </span>
+						<div class="dropdown single-select" data-type="single" data-fixed="false">
+							<input type="hidden" class="values-input" id=Gender" name="Gender"
+							       placeholder="Выберете  пол..."
+							       readonly/>
+							<input type="text" class="texts-input" id="GenderPrint"
+							       placeholder="Выберете пол..." readonly/>
+							<div class="dropdown-content">
+								<ul>
+									<li data-value="Мужской">Мужской</li>
+									<li data-value="Женский">Женский</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
@@ -192,7 +205,7 @@
 						<label for="image_uploads" id="image_uploads_label">
 							<div id="Mastery-block" class="icon-field">
 								<input type="number" name="Mastery" id="Mastery"
-								       placeholder="Мастерство..." value="" class="up-left">
+								       placeholder="Мастерство..." value="" class="up-left" readonly/>
 							</div>
 							<div id="Initiative-block" class="icon-field">
 								<input type="number" name="Initiative" id="Initiative" placeholder="Инициатива..."
@@ -218,6 +231,7 @@
 			<tr>
 			<tr>
 			<td colspan="4">
+				<div class="block-item">
 					<span>Класс:</span>
 					<div class="dropdown single-select" data-type="single" data-fixed="false" data-param-id="Class">
 						<input type="hidden" class="values-input class-select" name="Class" id="Class"
@@ -234,54 +248,66 @@
 							</ul>
 						</div>
 					</div>
+				</div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4">
-					<span>Архетип(подкласс): </span>
-					<div class="dropdown single-select" data-type="single" data-fixed="false" data-dependent-on="Class">
-						<input type="hidden" class="values-input archetype-select" name="Archetype" id="Archetype"
-						       placeholder="Выберете архетип(подкласс)..." readonly="" value="">
-						<input type="text" class="texts-input" id="ArchetypePrint"
-						       placeholder="Выберете архетип(подкласс)..." readonly="">
-						<div class="dropdown-content">
-							<ul>
-								{% for Archetype in Archetypes %}
-								<li data-value="{{ Archetype.id }}" data-parent-id="{{ Archetype.Class[0].id }}">{{
-									Archetype.Name }}
-								</li>
-								{% endfor %}
-							</ul>
+					<div class="block-item">
+						<span>Архетип(подкласс): </span>
+						<div class="dropdown single-select" data-type="single" data-fixed="false"
+						     data-dependent-on="Class">
+							<input type="hidden" class="values-input archetype-select" name="Archetype" id="Archetype"
+							       placeholder="Выберете архетип(подкласс)..." readonly="" value="">
+							<input type="text" class="texts-input" id="ArchetypePrint"
+							       placeholder="Выберете архетип(подкласс)..." readonly="">
+							<div class="dropdown-content">
+								<ul>
+									{% for Archetype in Archetypes %}
+									<li data-value="{{ Archetype.id }}" data-parent-id="{{ Archetype.Class[0].id }}">{{
+										Archetype.Name }}
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</td>
 			<tr>
 				<td colspan="2">
-					<span>ХП: </span>
-					<input type="number" id="HP" name="HP" placeholder="Текущее здоровье..." value=""
-					       title="Текущее здоровье" readonly/>
+					<div class="block-item">
+						<span>ХП: </span>
+						<input type="number" id="HP" name="HP" placeholder="Текущее здоровье..." value=""
+						       title="Текущее здоровье" readonly/>
+					</div>
 				</td>
 				<td colspan="2">
-					<span>максимальное ХП:</span>
-					<input type="number" id="MaxHP" name="MaxHP" placeholder="Максимальное здоровье..." value=""
-					       title="Максимальное здоровье"/>
+					<div class="block-item">
+						<span>максимальное ХП:</span>
+						<input type="number" id="MaxHP" name="MaxHP" placeholder="Максимальное здоровье..." value=""
+						       title="Максимальное здоровье"/>
+					</div>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<span>Временное ХП: </span>
-					<input type="number" name="TimedHP" placeholder="Временное здоровье..." value="0"
-					       title="Временное здоровье"/>
+					<div class="block-item">
+						<span>Временное ХП: </span>
+						<input type="number" name="TimedHP" placeholder="Временное здоровье..." value="0"
+						       title="Временное здоровье"/>
+					</div>
 				</td>
 				<td colspan="2">
-					<span>Полученный урон:</span>
-					<input type="number" name="Damage" id="Damage" placeholder="Нанесенный урон..." value="0"/>
+					<div class="block-item">
+						<span>Полученный урон:</span>
+						<input type="number" name="Damage" id="Damage" placeholder="Нанесенный урон..." value="0"/>
+					</div>
 				</td>
 			</tr>
 			<tr>
 				{% for Characteristic in Characteristices %}
 				<td>
-					<div>
+					<div class="block-item">
 	                    <span class="Characteristics" data-param-id="{{ Characteristic.id }}">
 	                        {{ Characteristic.Name }}:
 	                    </span>
@@ -376,7 +402,7 @@
 						<input type="checkbox" name="SkillPossession" data-id="{{ Characteristic.id }}"
 						       data-skill-id="{{ Skill.id }}" class="SkillPossession"/>
 						<input type="number" name="SkillValue" placeholder="{{ Skill.Name }}"
-						       value=""/>
+						       value="" readonly/>
 					</div>
 				</td>
 				{% endif %}
