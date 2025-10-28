@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="обновление стилей таблицы">
-      <change afterPath="$PROJECT_DIR$/static/js/InitiativeCalculation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/PassivAttentionCalculation.js" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета навыков">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/MasteryrCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MasteryCalculation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
@@ -68,23 +66,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Python.app.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/DND_Site/static/js&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.090909064&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Python.app.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Server/data/htdocs/dnd_site/DND_Site/static/js",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.090909064",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Server\data\htdocs\dnd_site\DND_Site\static\js" />
@@ -147,6 +145,46 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
+    </task>
+    <task id="LOCAL-00008" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759521617542</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521617542</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759521622622</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521622622</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759531897119</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759531897119</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587282120</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587282120</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587287958</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587287958</updated>
     </task>
     <task id="LOCAL-00013" summary="Save dates">
       <option name="closed" value="true" />
@@ -500,47 +538,7 @@
       <option name="project" value="LOCAL" />
       <updated>1761656107590</updated>
     </task>
-    <task id="LOCAL-00057" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761682612988</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1761682612989</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761682631996</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1761682631996</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761683088387</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1761683088387</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761683095279</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1761683095279</updated>
-    </task>
-    <task id="LOCAL-00061" summary="обновление стилей таблицы">
-      <option name="closed" value="true" />
-      <created>1761685292611</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1761685292611</updated>
-    </task>
-    <option name="localTasksCounter" value="62" />
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,9 +580,7 @@
     <MESSAGE value="Исправление ошибок работы скриптов" />
     <MESSAGE value="Исправление ошибко стилей" />
     <MESSAGE value="Добавление расчета навыков" />
-    <MESSAGE value="Добавление расчета мастерства" />
-    <MESSAGE value="обновление стилей таблицы" />
-    <option name="LAST_COMMIT_MESSAGE" value="обновление стилей таблицы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление расчета навыков" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
