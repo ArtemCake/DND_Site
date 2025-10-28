@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Исправление ошибко стилей">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
-    </list>
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета навыков" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,14 +139,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00006" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759407333360</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1759407333360</updated>
     </task>
     <task id="LOCAL-00007" summary="Save dates">
       <option name="closed" value="true" />
@@ -536,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761629659204</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Добавление расчета навыков">
+      <option name="closed" value="true" />
+      <created>1761655251648</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1761655251648</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +573,8 @@
     <MESSAGE value="сохранение данных" />
     <MESSAGE value="Исправление ошибок работы скриптов" />
     <MESSAGE value="Исправление ошибко стилей" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление ошибко стилей" />
+    <MESSAGE value="Добавление расчета навыков" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление расчета навыков" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
