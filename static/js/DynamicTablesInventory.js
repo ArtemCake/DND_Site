@@ -1,4 +1,4 @@
-// DynamicTables.js
+// DynamicTablesInventory.js
 
 document.addEventListener('DOMContentLoaded', function() {
     // Получаем все таблицы с классом "inventory"

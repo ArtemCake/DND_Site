@@ -24,10 +24,12 @@ import './element-filter.js';                       // Работа фильтр
 import './SpeedCalculation.js';                     // Расчёт скоростей перстонажа
 import './healthCalculator.js';                     // Расчёт текущего здоровья персонажа
 import './CharacteristicModificatorCalculation.js'; // Расчёт модификаторов характеристик
-import './DynamicTables.js';                        // Динамическое создание таблицы
+import './DynamicTablesInventory.js';               // Динамическое создание таблицы инвентаря
+import './DynamicTablesEquippedAmmunition.js';      // Динамическое создание таблицы снаряжения
 import './MaxWeightCalculate.js';                   // Расчет масксимального веса исходя из силы
 import './MaxXPCalculate.js';                       // Расчет масксимального здоровья при создании персонажа
 import './CharacteristicSkillsCalculation.js';      // Расчёт навыков характеристик
 import './MasteryCalculation.js';                   // Расчёт мастерства
 import './PassivAttentionCalculation.js';           // Расчёт пассивного внимания
 import './InitiativeCalculation.js';                // Расчёт инициативы
+import './ChekedSettingsAmunition.js';               // Расчёт инициативы

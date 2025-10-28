@@ -61,6 +61,10 @@
 		</tr>
 	</table>
 	
+	<div id="flash-message">
+		Максимальное количество отмеченных чекбоксов — 3!
+	</div>
+	
 	<div class="tables-personage">
 		
 		<div class="tables-left">
@@ -393,27 +397,66 @@
 			
 			<div class="dynamicTable-blok blockTable">
 				<span class="Name-table">
-					Инвентарь:
+					Надетое снаряжение:
 				</span>
-				<table id="dynamicTable" class="inventory" data-items="{{ arrayitems }}">
+				<table class="dynamicTable EquippedAmmunition" data-items-Ammunition="{{ arrayitems }}">
 					<thead>
 					<tr>
-						<th><span id="addRowButton">+</span></th>
-						<th colspan="2">Общ/перегруз</th>
-						<th colspan="2">
-							<label for="MaxWeight">Максимальный вес: </label>
-							<input id="MaxWeight" name="MaxWeight" class="MaxWeight" value="" readonly/>
+						<th>
+							<span class="addRowButton">+</span>
 						</th>
 						<th>
-							<label for="TotalWeight">Общий вес: </label>
-							<input id="TotalWeight" name="TotalWeight" class="TotalWeight" value="0" readonly/>
+							<label>Наименование</label>
+						</th>
+						<th>
+							<label>Тип снаряжения</label>
+						</th>
+						<th>
+							<label>Настройка</label>
+						</th>
+					</tr>
+					</thead>
+					<tbody>
+					<!-- Здесь будут добавляться строки -->
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="dynamicTable-blok blockTable">
+				<span class="Name-table">
+					Инвентарь:
+				</span>
+				<table id="dynamicTable" class="dynamicTable inventory" data-items="{{ arrayitems }}">
+					<thead>
+					<tr>
+						<th>
+							<span class="addRowButton">+</span>
+						</th>
+						<th colspan="2">
+							<label>Общ/перегруз</label>
+						</th>
+						<th colspan="2">
+							<label>Максимальный вес: </label>
+							<input name="MaxWeight" class="MaxWeight" value="" readonly/>
+						</th>
+						<th>
+							<label>Общий вес: </label>
+							<input name="TotalWeight" class="TotalWeight" value="0" readonly/>
 						</th>
 					</tr>
 					<tr>
-						<th colspan="3">Наименование</th>
-						<th>Количество</th>
-						<th>Цена</th>
-						<th>Вес</th>
+						<th colspan="3">
+							<label>Наименование</label>
+						</th>
+						<th>
+							<label>Количество</label>
+						</th>
+						<th>
+							<label>Цена</label>
+						</th>
+						<th>
+							<label>Вес</label>
+						</th>
 					</tr>
 					</thead>
 					<tbody>

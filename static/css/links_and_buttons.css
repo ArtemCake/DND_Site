@@ -8,7 +8,7 @@ a:hover {
   opacity: 0.8;
 }
 
-button, span#addRowButton, span.delete-row {
+button, span.addRowButton, span.delete-row {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -17,7 +17,7 @@ button, span#addRowButton, span.delete-row {
   font-size: 16px;
 }
 
-button:hover, span#addRowButton, span.delete-row {
+button:hover, span.addRowButton, span.delete-row {
   background-color: #9bb8dc;
 }
 

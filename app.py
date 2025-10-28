@@ -1304,21 +1304,23 @@ def CreatePersonage():
 
     for armor in Armor:
         arrayitems.append(
-            {"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight, "Category": "Armors"})
+            {"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight, "Category": "Armors",
+             "CategoryName": "Доспехи"})
     for magicalItem in MagicalItem:
         arrayitems.append(
             {"id": magicalItem.id, "Name": magicalItem.Name, "Cost": magicalItem.Cost, "Weight": magicalItem.Weight,
-             "Category": "MagicalItems"})
+             "Category": "MagicalItems", "CategoryName": "магические предметы"})
     for weapoon in Weapoon:
         arrayitems.append({"id": weapoon.id, "Name": weapoon.Name, "Cost": weapoon.Cost, "Weight": weapoon.Weight,
-                           "Category": "Weapoons"})
+                           "Category": "Weapoons", "CategoryName": "Оружие"})
     for equipment in Equipment:
         arrayitems.append(
             {"id": equipment.id, "Name": equipment.Name, "Cost": equipment.Cost, "Weight": equipment.Weight,
-             "Category": "Equipments"})
+             "Category": "Equipments", "CategoryName": "Снаряжение"})
     for Tool in ToolOwnership:
         arrayitems.append(
-            {"id": Tool.id, "Name": Tool.Name, "Cost": Tool.Cost, "Weight": Tool.Weight, "Category": "Tools"})
+            {"id": Tool.id, "Name": Tool.Name, "Cost": Tool.Cost, "Weight": Tool.Weight, "Category": "Tools",
+             "CategoryName": "Инструменты"})
 
     if current_user.is_authenticated:
         user = current_user

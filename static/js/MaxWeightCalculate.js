@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Получаем элементы с атрибутом data-maxweight-param
     const elementsToWatch = document.querySelectorAll('[data-maxweight-param]');
-    const outputElement = document.getElementById('MaxWeight'); // Поле для вывода результата
+	const outputElement = document.querySelector('input[name="MaxWeight"]'); // Поле для вывода результата
 
     // Если нужных элементов нет, выводим предупреждение в консоль
     if(elementsToWatch.length === 0 || !outputElement) {

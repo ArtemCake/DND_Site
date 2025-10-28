@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства">
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Исправление ошибко стилей">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/character-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/character-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/interactive-components.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/interactive-components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/DynamicTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/DynamicTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +21,6 @@
         <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="github/test" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
@@ -82,7 +71,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Server/data/htdocs/dnd_site/DND_Site/static/js&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
@@ -154,6 +143,78 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
+    </task>
+    <task id="LOCAL-00006" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759407333360</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759407333360</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759407340399</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759407340399</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759521617542</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521617542</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759521622622</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521622622</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759531897119</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759531897119</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587282120</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587282120</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759587287958</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759587287958</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759589505612</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759589505612</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Save dates">
+      <option name="closed" value="true" />
+      <created>1759994111684</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1759994111684</updated>
     </task>
     <task id="LOCAL-00015" summary="Save dates">
       <option name="closed" value="true" />
@@ -475,100 +536,13 @@
       <option name="project" value="LOCAL" />
       <updated>1761629659204</updated>
     </task>
-    <task id="LOCAL-00055" summary="Добавление расчета навыков">
-      <option name="closed" value="true" />
-      <created>1761655251648</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1761655251648</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Добавление расчета навыков">
-      <option name="closed" value="true" />
-      <created>1761656107590</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1761656107590</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761682612988</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1761682612989</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761682631996</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1761682631996</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761683088387</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1761683088387</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Добавление расчета мастерства">
-      <option name="closed" value="true" />
-      <created>1761683095279</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1761683095279</updated>
-    </task>
-    <task id="LOCAL-00061" summary="обновление стилей таблицы">
-      <option name="closed" value="true" />
-      <created>1761685292611</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1761685292611</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства">
-      <option name="closed" value="true" />
-      <created>1761692794617</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1761692794617</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства">
-      <option name="closed" value="true" />
-      <created>1761725515641</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1761725515643</updated>
-    </task>
-    <option name="localTasksCounter" value="64" />
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="github/test" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -579,7 +553,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="github/test" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -603,11 +577,7 @@
     <MESSAGE value="сохранение данных" />
     <MESSAGE value="Исправление ошибок работы скриптов" />
     <MESSAGE value="Исправление ошибко стилей" />
-    <MESSAGE value="Добавление расчета навыков" />
-    <MESSAGE value="Добавление расчета мастерства" />
-    <MESSAGE value="обновление стилей таблицы" />
-    <MESSAGE value="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление ошибко стилей" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
