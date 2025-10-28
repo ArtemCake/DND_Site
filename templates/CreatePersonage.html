@@ -359,21 +359,24 @@
 			<tr>
 				<td>
 					<div>
-			                    <span class="Characteristics" data-param-id="{{ Characteristic.id }}">
-			                        {{ Characteristic.Name }}:
-			                    </span>
+						<span class="Characteristics" data-param-id="{{ Characteristic.id }}">
+							{{ Characteristic.Name }}:
+						</span>
 					</div>
 				</td>
 				{% for Skill in Skills %}
 				{% if (Skill.CharacteristicesSkills[0].id == Characteristic.id) %}
 				<td>
-					<div class="Skills">
-									<span class="Skill">
-			                            {{ Skill.Name }}:
-			                        </span>
-						<input type="hidden" name="Skill" class="Skill" value="{{ Skill.id }}">
+					<div class="SkillValue">
+						<span class="Skill">
+							{{ Skill.Name }}:
+						</span>
+						<input type="hidden" name="Skill" class="Skill" value="{{ Skill.id }}"/>
+						<input type="hidden" name="CharacteristicId" class="ParamId" value="{{ Characteristic.id }}"/>
+						<input type="checkbox" name="SkillPossession" data-id="{{ Characteristic.id }}"
+						       data-skill-id="{{ Skill.id }}" class="SkillPossession"/>
 						<input type="number" name="SkillValue" placeholder="{{ Skill.Name }}"
-						       value="0">
+						       value=""/>
 					</div>
 				</td>
 				{% endif %}

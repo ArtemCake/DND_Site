@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Элементы для расчёта модификаторов не найдены.');
             return;
         }
-
         characteristicsInputs.each(function() {
             const characteristicId = $(this).siblings('.ParamId').val(); // ID характеристики
             const value = parseFloat($(this).val());                      // Значение характеристики
@@ -26,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Формула расчёта модификатора
             const modifier = -5 + Math.floor(0.5 * value);
-
             // Находим соответствующий модификатор и устанавливаем новое значение
             $('.CharacteristicsModificator input[name="CharacteristicsModificator"]')
                 .filter(function() {
                     return $(this).siblings('.ParamId').val() === characteristicId;
                 })
                 .val(modifier);
+
         });
     }
 
@@ -42,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateModifiers();
     });
 
-    // Изначально вычисляем модификаторы при загрузке страницы
+
+    // Изначально вычисляем модификаторы и навыки при загрузке страницы
     calculateModifiers();
 });
