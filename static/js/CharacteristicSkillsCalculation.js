@@ -1,4 +1,5 @@
 // CharacteristicSkillsCalculation.js
+import { PassivAttentionCalculation } from './PassivAttentionCalculation.js';
 
 // Основной цикл расчёта навыков
 export function calculateSkills() {
@@ -52,18 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	$('.CharacteristicsValue input[name="CharacteristicsValue"]').on('input change', function() {
 		console.log('Обработчик вызван для:', $(this).attr('name'));
 		calculateSkills();
+		PassivAttentionCalculation();
 	});
 
 	$('#Mastery-block input[name="Mastery"]').on('input change', function() {
 		console.log('Обработчик вызван для:', $(this).attr('name'));
 		calculateSkills();
+		PassivAttentionCalculation();
 	});
 
 	$('.SkillValue input[name="SkillPossession"]').on('change', function() {
 		console.log('Обработчик вызван для:', $(this).attr('name'));
 		calculateSkills();
+		PassivAttentionCalculation();
 	});
 
 	// Изначально вычисляем навыки при загрузке страницы
 	calculateSkills();
+	PassivAttentionCalculation();
 });
