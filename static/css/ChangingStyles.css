@@ -5,8 +5,8 @@
 	display: inline-block;
 	vertical-align: middle;
 	cursor: pointer;
-	width: 25%; /* примерная ширина */
-	height: 25%;/* примерная высота */
+	width: 20%; /* примерная ширина */
+	height: 20%;/* примерная высота */
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -17,13 +17,25 @@
 /* Левое поле ("Пассивное внимание") */
 .MainDates #PassivAttentionField {
 	background-image: url('/static/logo/magnifyingglass.png');
-	left: 5px; /* расположение слева */
+	left: 0px; /* расположение слева */
 }
 
 /* Правое поле ("Класс брони") */
 .MainDates #ArmorClassField {
 	background-image: url('/static/logo/shield.png');
 	right: 5px; /* расположение справа */
+}
+
+/* Левое поле ("Пассивное внимание") */
+.MainDates #Initiative-block {
+	background-image: url('/static/logo/Initiative.png');
+	left: -2px; /* расположение слева */
+}
+
+/* Правое поле ("Класс брони") */
+.MainDates #Mastery-block {
+	background-image: url('/static/logo/Mastery.png');
+	right: -3px; /* расположение справа */
 }
 
 /* Оформление полей ввода */
@@ -38,7 +50,6 @@
 	padding: 5px;
 	border: none;
 	background-color: transparent; /* прозрачность */
-	color: black;
 	box-sizing: border-box;
 	text-align: center; /* центровка по горизонтали */
 	line-height: 25%; /* центровка по вертикали (выравнивание текста) */
@@ -72,6 +83,63 @@
 	border-radius: 100%;
 }
 
+.MainDates #Mastery,
+.MainDates #Initiative {
+	position: absolute;
+	top: 2%;
+	left: 16%;
+	width: 80%;
+	height: 80%;
+	font-size: 16px;
+	padding: 5px;
+	border: none;
+	background-color: transparent;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 25%;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+	display: flex
+	;
+	align-items: center;
+	justify-content: center;
+}
+
+.MainDates #Initiative {
+	top: 15%;
+	left: 17%;
+	color:white;
+}
+
+/* Эффект при фокусировании */
+.MainDates #Mastery:focus,
+.MainDates #Initiative:focus {
+	position: absolute;
+	top: 2%;
+	left: 16%;
+	width: 80%;
+	height: 80%;
+	font-size: 16px;
+	padding: 5px;
+	border: none;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 25%;
+	outline: none;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 100%;
+}
+
+.MainDates #Initiative:focus {
+	top: 15%;
+	left: 17%;
+	color:white;
+}
+
 /* Адаптивные настройки для малых экранов */
 @media screen and (max-width: 600px) {
 	.icon-field {
@@ -84,11 +152,17 @@
 		line-height: 30px; /* Центровка на меньших размерах */
 	}
 }
-
-.MainDates div#PassivAttentionField {
-	bottom: -3%;
+.MainDates div#ArmorClassField {
+	bottom: 1%;
 }
 
-.MainDates input#PassivAttention{
+.MainDates div#PassivAttentionField {
+	bottom: -1%;
+}
+
+.MainDates #Initiative-block, .MainDates #Mastery-block {
+	bottom: 78%;
+}
+input#PassivAttention {
 	color:white;
 }

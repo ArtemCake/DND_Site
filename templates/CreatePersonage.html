@@ -14,56 +14,6 @@
 	
 	<table style="display:none">
 		<tr>
-			<th></th>
-			<th></th>
-            <th>
-                Клан:
-            </th>
-            <th>
-                <div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
-                    <input type="hidden" class="values-input" id="Clan" placeholder="Выберете клан..." name="Clan"
-                           readonly/>
-                    <input type="text" class="texts-input" id="ClanPrint" placeholder="Выберете клан..." readonly
-                    />
-                    <div class="dropdown-content">
-                        <ul>
-                            {% for Clan in Clans %}
-                            <li data-value="{{ Clan.id }}">{{ Clan.Name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </th>
-            <th>
-                Черты:
-            </th>
-            <th>
-                <div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
-                    <input type="hidden" class="values-input" id="Atributes" placeholder="Выберете черту..."
-                           name="Atributes" readonly/>
-                    <input type="text" class="texts-input" id="AtributesPrint"
-                           placeholder="Выберете черту..." readonly/>
-                    <div class="dropdown-content">
-                        <ul>
-                            {% for Atribute in Atributes %}
-                            <li data-value="{{ Atribute.id }}">{{ Atribute.Name }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
-			<th></th>
-			<th></th>
             <th>
                 Имя игрока:
             </th>
@@ -73,41 +23,15 @@
             <th>
                 Уровень персонажа:
             </th>
-            <th>
-            </th>
-			<th></th>
-			<th>Инициатива</th>
 			<th>Вдохновение</th>
 		</tr>
 		<tr>
-			<th></th>
-			<th></th>
-            <th>
-            </th>
             <th>
 	            <input type="number" name="LevelPersonages" id="LevelPersonages" placeholder="Уровень персонажа"
 	                   value="2"/>
             </th>
-			<th></th>
-            <th>
-	            <input type="number" name="Initiative" id="Initiative" placeholder="Инициатива"
-	                   value="{{ 10 +  0 }}"/>
-            </th>
-            <th>
-	            <input type="checkbox" name="Inspiration" id="Inspiration" placeholder="Инициатива"/>
-            </th>
         </tr>
         <tr>
-			<th></th>
-	        <th></th>
-            <th>
-	            Раса:
-            </th>
-	        <th></th>
-	        <th></th>
-	        <th></th>
-	        <th></th>
-	        <th></th>
 	        <th>Успехи:</th>
 	        <th>
 		        <input type="checkbox" name="SavedSuccessThrow" id="SavedSuccessThrow1" placeholder="Успех" value="1"/>
@@ -128,22 +52,10 @@
         </tr>
 		<tr>
 			<th>
-				Мастерство:
-			</th>
-			<th></th>
-			<th>
 				Скорость:
 			</th>
-			<th></th>
 		</tr>
 		<tr>
-			<th>
-			
-			</th>
-			<th>
-				<input type="number" name="Mastery" placeholder="Мастерство..." value="2">
-			</th>
-			<th></th>
 			<th>
 				<div data-dependent-on="Race">
 					<input type="number" name="Speed" placeholder="Скорость ходьбы..." value=""
@@ -156,17 +68,6 @@
 					       title="Скорость плаванья" disabled>
 				</div>
 			</th>
-		</tr>
-		<tr>
-			<th>
-            </th>
-            <th>
-            </th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
 		</tr>
 	</table>
 	
@@ -219,7 +120,23 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">
+				<td colspan="1">
+					<span>Клан: </span>
+					<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
+						<input type="hidden" class="values-input" id="Clan" placeholder="Выберете клан..." name="Clan"
+						       readonly/>
+						<input type="text" class="texts-input" id="ClanPrint" placeholder="Выберете клан..." readonly
+						/>
+						<div class="dropdown-content">
+							<ul>
+								{% for Clan in Clans %}
+								<li data-value="{{ Clan.id }}">{{ Clan.Name }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</td>
+				<td colspan="1">
 					<span>Происхождение: </span>
 					<div class="dropdown single-select" data-type="single" data-fixed="false">
 						<input type="hidden" class="values-input" name="Background" id="Background"
@@ -231,6 +148,22 @@
 							<ul>
 								{% for Background in Backgrounds %}
 								<li data-value="{{ Background.id }}">{{ Background.Name }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</td>
+				<td colspan="2">
+					<span>Черты: </span>
+					<div class="dropdown multiple-select" data-type="multiple" data-fixed="false">
+						<input type="hidden" class="values-input" id="Atributes" placeholder="Выберете черту..."
+						       name="Atributes" readonly/>
+						<input type="text" class="texts-input" id="AtributesPrint"
+						       placeholder="Выберете черту..." readonly/>
+						<div class="dropdown-content">
+							<ul>
+								{% for Atribute in Atributes %}
+								<li data-value="{{ Atribute.id }}">{{ Atribute.Name }}</li>
 								{% endfor %}
 							</ul>
 						</div>
@@ -257,6 +190,15 @@
 				<td colspan="2" rowspan="6" class="border-none photo-cell">
 					<div id="photo-container">
 						<label for="image_uploads" id="image_uploads_label">
+							<div id="Mastery-block" class="icon-field">
+								<input type="number" name="Mastery" id="Mastery"
+								       placeholder="Мастерство..." value="" class="up-left">
+							</div>
+							<div id="Initiative-block" class="icon-field">
+								<input type="number" name="Initiative" id="Initiative" placeholder="Инициатива..."
+								       value=""
+								       class="up-right">
+							</div>
 							<input type="hidden" id="oldimageName" name="oldimageName" value="1">
 							<canvas id="imageDate"></canvas>
 							<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
@@ -410,13 +352,41 @@
 	
 	</div>
 	
-	<table class="DopParametrs">
-	
-	</table>
-	
-	<table class="SpelsAndEquipments">
-	
-	</table>
+	<div class="tables-down">
+		<table class="DopParametrs">
+			{% for Characteristic in Characteristices %}
+			{% if Characteristic.Name != "Телосложение" %}
+			<tr>
+				<td>
+					<div>
+			                    <span class="Characteristics" data-param-id="{{ Characteristic.id }}">
+			                        {{ Characteristic.Name }}:
+			                    </span>
+					</div>
+				</td>
+				{% for Skill in Skills %}
+				{% if (Skill.CharacteristicesSkills[0].id == Characteristic.id) %}
+				<td>
+					<div class="Skills">
+									<span class="Skill">
+			                            {{ Skill.Name }}:
+			                        </span>
+						<input type="hidden" name="Skill" class="Skill" value="{{ Skill.id }}">
+						<input type="number" name="SkillValue" placeholder="{{ Skill.Name }}"
+						       value="0">
+					</div>
+				</td>
+				{% endif %}
+				{% endfor %}
+			</tr>
+			{% endif %}
+			{% endfor %}
+		</table>
+		
+		<table class="SpelsAndEquipments">
+		
+		</table>
+	</div>
 
 </Form>
 {% endblock %}

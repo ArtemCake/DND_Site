@@ -1,11 +1,11 @@
 /* tablesPersonage.css */
 
-.MainDates, .inventory {
+.MainDates, .inventory, .DopParametrs {
 	border: 1em ridge rgb(129 64 236 / 1);
 	max-width: 60%;
 }
 
-.MainDates td, .inventory th, .inventory td {
+.MainDates td, .inventory th, .inventory td, .DopParametrs td {
 	border: 0.3em solid rgb(131 70 236 / 0.5);
 }
 
@@ -59,7 +59,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины таблицы */
-.MainDates {
+.MainDates, .DopParametrs {
 	width: 25%;
 	height: 100%;
 }
@@ -70,7 +70,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины ячеек таблицы */
-.MainDates td, #dynamicTable td {
+.MainDates td, #dynamicTable td, .DopParametrs td {
 	padding: 5px; /* Уменьшаем отступы внутри ячеек */
 }
 
@@ -79,7 +79,9 @@ label#image_uploads_label {
 .MainDates input[type="number"],
 .MainDates input[type="file"],
 .inventory input[type="text"],
-.inventory input[type="number"] {
+.inventory input[type="number"],
+.DopParametrs input[type="text"],
+.DopParametrs input[type="number"] {
 	width: 100%; /* Элементы занимают всю ширину ячейки */
 	height: 100%; /* Элементы занимают всю ширину ячейки */
 	padding: 5px; /* Уменьшаем отступы внутри элементов */
