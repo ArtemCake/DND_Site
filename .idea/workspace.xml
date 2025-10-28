@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета навыков">
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета мастерства">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
@@ -145,14 +145,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00008" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759521617542</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521617542</updated>
     </task>
     <task id="LOCAL-00009" summary="Save dates">
       <option name="closed" value="true" />
@@ -538,7 +530,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761656107590</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Добавление расчета мастерства">
+      <option name="closed" value="true" />
+      <created>1761682612988</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1761682612989</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +580,8 @@
     <MESSAGE value="Исправление ошибок работы скриптов" />
     <MESSAGE value="Исправление ошибко стилей" />
     <MESSAGE value="Добавление расчета навыков" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление расчета навыков" />
+    <MESSAGE value="Добавление расчета мастерства" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление расчета мастерства" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>

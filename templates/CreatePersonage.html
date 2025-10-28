@@ -77,7 +77,8 @@
 					<td colspan="1">
 						<div class="block-item">
 							<span>Вдохновение: </span>
-							<input type="checkbox" name="Inspiration" id="Inspiration" placeholder="Вдохновение"/>
+							<input type="checkbox" name="Inspiration" id="Inspiration" placeholder="Вдохновение"
+							       value="2"/>
 						</div>
 					</td>
 					<td colspan="1">
@@ -219,14 +220,14 @@
 								<div id="Initiative-block" class="icon-field">
 									<input type="number" name="Initiative" id="Initiative" placeholder="Инициатива..."
 									       value=""
-									       class="up-right" readonly/>
+									       class="up-right">
 								</div>
 								<input type="hidden" id="oldimageName" name="oldimageName" value="1">
 								<canvas id="imageDate"></canvas>
 								<input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png">
 								<div id="PassivAttentionField" class="icon-field">
 									<input type="number" name="PassivAttention" id="PassivAttention"
-									       placeholder="Пассивное внимание..." value="" class="bottom-left" readonly/>
+									       placeholder="Пассивное внимание..." value="" class="bottom-left">
 								</div>
 								<div id="ArmorClassField" class="icon-field">
 									<input type="number" name="ArmorClass" id="ArmorClass" placeholder="Класс брони"
@@ -342,10 +343,6 @@
 							<input type="number" name="CharacteristicsValue" data-MaxXP-param="MaxXP"
 							       placeholder="{{ Characteristic.Name }}"
 							       value="0">
-							{% elif Characteristic.Name == "Ловкость" %}
-							<input type="number" name="CharacteristicsValue" data-Initiative-param="Initiative"
-							       placeholder="{{ Characteristic.Name }}"
-							       value="0">
 							{% else %}
 							<input type="number" name="CharacteristicsValue" placeholder="{{ Characteristic.Name }}"
 							       value="0">
@@ -393,14 +390,8 @@
 							       value="{{ Characteristic.id }}"/>
 							<input type="checkbox" name="SkillPossession" data-id="{{ Characteristic.id }}"
 							       data-skill-id="{{ Skill.id }}" class="SkillPossession"/>
-							{% if Skill.Name == "Восприятие" %}
-							<input type="number" name="SkillValue" data-Attention-param="Attention"
-							       placeholder="{{ Skill.Name }}"
-							       value=""/>
-							{% else %}
 							<input type="number" name="SkillValue" placeholder="{{ Skill.Name }}"
 							       value="" readonly/>
-							{% endif %}
 						</div>
 					</td>
 					{% endif %}
