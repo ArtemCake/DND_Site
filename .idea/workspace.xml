@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавление расчета мастерства">
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="обновление стилей таблицы">
+      <change afterPath="$PROJECT_DIR$/static/js/InitiativeCalculation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/PassivAttentionCalculation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/character-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/character-card.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/MasteryrCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MasteryCalculation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,14 +147,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00012" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759587287958</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1759587287958</updated>
     </task>
     <task id="LOCAL-00013" summary="Save dates">
       <option name="closed" value="true" />
@@ -538,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761683095279</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="обновление стилей таблицы">
+      <option name="closed" value="true" />
+      <created>1761685292611</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1761685292611</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +583,8 @@
     <MESSAGE value="Исправление ошибко стилей" />
     <MESSAGE value="Добавление расчета навыков" />
     <MESSAGE value="Добавление расчета мастерства" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление расчета мастерства" />
+    <MESSAGE value="обновление стилей таблицы" />
+    <option name="LAST_COMMIT_MESSAGE" value="обновление стилей таблицы" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>

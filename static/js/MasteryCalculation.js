@@ -1,4 +1,4 @@
-// MasteryrCalculation.js
+// MasteryCalculation.js
 
 import { calculateSkills } from './CharacteristicSkillsCalculation.js';
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		return;
 	}
 	// Функция для расчёта модификаторов
-	function MasteryrCalculation() {
+	function MasteryCalculation() {
 		const MasteryInput = $('#Mastery-block input[name="Mastery"]');
 		MasteryInput.val(1 + Math.ceil(levelPers[0].value*0.25));
 	}
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Регистрация обработки событий
 	$('input[name="LevelPersonages"]').on('change', function() {
 		console.log('Обработчик вызван для:', $(this).attr('name'));
-		MasteryrCalculation();
+		MasteryCalculation();
 		calculateSkills();
 	});
 
 	// Изначально вычисляем модификаторы и навыки при загрузке страницы
-	MasteryrCalculation();
+	MasteryCalculation();
 	calculateSkills();
 });
