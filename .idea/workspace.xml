@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="обновление стилей таблицы">
-      <change afterPath="$PROJECT_DIR$/static/js/InitiativeCalculation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/PassivAttentionCalculation.js" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicSkillsCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/MasteryrCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/MasteryCalculation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +19,9 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="github/test" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
@@ -147,14 +144,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00013" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759589505612</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1759589505612</updated>
     </task>
     <task id="LOCAL-00014" summary="Save dates">
       <option name="closed" value="true" />
@@ -540,7 +529,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761685292611</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства">
+      <option name="closed" value="true" />
+      <created>1761692794617</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1761692794617</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -557,7 +554,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -584,7 +581,8 @@
     <MESSAGE value="Добавление расчета навыков" />
     <MESSAGE value="Добавление расчета мастерства" />
     <MESSAGE value="обновление стилей таблицы" />
-    <option name="LAST_COMMIT_MESSAGE" value="обновление стилей таблицы" />
+    <MESSAGE value="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил расчет инициативы и пассивного восрпиятия.&#10;Изменил расчет мастерства" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
