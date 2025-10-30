@@ -1112,12 +1112,6 @@ class Personages(db.Model):
                                            , backref=db.backref("PersonagesCharacteristicsValues", cascade='all,delete',
                                                                 single_parent=True, passive_deletes=True)
                                            , cascade='all,delete', single_parent=True)
-    CharacteristicsModificator = db.relationship('CharacteristicsModificators',
-                                                 secondary=Personages_CharacteristicsModificators
-                                                 , backref=db.backref("PersonagesCharacteristicsModificators",
-                                                                      cascade='all,delete',
-                                                                      single_parent=True, passive_deletes=True)
-                                                 , cascade='all,delete', single_parent=True)
     Clan = db.relationship('Clans', secondary=Personages_Clans
                            , backref=db.backref("PersonagesClans", cascade='all,delete',
                                                 single_parent=True, passive_deletes=True)
@@ -1229,9 +1223,3 @@ class CharacteristicsValues(db.Model):
     CharacteristicId = db.Column(db.Integer, nullable=True)
     value = db.Column(db.Integer, nullable=True)
 
-
-class CharacteristicsModificators(db.Model):
-    __tablename__ = 'CharacteristicsModificators'
-    id = db.Column(db.Integer, primary_key=True)
-    CharacteristicId = db.Column(db.Integer, nullable=True)
-    value = db.Column(db.Integer, nullable=True)

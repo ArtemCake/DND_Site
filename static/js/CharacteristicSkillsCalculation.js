@@ -29,13 +29,22 @@ export function calculateSkills() {
 
 		relatedSkills.each(function() {
 			const possessionCheckbox = $(this).parent().find('input[name="SkillPossession"]');
+			const MasteryCheckbox = $(this).parent().find('input[name="SkillMastery"]');
 			const isProficient = possessionCheckbox.prop('checked');
+			const isMasteryient = MasteryCheckbox.prop('checked');
 			const masteryValue = Number($('#Mastery-block input[name="Mastery"]').val());
+			var skillValue = 0
 
 			// Применяем формулу исходя из статуса владения навыком
-			let skillValue = isProficient
-			? 1 * masteryValue + modifier
-			: 0 * masteryValue + modifier;
+			if (!isProficient){
+				possessionCheckbox[0].checked   = false;
+				MasteryCheckbox[0].checked      = false;
+				skillValue = 0 * masteryValue + modifier;
+			} else if (!isMasteryient){
+				skillValue = 1 * masteryValue + modifier;
+			} else {
+				skillValue = 2 * masteryValue + modifier;
+			}
 
 			$(this).val(skillValue);
 		});
@@ -63,6 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	$('.SkillValue input[name="SkillPossession"]').on('change', function() {
+		console.log('Обработчик вызван для:', $(this).attr('name'));
+		calculateSkills();
+		PassivAttentionCalculation();
+	});
+
+	$('.SkillValue input[name="SkillMastery"]').on('change', function() {
 		console.log('Обработчик вызван для:', $(this).attr('name'));
 		calculateSkills();
 		PassivAttentionCalculation();

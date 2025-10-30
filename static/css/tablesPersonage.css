@@ -1,12 +1,11 @@
 /* tablesPersonage.css */
 
-.MainDates, .inventory, .DopParametrs {
+.MainDates, .inventory, .Skills, .SpelsAndEquipments {
 	border: 1em ridge rgb(129 64 236 / 1);
 	max-width: 100%;
-	margin: 3%;
 }
 
-.MainDates td, .inventory th, .inventory td, .DopParametrs td {
+.MainDates td, .inventory th, .inventory td, .Skills td, .SpelsAndEquipments td {
 	border: 0.3em solid rgb(131 70 236 / 0.5);
 }
 
@@ -60,7 +59,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины таблицы */
-.MainDates, .DopParametrs {
+.MainDates, .Skills , .SpelsAndEquipments {
 	width: 100%;
 	height: 100%;
 }
@@ -71,7 +70,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины ячеек таблицы */
-.MainDates td, #dynamicTable td, .DopParametrs td {
+.MainDates td, #dynamicTable td, .Skills td, .SpelsAndEquipments td{
 	padding: 5px; /* Уменьшаем отступы внутри ячеек */
 }
 
@@ -81,11 +80,16 @@ label#image_uploads_label {
 .MainDates input[type="file"],
 .inventory input[type="text"],
 .inventory input[type="number"],
-.DopParametrs input[type="text"],
-.DopParametrs input[type="number"] {
+.Skills input[type="text"],
+.Skills input[type="number"],
+.SpelsAndEquipments input[type="text"],
+.SpelsAndEquipments input[type="number"] {
 	width: 100%; /* Элементы занимают всю ширину ячейки */
 	height: 100%; /* Элементы занимают всю ширину ячейки */
 	padding: 5px; /* Уменьшаем отступы внутри элементов */
+	background-color: #282c34;
+	border: none;
+	color: white;
 }
 
 /* Уменьшение ширины выпадающих списков */
@@ -120,4 +124,37 @@ input#MaxWeight, input#TotalWeight {
 	left: 5%;
 	width: 95%;
 }
+
+.skill-nameing {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+}
+
+.blockTable {
+	display: flex
+	;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: nowrap;
+}
+
+.MainDates .interactivElement[type="text"],
+.MainDates .interactivElement[type="number"],
+.MainDates .interactivElement[type="file"],
+.inventory .interactivElement[type="text"],
+.inventory .interactivElement[type="number"],
+.Skills .interactivElement[type="text"],
+.Skills .interactivElement[type="number"],
+.SpelsAndEquipments .interactivElement[type="text"],
+.SpelsAndEquipments .interactivElement[type="number"] {
+	color: #090909;
+	border: #DB8E8E solid 2px;
+	background: white;
+}
+
 

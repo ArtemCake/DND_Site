@@ -75,7 +75,8 @@
 	font-size: 1.3em;
 }
 
-.dropdown .texts-input {
+.dropdown input[type="text"],
+.dropdown input[type="number"] {
 	position: relative;
 	height: 30px;
 	line-height: 30px;
@@ -89,6 +90,7 @@
 	transition: all 0.3s ease-in-out;
 	overflow: hidden;
 	white-space: nowrap;
+	background-color: #efe5e5;
 }
 
 .dropdown .texts-input > span {

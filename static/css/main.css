@@ -2,10 +2,10 @@
 @import url('reset.css');
 @import url('external-libraries.css');
 @import url('forms.css');
-@import url('interactive-components.css');
 @import url('links_and_buttons.css');
 @import url('media-queries.css');
 @import url('structure.css');
 @import url('tablesPersonage.css');
 @import url('character-card.css');
 @import url('ChangingStyles.css');
+@import url('interactive-components.css');

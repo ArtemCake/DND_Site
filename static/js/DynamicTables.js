@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const input2 = document.createElement('input');
             input2.type = 'number';
             input2.placeholder = 'Количество';
+            input2.className = "interactivElement";
             input2.name = 'Quantity';
             input2.value = 1;
             cell2.appendChild(input2);
@@ -90,12 +91,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const input3 = document.createElement('input');
             input3.type = 'number';
             input3.name = 'Cost';
+            input3.className = "interactivElement";
             input3.placeholder = 'Цена';
             cell3.appendChild(input3);
 
             const input4 = document.createElement('input');
             input4.type = 'number';
             input4.name = 'Weight';
+            input4.className = "interactivElement";
             input4.placeholder = 'Вес';
             cell4.appendChild(input4);
 
