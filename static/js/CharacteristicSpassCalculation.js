@@ -31,7 +31,6 @@ export function calculateSpass() {
 			return $(this).parent().find('.ParamId').val() === characteristicId;
 		});
 
-		console.log(relatedSpasschar[0]);
 		var skillValue = 0;
 		relatedSpasschar.each(function() {
 			const possessionCheckbox = $('.SkillPossession').filter(function() {
