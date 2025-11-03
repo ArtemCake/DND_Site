@@ -21,10 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
 			const cell5 = document.createElement('td'); // Добавляем ячейку для удаления
 
 			// Добавляем элемент span для удаления строки
+			const divDeleteSpan = document.createElement('div');
+			divDeleteSpan.className = "Blok-delete-row"
 			const deleteSpan = document.createElement('span');
-			deleteSpan.textContent = '-';
+			deleteSpan.textContent = '🗑️';
 			deleteSpan.className = 'delete-row';
-			cell5.appendChild(deleteSpan);
+			divDeleteSpan.appendChild(deleteSpan);
+			cell5.appendChild(divDeleteSpan);
 
 			// Добавляем всплывающий список в первую ячейку
 			const dropdown1 = document.createElement('div');
@@ -86,23 +89,23 @@ document.addEventListener('DOMContentLoaded', function() {
 			cell2.appendChild(input2);
 
 			const input4 = document.createElement('input');
-			input4.type = 'hidden';
-			input4.placeholder = 'Тип снаряжения';
+			input4.type = 'text';
+			input4.placeholder = 'Вид снаряжения';
 			input4.name = 'AmmunitionType';
-			cell2.appendChild(input4);
+			cell3.appendChild(input4);
 
 			const input3 = document.createElement('input');
 			input3.type = 'checkbox';
 			input3.name = 'Setting';
 			input3.className = "interactivElement";
 			input3.placeholder = 'Требуется растройка';
-			cell3.appendChild(input3);
+			cell4.appendChild(input3);
 
 			// Добавляем ячейки в строку
 			row.appendChild(cell5); // Ячейка с кнопкой удаления
 			row.appendChild(cell1);
-			row.appendChild(cell2);
 			row.appendChild(cell3);
+			row.appendChild(cell2);
 			row.appendChild(cell4);
 
 			// Добавляем строку в таблицу

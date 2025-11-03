@@ -15,17 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Создаем ячейки для каждой колонки
             const cell1 = document.createElement('td');
-            cell1.setAttribute('colspan', '2');
             const cell2 = document.createElement('td');
             const cell3 = document.createElement('td');
             const cell4 = document.createElement('td');
             const cell5 = document.createElement('td'); // Добавляем ячейку для удаления
+	        cell1.setAttribute('colspan', '3');
+	        cell2.setAttribute('colspan', '1');
+	        cell3.setAttribute('colspan', '1');
+	        cell4.setAttribute('colspan', '1');
+	        cell5.setAttribute('colspan', '1');
 
             // Добавляем элемент span для удаления строки
+	        const divDeleteSpan = document.createElement('div');
+	        divDeleteSpan.className = "Blok-delete-row"
             const deleteSpan = document.createElement('span');
-            deleteSpan.textContent = '-';
+	        deleteSpan.textContent = '🗑️';
             deleteSpan.className = 'delete-row';
-            cell5.appendChild(deleteSpan);
+	        divDeleteSpan.appendChild(deleteSpan);
+	        cell5.appendChild(divDeleteSpan);
 
             // Добавляем всплывающий список в первую ячейку
             const dropdown1 = document.createElement('div');

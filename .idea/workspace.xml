@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Исправление ошибко стилей">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/CharacteristicModificatorCalculation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/character-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/character-card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/links_and_buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/links_and_buttons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/DynamicTablesEquippedAmmunition.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/DynamicTablesEquippedAmmunition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/DynamicTablesInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/DynamicTablesInventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -9,27 +9,30 @@ a:hover {
 }
 
 button, span.addRowButton, span.delete-row {
+	cursor: pointer;
+	font-size: 16px;
+}
+
+button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
 }
 
-button:hover, span.addRowButton, span.delete-row {
+button:hover{
   background-color: #9bb8dc;
 }
 
 #back-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #4CAF50;
+	background-color: #6c4ccf;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 #back-button:hover {
-  background-color: #45a049;
+	background-color: #47cf25;
 }

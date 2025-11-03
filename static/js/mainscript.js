@@ -32,4 +32,5 @@ import './CharacteristicSkillsCalculation.js';      // Расчёт навыко
 import './MasteryCalculation.js';                   // Расчёт мастерства
 import './PassivAttentionCalculation.js';           // Расчёт пассивного внимания
 import './InitiativeCalculation.js';                // Расчёт инициативы
-import './ChekedSettingsAmunition.js';               // Расчёт инициативы
+import './ChekedSettingsAmunition.js';              // Расчёт инициативы
+import './CharacteristicSpassCalculation.js';       // Расчёт спасбросков
