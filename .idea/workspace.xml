@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="сохранение БД">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditElementPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditElementPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/EditPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/EditPost.html" afterDir="false" />
-    </list>
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавил автора элементов и ограничение на изменение по автору" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,14 +142,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00010" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759531897119</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1759531897119</updated>
     </task>
     <task id="LOCAL-00011" summary="Save dates">
       <option name="closed" value="true" />
@@ -545,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762638367383</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Добавил автора элементов и ограничение на изменение по автору">
+      <option name="closed" value="true" />
+      <created>1762645096641</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1762645096641</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +579,8 @@
     <MESSAGE value="Добавлен расчет спас бросков" />
     <MESSAGE value="Добавлена таблица с описанием персонажа, Добавлены переключатели между таблицами для оптимизации места" />
     <MESSAGE value="сохранение БД" />
-    <option name="LAST_COMMIT_MESSAGE" value="сохранение БД" />
+    <MESSAGE value="Добавил автора элементов и ограничение на изменение по автору" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил автора элементов и ограничение на изменение по автору" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
