@@ -524,6 +524,116 @@ Personages_StorageBags = db.Table('Personages_StorageBags',
                                   db.Column('StorageBags_id', db.Integer(),
                                             db.ForeignKey('StorageBags.id')))
 
+Abilities_User = db.Table('Abilities_User',
+                          db.Column('Abilities_id', db.Integer(), db.ForeignKey('Abilities.id')),
+                          db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Archetypes_User = db.Table('Archetypes_User',
+                           db.Column('Archetypes_id', db.Integer(), db.ForeignKey('Archetypes.id')),
+                           db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Armors_User = db.Table('Armors_User',
+                       db.Column('Armors_id', db.Integer(), db.ForeignKey('Armors.id')),
+                       db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+ArmorTypes_User = db.Table('ArmorTypes_User',
+                           db.Column('ArmorTypes_id', db.Integer(), db.ForeignKey('ArmorTypes.id')),
+                           db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Atributes_User = db.Table('Atributes_User',
+                          db.Column('Atributes_id', db.Integer(), db.ForeignKey('Atributes.id')),
+                          db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Backgrounds_User = db.Table('Backgrounds_User',
+                            db.Column('Backgrounds_id', db.Integer(), db.ForeignKey('Backgrounds.id')),
+                            db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Characteristices_User = db.Table('Characteristices_User',
+                                 db.Column('Characteristices_id', db.Integer(), db.ForeignKey('Characteristices.id')),
+                                 db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Classes_User = db.Table('Classes_User',
+                        db.Column('Classes_id', db.Integer(), db.ForeignKey('Classes.id')),
+                        db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+DamageTypes_User = db.Table('DamageTypes_User',
+                            db.Column('DamageTypes_id', db.Integer(), db.ForeignKey('DamageTypes.id')),
+                            db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Effects_User = db.Table('Effects_User',
+                        db.Column('Effects_id', db.Integer(), db.ForeignKey('Effects.id')),
+                        db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Equipments_User = db.Table('Equipments_User',
+                           db.Column('Equipments_id', db.Integer(), db.ForeignKey('Equipments.id')),
+                           db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+EquipmentTypes_User = db.Table('EquipmentTypes_User',
+                               db.Column('EquipmentTypes_id', db.Integer(), db.ForeignKey('EquipmentTypes.id')),
+                               db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Features_User = db.Table('Features_User',
+                         db.Column('Features_id', db.Integer(), db.ForeignKey('Features.id')),
+                         db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Languages_User = db.Table('Languages_User',
+                          db.Column('Languages_id', db.Integer(), db.ForeignKey('Languages.id')),
+                          db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+MagicalItems_User = db.Table('MagicalItems_User',
+                             db.Column('MagicalItems_id', db.Integer(), db.ForeignKey('MagicalItems.id')),
+                             db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+MagicalItemsTypes_User = db.Table('MagicalItemsTypes_User',
+                                  db.Column('MagicalItemsTypes_id', db.Integer(),
+                                            db.ForeignKey('MagicalItemsTypes.id')),
+                                  db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Races_User = db.Table('Races_User',
+                      db.Column('Races_id', db.Integer(), db.ForeignKey('Races.id')),
+                      db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Skills_User = db.Table('Skills_User',
+                       db.Column('Skills_id', db.Integer(), db.ForeignKey('Skills.id')),
+                       db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Spells_User = db.Table('Spells_User',
+                       db.Column('Spells_id', db.Integer(), db.ForeignKey('Spells.id')),
+                       db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Tools_User = db.Table('Tools_User',
+                      db.Column('Tools_id', db.Integer(), db.ForeignKey('Tools.id')),
+                      db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+ToolTypes_User = db.Table('ToolTypes_User',
+                          db.Column('ToolTypes_id', db.Integer(), db.ForeignKey('ToolTypes.id')),
+                          db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Weapoons_User = db.Table('Weapoons_User',
+                         db.Column('Weapoons_id', db.Integer(), db.ForeignKey('Weapoons.id')),
+                         db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+WeapoonTypes_User = db.Table('WeapoonTypes_User',
+                             db.Column('WeapoonTypes_id', db.Integer(), db.ForeignKey('WeapoonTypes.id')),
+                             db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+TypesMagic_User = db.Table('TypesMagic_User',
+                           db.Column('TypesMagic_id', db.Integer(), db.ForeignKey('TypesMagic.id')),
+                           db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Clans_User = db.Table('Clans_User',
+                      db.Column('Clans_id', db.Integer(), db.ForeignKey('Clans.id')),
+                      db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+StorageBags_User = db.Table('StorageBags_User',
+                            db.Column('StorageBags_id', db.Integer(), db.ForeignKey('StorageBags.id')),
+                            db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+Personages_Author = db.Table('Personages_Author',
+                             db.Column('Personages_id', db.Integer(), db.ForeignKey('Personages.id')),
+                             db.Column('User_id', db.Integer(), db.ForeignKey('User.id')))
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
@@ -550,6 +660,10 @@ class Abilities(db.Model):
         Discription   = db.Column(db.Text, nullable=True)
         imageName = db.Column(db.String(300), nullable=True)
         image = db.Column(db.LargeBinary, nullable=True)
+        Author = db.relationship('User', secondary=Abilities_User
+                                 , backref=db.backref("AbilitiesUser", cascade='all,delete', single_parent=True,
+                                                      passive_deletes=True)
+                                 , cascade='all,delete', single_parent=True)
 
 
 class Archetypes(db.Model):
@@ -561,6 +675,10 @@ class Archetypes(db.Model):
     NotArmorSafe        = db.Column(db.Boolean, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Archetypes_User
+                             , backref=db.backref("ArchetypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Characteristic      = db.relationship('Characteristices', secondary=Archetypes_Characteristices
                                             , backref=db.backref("ArchetypesCharacteristices"        , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -611,6 +729,10 @@ class Armors(db.Model):
     Weight      = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Armors_User
+                             , backref=db.backref("ArmorsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     ArmorType   = db.relationship('ArmorTypes'              , secondary=Armors_ArmorTypes
                                             , backref=db.backref("ArmorsArmorTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -623,6 +745,10 @@ class ArmorTypes(db.Model):
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=ArmorTypes_User
+                             , backref=db.backref("ArmorTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Atributes(db.Model):
@@ -632,6 +758,10 @@ class Atributes(db.Model):
     Discription       = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Atributes_User
+                             , backref=db.backref("AtributesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Characteristic    = db.relationship('Characteristices'  , secondary=Atributes_Characteristices
                                             , backref=db.backref("AtributesCharacteristices"     , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -674,6 +804,10 @@ class Backgrounds(db.Model):
     Discription      = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Backgrounds_User
+                             , backref=db.backref("BackgroundsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Characteristic   = db.relationship('Characteristices'   , secondary=Backgrounds_Characteristices
                                             , backref=db.backref("BackgroundsCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -698,6 +832,10 @@ class Characteristices(db.Model):
     Discription          = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Characteristices_User
+                             , backref=db.backref("CharacteristicesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Skill                = db.relationship('Skills'        , secondary=Characteristices_Skills
                                            , backref=db.backref("CharacteristicesSkills", cascade='all,delete', single_parent=True, passive_deletes=True)
                                            , cascade='all,delete', single_parent=True)
@@ -713,6 +851,10 @@ class Classes(db.Model):
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
     BoneHealth = db.Column(db.String(300), nullable=True)
+    Author = db.relationship('User', secondary=Classes_User
+                             , backref=db.backref("ClassesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Characteristic      = db.relationship('Characteristices', secondary=Classes_Characteristices
                                             , backref=db.backref("ClassesCharacteristices"  , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -743,6 +885,10 @@ class DamageTypes(db.Model):
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=DamageTypes_User
+                             , backref=db.backref("DamageTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Effects(db.Model):
@@ -752,6 +898,10 @@ class Effects(db.Model):
     Discription  = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Effects_User
+                             , backref=db.backref("EffectsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Equipments(db.Model):
@@ -763,6 +913,10 @@ class Equipments(db.Model):
     Weight          = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Equipments_User
+                             , backref=db.backref("EquipmentsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     EquipmentType   = db.relationship('EquipmentTypes'      , secondary=Equipments_EquipmentTypes
                                             , backref=db.backref("EquipmentsEquipmentTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -775,6 +929,10 @@ class EquipmentTypes(db.Model):
     Discription         = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=EquipmentTypes_User
+                             , backref=db.backref("EquipmentTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Features(db.Model):
@@ -786,6 +944,10 @@ class Features(db.Model):
     Distanse = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Features_User
+                             , backref=db.backref("FeaturesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Languages(db.Model):
@@ -796,6 +958,10 @@ class Languages(db.Model):
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
     Writing = db.Column(db.Text, nullable=True)
+    Author = db.relationship('User', secondary=Languages_User
+                             , backref=db.backref("LanguagesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     TypicalRepresentative   = db.relationship('Races', secondary=Languages_Races
                             , backref=db.backref("LanguagesRaces"    , cascade='all,delete', single_parent=True, passive_deletes=True)
                                                                      , cascade='all,delete', single_parent=True)
@@ -816,6 +982,10 @@ class MagicalItems(db.Model):
     Cost = db.Column(db.Integer, nullable=True)
     Weight = db.Column(db.Integer, nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=MagicalItems_User
+                             , backref=db.backref("MagicalItemsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     MagicalItemType     = db.relationship('MagicalItemsTypes', secondary=MagicalItems_MagicalItemsTypes
                                             , backref=db.backref("MagicalItemsMagicalItemsTypes"    , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -870,6 +1040,10 @@ class MagicalItemsTypes(db.Model):
     Discription             = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=MagicalItemsTypes_User
+                             , backref=db.backref("MagicalItemsTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Races(db.Model):
@@ -885,6 +1059,10 @@ class Races(db.Model):
     Armor               = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Races_User
+                             , backref=db.backref("RacesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Characteristic      = db.relationship('Characteristices', secondary=Races_Characteristices
                                             , backref=db.backref("RacesCharacteristices"        , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -927,6 +1105,10 @@ class Skills(db.Model):
     Discription  = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Skills_User
+                             , backref=db.backref("SkillsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Spells(db.Model):
@@ -943,6 +1125,10 @@ class Spells(db.Model):
     Ritual            = db.Column(db.Boolean, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Spells_User
+                             , backref=db.backref("SpellsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Class             = db.relationship('Classes'           , secondary=Spells_Classes
                                             , backref=db.backref("SpellsClasses"            , cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -975,6 +1161,10 @@ class Tools(db.Model):
     Weight      = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Tools_User
+                             , backref=db.backref("ToolsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     ToolType    = db.relationship('ToolTypes'               , secondary=Tools_ToolTypes
                                             , backref=db.backref("ToolsToolTypes", cascade='all,delete', single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -987,6 +1177,10 @@ class ToolTypes(db.Model):
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=ToolTypes_User
+                             , backref=db.backref("ToolTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Weapoons(db.Model):
@@ -999,6 +1193,10 @@ class Weapoons(db.Model):
     Weight          = db.Column(db.Integer, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=Weapoons_User
+                             , backref=db.backref("WeapoonsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Feature         = db.relationship('Features'            , secondary=Weapoons_Features
                                             , backref=db.backref("WeapoonsFeatures", cascade='all,delete'   , single_parent=True, passive_deletes=True)
                                             , cascade='all,delete', single_parent=True)
@@ -1017,6 +1215,10 @@ class WeapoonTypes(db.Model):
     Discription         = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
+    Author = db.relationship('User', secondary=WeapoonTypes_User
+                             , backref=db.backref("WeapoonTypesUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class TypesMagic(db.Model):
@@ -1024,6 +1226,10 @@ class TypesMagic(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     Discription = db.Column(db.Text, nullable=True)
+    Author = db.relationship('User', secondary=TypesMagic_User
+                             , backref=db.backref("TypesMagicUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class Clans(db.Model):
@@ -1031,6 +1237,10 @@ class Clans(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     Discription = db.Column(db.Text, nullable=True)
+    Author = db.relationship('User', secondary=Clans_User
+                             , backref=db.backref("ClansUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
 
 
 class StorageBags(db.Model):
@@ -1040,6 +1250,10 @@ class StorageBags(db.Model):
     Quantity = db.Column(db.String(300), nullable=True)
     Cost = db.Column(db.String(300), nullable=True)
     Weight = db.Column(db.String(300), nullable=True)
+    Author = db.relationship('User', secondary=StorageBags_User
+                             , backref=db.backref("StorageBagsUser", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     Personage = db.relationship('Personages', secondary=StorageBags_Personages
                                 , backref=db.backref("PStorageBagsPersonages", cascade='all,delete', single_parent=True,
                                                      passive_deletes=True)
@@ -1104,6 +1318,10 @@ class Personages(db.Model):
     Climb = db.Column(db.Integer, nullable=True)
     Fly = db.Column(db.Integer, nullable=True)
     Swim = db.Column(db.Integer, nullable=True)
+    Author = db.relationship('User', secondary=Personages_Author
+                             , backref=db.backref("PersonagesAuthor", cascade='all,delete', single_parent=True,
+                                                  passive_deletes=True)
+                             , cascade='all,delete', single_parent=True)
     CharacteristicsValue = db.relationship('CharacteristicsValues', secondary=Personages_CharacteristicsValues
                                            , backref=db.backref("PersonagesCharacteristicsValues", cascade='all,delete',
                                                                 single_parent=True, passive_deletes=True)

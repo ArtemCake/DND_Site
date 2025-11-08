@@ -51,28 +51,36 @@ def create_tables():
 @app.route("/CreateAbilities", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateAbilities():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название способности', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', Abilities().Author]]
         abilities = CreateDate([Abilities(), request, MassivDates])
         try:
             db.session.add(abilities)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',
-                                   Title='Создание способности', show_back_button=True)
+                                   Title='Создание способности', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',
-                               Title='Создание способности', show_back_button=True)
+                               Title='Создание способности', show_back_button=True, User=user)
 
 
 @app.route("/CreateArchetypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArchetypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     damageTypes      = DamageTypes.query.all()
     effects          = Effects.query.all()
@@ -107,72 +115,84 @@ def CreateArchetypes():
             , ['Skills', 'Skill', Archetypes().Skill], ['ArmorTypes', 'PossessionArmor', Archetypes().PossessionArmor],
                        ['Weapoons', 'GunOwnership', Archetypes().GunOwnership]
             , ['Tools', 'ToolOwnership', Archetypes().ToolOwnership], ['Languages', 'Language', Archetypes().Language]
-            , ['Abilities', 'Abilitie', Archetypes().Abilitie]]
+            , ['Abilities', 'Abilitie', Archetypes().Abilitie], ['User', 'Author', Archetypes().Author]]
         Archetype = CreateDate([Archetypes(), request, MassivDates])
         try:
             db.session.add(Archetype)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
-                                   Title='Создание подкласса (архетипа)', show_back_button=True)
+                                   Title='Создание подкласса (архетипа)', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
-                               Title='Создание подкласса (архетипа)', show_back_button=True)
+                               Title='Создание подкласса (архетипа)', show_back_button=True, User=user)
 
 
 @app.route("/CreateArmors", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArmors():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     armorTypes = ArmorTypes.query.all()
     DateTabels = [['Name', 'Название доспеха', False], ['Discription', 'Описание', False], ['Hindrance', 'Помеха', True]
         , ['Weight', 'Вес', False], ['Power', 'Сила', False], ['Cost', 'Цена', False],
                   ['ArmorClass', 'Классс доспеха', False]
         , [armorTypes, 'ArmorTypes', 'Тип доспеха', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = [['ArmorTypes', 'ArmorType', Armors().ArmorType]]
+        MassivDates = [['ArmorTypes', 'ArmorType', Armors().ArmorType], ['User', 'Author', Armors().Author]]
         armors = CreateDate([Armors(), request, MassivDates])
         try:
             db.session.add(armors)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
-                                   Title='Создание доспеха', show_back_button=True)
+                                   Title='Создание доспеха', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors', Title='Создание доспеха',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateArmorTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateArmorTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название способности', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', ArmorTypes().Author]]
         ArmorType = CreateDate([ArmorTypes(), request, MassivDates])
         try:
             db.session.add(ArmorType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
-                                   Title='Создание типа доспеха', show_back_button=True)
+                                   Title='Создание типа доспеха', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ArmorTypes',
-                               Title='Создание типа доспеха', show_back_button=True)
+                               Title='Создание типа доспеха', show_back_button=True, User=user)
 
 
 @app.route("/CreateAtributes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateAtributes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     damageTypes      = DamageTypes.query.all()
     effects          = Effects.query.all()
@@ -205,25 +225,29 @@ def CreateAtributes():
                        ['Abilities', 'Abilitie', Atributes().Abilitie]
             , ['Weapoons', 'GunOwnership', Atributes().GunOwnership],
                        ['Tools', 'ToolOwnership', Atributes().ToolOwnership]
-            , ['Languages', 'Language', Atributes().Language]]
+            , ['Languages', 'Language', Atributes().Language], ['User', 'Author', Atributes().Author]]
         Attribute = CreateDate([Atributes(), request, MassivDates])
         try:
             db.session.add(Attribute)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
-                                   Title='Создание черты', show_back_button=True)
+                                   Title='Создание черты', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes', Title='Создание черты',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateBackgrounds", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateBackgrounds():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     spells           = Spells.query.all()
     skills           = Skills.query.all()
@@ -239,48 +263,56 @@ def CreateBackgrounds():
         MassivDates = [['Characteristices', 'Characteristic', Backgrounds().Characteristic],
                        ['Spells', 'Spell', Backgrounds().Spell]
             , ['Skills', 'Skill', Backgrounds().Skill], ['Tools', 'ToolOwnership', Backgrounds().ToolOwnership]
-            , ['Languages', 'Language', Backgrounds().Language]]
+            , ['Languages', 'Language', Backgrounds().Language], ['User', 'Author', Backgrounds().Author]]
         Background = CreateDate([Backgrounds(), request, MassivDates])
         try:
             db.session.add(Background)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
-                                   Title='Создание черты', show_back_button=True)
+                                   Title='Создание черты', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Backgrounds',
-                               Title='Создание предыстории', show_back_button=True)
+                               Title='Создание предыстории', show_back_button=True, User=user)
 
 
 @app.route("/CreateCharacteristices", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateCharacteristices():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     skills = Skills.query.all()
     DateTabels = [['Name', 'Название характеристики', False], ['Discription', 'Описание', False]
         , [skills, 'Skill', 'Владение навыками', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = [['Skills', 'Skill', Characteristices().Skill]]
+        MassivDates = [['Skills', 'Skill', Characteristices().Skill], ['User', 'Author', Characteristices().Author]]
         Characteristic = CreateDate([Characteristices(), request, MassivDates])
         try:
             db.session.add(Characteristic)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
-                                   Title='Создание характеристики', show_back_button=True)
+                                   Title='Создание характеристики', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
-                               Title='Создание характеристики', show_back_button=True)
+                               Title='Создание характеристики', show_back_button=True, User=user)
 
 
 @app.route("/CreateClasses", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateClasses():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     spells           = Spells.query.all()
     skills           = Skills.query.all()
@@ -303,162 +335,192 @@ def CreateClasses():
             , ['Spells', 'Spell', Classes().Spell], ['Skills', 'Skill', Classes().Skill]
             , ['ArmorTypes', 'PossessionArmor', Classes().PossessionArmor],
                        ['Tools', 'ToolOwnership', Classes().ToolOwnership]
-            , ['Weapoons', 'GunOwnership', Classes().GunOwnership]]
+            , ['Weapoons', 'GunOwnership', Classes().GunOwnership], ['User', 'Author', Classes().Author]]
         Class = CreateDate([Classes(), request, MassivDates])
         try:
             db.session.add(Class)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes',
-                                   Title='Создание класса', show_back_button=True)
+                                   Title='Создание класса', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes', Title='Создание класса',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateDamageTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateDamageTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название типа урона', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', DamageTypes().Author]]
         DamageType = CreateDate([DamageTypes(), request, MassivDates])
         try:
             db.session.add(DamageType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes',
-                                   Title='Создание типа урона', show_back_button=True)
+                                   Title='Создание типа урона', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes',
-                               Title='Создание типа урона', show_back_button=True)
+                               Title='Создание типа урона', show_back_button=True, User=user)
 
 
 @app.route("/CreateEffects", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEffects():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название эффекта', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', Effects().Author]]
         Effect = CreateDate([Effects(), request, MassivDates])
         try:
             db.session.add(Effect)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects',
-                                   Title='Создание эффекта', show_back_button=True)
+                                   Title='Создание эффекта', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects', Title='Создание эффекта',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateEquipments", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEquipments():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     equipmentTypes = EquipmentTypes.query.all()
     DateTabels = [['Name', 'Название предыстрории', False], ['Discription', 'Описание', False]
         , ['Weight', 'Вес', False], ['Cost', 'Цена', False], [equipmentTypes, 'EquipmentTypes', 'Тип снаряжения', False]
         , ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = [['EquipmentTypes', 'EquipmentType', Equipments().EquipmentType]]
+        MassivDates = [['EquipmentTypes', 'EquipmentType', Equipments().EquipmentType],
+                       ['User', 'Author', Equipments().Author]]
         Equipment = CreateDate([Equipments(), request, MassivDates])
         try:
             db.session.add(Equipment)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
-                                   Title='Создание снаряжения', show_back_button=True)
+                                   Title='Создание снаряжения', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
-                               Title='Создание снаряжения', show_back_button=True)
+                               Title='Создание снаряжения', show_back_button=True, User=user)
 
 
 @app.route("/CreateEquipmentTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateEquipmentTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название типа снаряжения', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', EquipmentTypes().Author]]
         EquipmentType = CreateDate([EquipmentTypes(), request, MassivDates])
         try:
             db.session.add(EquipmentType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes',
-                                   Title='Создание типа снаряжения', show_back_button=True)
+                                   Title='Создание типа снаряжения', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes',
-                               Title='Создание типа снаряжения', show_back_button=True)
+                               Title='Создание типа снаряжения', show_back_button=True, User=user)
 
 
 @app.route("/CreateFeatures", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateFeatures():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название свойства оружия', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False], ['Distanse', 'Дистанция', False],
                   ['DopDamage', 'Дополнительный урон', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', Features().Author]]
         features = CreateDate([Features(), request, MassivDates])
         try:
             db.session.add(features)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features',
-                                   Title='Создание свойства оружия', show_back_button=True)
+                                   Title='Создание свойства оружия', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features',
-                               Title='Создание свойства оружия', show_back_button=True)
+                               Title='Создание свойства оружия', show_back_button=True, User=user)
 
 
 @app.route("/CreateLanguages", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateLanguages():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     rases = Races.query.all()
     DateTabels = [['Name', 'Название языка', False], ['Discription', 'Описание', False]
         , [rases, 'TypicalRepresentative', 'Типичные представители', False], ['Writing', 'Письменность', False]
         , ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = [['Races', 'TypicalRepresentative', Languages().TypicalRepresentative]]
+        MassivDates = [['Races', 'TypicalRepresentative', Languages().TypicalRepresentative],
+                       ['User', 'Author', Languages().Author]]
         Language = CreateDate([Languages(), request, MassivDates])
         try:
             db.session.add(Language)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages',
-                                   Title='Создание языка', show_back_button=True)
+                                   Title='Создание языка', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages', Title='Создание языка',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateMagicalItems", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateMagicalItems():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     damageTypes      = DamageTypes.query.all()
     effects          = Effects.query.all()
@@ -500,47 +562,56 @@ def CreateMagicalItems():
             , ['Languages', 'Language', MagicalItems().Language],
                        ['MagicalItemTypes', 'MagicalItemType', MagicalItems().MagicalItemType]
             , ['Effects', 'Effect', MagicalItems().Effect], ['Armors', 'ArmorTypeItem', MagicalItems().ArmorTypeItem]
-            , ['Weapoons', 'WeapoonTypeItem', MagicalItems().WeapoonTypeItem]]
+            , ['Weapoons', 'WeapoonTypeItem', MagicalItems().WeapoonTypeItem],
+                       ['User', 'Author', MagicalItems().Author]]
         MagicalItem = CreateDate([MagicalItems(), request, MassivDates])
         try:
             db.session.add(MagicalItem)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
-                                   Title='Создание магического предмета', show_back_button=True)
+                                   Title='Создание магического предмета', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
-                               Title='Создание магического предмета', show_back_button=True)
+                               Title='Создание магического предмета', show_back_button=True, User=user)
 
 
 @app.route("/CreateMagicalItemTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateMagicalItemTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название типа магического предмета', False],
                   ['Discription', 'Описание', False], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', MagicalItemsTypes().Author]]
         MagicalItemsType = CreateDate([MagicalItemsTypes(), request, MassivDates])
         try:
             db.session.add(MagicalItemsType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes',
-                                   Title='Создание типа магического предмета', show_back_button=True)
+                                   Title='Создание типа магического предмета', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes',
-                               Title='Создание типа магического предмета', show_back_button=True)
+                               Title='Создание типа магического предмета', show_back_button=True, User=user)
 
 
 @app.route("/CreateRaces", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateRaces():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     damageTypes      = DamageTypes.query.all()
     effects          = Effects.query.all()
@@ -574,47 +645,56 @@ def CreateRaces():
             , ['Spells', 'Spell', Races().Spell], ['Abilities', 'Abilitie', Races().Abilitie]
             , ['Skills', 'Skill', Races().Skill], ['ArmorTypes', 'PossessionArmor', Races().PossessionArmor],
                        ['Weapoons', 'GunOwnership', Races().GunOwnership]
-            , ['Tools', 'ToolOwnership', Races().ToolOwnership], ['Languages', 'Language', Races().Language]]
+            , ['Tools', 'ToolOwnership', Races().ToolOwnership], ['Languages', 'Language', Races().Language]
+            , ['User', 'Author', Races().Author]]
         Race = CreateDate([Races(), request, MassivDates])
         try:
             db.session.add(Race)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы',
-                                   show_back_button=True)
+                                   show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateSkills", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateSkills():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название навыка', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', Skills().Author]]
         Skill = CreateDate([Skills(), request, MassivDates])
         try:
             db.session.add(Skill)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills',
-                                   Title='Создание навыка', show_back_button=True)
+                                   Title='Создание навыка', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills', Title='Создание навыка',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateSpells", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateSpells():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     damageTypes      = DamageTypes.query.all()
     effects          = Effects.query.all()
     languages        = Languages.query.all()
@@ -641,71 +721,83 @@ def CreateSpells():
             , ['ArmorTypes', 'PossessionArmor', Spells().PossessionArmor],
                        ['Weapoons', 'GunOwnership', Spells().GunOwnership]
             , ['Tools', 'ToolOwnership', Spells().ToolOwnership], ['Languages', 'Language', Spells().Language]
-            , ['Effects', 'Effect', Spells().Effect]]
+            , ['Effects', 'Effect', Spells().Effect], ['User', 'Author', Spells().Author]]
         Spell = CreateDate([Spells(), request, MassivDates])
         try:
             db.session.add(Spell)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
-                                   Title='Создание заклинания', show_back_button=True)
+                                   Title='Создание заклинания', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
-                               Title='Создание заклинания', show_back_button=True)
+                               Title='Создание заклинания', show_back_button=True, User=user)
 
 
 @app.route("/CreateTools", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateTools():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     toolTypes = ToolTypes.query.all()
     DateTabels = [['Name', 'Название инструмента', False], ['Discription', 'Описание', False]
         , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
         , [toolTypes, 'ToolTypes', 'Тип инструмента', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = [['ToolTypes', 'ToolType', Tools().ToolType]]
+        MassivDates = [['ToolTypes', 'ToolType', Tools().ToolType], ['User', 'Author', Tools().Author]]
         Tool = CreateDate([Tools(), request, MassivDates])
         try:
             db.session.add(Tool)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
-                                   Title='Создание инструмента', show_back_button=True)
+                                   Title='Создание инструмента', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
-                               Title='Создание инструмента', show_back_button=True)
+                               Title='Создание инструмента', show_back_button=True, User=user)
 
 
 @app.route("/CreateToolTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateToolTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название типа инструмента', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', ToolTypes().Author]]
         ToolType = CreateDate([ToolTypes(), request, MassivDates])
         try:
             db.session.add(ToolType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes',
-                                   Title='Создание типа инструмента', show_back_button=True)
+                                   Title='Создание типа инструмента', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes',
-                               Title='Создание типа инструмента', show_back_button=True)
+                               Title='Создание типа инструмента', show_back_button=True, User=user)
 
 
 @app.route("/CreateWeapoons", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateWeapoons():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     features     = Features.query.all()
     damageTypes  = DamageTypes.query.all()
     weapoonTypes = WeapoonTypes.query.all()
@@ -717,42 +809,46 @@ def CreateWeapoons():
     if request.method == 'POST':
         MassivDates = [['WeapoonTypes', 'WeapoonType', Weapoons().WeapoonType],
                        ['Features', 'Feature', Weapoons().Feature]
-            , ['DamageTypes', 'DamageType', Weapoons().DamageType]]
+            , ['DamageTypes', 'DamageType', Weapoons().DamageType], ['User', 'Author', Weapoons().Author]]
         Weapoon = CreateDate([Weapoons(), request, MassivDates])
         try:
             db.session.add(Weapoon)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons',
-                                   Title='Создание оружия', show_back_button=True)
+                                   Title='Создание оружия', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons', Title='Создание оружия',
-                               show_back_button=True)
+                               show_back_button=True, User=user)
 
 
 @app.route("/CreateWeapoonTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def CreateWeapoonTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     DateTabels = [['Name', 'Название типа оружия', False], ['Discription', 'Описание', False],
                   ['imageName', 'Картинка', False]]
     if request.method == 'POST':
-        MassivDates = []
+        MassivDates = [['User', 'Author', WeapoonTypes().Author]]
         WeapoonType = CreateDate([WeapoonTypes(), request, MassivDates])
         try:
             db.session.add(WeapoonType)
             db.session.commit()
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes',
-                                   Title='Создание типа оружия', show_back_button=True)
+                                   Title='Создание типа оружия', show_back_button=True, User=user)
         except Exception as msg:
             print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
         return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes',
-                               Title='Создание типа оружия', show_back_button=True)
+                               Title='Создание типа оружия', show_back_button=True, User=user)
 
 
 @app.route("/VeiwAbilities", methods=['GET', 'POST'])
@@ -989,259 +1085,359 @@ def VeiwWeapoonTypes():
 @app.route("/EditAbilities", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditAbilities():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     abilities = Abilities.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Abilities', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=abilities
-                           , TableName='EditAbilities', TitlePage='Изменить способности', show_back_button=True)
+                           , TableName='EditAbilities', TitlePage='Изменить способности', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditArchetypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditArchetypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     archetypes = Archetypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Archetypes', Date_id, ['Class']])
     return render_template("EditElementPage.html", Dates=archetypes
                            , TableName='EditArchetypes', TitlePage='Изменить подклассы (Архетипы)',
-                           show_back_button=True)
+                           show_back_button=True, User=user)
 
 
 @app.route("/EditArmors", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditArmors():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     armors = Armors.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Armors', Date_id, ['ArmorType']])
     return render_template("EditElementPage.html", Dates=armors
-                           , TableName='EditArmors', TitlePage='Изменить доспехи', show_back_button=True)
+                           , TableName='EditArmors', TitlePage='Изменить доспехи', show_back_button=True, User=user)
 
 
 @app.route("/EditArmorTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditArmorTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     armorTypes = ArmorTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['ArmorTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=armorTypes
-                           , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов', show_back_button=True)
+                           , TableName='EditArmorTypes', TitlePage='Изменить типы доспехов', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditAtributes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditAtributes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     atributes = Atributes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Atributes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=atributes
-                           , TableName='EditAtributes', TitlePage='Изменить черты', show_back_button=True)
+                           , TableName='EditAtributes', TitlePage='Изменить черты', show_back_button=True, User=user)
 
 
 @app.route("/EditBackgrounds", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditBackgrounds():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     backgrounds = Backgrounds.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Backgrounds', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=backgrounds
-                           , TableName='EditBackgrounds', TitlePage='Изменить предыстории', show_back_button=True)
+                           , TableName='EditBackgrounds', TitlePage='Изменить предыстории', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditCharacteristices", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditCharacteristices():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     characteristices = Characteristices.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Characteristices', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=characteristices
                            , TableName='EditCharacteristices', TitlePage='Изменить характеристики',
-                           show_back_button=True)
+                           show_back_button=True, User=user)
 
 
 @app.route("/EditClasses", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditClasses():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     classes = Classes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Classes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=classes
-                           , TableName='EditClasses', TitlePage='Изменить классы', show_back_button=True)
+                           , TableName='EditClasses', TitlePage='Изменить классы', show_back_button=True, User=user)
 
 
 @app.route("/EditDamageTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditDamageTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     damageTypes = DamageTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['DamageTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=damageTypes
-                           , TableName='EditDamageTypes', TitlePage='Изменить типы урона', show_back_button=True)
+                           , TableName='EditDamageTypes', TitlePage='Изменить типы урона', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditEffects", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditEffects():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     effects = Effects.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Effects', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=effects
-                           , TableName='EditEffects', TitlePage='Изменить эффекты', show_back_button=True)
+                           , TableName='EditEffects', TitlePage='Изменить эффекты', show_back_button=True, User=user)
 
 
 @app.route("/EditEquipments", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditEquipments():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     equipments = Equipments.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Equipments', Date_id, ['EquipmentType']])
     return render_template("EditElementPage.html", Dates=equipments
-                           , TableName='EditEquipments', TitlePage='Изменить снаряжения', show_back_button=True)
+                           , TableName='EditEquipments', TitlePage='Изменить снаряжения', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditEquipmentTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditEquipmentTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     equipmentTypes = EquipmentTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['EquipmentTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=equipmentTypes
                            , TableName='EditEquipmentTypes', TitlePage='Изменить типы снаряжений',
-                           show_back_button=True)
+                           show_back_button=True, User=user)
 
 
 @app.route("/EditFeatures", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditFeatures():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     features = Features.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Features', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=features
-                           , TableName='EditFeatures', TitlePage='Изменить особенности', show_back_button=True)
+                           , TableName='EditFeatures', TitlePage='Изменить особенности', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditLanguages", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditLanguages():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     languages = Languages.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Languages', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=languages
-                           , TableName='EditLanguages', TitlePage='Изменить языки', show_back_button=True)
+                           , TableName='EditLanguages', TitlePage='Изменить языки', show_back_button=True, User=user)
 
 
 @app.route("/EditMagicalItems", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditMagicalItems():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     magicalItems = MagicalItems.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['MagicalItems', Date_id, ['ArmorTypeItem','WeapoonTypeItem','MagicalItemType']])
     return render_template("EditElementPage.html", Dates=magicalItems
                            , TableName='EditMagicalItems', TitlePage='Изменить магические предметы',
-                           show_back_button=True)
+                           show_back_button=True, User=user)
 
 
 @app.route("/EditMagicalItemTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditMagicalItemTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     magicalItemsTypes = MagicalItemsTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['MagicalItemsTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=magicalItemsTypes
                            , TableName='EditMagicalItemTypes', TitlePage='Изменить типы магических предметов',
-                           show_back_button=True)
+                           show_back_button=True, User=user)
 
 
 @app.route("/EditRaces", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditRaces():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     races = Races.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Races', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=races
-                           , TableName='EditRaces', TitlePage='Изменить расы', show_back_button=True)
+                           , TableName='EditRaces', TitlePage='Изменить расы', show_back_button=True, User=user)
 
 
 @app.route("/EditSkills", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditSkills():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     skills = Skills.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Skills', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=skills
-                           , TableName='EditSkills', TitlePage='Изменить навыки', show_back_button=True)
+                           , TableName='EditSkills', TitlePage='Изменить навыки', show_back_button=True, User=user)
 
 
 @app.route("/EditSpells", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditSpells():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     spells = Spells.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Spells', Date_id, ['DamageType']])
     return render_template("EditElementPage.html", Dates=spells
-                           , TableName='EditSpells', TitlePage='Изменить заклинания', show_back_button=True)
+                           , TableName='EditSpells', TitlePage='Изменить заклинания', show_back_button=True, User=user)
 
 
 @app.route("/EditTools", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditTools():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     tools = Tools.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Tools', Date_id, ['ToolType']])
     return render_template("EditElementPage.html", Dates=tools
-                           , TableName='EditTools', TitlePage='Изменить инструменты', show_back_button=True)
+                           , TableName='EditTools', TitlePage='Изменить инструменты', show_back_button=True, User=user)
 
 
 @app.route("/EditToolTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditToolTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     toolTypes = ToolTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['ToolTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=toolTypes
-                           , TableName='EditToolTypes', TitlePage='Изменить типы инструментов', show_back_button=True)
+                           , TableName='EditToolTypes', TitlePage='Изменить типы инструментов', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditWeapoons", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditWeapoons():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     weapoons = Weapoons.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['Weapoons', Date_id, ['Features','DamageType','WeapoonType']])
     return render_template("EditElementPage.html", Dates=weapoons
-                           , TableName='EditWeapoons', TitlePage='Изменить оружия', show_back_button=True)
+                           , TableName='EditWeapoons', TitlePage='Изменить оружия', show_back_button=True, User=user)
 
 
 @app.route("/EditWeapoonTypes", methods=['GET', 'POST'])
 @roles_accepted('Admin', 'Master')
 def EditWeapoonTypes():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     weapoonTypes = WeapoonTypes.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
         return OpenEditPost(['WeapoonTypes', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=weapoonTypes
-                           , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия', show_back_button=True)
+                           , TableName='EditWeapoonTypes', TitlePage='Изменить типы оружия', show_back_button=True,
+                           User=user)
 
 
 @app.route("/EditPost", methods=['GET', 'POST'])
@@ -1304,6 +1500,10 @@ def EditMaterial():
 @roles_accepted('Gamer')
 @app.route("/CreatePersonage", methods=['GET', 'POST'])
 def CreatePersonage():
+    if current_user.is_authenticated:
+        user = current_user
+    else:
+        user = []
     MagicalItem = MagicalItems.query.all()
     Armor = Armors.query.all()
     TypeMagic = TypesMagic.query.all()
@@ -1325,7 +1525,6 @@ def CreatePersonage():
     Atribute = Atributes.query.all()
     Clan = Clans.query.all()
     arrayitems = []
-
     for armor in Armor:
         arrayitems.append(
             {"id": armor.id, "Name": armor.Name, "Cost": armor.Cost, "Weight": armor.Weight, "Category": "Доспехи",

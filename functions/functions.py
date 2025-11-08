@@ -128,6 +128,7 @@ def OpenEditPost(Parametrs):
 
     PostDate            = ClassDate.query.filter_by(id=Date_id).first()
     DateName            = getattr(PostDate, 'Name')
+    Author = getattr(PostDate, 'Author')
     PostDates           = [['', DateName, 'Name']]
     variablesClassDate  = []
     inputvalue          = ''
@@ -157,7 +158,7 @@ def OpenEditPost(Parametrs):
                             [representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
     except Exception as msg:
         print(msg)
-    return render_template("EditPost.html", DatesMassiv=[Date_id, tableName, DateName, PostDates],
+    return render_template("EditPost.html", DatesMassiv=[Date_id, tableName, DateName, PostDates, Author],
                            show_back_button=True)
 
 

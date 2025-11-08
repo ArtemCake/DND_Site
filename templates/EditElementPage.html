@@ -13,8 +13,10 @@
 
 {% for Date in Dates %}
 <form method="POST"  id="Edit{{ TableName }}Form{{ Date.id }}" action="{{ TableName }}">
+	{% if User.id == Date.Author[0].id %}
 	<input type="hidden" name="Date_id" id="Date_id"  placeholder='{{ Date.Name }}' value="{{ Date.id }}">
 	<button>{{ Date.Name }}</button>
+	{% endif %}
 </form>
 {% endfor %}
 {% endblock %}
