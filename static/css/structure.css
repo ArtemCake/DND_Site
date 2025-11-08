@@ -50,6 +50,8 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
+	position: fixed;
+	bottom: 0;
 }
 
 .nav-menu ul.menu-list {

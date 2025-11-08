@@ -48,23 +48,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const hasCategoryAttr = target.hasAttribute('data-category'); // Проверка наличия атрибута
             const category = hasCategoryAttr ? target.dataset.category : null;
 
-            console.log(hasCategoryAttr);
-
             // Обновляем выбранный элемент и категорию
-            valuesInput.value = elementValue;
-            textsInput.value = target.textContent;
+	        if (selectionType === 'single') {
+		        valuesInput.value = elementValue;
+		        textsInput.value = target.textContent;
 
-            // Только если есть категория, обновляем скрытое поле
-            if (hasCategoryAttr) {
-                const categoriesInput = dropdown.querySelector('.categories-input');
-                if (categoriesInput) {
-                    categoriesInput.value = category;
-                }
-            }
+		        // Только если есть категория, обновляем скрытое поле
+		        if (hasCategoryAttr) {
+			        const categoriesInput = dropdown.querySelector('.categories-input');
+			        if (categoriesInput) {
+				        categoriesInput.value = category;
+			        }
+		        }
 
-            // Обновляем визуальное состояние (класс selected)
-            items.forEach(item => item.classList.remove('selected'));
-            target.classList.add('selected');
+		        // Обновляем визуальное состояние (класс selected)
+		        items.forEach(item => item.classList.remove('selected'));
+		        target.classList.add('selected');
+	        } else if (selectionType === 'multiple') {
+		        // Для множественного выбора
+		        target.classList.toggle('selected');
+
+		        // Обновляем значения и текст
+		        const selectedItems = items.filter(item => item.classList.contains('selected'));
+		        valuesInput.value = selectedItems.map(item => item.dataset.value).join(', ');
+		        textsInput.value = selectedItems.map(item => item.textContent).join(', ');
+
+		        // Обновляем категории
+		        if (hasCategoryAttr) {
+			        const categoriesInput = dropdown.querySelector('.categories-input');
+			        if (categoriesInput) {
+				        categoriesInput.value = selectedItems.map(item => item.dataset.category).filter(Boolean).join(', ');
+			        }
+		        }
+	        }
         });
 
         // Вспомогательная функция для обновления отображения

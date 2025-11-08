@@ -62,8 +62,7 @@ Archetypes_Abilities = db.Table('Archetypes_Abilities',
         db.Column('Archetypes_id', db.Integer(), db.ForeignKey('Archetypes.id')),
         db.Column('Abilities_id', db.Integer(), db.ForeignKey('Abilities.id')))
 
-
-Armors_ArmorTypes = db.Table('Armors_Abilities',
+Armors_ArmorTypes = db.Table('Armors_ArmorTypes',
         db.Column('Armors_id', db.Integer(), db.ForeignKey('Armors.id')),
         db.Column('ArmorTypes_id', db.Integer(), db.ForeignKey('ArmorTypes.id')))
 
@@ -518,11 +517,6 @@ Personages_CharacteristicsValues = db.Table('Personages_CharacteristicsValues',
                                             db.Column('CharacteristicsValues_id', db.Integer(),
                                                       db.ForeignKey('CharacteristicsValues.id')))
 
-Personages_CharacteristicsModificators = db.Table('Personages_CharacteristicsModificators',
-                                                  db.Column('Personages_id', db.Integer(),
-                                                            db.ForeignKey('Personages.id')),
-                                                  db.Column('CharacteristicsModificators_id', db.Integer(),
-                                                            db.ForeignKey('CharacteristicsModificators.id')))
 
 Personages_StorageBags = db.Table('Personages_StorageBags',
                                   db.Column('Personages_id', db.Integer(),
@@ -532,7 +526,7 @@ Personages_StorageBags = db.Table('Personages_StorageBags',
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
-    id          = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     login       = db.Column(db.String, unique=True)
     password    = db.Column(db.String(255), nullable=False, server_default='')
     active      = db.Column(db.Boolean())
@@ -543,7 +537,7 @@ class User(db.Model, UserMixin):
 
 class Role(db.Model, RoleMixin):
     __tablename__ = 'Role'
-    id       = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     RoleName = db.Column(db.String(80), unique=True)
     name     = db.Column(db.String(80), unique=True)
     NameUser = db.Column(db.String(80), unique=True)
@@ -551,7 +545,7 @@ class Role(db.Model, RoleMixin):
 
 class Abilities(db.Model):
         __tablename__ = 'Abilities'
-        id            = db.Column(db.Integer, primary_key=True)
+        id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
         Name          = db.Column(db.String(300), nullable=False, unique=True)
         Discription   = db.Column(db.Text, nullable=True)
         imageName = db.Column(db.String(300), nullable=True)
@@ -560,7 +554,7 @@ class Abilities(db.Model):
 
 class Archetypes(db.Model):
     __tablename__ = 'Archetypes'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     ArmorClass          = db.Column(db.Text, nullable=True)
@@ -607,7 +601,7 @@ class Archetypes(db.Model):
 
 class Armors(db.Model):
     __tablename__ = 'Armors'
-    id          = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name        = db.Column(db.String(300), nullable=False, unique=True)
     Discription = db.Column(db.Text, nullable=True)
     Hindrance   = db.Column(db.Boolean)
@@ -624,7 +618,7 @@ class Armors(db.Model):
 
 class ArmorTypes(db.Model):
     __tablename__ = 'ArmorTypes'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -633,7 +627,7 @@ class ArmorTypes(db.Model):
 
 class Atributes(db.Model):
     __tablename__ = 'Atributes'
-    id                = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name              = db.Column(db.String(300), nullable=False, unique=True)
     Discription       = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -675,7 +669,7 @@ class Atributes(db.Model):
 
 class Backgrounds(db.Model):
     __tablename__ = 'Backgrounds'
-    id               = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name             = db.Column(db.String(300), nullable=False, unique=True)
     Discription      = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -699,7 +693,7 @@ class Backgrounds(db.Model):
 
 class Characteristices(db.Model):
     __tablename__ = 'Characteristices'
-    id                   = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                 = db.Column(db.String(300), nullable=False, unique=True)
     Discription          = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -711,7 +705,7 @@ class Characteristices(db.Model):
 
 class Classes(db.Model):
     __tablename__ = 'Classes'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     ArmorClass          = db.Column(db.Text, nullable=True)
@@ -744,7 +738,7 @@ class Classes(db.Model):
 
 class DamageTypes(db.Model):
     __tablename__ = 'DamageTypes'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -753,7 +747,7 @@ class DamageTypes(db.Model):
 
 class Effects(db.Model):
     __tablename__ = 'Effects'
-    id           = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name         = db.Column(db.String(300), nullable=False, unique=True)
     Discription  = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -762,7 +756,7 @@ class Effects(db.Model):
 
 class Equipments(db.Model):
     __tablename__ = 'Equipments'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
     Cost            = db.Column(db.Integer, nullable=True)
@@ -776,7 +770,7 @@ class Equipments(db.Model):
 
 class EquipmentTypes(db.Model):
     __tablename__ = 'EquipmentTypes'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -785,16 +779,18 @@ class EquipmentTypes(db.Model):
 
 class Features(db.Model):
     __tablename__ = 'Features'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
+    DopDamage = db.Column(db.Integer, nullable=True)
+    Distanse = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
     image = db.Column(db.LargeBinary, nullable=True)
 
 
 class Languages(db.Model):
     __tablename__ = 'Languages'
-    id                      = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                    = db.Column(db.String(300), nullable=False, unique=True)
     Discription             = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -807,7 +803,7 @@ class Languages(db.Model):
 
 class MagicalItems(db.Model):
     __tablename__ = 'MagicalItems'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     PowerBonus          = db.Column(db.Text, nullable=True)
@@ -869,7 +865,7 @@ class MagicalItems(db.Model):
 
 class MagicalItemsTypes(db.Model):
     __tablename__ = 'MagicalItemsTypes'
-    id                      = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                    = db.Column(db.String(300), nullable=False, unique=True)
     Discription             = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -878,7 +874,7 @@ class MagicalItemsTypes(db.Model):
 
 class Races(db.Model):
     __tablename__ = 'Races'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     Speed               = db.Column(db.Integer, nullable=True)
@@ -926,7 +922,7 @@ class Races(db.Model):
 
 class Skills(db.Model):
     __tablename__ = 'Skills'
-    id           = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name         = db.Column(db.String(300), nullable=False, unique=True)
     Discription  = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -935,7 +931,7 @@ class Skills(db.Model):
 
 class Spells(db.Model):
     __tablename__ = 'Spells'
-    id                = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name              = db.Column(db.String(300), nullable=False, unique=True)
     Discription       = db.Column(db.Text, nullable=True)
     Damage            = db.Column(db.Text, nullable=True)
@@ -972,7 +968,7 @@ class Spells(db.Model):
 
 class Tools(db.Model):
     __tablename__ = 'Tools'
-    id          = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name        = db.Column(db.String(300), nullable=False, unique=True)
     Discription = db.Column(db.Text, nullable=True)
     Cost        = db.Column(db.Integer, nullable=True)
@@ -986,7 +982,7 @@ class Tools(db.Model):
 
 class ToolTypes(db.Model):
     __tablename__ = 'ToolTypes'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -995,7 +991,7 @@ class ToolTypes(db.Model):
 
 class Weapoons(db.Model):
     __tablename__ = 'Weapoons'
-    id              = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name            = db.Column(db.String(300), nullable=False, unique=True)
     Discription     = db.Column(db.Text, nullable=True)
     Cost            = db.Column(db.Integer, nullable=True)
@@ -1016,7 +1012,7 @@ class Weapoons(db.Model):
 
 class WeapoonTypes(db.Model):
     __tablename__ = 'WeapoonTypes'
-    id                  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name                = db.Column(db.String(300), nullable=False, unique=True)
     Discription         = db.Column(db.Text, nullable=True)
     imageName = db.Column(db.String(300), nullable=True)
@@ -1025,21 +1021,21 @@ class WeapoonTypes(db.Model):
 
 class TypesMagic(db.Model):
     __tablename__ = 'TypesMagic'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     Discription = db.Column(db.Text, nullable=True)
 
 
 class Clans(db.Model):
     __tablename__ = 'Clans'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     Discription = db.Column(db.Text, nullable=True)
 
 
 class StorageBags(db.Model):
     __tablename__ = 'StorageBags'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     Quantity = db.Column(db.String(300), nullable=True)
     Cost = db.Column(db.String(300), nullable=True)
@@ -1072,7 +1068,7 @@ class StorageBags(db.Model):
 
 class Personages(db.Model):
     __tablename__ = 'Personages'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     Name = db.Column(db.String(300), nullable=False)
     LevelPersonages = db.Column(db.Integer, nullable=True)
     LevelsClasses = db.Column(db.String(300), nullable=True)
@@ -1219,7 +1215,7 @@ class Personages(db.Model):
 
 class CharacteristicsValues(db.Model):
     __tablename__ = 'CharacteristicsValues'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     CharacteristicId = db.Column(db.Integer, nullable=True)
     value = db.Column(db.Integer, nullable=True)
 

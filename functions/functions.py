@@ -1,3 +1,5 @@
+from xmlrpc.client import boolean
+
 from flask import render_template, request
 from .Classes import *
 import os
@@ -135,25 +137,24 @@ def OpenEditPost(Parametrs):
             parametr = getattr(PostDate, variables)
             if not callable(parametr) and not variables.startswith("__"):
                 if variables != 'id' and variables != 'Name':
-                    if not (isinstance(parametr, list) and len(parametr) == 0):
-                        if isinstance(parametr, list):
-                            for param in parametr:
-                                inputvalue = inputvalue + str(param.id) + ','
-                            if inputvalue != '':
-                                inputvalue = inputvalue[:-1]
-                            if variables in OnlyvalueTablesName:
-                                TableOnly = True
-                            variablesClassDate = type(parametr[0]).query.all()
-                        if isinstance(parametr, (int, str, list, bytes)):
-                            RepresentationValueArray = ParamNameRepresentationValue(variables)
-                            if isinstance(parametr, (bytes)):
-                                FileDonload([parametr, PostDate.imageName])
-                            if len(RepresentationValueArray) > 0:
-                                representationValue = RepresentationValueArray[1]
-                            else:
-                                representationValue = ''
-                            PostDates.append(
-                                [representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
+                    if isinstance(parametr, list) and len(parametr) != 0:
+                        for param in parametr:
+                            inputvalue = inputvalue + str(param.id) + ','
+                        if inputvalue != '':
+                            inputvalue = inputvalue[:-1]
+                        if variables in OnlyvalueTablesName:
+                            TableOnly = True
+                        variablesClassDate = type(parametr[0]).query.all()
+                    if isinstance(parametr, (int, str, list, bytes)):
+                        RepresentationValueArray = ParamNameRepresentationValue(variables)
+                        if isinstance(parametr, (bytes)):
+                            FileDonload([parametr, PostDate.imageName])
+                        if len(RepresentationValueArray) > 0:
+                            representationValue = RepresentationValueArray[1]
+                        else:
+                            representationValue = ''
+                        PostDates.append(
+                            [representationValue, parametr, variables, variablesClassDate, inputvalue, TableOnly])
     except Exception as msg:
         print(msg)
     return render_template("EditPost.html", DatesMassiv=[Date_id, tableName, DateName, PostDates],
@@ -180,9 +181,16 @@ def CreateDate(Parametrs):
                             if len(Datelist[1]) > 0:
                                 appenddatas([parametrsoutput(dates[Datelist[1]]), get_class(Datelist[0]), parametr])
                     if not paramtable:
-                        setattr(Object, variables, dates[variables])
+                        if dates[variables] == 'on':
+                            setattr(Object, variables, True)
+                        elif dates[variables] == 'off':
+                            setattr(Object, variables, False)
+                        else:
+                            setattr(Object, variables, dates[variables])
                     paramtable = False
-
+    for variables in dir(Object):
+        if getattr(Object, variables) == None and variables != 'id':
+            setattr(Object, variables, 0)
     if len(filles) > 0:
         Object.image = filles['image_uploads'].read()
         Object.imageName = filles['image_uploads'].filename

@@ -1,12 +1,12 @@
 /* tablesPersonage.css */
 
-.MainDates, .dynamicTable, .Skills, .Spass {
+.MainDates, .dynamicTable, .Skills, .Spass, .OpisanieDates {
 	border: 1em ridge rgb(129 64 236 / 1);
 	width: 100%;
 	height: 100%;
 }
 
-.MainDates td, .dynamicTable th, .dynamicTable td, .Skills td, .Spass td {
+.MainDates td, .dynamicTable th, .dynamicTable td, .Skills td, .Spass td, .OpisanieDates td {
 	border: 0.3em solid rgb(131 70 236 / 0.5);
 }
 
@@ -22,7 +22,7 @@ td.border-none {
 
 #imageDate {
 	width: 14em;
-	height: 100%;
+	height: 98%;
 	object-fit: cover;
 	border: 1px solid black;
 	border-radius: 4%;
@@ -60,7 +60,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины таблицы */
-.MainDates, .Skills , .Spass {
+.MainDates, .Skills , .Spass, .OpisanieDates {
 	width: 100%;
 	height: 100%;
 }
@@ -71,7 +71,7 @@ label#image_uploads_label {
 }
 
 /* Уменьшение ширины ячеек таблицы */
-.MainDates td, #dynamicTable td, .Skills td, .Spass td{
+.MainDates td, #dynamicTable td, .Skills td, .Spass td, .OpisanieDates td {
 	padding: 5px; /* Уменьшаем отступы внутри ячеек */
 }
 
@@ -84,9 +84,11 @@ label#image_uploads_label {
 .Skills input[type="text"],
 .Skills input[type="number"],
 .Spass input[type="text"],
-.Spass input[type="number"] {
+.Spass input[type="number"],
+.OpisanieDates input[type="text"],
+.OpisanieDates input[type="number"] {
 	width: 100%; /* Элементы занимают всю ширину ячейки */
-	height: 100%; /* Элементы занимают всю ширину ячейки */
+	height: 80%; /* Элементы занимают всю ширину ячейки */
 	padding: 5px; /* Уменьшаем отступы внутри элементов */
 	background-color: #282c34;
 	border: none;
@@ -154,7 +156,9 @@ input#MaxWeight, input#TotalWeight {
 .Skills .interactivElement[type="text"],
 .Skills .interactivElement[type="number"],
 .Spass .interactivElement[type="text"],
-.Spass .interactivElement[type="number"] {
+.Spass .interactivElement[type="number"],
+.OpisanieDates .interactivElement[type="text"],
+.OpisanieDates .interactivElement[type="number"] {
 	color: #090909;
 	border: #DB8E8E solid 2px;
 	background: white;
@@ -187,6 +191,11 @@ input#MaxWeight, input#TotalWeight {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+}
+
+.OpisanieDates textarea {
+	width: 100%;
+	height: 80%;
 }
 
 

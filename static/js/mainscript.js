@@ -34,3 +34,6 @@ import './PassivAttentionCalculation.js';           // Расчёт пассив
 import './InitiativeCalculation.js';                // Расчёт инициативы
 import './ChekedSettingsAmunition.js';              // Расчёт инициативы
 import './CharacteristicSpassCalculation.js';       // Расчёт спасбросков
+import './SwitcherSkills_Spass.js';                 // Смена таблицы спасброски и навыки
+import './SwitcherMaininfo_Opisanie.js';            // Смена таблицы Описание персонажа и основной информации
+import './SwitcherInventory.js';                    // Смена таблицы инвентарь и надетое снаряжение

@@ -65,16 +65,24 @@
 		
 		<div class="tables-left">
 			
+			<label class="switch-container">
+				<span class="label-left active-label">Основная информация</span>
+				<label class="switch">
+					<input type="checkbox" id="MainInfo" class="toggleButton">
+					<span class="slider"></span>
+				</label>
+				<span class="label-right">Информация о персонаже</span>
+			</label>
+			
 			<div class="MainDate-blok blockTable">
-				<span class="Name-table">
-					Основная информация:
-				</span>
+
 				<table class="MainDates">
 					<tr>
 						<td colspan="2">
 							<div class="block-item">
 								<span>Имя персонажа: </span>
-								<input type="text" name="Name" id="Name" placeholder="Имя персонажа"/>
+								<input type="text" name="Name" id="Name" class="interactivElement"
+								       placeholder="Имя персонажа"/>
 							</div>
 						</td>
 						<td colspan="1">
@@ -386,15 +394,111 @@
 				
 				</table>
 			</div>
+			
+			<div class="Opisanie-blok blockTable hide">
+				
+				<table class="OpisanieDates">
+					<tr>
+						<td rowspan="4">
+							<span>История персонажа: </span>
+							<textarea></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Рост: </span>
+							<input type="number" name="Height" id="Height" class="interactivElement"
+							       placeholder="Рост персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Вес: </span>
+							<input type="number" name="Weight" id="Weight" class="interactivElement"
+							       placeholder="Вес персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Телосложение: </span>
+							<input type="text" name="Physique" id="Physique" class="interactivElement"
+							       placeholder="Телосложение персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="4">
+							<span>Свойства личности: </span>
+							<textarea></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Лицо: </span>
+							<input type="text" name="Face" id="Face" class="interactivElement"
+							       placeholder="Лицо персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Кожа: </span>
+							<input type="text" name="Skin" id="Skin" class="interactivElement"
+							       placeholder="Кожа персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Причёска: </span>
+							<input type="text" name="Hairstyle" id="Hairstyle" class="interactivElement"
+							       placeholder="Причёска персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td rowspan="3">
+							<span>Узы: </span>
+							<textarea></textarea>
+						</td>
+					<tr>
+						<td>
+							<span>Татуировки: </span>
+							<input type="text" name="Tattoos" id="Tattoos" class="interactivElement"
+							       placeholder="Татуировки персонажа"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span>Особенности внешности: </span>
+							<input type="text" name="FeaturesAppearance" id="FeaturesAppearance"
+							       class="interactivElement" placeholder="Особенности внешности персонажа"/>
+						</td>
+					</tr>
+					</tr>
+					<tr>
+						<td>
+							<span>Идеалы: </span>
+							<textarea></textarea>
+						</td>
+						<td>
+							<span>Изъяны: </span>
+							<textarea></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
 		
 		</div>
 		
 		<div class="tables-center">
 			
-			<div class="dynamicTable-blok blockTable">
-				<span class="Name-table">
-					Надетое снаряжение:
-				</span>
+			<label class="switch-container">
+				<span class="label-left active-label">Надетое снаряжение</span>
+				<label class="switch">
+					<input type="checkbox" id="inventory_Ammunition" class="toggleButton">
+					<span class="slider"></span>
+				</label>
+				<span class="label-right">Инвентарь</span>
+			</label>
+			
+			<div class="dynamicTable-blok EquippedAmmunition blockTable">
 				
 				<div id="flash-message">
 					Максимальное количество отмеченных чекбоксов — 3!
@@ -428,11 +532,9 @@
 				</table>
 			</div>
 			
-			<div class="dynamicTable-blok blockTable">
-				<span class="Name-table">
-					Инвентарь:
-				</span>
-				<table id="dynamicTable" class="dynamicTable inventory" data-items="{{ arrayitems }}">
+			<div class="dynamicTable-blok inventory blockTable hide">
+			
+			<table id="dynamicTable" class="dynamicTable inventory" data-items="{{ arrayitems }}">
 					<thead>
 					<tr>
 						<th>
@@ -478,24 +580,27 @@
 		
 		<div class="tables-right">
 			
+			<label class="switch-container">
+				<span class="label-left active-label">Навыки</span>
+				<label class="switch">
+					<input type="checkbox" id="Spass_Skill" class="toggleButton">
+					<span class="slider"></span>
+				</label>
+				<span class="label-right">Спасброски</span>
+			</label>
+			
 			<div class="Skills-blok blockTable">
 				
-				<span class="Name-table">
-					Навыки:
-				</span>
 				<table class="Skills">
 					{% for Characteristic in Characteristices %}
 					{% if Characteristic.Name != "Телосложение" %}
 					<tr>
-						<!-- Создание специальной переменной namespace для подсчета колонок -->
 						{% set ns = namespace(columns_count=0) %}
 						{% for Skill in Skills %}
 						{% if Skill.CharacteristicesSkills[0].id == Characteristic.id %}
 						{% set ns.columns_count = ns.columns_count + 1 %}
 						{% endif %}
 						{% endfor %}
-						
-						<!-- Первую ячейку делаем растягивающей -->
 						<td rowspan="{{ ns.columns_count + 1 }}">
 							<div>
 	                <span class="Characteristics" data-param-id="{{ Characteristic.id }}">
@@ -504,8 +609,6 @@
 							</div>
 						</td>
 					</tr>
-					
-					<!-- Генерируем колонки с навыками -->
 					{% for Skill in Skills %}
 					{% if Skill.CharacteristicesSkills[0].id == Characteristic.id %}
 					<tr>
@@ -542,15 +645,11 @@
 			
 			</div>
 			
+			<div class="Spass-blok blockTable hide">
 			
-			<div class="Spass-blok blockTable">
-			    <span class="Name-table">
-			        Спасброски:
-			    </span>
-				<table class="Spass">
+			<table class="Spass">
 					{% for i in range(0, (Characteristices|length)//2) %}
 					<tr>
-						<!-- Первая колонка (значения спасбросков, соответствующие второй колонке) -->
 						<td>
 							<div class="SpassValue">
 								<div class="block-item">
@@ -562,7 +661,6 @@
 								</div>
 							</div>
 						</td>
-						<!-- Вторая колонка (названия характеристик из первой половины списка) -->
 						<td>
 							<div class="SpassCharacteristicsValue">
 								<div class="block-item">
@@ -602,7 +700,6 @@
 								</div>
 							</div>
 						</td>
-						<!-- Четвертая колонка (значения спасбросков, соответствующие третьей колонке) -->
 						<td>
 							<div class="SpassValue">
 								<div class="block-item">

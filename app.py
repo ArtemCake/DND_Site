@@ -2,6 +2,9 @@ from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager, current_user
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
 import json
+
+from pkg_resources import Distribution
+
 from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, FileDelete, CreateDate)
 import logging
 from functions.Classes import *
@@ -62,6 +65,7 @@ def CreateAbilities():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Abilities',
                                    Title='Создание способности', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -114,6 +118,7 @@ def CreateArchetypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Archetypes',
                                    Title='Создание подкласса (архетипа)', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -138,6 +143,7 @@ def CreateArmors():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
                                    Title='Создание доспеха', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -159,6 +165,7 @@ def CreateArmorTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Armors',
                                    Title='Создание типа доспеха', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -209,6 +216,7 @@ def CreateAtributes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
                                    Title='Создание черты', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -242,6 +250,7 @@ def CreateBackgrounds():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Atributes',
                                    Title='Создание черты', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -264,6 +273,7 @@ def CreateCharacteristices():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Characteristices',
                                    Title='Создание характеристики', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -304,6 +314,7 @@ def CreateClasses():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Classes',
                                    Title='Создание класса', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -325,6 +336,7 @@ def CreateDamageTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='DamageTypes',
                                    Title='Создание типа урона', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -346,6 +358,7 @@ def CreateEffects():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Effects',
                                    Title='Создание эффекта', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -369,6 +382,7 @@ def CreateEquipments():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Equipments',
                                    Title='Создание снаряжения', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -390,6 +404,7 @@ def CreateEquipmentTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='EquipmentTypes',
                                    Title='Создание типа снаряжения', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -401,7 +416,8 @@ def CreateEquipmentTypes():
 @roles_accepted('Admin', 'Master')
 def CreateFeatures():
     DateTabels = [['Name', 'Название свойства оружия', False], ['Discription', 'Описание', False],
-                  ['imageName', 'Картинка', False]]
+                  ['imageName', 'Картинка', False], ['Distanse', 'Дистанция', False],
+                  ['DopDamage', 'Дополнительный урон', False]]
     if request.method == 'POST':
         MassivDates = []
         features = CreateDate([Features(), request, MassivDates])
@@ -411,6 +427,7 @@ def CreateFeatures():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Features',
                                    Title='Создание свойства оружия', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -434,6 +451,7 @@ def CreateLanguages():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Languages',
                                    Title='Создание языка', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -493,6 +511,7 @@ def CreateMagicalItems():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItems',
                                    Title='Создание магического предмета', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -514,6 +533,7 @@ def CreateMagicalItemTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='MagicalItemsTypes',
                                    Title='Создание типа магического предмета', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -565,6 +585,7 @@ def CreateRaces():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Races', Title='Создание расы',
                                    show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -586,6 +607,7 @@ def CreateSkills():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Skills',
                                    Title='Создание навыка', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -630,6 +652,7 @@ def CreateSpells():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Spells',
                                    Title='Создание заклинания', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -641,7 +664,7 @@ def CreateSpells():
 @roles_accepted('Admin', 'Master')
 def CreateTools():
     toolTypes = ToolTypes.query.all()
-    DateTabels = [['Name', 'Название предыстрории', False], ['Discription', 'Описание', False]
+    DateTabels = [['Name', 'Название инструмента', False], ['Discription', 'Описание', False]
         , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
         , [toolTypes, 'ToolTypes', 'Тип инструмента', True], ['imageName', 'Картинка', False]]
     if request.method == 'POST':
@@ -653,6 +676,7 @@ def CreateTools():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Tools',
                                    Title='Создание инструмента', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -674,6 +698,7 @@ def CreateToolTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='ToolTypes',
                                    Title='Создание типа инструмента', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -689,7 +714,7 @@ def CreateWeapoons():
     weapoonTypes = WeapoonTypes.query.all()
     DateTabels = [['Name', 'Название оружия', False], ['Discription', 'Описание', False]
         , ['Weight', 'Вес', False], ['Cost', 'Цена', False]
-        , [features, 'Features', 'Свойство оружия', True], [damageTypes, 'DamageTypes', 'Тип урона', True]
+        , [features, 'Features', 'Свойство оружия', False], [damageTypes, 'DamageTypes', 'Тип урона', True]
         , [weapoonTypes, 'WeapoonTypes', 'Тип оружия', True], ['imageName', 'Картинка', False]
         , ['Damage', 'Урон', False]]
     if request.method == 'POST':
@@ -703,6 +728,7 @@ def CreateWeapoons():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='Weapoons',
                                    Title='Создание оружия', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -724,6 +750,7 @@ def CreateWeapoonTypes():
             return render_template("CreatePost.html", DateTabels=DateTabels, TableName='WeapoonTypes',
                                    Title='Создание типа оружия', show_back_button=True)
         except Exception as msg:
+            print(msg)
             db.session.rollback()
             return render_template("CreateMaterial.html", msg=msg, show_back_button=True)
     else:
@@ -1103,7 +1130,7 @@ def EditFeatures():
     features = Features.query.all()
     if request.method == 'POST':
         Date_id = request.form.get('Date_id')
-        return OpenEditPost(['EquipmentTypes', Date_id, ['']])
+        return OpenEditPost(['Features', Date_id, ['']])
     return render_template("EditElementPage.html", Dates=features
                            , TableName='EditFeatures', TitlePage='Изменить особенности', show_back_button=True)
 
