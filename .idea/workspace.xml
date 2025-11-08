@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавлен расчет спас бросков">
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+    <list default="true" id="6307afaa-8a06-4182-bda2-c9ab4fa36530" name="Changes" comment="Добавлена таблица с описанием персонажа, Добавлены переключатели между таблицами для оптимизации места">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/Classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/newflask.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/tablesPersonage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablesPersonage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/dropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/mainscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/mainscript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/CreatePersonage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/CreatePersonage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/newflask.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +23,7 @@
     </option>
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="origin/master" />
+    <option name="NEW_BASE" value="github/test" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
@@ -156,14 +146,6 @@
       <workItem from="1758886527097" duration="8000" />
       <workItem from="1759007244469" duration="41000" />
       <workItem from="1760960396403" duration="14000" />
-    </task>
-    <task id="LOCAL-00008" summary="Save dates">
-      <option name="closed" value="true" />
-      <created>1759521617542</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521617542</updated>
     </task>
     <task id="LOCAL-00009" summary="Save dates">
       <option name="closed" value="true" />
@@ -549,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762179275217</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Добавлена таблица с описанием персонажа, Добавлены переключатели между таблицами для оптимизации места">
+      <option name="closed" value="true" />
+      <created>1762637537701</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1762637537702</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,7 +556,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="test" />
                       </list>
                     </value>
                   </entry>
@@ -591,7 +581,8 @@
     <MESSAGE value="Исправление ошибок работы скриптов" />
     <MESSAGE value="Исправление ошибко стилей" />
     <MESSAGE value="Добавлен расчет спас бросков" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлен расчет спас бросков" />
+    <MESSAGE value="Добавлена таблица с описанием персонажа, Добавлены переключатели между таблицами для оптимизации места" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена таблица с описанием персонажа, Добавлены переключатели между таблицами для оптимизации места" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
@@ -600,12 +591,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>38</line>
+          <line>35</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>37</line>
+          <line>34</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

@@ -2,9 +2,6 @@ from flask import (Flask, render_template, request, redirect)
 from flask_login import login_user, login_required, logout_user, LoginManager, current_user
 from flask_security import (roles_accepted, Security, SQLAlchemySessionUserDatastore)
 import json
-
-from pkg_resources import Distribution
-
 from functions.functions import (OpenVeiwPost, OpenEditPost, UpdateTable, RemoveTable, FileDelete, CreateDate)
 import logging
 from functions.Classes import *
